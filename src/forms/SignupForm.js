@@ -20,14 +20,14 @@ const SignupForm = (props) => {
                 <div style={{ position: 'relative' }}>
                     <input name='passwordTextbox' type={!passwordShown ? 'password' : 'text'} placeholder='Create Password' />
                     <button type="button" className={classes.toggle} style={!passwordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showPasswordHandler}>
-                        <i className="fa fa-eye"></i>
+                        <i className="fal fa-eye"></i>
                     </button>
                 </div>
                 <input type='text' placeholder='Job (optional)' />
                 <Button className={classes.btn}>Sign Up</Button>
                 <CheckBox className={classes.checkbox} />
             </form>
-            <SocialMedia />
+            <SocialMedia className={classes.social}/>
                 <div className={classes.text}>
                     <p>By creating an account you are aggreeing to the
                 <a href='a'>Terms of Service</a>

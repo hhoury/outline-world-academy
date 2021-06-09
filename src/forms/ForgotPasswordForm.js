@@ -3,9 +3,9 @@ import classes from './ForgotPasswordForm.module.css'
 import Form from './Form'
 import Button from '../components/UI/Button'
 import Recaptcha from '../components/UI/Recaptcha'
-const ForgotPasswordForm = () => {
+const ForgotPasswordForm = (props) => {
     return (
-        <Form className={classes.forgotPassword}>
+        <Form className={`${classes.forgotPassword} ${props.className}`}>
         <h1>Request reset link</h1>
         <form>
             <input type='textbox' placeholder='Email Address' />

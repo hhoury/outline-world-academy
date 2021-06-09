@@ -14,7 +14,7 @@ const SigninForm = (props) => {
         setPasswordShown(!passwordShown);
     }
     return (
-        <Form className={classes.signIn}>
+        <Form className={`${classes.signIn} ${props.className}`}>
             <h1>SIGN IN</h1>
             <form className={classes.signIn}>
                 <input type='textbox' placeholder='Email Address' />

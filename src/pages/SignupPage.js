@@ -4,8 +4,8 @@ import SignupForm from '../forms/SignupForm'
 
 const SignupPage = () => {
     return (
-        <div className='sign-up'>
-            <div className='col-lg-4 col-md-4 left-side'>
+        <div className='sign-up container-fluid'>
+            <div className='col-lg-5 col-md-5 left-side'>
                 <div className='logo'>
                     <img src={Logo} alt='OW' />
                 </div>

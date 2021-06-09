@@ -1,6 +1,5 @@
 .social-media{
   clear: both;
-    margin-top: 10%;
     display: inline-block;
 }
 .social-media h1 {
@@ -13,9 +12,12 @@
 .social-media span {
   cursor: pointer;
   margin: 0 10px;
-  padding: 10px 10px 5px 10px;
+  padding: 5px;
   background-color: #F44E0C;
   mix-blend-mode: screen;
+  height: 42px;
+  width: 42px;
+  display: inline-block;
 }
 .social-media span a {
   text-decoration: none;
