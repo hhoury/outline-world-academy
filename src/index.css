@@ -1,13 +1,53 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #191919;
+  color: #fff;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a,a:hover{
+  color: #F44E0C;
+  cursor: pointer;
+  text-decoration: none;
 }
+.logo {
+  position: absolute;
+  background-color: #F44E0C;
+  top: 55px;
+  left: 10%;
+  padding: 5px;
+}
+.logo img {
+  vertical-align: middle;
+}
+/* *****  SIGN UP PAGE ******/
+.sign-up{
+  background-image: url('./assets/asset-bg.png');
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.sign-up .left-side{
+  padding: 0;
+  height: 100%;
+  position: relative;
+}
+.sign-up__bottom{
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  padding: 0;
+}
+.sign-up__bottom h2{
+  color: #F44E0C;
+  font-size: 54px;
+  font-weight: bold;
+}
+.sign-up__bottom p{
+    font-size: 18px;
+}
+/* *****  SIGN UP PAGE END******/

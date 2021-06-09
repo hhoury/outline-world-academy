@@ -1,0 +1,10 @@
+.form {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 50px 5%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+}

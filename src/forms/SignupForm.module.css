@@ -1,0 +1,93 @@
+.signUp {
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 200;
+}
+
+.signUp form {
+  width: 70%;
+  margin:  15px auto 0;
+}
+
+.signUp input {
+  outline: none;
+  display: block;
+  background: rgba(0, 0, 0, 0);
+  margin: 25px 0;
+  width: 100%;
+  padding: 15px 0;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background-color: none;
+  color: #fff;
+  -webkit-appearance: none;
+}
+
+.signUp input:focus {
+  border-bottom: 1px solid #F44E0C;
+}
+
+.signUp input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+  font-weight: 200;
+  opacity: 1;
+  /* Firefox */
+}
+
+.signUp input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #fff;
+  font-weight: 200;
+}
+
+.signUp input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #fff;
+  font-weight: 200;
+}
+
+input[type="password"]::-ms-reveal {
+  display: none;
+}
+
+.toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 9;
+  font-size: 26px;
+}
+
+.toggle:focus {
+  outline: none;
+}
+
+.fa {
+  font-size: 2rem;
+}
+
+.text {
+  text-align: justify;
+  font-size: 16px;
+  font-weight: lighter;
+  margin-top: 50px;
+}
+
+.text a {
+  color: #F44E0C;
+  text-decoration: none;
+  padding: 0 4px;
+}
+
+.btn {
+  margin-top: 10%;
+  letter-spacing: 5px;
+}

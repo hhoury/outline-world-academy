@@ -1,0 +1,81 @@
+.checkbox-label {
+  text-align: left;
+  cursor: pointer;
+  -webkit-touch-callout: none;/* iOS Safari */
+  -webkit-user-select: none;/* Safari */
+  -khtml-user-select: none;/* Konqueror HTML */
+  -moz-user-select: none;/* Old versions of Firefox */
+  -ms-user-select: none;/* Internet Explorer/Edge */
+  user-select: none;/* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  margin: 15px 0 0 0;
+  width: 100%;
+}
+
+.checkbox-label input {
+  display: none;
+}
+
+.checkbox-label .checkbox-custom {
+  float: left;
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+}
+
+.checkbox-label .checkbox-custom::after {
+  position: absolute;
+  content: '';
+  left: 12px;
+  top: 12px;
+  height: 0px;
+  width: 0px;
+  border-radius: 5px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(0deg) scale(0);
+  -ms-transform: rotate(0deg) scale(0);
+  transform: rotate(0deg) scale(0);
+  opacity: 1;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+}
+
+.checkbox-label input:checked ~ .checkbox-custom {
+  background-color: #F44E0C;
+  border-radius: 5px;
+  -webkit-transform: rotate(0deg) scale(1);
+  -ms-transform: rotate(0deg) scale(1);
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+  border: 2px solid #F44E0C;
+}
+
+.checkbox-label input:checked ~ .checkbox-custom::after {
+  -webkit-transform: rotate(45deg) scale(1);
+  -ms-transform: rotate(45deg) scale(1);
+  transform: rotate(45deg) scale(1);
+  opacity: 1;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+.checkbox-label span:last-child{
+  clear: both;
+  font-size: 16px;
+  vertical-align: top;
+}

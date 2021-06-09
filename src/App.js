@@ -1,25 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+// eslint-disable-next-line
+import SigninPage from './pages/SigninPage';
+// eslint-disable-next-line
+import SignupPage from './pages/SignupPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+   return(
+    <SignupPage/>
+   )
 }
 
 export default App;

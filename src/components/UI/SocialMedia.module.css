@@ -1,0 +1,27 @@
+.social-media{
+  clear: both;
+    margin-top: 10%;
+    display: inline-block;
+}
+.social-media h1 {
+    font-size: 20px;
+    font-weight: 200;
+}
+.icons-group{
+  margin-top: 10px;
+}
+.social-media span {
+  cursor: pointer;
+  margin: 0 10px;
+  padding: 10px 10px 5px 10px;
+  background-color: #F44E0C;
+  mix-blend-mode: screen;
+}
+.social-media span a {
+  text-decoration: none;
+  color: #000;
+  font-size: 25px;
+}
+.social-media span:hover{
+  opacity: 0.8;
+}
