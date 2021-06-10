@@ -108,3 +108,28 @@ a:hover {
   grid-column-start: 2;
   grid-column-end: 2;
 }
+.privacy-policy {
+  text-align: left;
+  width: 90%;
+  margin: 120px auto;
+}
+.privacy-policy h1,h2,h3{
+  color: #F44E0C;
+ 
+}
+.privacy-policy h1,h2{
+  font-weight: bold;
+}
+.privacy-policy h1{
+  font-size: 54px;
+}
+.privacy-policy h2{
+  font-size: 30px;
+}
+.privacy-policy h3{
+  font-size: 21px;
+}
+.privacy-policy p{
+  margin: 45px 0;
+  max-width: 70%;
+}

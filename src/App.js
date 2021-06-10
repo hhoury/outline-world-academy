@@ -7,10 +7,11 @@ import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 // eslint-disable-next-line
 import ContactUsPage from './pages/ContactUsPage';
+import PolicyPage from './pages/PolicyPage';
 
 const App = () => {
    return(
-    <ContactUsPage />
+    <PolicyPage />
    )
 }
 
