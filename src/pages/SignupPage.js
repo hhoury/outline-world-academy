@@ -1,14 +1,11 @@
 import React from 'react'
-import Logo from '../assets/logo.png'
 import SignupForm from '../forms/SignupForm'
-
+import Logo from '../Layout/Logo'
 const SignupPage = () => {
     return (
         <div className='sign-up container-fluid'>
             <div className='col-lg-5 col-md-5 left-side'>
-                <div className='logo'>
-                    <img src={Logo} alt='OW' />
-                </div>
+               <Logo />
                 <div className='sign-up__bottom'>
                     <h2>Don't have an </h2>
                     <h2>account?</h2>

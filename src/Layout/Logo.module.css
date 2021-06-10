@@ -1,0 +1,10 @@
+.logo {
+    position: absolute;
+    background-color: #F44E0C;
+    top: 55px;
+    left: 10%;
+    padding: 5px;
+  }
+  .logo img {
+    vertical-align: middle;
+  }

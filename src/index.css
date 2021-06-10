@@ -13,16 +13,7 @@ a,a:hover{
   cursor: pointer;
   text-decoration: none;
 }
-.logo {
-  position: absolute;
-  background-color: #F44E0C;
-  top: 55px;
-  left: 10%;
-  padding: 5px;
-}
-.logo img {
-  vertical-align: middle;
-}
+
 /* *****  SIGN UP PAGE ******/
 .sign-up{
   background-image: url('./assets/asset-bg.png');

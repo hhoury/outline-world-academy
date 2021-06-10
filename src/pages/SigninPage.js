@@ -1,14 +1,13 @@
 import React from 'react'
-import Logo from '../assets/logo.png'
 import SigninForm from '../forms/SigninForm'
+import Logo from '../Layout/Logo'
 
 const SigninPage = () => {
     return (
         <div className='sign-up container-fluid'>
             <div className='col-lg-5 col-md-5 left-side'>
-                <div className='logo'>
-                    <img src={Logo} alt='OW' />
-                </div>
+                <Logo />
+                
                 <div className='sign-up__bottom'>
                     <h2>Welcome Back! </h2>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh

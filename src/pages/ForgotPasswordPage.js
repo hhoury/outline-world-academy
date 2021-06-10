@@ -1,14 +1,12 @@
 import React from 'react'
 import ForgotPasswordForm from '../forms/ForgotPasswordForm'
-import Logo from '../assets/logo.png'
+import Logo from '../Layout/Logo'
 
 const ForgotPasswordPage = () => {
     return (
         <div className='sign-up'>
             <div className='col-lg-5 col-md-5 left-side'>
-                <div className='logo'>
-                    <img src={Logo} alt='OW' />
-                </div>
+               <Logo />
                 <div className='sign-up__bottom'>
                     <h2>Forgot your password? </h2>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
