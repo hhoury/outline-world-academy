@@ -15,7 +15,7 @@ const SignupForm = (props) => {
         <Form className={classes.signUp}>
             <h1>SIGN UP</h1>
             <form>
-                <input type='textbox' placeholder='Email Address' />
+                <input type='text' placeholder='Email Address' />
                 <input type='text' placeholder='Full Name' />
                 <div style={{ position: 'relative' }}>
                     <input name='passwordTextbox' type={!passwordShown ? 'password' : 'text'} placeholder='Create Password' />

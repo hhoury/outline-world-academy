@@ -8,37 +8,103 @@ body {
   background-color: #191919;
   color: #fff;
 }
-a,a:hover{
+
+a,
+a:hover {
   color: #F44E0C;
   cursor: pointer;
   text-decoration: none;
 }
 
 /* *****  SIGN UP PAGE ******/
-.sign-up{
+.sign-up {
   background-image: url('./assets/asset-bg.png');
   background-size: cover;
   width: 100%;
   height: 100vh;
   position: relative;
 }
-.sign-up .left-side{
+
+.sign-up .left-side {
   padding: 0;
   height: 100%;
   position: relative;
 }
-.sign-up__bottom{
+
+.sign-up__bottom {
   position: absolute;
   bottom: 5%;
   left: 10%;
   padding: 0;
 }
-.sign-up__bottom h2{
+
+.sign-up__bottom h2 {
   color: #F44E0C;
   font-size: 54px;
   font-weight: bold;
 }
-.sign-up__bottom p{
-    font-size: 18px;
+
+.sign-up__bottom p {
+  font-size: 18px;
 }
+
 /* *****  SIGN UP PAGE END******/
+.contact-us-page{
+  background-image: url('./assets/map.svg');
+  background-size: cover;
+  background-position: center;
+}
+.contact-us {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 125px;
+  font-weight: 200;
+  min-height: 590px;
+}
+
+.contact-us div>p {
+  text-align: left;
+  max-width: 620px;
+  margin-top: 35px;
+}
+
+.contact-us h1 {
+  font-weight: bold;
+  color: #F44E0C;
+}
+
+.contact-us ul {
+  padding: 0;
+  margin: 120px 0 0 0;
+  display: grid;
+  column-gap: 30px;
+  row-gap: 60px;
+}
+
+.contact-us ul li {
+  list-style-type: none;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.contact-us ul li span {
+  display: inline-block;
+  color: #F44E0C;
+  font-size: 48px;
+  width: 35px;
+  
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+.contact-us ul li p {
+  display: inline-block;
+  max-width: 250px;
+  text-align: left;
+  margin: 0;
+  font-size: 18px;
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
