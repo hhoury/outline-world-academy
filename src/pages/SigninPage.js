@@ -4,7 +4,7 @@ import SigninForm from '../forms/SigninForm'
 
 const SigninPage = () => {
     return (
-        <div className='sign-up'>
+        <div className='sign-up container-fluid'>
             <div className='col-lg-5 col-md-5 left-side'>
                 <div className='logo'>
                     <img src={Logo} alt='OW' />
@@ -15,7 +15,7 @@ const SigninPage = () => {
             euismod tincidunt ut laoreet dolore magna aliquam erat</p>
                 </div>
             </div>
-            <SigninForm />
+            <SigninForm className='col-lg-5 col-md-5'/>
         </div>
 
     )

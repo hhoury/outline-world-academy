@@ -20,9 +20,9 @@ h1 {
     outline: none;
     display: block;
     background: rgba(0, 0, 0, 0);
-    margin: 15px 0;
+    margin: 30px 0;
     width: 100%;
-    padding: 2% 0;
+    padding: 15px 0;
     border: none;
     border-bottom: 1px solid #fff;
     background-color: none;
@@ -57,7 +57,9 @@ h1 {
   input[type="password"]::-ms-reveal {
     display: none;
   }
-  
+  .signIn p {
+    margin-top: 55px;
+  }
   .toggle {
     background: none;
     border: none;
@@ -91,7 +93,7 @@ h1 {
     padding: 0 4px;
   }
   .forgotPassword{
-    margin: 20px 0;
+    margin: 25px 0;
     clear: both;
     position: relative;
   }
@@ -104,9 +106,13 @@ h1 {
     float: right;
   }
   .btn {
-    margin-top: 25px;
+    margin-top: 70px;
     letter-spacing: 5px;
   }
   .policy{
     margin-top: 25px;
+  }
+  footer{
+    width: 70%;
+    margin:  15px auto 0;
   }
