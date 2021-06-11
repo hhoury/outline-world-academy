@@ -30,9 +30,9 @@ const SignupForm = (props) => {
             <SocialMedia className={classes.social}/>
                 <div className={classes.text}>
                     <p>By creating an account you are aggreeing to the
-                <a href='a'>Terms of Service</a>
+                <a href='/'>Terms of Service</a>
                   and
-                 <a href='a'>Privacy Policy</a>
+                 <a href='/'>Privacy Policy</a>
                     </p>
                 </div>
         </Form>

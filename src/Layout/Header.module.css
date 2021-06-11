@@ -1,4 +1,45 @@
 header {
     width: 90%;
     margin: 0 auto;
+    padding: 60px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    text-transform: uppercase;
+    font-weight: 200;
+}
+header > a{
+    background-color: #F44E0C;
+    padding: 10px 15px;
+    height: 60px;
+    width: 190px;
+}
+header > a img{
+    height: auto;
+    max-width: 100%;
+}
+
+
+header .menu{
+    display: flex;
+    gap: 60px;
+    font-size: 18px;
+    letter-spacing: 5px;
+}
+header .menu > ul {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+header .menu a{
+    color: #fff;
+}
+header .menu a:hover {
+    color: #F44E0C;
+}
+header .right-menu ul{
+    border-left: 1px solid #F44E0C;
+    display: flex;
+    gap: 30px;
+    font-size: 24px;
 }

@@ -9,13 +9,13 @@ const PolicyPage = () => {
         <article className='privacy-policy'>
             <h1>Privacy Policy</h1>
             <h2>Who we are</h2>
-            <p>Our website address is:<a> https://www.stateofartacademy.com.</a></p>
+            <p>Our website address is:<a href='/'> https://www.stateofartacademy.com.</a></p>
             <h2>What personal data we collect and why we collect it</h2>
             <h3>Comments</h3>
             <p>When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor’s IP address and browser user
                 agent string to help spam detection.</p>
             <p>An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The
-            Gravatar service privacy policy is available here: <a>https://automattic.com/privacy/</a>. After approval           of your comment, your profile picture is visible
+            Gravatar service privacy policy is available here: <a href='/'>https://automattic.com/privacy/</a>. After approval           of your comment, your profile picture is visible
             to the public in the context of your comment.</p>
             <h3>Media</h3>
             <p>If you upload images to the website, you should avoid uploading images with embedded location data (EXIF            GPS) included. Visitors to the website

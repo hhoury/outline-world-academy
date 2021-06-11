@@ -8,7 +8,9 @@ body {
   background-color: #191919;
   color: #fff;
 }
-
+li {
+  list-style: none;
+}
 a,
 a:hover {
   color: #F44E0C;
@@ -82,7 +84,6 @@ a:hover {
 }
 
 .contact-us ul li {
-  list-style-type: none;
   height: 50px;
   display: flex;
   align-items: center;
@@ -94,7 +95,6 @@ a:hover {
   color: #F44E0C;
   font-size: 48px;
   width: 35px;
-  
   grid-column-start: 1;
   grid-column-end: 1;
 }
@@ -111,7 +111,10 @@ a:hover {
 .privacy-policy {
   text-align: left;
   width: 90%;
-  margin: 120px auto;
+  margin: 60px auto;
+}
+.privacy-policy a{
+  color: #fff;
 }
 .privacy-policy h1,h2,h3{
   color: #F44E0C;
@@ -132,4 +135,5 @@ a:hover {
 .privacy-policy p{
   margin: 45px 0;
   max-width: 70%;
+  font-weight: 200;
 }

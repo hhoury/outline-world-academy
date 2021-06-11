@@ -32,13 +32,13 @@ const SigninForm = (props) => {
                     <a href='a'>Forgot password?</a>
                 </div>
                 <div style={{ clear: 'both' }}></div>
-                <p>Don't have an account? <a href='s'>Create an Account</a></p>
+                <p>Don't have an account? <a href='/'>Create an Account</a></p>
                 
             </form>
             <footer>
                 <Recaptcha/>
                 <SocialMedia className={classes.social} />
-                <div className={classes.policy}><a href='s'>Privacy Policy</a></div>
+                <div className={classes.policy}><a href='/'>Privacy Policy</a></div>
             </footer>
             
 

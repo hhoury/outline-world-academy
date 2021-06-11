@@ -12,15 +12,15 @@ const ContactUsPage = (props) => {
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
                     <ul>
                         <li>
-                            <span><i class="fas fa-map-marker-alt"></i></span>
+                            <span><i className="fas fa-map-marker-alt"></i></span>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
                         </li>
                         <li>
-                            <span><i class="fas fa-phone-alt"></i></span>
+                            <span><i className="fas fa-phone-alt"></i></span>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
                         </li>
                         <li>
-                            <span><i class="fas fa-envelope"></i></span>
+                            <span><i className="fas fa-envelope"></i></span>
                             <p>www.outlineworldacademy.com</p>
                         </li>
                     </ul>

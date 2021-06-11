@@ -10,11 +10,11 @@ const ForgotPasswordForm = (props) => {
             <form>
                 <input type='textbox' placeholder='Email Address' />
                 <Button className={classes.btn}>Submit</Button>
-                <div className={classes.back}><a href='s'>Back to sign in</a></div>
+                <div className={classes.back}><a href='/'>Back to sign in</a></div>
 
             </form>
             <Recaptcha className={classes.recap} />
-            <div className={classes.policy}><a href='s'>Privacy Policy</a></div>
+            <div className={classes.policy}><a href='/'>Privacy Policy</a></div>
         </Form>
     )
 }
