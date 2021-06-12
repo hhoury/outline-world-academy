@@ -6,9 +6,8 @@ const Footer = () => {
     return (
         <>
             <div className={classes.gradient}>
-
             </div>
-            <footer className={`row ${classes.footer}`}>
+            <footer className='row'>
                 <div className={`${classes.column1} col-lg-3 col-md-3 col-sm-12`}>
                     <div>
                         <img src={logo} alt='outline world academy' />
