@@ -9,7 +9,7 @@ const Header = () => {
             <NavLink to='/home'>
                 <img src={image} alt='outline world academy' />
             </NavLink>
-            <div className={`${classes.menu} ml-auto`}>
+            <nav className={`${classes.menu} ml-auto`}>
                 <ul>
                     <li><NavLink activeClassName={classes.active} exact to='/home'>Home</NavLink></li>
                     <li><NavLink activeClassName={classes.active} to='/about'>about</NavLink></li>
@@ -18,7 +18,7 @@ const Header = () => {
                 </ul>
                 
                 <RightMenu />
-            </div>
+            </nav>
         </header>
     )
 }

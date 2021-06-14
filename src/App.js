@@ -16,12 +16,19 @@ import AboutPage from './pages/AboutPage';
 import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage'
 import CoursesPage from './pages/CoursesPage';
+import NotFoundPage from './pages/NotFoundPage';
+import BlogPage from './pages/BlogPage';
+import CartPage from './pages/CartPage';
+
+
 const App = () => {
    return (
       <div>
          <main>
             <Switch>
                <Route path='/about'><AboutPage /></Route>
+               <Route path='/cart'><CartPage /></Route>
+               <Route path='/blog'><BlogPage /></Route>
                <Route path='/contact-us'><ContactUsPage /></Route>
                <Route path='/courses'><CoursesPage /></Route>
                <Route path='/policy'><PolicyPage /></Route>
@@ -31,8 +38,10 @@ const App = () => {
                <Route path='/' exact>
                   <Redirect to='/home' />
                </Route>
-
                <Route path='/home'><HomePage /></Route>
+               <Route path='*'>
+                  <NotFoundPage />
+               </Route>
             </Switch>
 
          </main>
