@@ -12,6 +12,7 @@ const SigninForm = (props) => {
     const showPasswordHandler = (event) => {
         event.preventDefault();
         setPasswordShown(!passwordShown);
+       
     }
     return (
         <Form className={`${classes.signIn} ${props.className}`}>
@@ -19,10 +20,10 @@ const SigninForm = (props) => {
             <form className={classes.signIn}>
                 <input type='textbox' placeholder='Email Address' />
                 <div style={{ position: 'relative' }}>
-                    <input name='passwordTextbox'
+                    <input name='passwordTextbox' 
                         type={!passwordShown ? 'password' : 'text'} placeholder='Password' />
                     <button type="button" className={classes.toggle} style={!passwordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showPasswordHandler}>
-                        <i className="fa fa-eye"></i>
+                        <i className="fal fa-eye"></i>
                     </button>
                 </div>
 

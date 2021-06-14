@@ -1,11 +1,14 @@
 import React from 'react'
 import image from '../assets/logo.png'
 import classes from './Logo.module.css'
+import { NavLink } from 'react-router-dom'
 const Logo = () => {
     return (
-        <div className={classes.logo}>
-            <img src={image} alt='OW' />
-        </div>
+        <NavLink to='/home' className={classes.logo}>
+            <img src={image} alt='outline world academy' />
+        </NavLink>
+        
+
     )
 }
 

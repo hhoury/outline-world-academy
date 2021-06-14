@@ -38,7 +38,7 @@ a:hover {
 .sign-up__bottom {
   position: absolute;
   bottom: 5%;
-  left: 10%;
+  left: 5%;
   padding: 0;
 }
 
@@ -201,30 +201,36 @@ h2 {
 .about-us .the-process {
   padding: 80px 0;
 }
-.about-us .row1,.row2{
+
+.about-us .row1,
+.row2 {
   display: flex;
   flex-direction: row;
   position: absolute;
 }
-.about-us .row2{
+
+.about-us .row2 {
   margin-top: 200px;
   z-index: 2;
   left: 25%;
   gap: 35px;
 }
-.about-us .row2 p{
+
+.about-us .row2 p {
   max-width: 520px;
   line-height: 1.6;
 }
-.about-us .the-process{
+
+.about-us .the-process {
   margin: auto;
 }
+
 .about-us .the-process>figure {
   height: 1080px;
   width: 100%;
 }
 
-.about-us > figure img {
+.about-us>figure img {
   height: 100%;
   width: 100%;
 }
@@ -239,38 +245,45 @@ h2 {
 .about-us .the-process__text h1 {
   color: #F44E0C;
 }
-.about-us .the-process__text p{
+
+.about-us .the-process__text p {
   max-width: 80%;
-  line-height: 1.5; 
+  line-height: 1.5;
 }
-.about-us .the-process__images{
+
+.about-us .the-process__images {
   display: flex;
   gap: 20px;
 }
+
 .about-us .the-process__images figure {
   height: 450px;
   width: 195px;
 }
-.about-us .the-process__images figure img{
+
+.about-us .the-process__images figure img {
   width: 100%;
   height: 100%;
 }
-.profile-page{
+
+.profile-page {
   height: 100vh;
   margin: 0;
 }
-.profile-page .rounds
-{
+
+.profile-page .rounds {
   height: 100%;
   background-image: url('./assets/Rounds.jpg');
   background-size: cover;
 }
-.page-not-found{
+
+.page-not-found {
   padding: 10px;
   text-align: center;
   margin: 20vh auto;
 }
-.page-not-found h1{
+
+.page-not-found h1 {
   margin: 0 auto;
   max-width: 440px;
   color: #F44E0C;
@@ -279,7 +292,74 @@ h2 {
   letter-spacing: -5px;
   line-height: 178px;
 }
-.page-not-found p{
+
+.page-not-found p {
   margin: 0 auto;
   max-width: 440px;
 }
+
+/* ######   COURSES PAGE ###### */
+
+.courses-page {
+  background-image: url('./assets/courses-banner.png');
+  background-size: 100% 500px;
+  min-height: 500px;
+  background-repeat: no-repeat;
+}
+
+.courses-page>h1 {
+  width: 40%;
+  margin-left: 5%;
+  padding-bottom: 190px;
+}
+
+.courses-page main h1 {
+  color: #F44E0C;
+  margin: 15px 0;
+}
+
+.courses-page main {
+  margin: 0 0 50px 5%;
+}
+
+.courses-page main ul {
+  margin: 0;
+  padding: 55px 0;
+}
+
+.courses-page .course-item {
+  position: relative;
+  max-width: 865px;
+  margin: 0 35px 0 0;
+  padding: 0;
+}
+
+.courses-page .course-item figure,
+.courses-page .course-item img {
+  width: 100%;
+  height: 100%;
+}
+
+.courses-page .course-item h1 {
+  position: absolute;
+  bottom: 80px;
+  left: 5%;
+  color: #fff;
+  max-width: 80%;
+}
+
+.courses-page .course-item a {
+  position: absolute;
+  max-width: 865px;
+  width: 865px;
+  background-color: #F44E0C;
+  bottom: 0;
+  z-index: 2;
+  height: 60px;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+}
+
+/* ######   COURSES PAGE ENDS ###### */
