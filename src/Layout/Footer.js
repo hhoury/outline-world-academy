@@ -2,6 +2,8 @@ import React from 'react'
 import classes from './Footer.module.css'
 import logo from '../assets/logo.png'
 import Button from '../components/UI/Button'
+import {Link} from 'react-router-dom'
+
 const Footer = () => {
     return (
         <>
@@ -22,10 +24,10 @@ const Footer = () => {
                 </div>
                 <div className={`${classes.column2} col-lg-3 col-md-3 col-sm-12`}>
                     <ul>
-                        <li><a href='/'>our world</a></li>
-                        <li><a href='/'>courses</a></li>
-                        <li><a href='/'>about</a></li>
-                        <li><a href='/'>blog</a></li>
+                        <li><Link to='/home'>our world</Link></li>
+                        <li><Link to='/courses'>courses</Link></li>
+                        <li><Link to='/about'>about</Link></li>
+                        <li><Link to='/blog'>blog</Link></li>
                     </ul>
                 </div>
                 <div className={`${classes.column3} col-lg-3 col-md-3 col-sm-12`}>

@@ -1,0 +1,19 @@
+.right-menu {
+    font-weight: 200;
+}
+
+.right-menu ul{
+    flex-direction: row;
+    align-items: flex-end;
+    text-transform: uppercase;
+    border-left: 1px solid #F44E0C;
+    display: flex;
+    gap: 30px;
+    font-size: 24px;
+}
+.right-menu ul li a{
+    color: #fff;
+}
+.right-menu ul li a:hover {
+    color: #F44E0C;
+}

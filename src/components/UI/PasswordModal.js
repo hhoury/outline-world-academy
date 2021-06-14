@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import Button from './Button'
 import classes from './PasswordModal.module.css'
+import {Link} from 'react-router-dom'
 const PasswordModal = () => {
     const [passwordShown, setPasswordShown] = useState(false);
     const showPasswordHandler = (event) => {
@@ -18,7 +19,7 @@ const PasswordModal = () => {
                     </button>
                 </div>
             <Button>SUBMIT</Button>
-            <a>Forgot password?</a>
+            <Link to=''>Forgot password?</Link>
         </div>
     )
 }

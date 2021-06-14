@@ -1,0 +1,67 @@
+.ProfileEdit{
+    padding: 60px 10%;
+}
+.ProfileEdit .top {
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+    align-items: center;
+    float: right;
+}
+.ProfileEdit p {
+    font-size: 21px;
+    color: #F44E0C;
+}
+.ProfileEdit form{
+    clear: both;
+    margin: 50px auto;
+    max-width: 470px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+.ProfileEdit form {
+    width: 70%;
+    margin: 15px auto 0;
+  }
+  .ProfileEdit figure {
+      width: 220px;
+      height: 220px;
+      border-radius: 360px;
+      margin: 0 auto;
+      text-align: center;
+      vertical-align: middle;
+      background-color: red;
+      position: relative;
+  }
+  .ProfileEdit figure img {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      height: 100%;
+  }
+  .ProfileEdit input {
+      text-align: right;
+    outline: none;
+    display: block;
+    background: rgba(0, 0, 0, 0);
+    width: 100%;
+    padding: 15px 10px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: none;
+    color: #fff;
+    -webkit-appearance: none;
+    position: relative;
+    font-weight: 200;
+  }
+  
+  .ProfileEdit input:focus {
+    border-bottom: 1px solid #F44E0C;
+  }
+  .btn{
+      word-spacing: 5px;
+      letter-spacing: 3px;
+  }

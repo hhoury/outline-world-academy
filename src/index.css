@@ -201,20 +201,23 @@ h2 {
 .about-us .the-process {
   padding: 80px 0;
 }
-.row1,.row2{
+.about-us .row1,.row2{
   display: flex;
   flex-direction: row;
   position: absolute;
 }
-.row2{
+.about-us .row2{
   margin-top: 200px;
   z-index: 2;
   left: 25%;
   gap: 35px;
 }
-.row2 p{
+.about-us .row2 p{
   max-width: 520px;
   line-height: 1.6;
+}
+.about-us .the-process{
+  margin: auto;
 }
 .about-us .the-process>figure {
   height: 1080px;
@@ -232,9 +235,7 @@ h2 {
   flex-direction: column;
   gap: 80px;
 }
-.about-us .the-process__text p{
 
-}
 .about-us .the-process__text h1 {
   color: #F44E0C;
 }
@@ -242,15 +243,25 @@ h2 {
   max-width: 80%;
   line-height: 1.5; 
 }
-.the-process__images{
+.about-us .the-process__images{
   display: flex;
   gap: 20px;
 }
-.the-process__images figure {
+.about-us .the-process__images figure {
   height: 450px;
   width: 195px;
 }
-.the-process__images figure img{
+.about-us .the-process__images figure img{
   width: 100%;
   height: 100%;
+}
+.profile-page{
+  height: 100vh;
+  margin: 0;
+}
+.profile-page .rounds
+{
+  height: 100%;
+  background-image: url('./assets/Rounds.jpg');
+  background-size: cover;
 }

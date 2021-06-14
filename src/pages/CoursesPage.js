@@ -1,16 +1,14 @@
 import React from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
-const HomePage = () => {
+const CoursesPage = () => {
     return (
         <div>
             <Header />
-            <h1 style={{ margin: '200px auto', textAlign: 'center' }}>
-                THIS IS THE HOME PAGE
-            </h1>
+            <h1 style={{margin: '200px auto',textAlign: 'center'}}>THIS IS THE COURSES PAGE</h1>
             <Footer />
         </div>
     )
 }
 
-export default HomePage
+export default CoursesPage

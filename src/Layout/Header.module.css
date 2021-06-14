@@ -8,6 +8,7 @@ header {
     text-transform: uppercase;
     font-weight: 200;
 }
+
 header > a{
     background-color: #F44E0C;
     padding: 10px 15px;
@@ -37,9 +38,6 @@ header .menu a{
 header .menu a:hover {
     color: #F44E0C;
 }
-header .right-menu ul{
-    border-left: 1px solid #F44E0C;
-    display: flex;
-    gap: 30px;
-    font-size: 24px;
+header a.active{
+    color: #F44E0C;
 }

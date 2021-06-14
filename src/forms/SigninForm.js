@@ -35,11 +35,11 @@ const SigninForm = (props) => {
                 <p>Don't have an account? <a href='/'>Create an Account</a></p>
                 
             </form>
-            <footer>
+            <div className={classes.footer}>
                 <Recaptcha/>
                 <SocialMedia className={classes.social} />
                 <div className={classes.policy}><a href='/'>Privacy Policy</a></div>
-            </footer>
+            </div>
             
 
         </Form>
