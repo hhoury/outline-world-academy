@@ -4,7 +4,7 @@ import classes from './SignupForm.module.css'
 import Button from '../components/UI/Button'
 import CheckBox from '../components/UI/CheckBox'
 import SocialMedia from '../components/UI/SocialMedia'
-
+import { Link } from 'react-router-dom'
 const SignupForm = (props) => {
     const [passwordShown, setPasswordShown] = useState(false);
     const showPasswordHandler = (event) => {
@@ -27,14 +27,14 @@ const SignupForm = (props) => {
                 <Button className={classes.btn}>Sign Up</Button>
                 <CheckBox className={classes.checkbox} />
             </form>
-            <SocialMedia className={classes.social}/>
-                <div className={classes.text}>
-                    <p>By creating an account you are aggreeing to the
-                <a href='/'>Terms of Service</a>
-                  and
-                 <a href='/'>Privacy Policy</a>
-                    </p>
-                </div>
+            <SocialMedia className={classes.social} />
+            <div className={classes.text}>
+                <p>By creating an account you are aggreeing to the
+                    <Link to='/policy'>Terms of Service</Link>
+                    and
+                    <Link to='/policy'>Privacy Policy</Link>
+                </p>
+            </div>
         </Form>
     )
 }

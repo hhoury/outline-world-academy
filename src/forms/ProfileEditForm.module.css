@@ -1,6 +1,7 @@
-.ProfileEdit{
+.ProfileEdit {
     padding: 60px 10%;
 }
+
 .ProfileEdit .top {
     display: flex;
     flex-direction: row;
@@ -8,60 +9,120 @@
     align-items: center;
     float: right;
 }
+
 .ProfileEdit p {
     font-size: 21px;
     color: #F44E0C;
 }
-.ProfileEdit form{
+
+.ProfileEdit form {
     clear: both;
-    margin: 50px auto;
+    margin: 100px auto 0 auto;
     max-width: 470px;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    width: 70%;
+}
+.ProfileEdit form > span {
+    position: relative;
+
 }
 
+.ProfileEdit form label {
+    position: absolute;
+    top: 15px;
+    color: #F44E0C;
 
-.ProfileEdit form {
-    width: 70%;
-    margin: 15px auto 0;
-  }
-  .ProfileEdit figure {
-      width: 220px;
-      height: 220px;
-      border-radius: 360px;
-      margin: 0 auto;
-      text-align: center;
-      vertical-align: middle;
-      background-color: red;
-      position: relative;
-  }
-  .ProfileEdit figure img {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      height: 100%;
-  }
-  .ProfileEdit input {
-      text-align: right;
-    outline: none;
-    display: block;
-    background: rgba(0, 0, 0, 0);
-    width: 100%;
-    padding: 15px 10px;
+}
+.ProfileEdit form .deleteAccount{
+    margin-top: -15px;
+    background: none;
     border: none;
-    border-bottom: 1px solid #fff;
+    padding: 0;
+    color: #F44E0C;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+}
+.ProfileEdit form > span span {
+    opacity: 0.8;
+    color: #F44E0C;
+    font-size: 21px;
+    margin: 10px 0 0 10px;
+    vertical-align: bottom;
+}
+
+.ProfileEdit figure {
+    width: 220px;
+    height: 220px;
+    border-radius: 360px;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #fff;
+    position: relative;
+}
+.ProfileEdit figure div {
+    width: 220px;
+    height: 220px;
+    border-radius: 360px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 2;
+    top: 0;
+}
+.ProfileEdit figure div .editProfile {
+    position: absolute;
+    top: 70px;
+    left: 46%;
+    mix-blend-mode: screen;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    color: #F44E0C;
+    font-size: 24px;
+    cursor: pointer;
+}
+.ProfileEdit figure div p {
+    font-size: 16px;
+    font-weight: 100;
+    color: #fff;
+    position: absolute;
+    z-index: 3;
+    top: 110px;
+    left: 20%;
+
+}
+
+.ProfileEdit figure img {
+    width: 100%;
+    height: 100%;
+    border-radius: 360px;
+}
+
+.ProfileEdit input {
+    text-align: right;
+    outline: none;
+    background: rgba(0, 0, 0, 0);
+    width: 90%;
+    padding: 15px 10px 5px 10px;
+    border: none;
+    border-bottom: 1px solid #4f4f4f;
     background-color: none;
     color: #fff;
     -webkit-appearance: none;
     position: relative;
     font-weight: 200;
-  }
-  
-  .ProfileEdit input:focus {
+}
+
+.ProfileEdit input:focus {
     border-bottom: 1px solid #F44E0C;
-  }
-  .btn{
-      word-spacing: 5px;
-      letter-spacing: 3px;
-  }
+}
+
+.btn {
+    width: 90%;
+    word-spacing: 5px;
+    letter-spacing: 3px;
+}

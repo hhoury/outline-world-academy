@@ -19,7 +19,7 @@ const PasswordModal = () => {
                     </button>
                 </div>
             <Button>SUBMIT</Button>
-            <Link to=''>Forgot password?</Link>
+            <Link to='/reset-password'>Forgot password?</Link>
         </div>
     )
 }

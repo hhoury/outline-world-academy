@@ -5,7 +5,7 @@ import Button from '../components/UI/Button'
 import CheckBox from '../components/UI/CheckBox'
 import SocialMedia from '../components/UI/SocialMedia'
 import Recaptcha from '../components/UI/Recaptcha'
-
+import {Link} from 'react-router-dom'
 const SigninForm = (props) => {
 
     const [passwordShown, setPasswordShown] = useState(false);
@@ -30,7 +30,7 @@ const SigninForm = (props) => {
                 <Button className={classes.btn}>Sign In</Button>
                 <div className={classes.forgotPassword}>
                     <CheckBox className={classes.checkbox} />
-                    <a href='a'>Forgot password?</a>
+                    <Link to='/password-reset'>Forgot password?</Link>
                 </div>
                 <div style={{ clear: 'both' }}></div>
                 <p>Don't have an account? <a href='/'>Create an Account</a></p>

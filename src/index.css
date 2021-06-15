@@ -350,8 +350,7 @@ h2 {
 
 .courses-page .course-item a {
   position: absolute;
-  max-width: 865px;
-  width: 865px;
+  width: 100%;
   background-color: #F44E0C;
   bottom: 0;
   z-index: 2;
