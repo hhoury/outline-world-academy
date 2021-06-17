@@ -4,7 +4,7 @@ import Logo from '../Layout/Logo'
 const SignupPage = () => {
     return (
         <div className='sign-up container-fluid'>
-            <div className='col-lg-5 col-md-5 left-side'>
+            <div className='col-lg-5 col-md-5 col-sm-12 left-side'>
                <Logo />
                 <div className='sign-up__bottom'>
                     <h2>Don't have an </h2>
@@ -14,7 +14,7 @@ const SignupPage = () => {
                 </div>
             </div>
 
-            <SignupForm className='col-lg-5 col-md-5' />
+            <SignupForm className='col-lg-5 col-md-5 col-sm-12' />
 
         </div>
     )
