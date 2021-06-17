@@ -11,7 +11,8 @@ const ProfileEditForm = (props) => {
     }
     const editProfileHandler = (event) => {
         event.preventDefault();
-        props.onShowModal();
+        if(isEditMode)
+            props.onShowModal();
         setIsEditMode(!isEditMode)
         
     }

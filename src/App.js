@@ -14,6 +14,7 @@ import BlogPage from './pages/BlogPage';
 import CartPage from './pages/CartPage';
 import PasswordModal from './components/UI/PasswordModal'
 import React, {useState} from 'react'
+import MyCoursesPage from './pages/MyCoursesPage';
 
 const App = () => {
    const [passwordModalIsShowing, setPasswordModalIsShowing] = useState(false)
@@ -34,6 +35,7 @@ const App = () => {
                <Route path='/blog'><BlogPage /></Route>
                <Route path='/contact-us'><ContactUsPage /></Route>
                <Route path='/courses'><CoursesPage /></Route>
+               <Route path='/my-courses'><MyCoursesPage /></Route>
                <Route path='/policy'><PolicyPage /></Route>
                <Route path='/sign-up'><SignupPage /></Route>
                <Route path='/sign-in'><SigninPage /></Route>

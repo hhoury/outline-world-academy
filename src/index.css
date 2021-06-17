@@ -330,7 +330,7 @@ h2 {
 .courses-page .course-item {
   position: relative;
   max-width: 865px;
-  margin: 0 35px 0 0;
+  margin: 15px 35px 0 0;
   padding: 0;
 }
 
@@ -361,6 +361,37 @@ h2 {
   line-height: 60px;
 }
 
+#popover-contained{
+  background-color: #F44E0C;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 0;
+  inset: 5px auto auto 0px !important;
+  
+}
+#popover-contained ul {
+  margin: 0 auto;
+  padding: 0;
+  color: #fff;
+  font-weight: 100;
+}
+#popover-contained ul li{
+  margin: 5px auto;
+}
+#popover-contained ul li span {
+  margin: auto 10px auto 0;
+}
+#popover-contained a{
+  color: #fff;
+}
+#popover-contained a:hover{
+  color: #191919;
+}
+
+#popover-contained .arrow::after{
+  border-bottom-color: #F44E0C;
+}
 /* ######   COURSES PAGE ENDS ###### */
 @media (max-width: 768px) {
 
