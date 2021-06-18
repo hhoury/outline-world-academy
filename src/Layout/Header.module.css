@@ -22,8 +22,9 @@ header > a img{
 
 
 header .menu{
+    position: relative;
     display: flex;
-    gap: 60px;
+    gap: 30px;
     font-size: 18px;
     letter-spacing: 5px;
 }
@@ -41,3 +42,21 @@ header .menu a:hover {
 header a.active{
     color: #F44E0C;
 }
+
+@media screen and (max-width: 1024px) {
+    header .menu{
+        gap: 15px;
+    }
+  header  .menu > ul{
+        gap: 30px;
+        display: none;
+    }
+
+}
+@media screen and (max-width: 768px) {
+   
+  }
+
+@media screen and (max-width: 480px) {
+   
+  }

@@ -129,3 +129,29 @@ footer .column4 input::placeholder {
 .btn:hover {
     background-color: #fff;
 }
+
+@media only screen and (max-width: 1024px) {
+   footer .column1,footer .column2,footer .column3,footer .column4{
+       margin: 30px;
+   }
+  }
+  
+@media only screen and (max-width: 768px) {
+    footer .column1 div:first-child{
+        margin: 0 auto;
+    }
+    footer .column1,footer .column2,footer .column3,footer .column3 ul,footer .column4,footer .column1 .social{
+        text-align: center;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    footer .column3 ul{
+        width: 50%;
+        margin: 35px auto 0;
+    }
+  
+}
+
+@media only screen and (max-width: 768px) {
+   
+}

@@ -6,7 +6,7 @@ const ContactUsPage = (props) => {
     return (
         <div className='contact-us-page'>
             <Header />
-            <div className='contact-us row'>
+            <div className='row contact-us'>
                 <div className='col-lg-6 col-md-6 col-md-12 col-sm-12'>
                     <h1>Get in touch!</h1>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>

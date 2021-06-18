@@ -62,7 +62,7 @@ a:hover {
 .contact-us {
   width: 90%;
   margin: 0 auto;
-  margin-top: 125px;
+  padding: 60px 0;
   font-weight: 200;
   min-height: 590px;
 }
@@ -83,7 +83,7 @@ a:hover {
   margin: 120px 0 0 0;
   display: grid;
   column-gap: 30px;
-  row-gap: 60px;
+  row-gap: 40px;
 }
 
 .contact-us ul li {
@@ -361,41 +361,62 @@ h2 {
   line-height: 60px;
 }
 
-#popover-contained{
+#popover-contained {
   background-color: #F44E0C;
   color: #fff;
   text-align: center;
   padding: 5px;
   border-radius: 0;
   inset: 5px auto auto 0px !important;
-  
+
 }
+
 #popover-contained ul {
   margin: 0 auto;
   padding: 0;
   color: #fff;
   font-weight: 100;
 }
-#popover-contained ul li{
+
+#popover-contained ul li {
   margin: 5px auto;
 }
+
 #popover-contained ul li span {
   margin: auto 10px auto 0;
 }
-#popover-contained a{
+
+#popover-contained a {
   color: #fff;
 }
-#popover-contained a:hover{
+
+#popover-contained a:hover {
   color: #191919;
 }
 
-#popover-contained .arrow::after{
+#popover-contained .arrow::after {
   border-bottom-color: #F44E0C;
 }
+
+.carousel {
+  background-color: #fff;
+}
+
 /* ######   COURSES PAGE ENDS ###### */
-@media (max-width: 768px) {
-
+@media (max-width: 1024px) {
+  .contact-us {
+    text-align: center;
+  }
+  .contact-us div p {
+    text-align: center;
+  }
+  .contact-us ul {
+    margin: 30px auto;
+    align-content: center;
+    justify-content: center;
+  }
 }
-@media (max-width: 480px) {
 
-}
+@media (max-width: 768px) {}
+
+@media (max-width: 480px) {}

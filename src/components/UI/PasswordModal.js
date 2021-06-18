@@ -13,7 +13,9 @@ const ModalOverlay = (props) => {
     const showPasswordHandler = (event) => {
         event.preventDefault();
         setPasswordShown(!passwordShown);
-       
+    }
+    const forgotPasswordHandler = () => {
+        
     }
     return(
         <div className={classes.PasswordModal}>
@@ -27,7 +29,7 @@ const ModalOverlay = (props) => {
                     </button>
                 </div>
             <Button className={classes.btn}>SUBMIT</Button>
-            <Link to='/reset-password'>Forgot password?</Link>
+            <Link onClick={forgotPasswordHandler} to='/password-reset'>Forgot password?</Link>
         </div>
     )
 }

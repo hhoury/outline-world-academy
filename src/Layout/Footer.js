@@ -10,7 +10,7 @@ const Footer = () => {
             <div className={classes.gradient}>
             </div>
             <footer className='row'>
-                <div className={`${classes.column1} col-lg-3 col-md-3 col-sm-12`}>
+                <div className={`${classes.column1} col-lg-3 col-md-5 col-sm-12`}>
                     <div>
                         <img src={logo} alt='outline world academy' />
                     </div>
@@ -22,7 +22,8 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
-                <div className={`${classes.column2} col-lg-3 col-md-3 col-sm-12`}>
+               
+                <div className={`${classes.column2} col-lg-3 col-md-5 col-sm-12`}>
                     <ul>
                         <li><Link to='/home'>our world</Link></li>
                         <li><Link to='/courses'>courses</Link></li>
@@ -30,7 +31,8 @@ const Footer = () => {
                         <li><Link to='/blog'>blog</Link></li>
                     </ul>
                 </div>
-                <div className={`${classes.column3} col-lg-3 col-md-3 col-sm-12`}>
+               
+                <div className={`${classes.column3} col-lg-3 col-md-5 col-sm-12`}>
                     <h2>contact us</h2>
                     <ul>
                         <li>
@@ -47,7 +49,8 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
-                <div className={`${classes.column4} col-lg-3 col-md-3 col-sm-12`}>
+               
+                <div className={`${classes.column4} col-lg-3 col-md-5 col-sm-12`}>
                     <h2>SUBSCRIBE</h2>
                     <p>Enter your email to subscribe in our Newsletter</p>
                     <input type='text' placeholder='Email' />

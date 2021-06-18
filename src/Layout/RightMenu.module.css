@@ -10,10 +10,22 @@
     display: flex;
     gap: 30px;
     font-size: 24px;
+    padding-left: 15px;
 }
 .right-menu ul li a{
     color: #fff;
 }
 .right-menu ul li a:hover {
     color: #F44E0C;
+}
+.responsive a:hover{
+    color: #191919;
+}
+@media screen and (max-width: 1024px) {
+    
+    .right-menu ul {
+        border: none;
+        margin-right: 50px;
+    }
+    
 }
