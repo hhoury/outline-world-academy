@@ -5,7 +5,7 @@ import RightMenu from './RightMenu'
 import { NavLink } from 'react-router-dom'
 import ResponsiveMenu from './ResponsiveMenu'
 
-const Header = () => {
+const Header = (props) => {
 
     return (
         <header className={classes.header}>
@@ -13,14 +13,14 @@ const Header = () => {
                 <img src={image} alt='outline world academy' />
             </NavLink>
             <nav className={`${classes.menu} ml-auto `}>
-                <ul className={classes['full-menu']}>
+                {props.fullMenu && <ul className={classes['full-menu']}>
                     <li><NavLink activeClassName={classes.active} exact to='/home'>Home</NavLink></li>
                     <li><NavLink activeClassName={classes.active} to='/about-us'>about</NavLink></li>
                     <li><NavLink activeClassName={classes.active} to='/courses'>courses</NavLink></li>
                     <li><NavLink activeClassName={classes.active} to='/contact-us'>contact us</NavLink></li>
-                </ul>
+                </ul>}
                 <RightMenu />
-                <ResponsiveMenu />
+               {props.fullMenu &&  <ResponsiveMenu />}
             </nav>
         </header>
     )

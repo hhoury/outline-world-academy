@@ -4,7 +4,7 @@ import Header from '../Layout/Header'
 const PolicyPage = () => {
     return (
         <>
-        <Header />
+        <Header fullMenu={true}/>
         <article className='privacy-policy'>
             <h1>Privacy Policy</h1>
             <h2>Who we are</h2>

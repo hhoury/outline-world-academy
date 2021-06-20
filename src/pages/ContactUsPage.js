@@ -5,7 +5,7 @@ import Footer from '../Layout/Footer'
 const ContactUsPage = (props) => {
     return (
         <div className='contact-us-page'>
-            <Header />
+            <Header fullMenu={true}/>
             <div className='row contact-us'>
                 <div className='col-lg-6 col-md-6 col-md-12 col-sm-12'>
                     <h1>Get in touch!</h1>

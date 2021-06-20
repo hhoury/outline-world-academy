@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import course1 from '../assets/course1.png'
-import {Link} from 'react-router-dom'
+import CourseItem from '../components/Courses/CourseItem'
 const CoursesPage = () => {
     const COURSES = [{
         id: '1',
@@ -28,7 +28,7 @@ const CoursesPage = () => {
     ]
     return (
         <div className='courses-page'>
-            <Header />
+            <Header fullMenu={true}/>
             <h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
                 euismod tincidunt ut laoreet dolore magna aliquam erat
             </h1>
@@ -36,13 +36,10 @@ const CoursesPage = () => {
                 <h1>Courses</h1>
                 <ul className='row'>
                     {COURSES.map((course) =>
-                        <li key={course.id} className='col-lg-6 col-md-6 col-sm-12 course-item'>
-                            <figure>
-                                <img src={course1} alt={course.title} />
-                            </figure>
-                            <h1>{course.title}</h1>
-                            <Link to={`/courses/${course.id}`}>View Course Details</Link>
-                        </li>)}
+                    <CourseItem 
+                    key={course.id} id={course.id} title={course.title} thumbnail={course1} />
+                       )
+                        }
                 </ul>
             </main>
             <Footer />

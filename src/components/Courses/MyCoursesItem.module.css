@@ -1,0 +1,67 @@
+.my-couses-item {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+   
+}
+
+.my-couses-item figure {
+    margin: 0;
+}
+.my-couses-item h2 {
+    font-weight: 300;
+    font-size: 28px;
+}
+.my-couses-item span{
+    font-weight: 100;
+    margin: 0 20px 0 0;
+}
+
+.details {
+    display: inline-block;
+    position: relative;
+}
+
+.details h2 {
+    color: #fff;
+}
+
+.details span {
+    color: #F44E0C;
+}
+
+.progress {
+    position: absolute;
+    top: 150px;
+    font-weight: 100;
+    width: 60%;
+}
+.progress > div {
+    border-radius: 25px;
+    background-color: #262626;
+}
+.progress > div > div {
+    background-color: #F44E0C;
+}
+.btn {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+}
+
+@media screen and (max-width:480px) {
+    .my-couses-item {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+    .my-couses-item figure{
+        display: block;
+    }
+    .progress, .btn {
+        position: static;
+        margin: 25px auto;
+    }
+}

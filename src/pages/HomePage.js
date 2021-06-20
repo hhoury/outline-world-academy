@@ -4,7 +4,7 @@ import Footer from '../Layout/Footer'
 const HomePage = () => {
     return (
         <div>
-            <Header />
+            <Header fullMenu={true}/>
             <h1 style={{ margin: '200px auto', textAlign: 'center' }}>
                 THIS IS THE HOME PAGE
             </h1>

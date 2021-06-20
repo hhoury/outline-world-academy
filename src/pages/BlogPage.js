@@ -7,7 +7,7 @@ import banner1 from '../assets/banner1.jpg'
 const BlogPage = () => {
     return (
         <div>
-            <Header />
+            <Header fullMenu={true}/>
             <Carousel touch controls={false}>
                 <Carousel.Item>
                     <img style={{ height: '100%' }}

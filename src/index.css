@@ -326,40 +326,22 @@ h2 {
   margin: 0;
   padding: 55px 0;
 }
-
-.courses-page .course-item {
-  position: relative;
-  max-width: 865px;
-  margin: 15px 35px 0 0;
-  padding: 0;
+.my-courses-page {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+.my-courses-page h1 {
+  color: #F44E0C;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 20px 10px 0;
+}
+.my-courses-page a{
+  background: transparent;
+  font-weight: 100;
 }
 
-.courses-page .course-item figure,
-.courses-page .course-item img {
-  width: 100%;
-  height: 100%;
-}
-
-.courses-page .course-item h1 {
-  position: absolute;
-  bottom: 80px;
-  left: 5%;
-  color: #fff;
-  max-width: 80%;
-}
-
-.courses-page .course-item a {
-  position: absolute;
-  width: 100%;
-  background-color: #F44E0C;
-  bottom: 0;
-  z-index: 2;
-  height: 60px;
-  color: #fff;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 60px;
-}
 
 #popover-contained {
   background-color: #F44E0C;
@@ -565,4 +547,12 @@ h2 {
 @media screen and (max-width: 600px) {
  
 }
-@media screen and (max-width: 480px) {}
+@media screen and (max-width: 480px) {
+  .my-courses-page h1{
+    text-align: center;
+    display: block;
+  }
+  .my-courses-page > a{
+      margin: 10px auto;
+  }
+}

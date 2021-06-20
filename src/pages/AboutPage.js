@@ -10,7 +10,7 @@ import image4 from '../assets/about4.png'
 const AboutPage = () => {
     return (
         <div className='about-us' >
-            <Header />
+            <Header  fullMenu={true}/>
             <h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
                 euismod tincidunt ut laoreet dolore magna aliquam erat
             </h1>

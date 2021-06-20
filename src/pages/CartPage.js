@@ -5,10 +5,9 @@ import Footer from '../Layout/Footer'
 const CartPage = () => {
     return (
         <div>
-        <Header />
-        <h1 style={{ margin: '200px auto', textAlign: 'center' }}>
-            THIS IS THE CART PAGE
-        </h1>
+        <Header fullMenu={true}/>
+        <h1>Your cart</h1>
+        <div></div>
         <Footer />
     </div>
     )
