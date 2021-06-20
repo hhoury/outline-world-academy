@@ -32,6 +32,7 @@
 .ProfileEdit form label {
     position: absolute;
     top: 15px;
+    opacity: 0.8;
     color: #F44E0C;
 
 }
@@ -125,4 +126,45 @@
     width: 90%;
     word-spacing: 5px;
     letter-spacing: 3px;
+}
+
+@media screen and (max-width: 1200px) {
+    .ProfileEdit form {
+        width: 90%;
+        margin: 100px 0 0 0;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .ProfileEdit form {
+        min-width: 100%;
+    }
+}
+@media screen and (max-width: 768px) {
+  
+   .ProfileEdit form{
+       min-width: 80%;
+   }
+   .ProfileEdit .btn{
+       width: 90%;
+       margin: 0 auto;
+   }
+   .ProfileEdit .top {
+       margin: 0 auto;
+       text-align: center;
+   }
+}
+@media screen and (max-width: 520px) {
+    .ProfileEdit {
+        padding: 30px 10px;
+    }
+   .ProfileEdit .top{
+       gap: 10px;
+   }
+    .ProfileEdit p {
+        font-size: 18px;
+    }
+    .ProfileEdit .btn{
+        width: 100%;
+    }
 }

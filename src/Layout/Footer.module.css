@@ -152,6 +152,12 @@ footer .column4 input::placeholder {
   
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 480px) {
+    footer{
+        padding: 20px;
+    }
+    footer .column3 ul{
+        width: 100%;
+    }
    
 }

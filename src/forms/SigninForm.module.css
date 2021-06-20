@@ -20,7 +20,7 @@ h1 {
     outline: none;
     display: block;
     background: rgba(0, 0, 0, 0);
-    margin: 70px 0;
+    margin: 50px 0;
     width: 100%;
     padding: 15px 0;
     border: none;
@@ -117,3 +117,61 @@ h1 {
     width: 70%;
     margin:  15px auto 0;
   }
+@media screen and (max-width:1120px) {
+   .signIn form{
+     padding: 35px 2% 0;
+     width: 90%;
+   }
+   .footer{
+     width: 90%;
+   }
+   .signIn input{
+     margin: 25px 0;
+   }
+   .signIn .btn {
+     margin-top: 35px;
+   }
+   .signIn p{
+     margin-top: 35px;
+   }
+  
+}
+@media screen and (max-width:768px) {
+  .signInRecaptcha{
+    margin: 20px auto !important;
+    width: 70%;
+  }
+  .signInRecaptcha > form > div > div:first-child {
+    margin: 0;
+  }
+  .signIn{
+    position: relative;
+    width: 80%;
+    margin: 40px auto 0 auto;
+  }
+  .signIn form {
+    padding: 15px 2% 0;
+  }
+  .signIn form input {
+    margin: 15px auto;
+  }
+  .forgotPassword {
+    margin: 15px auto;
+  }
+}
+@media screen and (max-width:480px) {
+  .signInRecaptcha{
+    width: 100%;
+  }
+  .signIn {
+    width: 100%;
+  }
+  .forgotPassword {
+    width: 100%;
+  }
+  .checkbox{
+    float: none;
+    width: 100%;
+    display: block;
+  }
+}

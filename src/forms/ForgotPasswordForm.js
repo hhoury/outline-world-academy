@@ -6,7 +6,7 @@ import Recaptcha from '../components/UI/Recaptcha'
 import {Link} from 'react-router-dom'
 const ForgotPasswordForm = (props) => {
     return (
-        <Form className={`${classes.forgotPassword} ${props.className}`}>
+        <Form className={`${props.className} ${classes.forgotPassword}`}>
             <h1>Request reset link</h1>
             <form>
                 <input type='textbox' placeholder='Email Address' />

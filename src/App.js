@@ -29,7 +29,7 @@ const App = () => {
          {passwordModalIsShowing && <PasswordModal onClose={hidePasswordModalHandler} />}
          <main>
             <Switch>
-               <Route path='/about'><AboutPage /></Route>
+               <Route path='/about-us'><AboutPage /></Route>
                <Route path='/profile'><ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler}/></Route>
                <Route path='/cart'><CartPage /></Route>
                <Route path='/blog'><BlogPage /></Route>

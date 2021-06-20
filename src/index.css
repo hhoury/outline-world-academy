@@ -182,8 +182,8 @@ h2 {
 
 .about-us .why-us figure.figure-1 {
 
-  width: 665px;
-  height: 665px;
+  max-width: 665px;
+  max-height: 665px;
 }
 
 .about-us .why-us figure.figure-1 img {
@@ -193,8 +193,8 @@ h2 {
 
 .about-us .why-us figure.figure-2 {
   z-index: 2;
-  width: 780px;
-  height: 520px;
+  max-width: 780px;
+  max-height: 520px;
   outline: 20px solid #191919;
 }
 
@@ -403,20 +403,166 @@ h2 {
 }
 
 /* ######   COURSES PAGE ENDS ###### */
-@media (max-width: 1024px) {
+@media screen and (max-width: 1660px) {
+
+  .about-us .row2 {
+    flex-direction: column;
+    position: relative;
+  }
+
+  .about-us .row2 p {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+  /* ABOUT US PAGE */
+  .about-us>h1 {
+    width: 70%;
+  }
+
+  .about-us>figure {
+    display: none;
+  }
+
+  .about-us .row1 {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-us .row1 figure {
+    width: 80%;
+    display: block;
+  }
+
+  .about-us .row1 h1 {
+    position: relative;
+    max-width: fit-content;
+    text-align: center;
+  }
+
+  .about-us .row2 {
+    position: relative;
+    left: 0;
+    text-align: center;
+    margin: 15px auto;
+    display: block;
+    flex: 0;
+  }
+
+  .about-us .row2 p {
+    max-width: fit-content;
+  }
+
+  .about-us .row2 figure {
+    display: none;
+  }
+
+  /* END OF ABOUT US PAGE */
+  /* CONTACT US PAGE */
   .contact-us {
     text-align: center;
   }
+
   .contact-us div p {
     text-align: center;
   }
+
   .contact-us ul {
     margin: 30px auto;
     align-content: center;
     justify-content: center;
   }
+
+  /* END OF CONTACT US PAGE */
+  /* COURSES PAGE */
+  .courses-page h1 {
+    font-size: 1.5rem;
+  }
+
+  /* END OF COURSES PAGE */
+  /* SIGN UP / IN / RESET PASSWORD */
+  .sign-up__bottom h2 {
+    font-size: 36px;
+  }
+  
+  .sign-up__bottom p {
+    font-size: 21px;
+  }
+  /* END OF SIGN UP / IN / RESET PASSWORD */
 }
 
-@media (max-width: 768px) {}
+@media screen and (max-width: 768px) {
 
-@media (max-width: 480px) {}
+  /* ABOUT US PAGE */
+  .about-us>h1 {
+    font-size: 28px;
+  }
+
+  .about-us .the-process {
+    padding: 20px 0;
+    gap: 30px;
+  }
+
+  .about-us .the-process .the-process_0_text {
+    gap: 30px;
+    margin: 0 auto;
+    padding-left: 5%;
+  }
+
+  /* END OF ABOUT US PAGE */
+  /* PROFILE PAGES */
+  .profile-page .rounds {
+    display: none;
+  }
+
+  .profile-page>a {
+    position: relative !important;
+    margin: 30px auto;
+    top: 0;
+    left: 0;
+  }
+
+  /* END OF PROFILE PAGES */
+  /* COURSES PAGE */
+  .courses-page>h1 {
+    width: 60%;
+    margin-left: 5%;
+    padding-bottom: 190px;
+  }
+
+  /* END OF COURSES PAGE */
+  /* SIGN UP, SIGN IN , PASSWORD RESET */
+  .sign-up{
+    height: auto;
+  }
+  .left-side  > a {
+    position: relative;
+    background-color: #F44E0C;
+    top: 55px; 
+    left: calc(50% - 86px);
+    padding: 20px 15px;
+    z-index: 9;
+  }
+  .sign-up .left-side{
+    position: relative;
+    height: auto;
+  }
+  .sign-up__bottom {
+    width: 100%;
+    text-align: center;
+    padding: 60px;
+    position: relative;
+    top: 100px;
+    left: 0;
+  }
+  /* END OFSIGN UP, SIGN IN , PASSWORD RESET */
+
+}
+
+@media screen and (max-width: 600px) {
+ 
+}
+@media screen and (max-width: 480px) {}

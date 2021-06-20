@@ -15,7 +15,7 @@ const SigninForm = (props) => {
        
     }
     return (
-        <Form className={`${classes.signIn} ${props.className}`}>
+        <Form className={`${classes.signIn}  ${props.className} signInForm`}>
             <h1>SIGN IN</h1>
             <form className={classes.signIn}>
                 <input type='textbox' placeholder='Email Address' />
@@ -33,13 +33,13 @@ const SigninForm = (props) => {
                     <Link to='/password-reset'>Forgot password?</Link>
                 </div>
                 <div style={{ clear: 'both' }}></div>
-                <p>Don't have an account? <a href='/'>Create an Account</a></p>
+                <p>Don't have an account? <Link href='/sign-up'>Create an Account</Link></p>
                 
             </form>
             <div className={classes.footer}>
-                <Recaptcha/>
+                <Recaptcha className={classes.signInRecaptcha}/>
                 <SocialMedia className={classes.social} />
-                <div className={classes.policy}><a href='/'>Privacy Policy</a></div>
+                <div className={classes.policy}><Link to='/policy'>Privacy Policy</Link></div>
             </div>
             
 

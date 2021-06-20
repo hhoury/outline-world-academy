@@ -15,12 +15,24 @@
 .right-menu ul li a{
     color: #fff;
 }
-.right-menu ul li a:hover {
+.right-menu ul li a:hover,.right-menu .btn:hover {
     color: #F44E0C;
 }
-.responsive a:hover{
+.responsive a:hover, .logoutBtn:hover{
     color: #191919;
 }
+.btn:focus, .logoutBtn:focus{
+    outline: none;
+}
+.right-menu .btn, .logoutBtn{
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    color: #fff;
+
+}
+
 @media screen and (max-width: 1024px) {
     
     .right-menu ul {

@@ -16,7 +16,7 @@ h1 {
   outline: none;
   display: block;
   background: rgba(0, 0, 0, 0);
-  margin: 55px 0;
+  margin: 35px 0;
   width: 100%;
   padding: 15px 0;
   border: none;
@@ -99,5 +99,35 @@ input[type="password"]::-ms-reveal {
 
 .signUp .social {
   width: 70%;
-  margin-top: 70px
+  margin-top: 60px
+}
+
+@media screen and (max-width: 1024px) {
+  .signUp input {
+    margin: 25px 0;
+  }
+  .signUp .btn {
+    margin: 35px 0 15px 0;
+  }
+  .signUp .social {
+    width: 70%;
+    margin-top: 30px
+  }
+  .text {
+    margin: 45px auto 0 auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  .text {
+    text-align: center;
+  }
+  .signUp {
+    position: relative;
+    width: 100%;
+    margin: 50px auto 0 auto;
+  }
+}
+@media screen and (max-width: 600px) {
+  
+  
 }
