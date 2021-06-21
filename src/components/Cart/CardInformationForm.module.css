@@ -1,0 +1,38 @@
+.CardInformationForm{
+    padding: 30px;
+    background-color: #262626;
+    font-weight: 100;
+    margin-right: 35px;
+}
+.CardInformationForm h1 {
+    font-size: 28px;
+    display: inline-block;
+    margin: 0;
+}
+.CardInformationForm > a {
+    float: right;
+}
+.CardInformationForm label {
+    color: #F44E0C;
+    display: block;
+    margin-top: 10px;
+}
+
+.CardInformationForm input {
+    background-color: #3A3A3A;
+    height: 45px;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    width: 100%;
+    outline: none;
+}
+.CardInformationForm > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+.CardInformationForm > div span{
+  width: 48%;
+}

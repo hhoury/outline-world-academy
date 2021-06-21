@@ -19,8 +19,7 @@ a:hover {
   cursor: pointer;
   text-decoration: none;
 }
-
-/* *****  SIGN UP PAGE ******/
+/* #region SIGN UP PAGE*/
 .sign-up {
   background-image: url('./assets/asset-bg.png');
   background-size: cover;
@@ -51,8 +50,9 @@ a:hover {
 .sign-up__bottom p {
   font-size: 18px;
 }
+/* #endregion SIGN UP PAGE*/
 
-/* *****  SIGN UP PAGE END******/
+/* #region CONTACT US */
 .contact-us-page {
   background-image: url('./assets/map.svg');
   background-size: cover;
@@ -72,12 +72,10 @@ a:hover {
   max-width: 620px;
   margin-top: 35px;
 }
-
 .contact-us h1 {
   font-weight: bold;
   color: #F44E0C;
 }
-
 .contact-us ul {
   padding: 0;
   margin: 120px 0 0 0;
@@ -111,7 +109,9 @@ a:hover {
   grid-column-start: 2;
   grid-column-end: 2;
 }
+/* #endregion CONTACT US */
 
+/* #region PRIVACY POLICY */
 .privacy-policy {
   text-align: left;
   width: 90%;
@@ -151,7 +151,9 @@ h2 {
   max-width: 70%;
   font-weight: 200;
 }
+/* #endregion PRIVACY POLICY */
 
+/* #region ABOUT US */
 .about-us {
   background-image: url('./assets/about-bg.jpg');
   background-size: 100% 500px;
@@ -265,7 +267,9 @@ h2 {
   width: 100%;
   height: 100%;
 }
+/* #endregion ABOUT US */
 
+/* #region PROFILE PAGE */
 .profile-page {
   height: 100vh;
   margin: 0;
@@ -297,8 +301,9 @@ h2 {
   margin: 0 auto;
   max-width: 440px;
 }
+/* #endregion PROFILE PAGE */
 
-/* ######   COURSES PAGE ###### */
+/*#region   COURSES PAGE ###### */
 
 .courses-page {
   background-image: url('./assets/courses-banner.png');
@@ -326,6 +331,9 @@ h2 {
   margin: 0;
   padding: 55px 0;
 }
+/* #endregion COURSES PAGE */
+
+/* #region  MY COURSES */
 .my-courses-page {
   width: 90%;
   margin: 0 auto;
@@ -341,8 +349,9 @@ h2 {
   background: transparent;
   font-weight: 100;
 }
+/* #endregion MY COURSES */
 
-
+/* #region POPOVER */
 #popover-contained {
   background-color: #F44E0C;
   color: #fff;
@@ -379,14 +388,121 @@ h2 {
 #popover-contained .arrow::after {
   border-bottom-color: #F44E0C;
 }
+/* #endregion POPOVER */
 
+/* #region MY CART  */
+.cart-page {
+  width: 90%;
+  margin: 10px auto 50px auto;
+}
+.my-cart {
+  font-weight: 100;
+  margin: 30px auto 0 auto;
+  border-top: 1px solid #F44E0C;
+  border-bottom: 1px solid #F44E0C;
+  padding: 30px 10px;
+}
+.cart-page h1{
+  color: #F44E0C;
+  font-weight: bold;
+}
+.my-cart table {
+  width: 100%;
+}
+.my-cart table thead {
+  text-align: center;
+  font-weight: 100;
+  color: #F44E0C;
+
+}
+.my-cart table thead th{
+  border-left: 1px solid #F44E0C;
+  font-weight: 100;
+}
+.my-cart table thead th:first-child{
+  border: none;
+}
+.my-cart tr td {
+  text-align: center;
+  border-right: 1px solid #F44E0C;
+  padding: 15px 0;
+}
+.my-cart tr td:first-child {
+  text-align: left;
+  width: 60%;
+  
+}
+.my-cart tr td:last-child{
+border: none;
+}
+.my-cart tr td p{
+  margin-left: 50px;
+}
+.table-bottom {
+  position: relative;
+  margin-top: 10px;
+  padding-top: 20px;
+}
+.table-bottom p{
+  font-size: 28px;
+}
+.update-cart{
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #F44E0C;
+  margin-left: auto;
+  cursor: pointer;
+  font-weight: 100;
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+.update-cart:focus {
+  outline: none;
+}
+.checkout-btn{
+  width: 460px !important;
+  position: absolute;
+  right: 0;
+  top: 50px;
+}
+.my-cart tr td p{
+    font-size: 24px;
+    margin: 15px 0;
+}
+/* #endregion MY CART */
 .carousel {
   background-color: #fff;
 }
-
-/* ######   COURSES PAGE ENDS ###### */
+/* #region ORDER DETAILS */
+.order-details {
+  width: 75%;
+  margin: 0 auto;
+  position: relative;
+}
+.order-details .content {
+  padding: 30px;
+}
+.order-details__btn {
+  margin-top: 30px;
+}
+/* #endregion ORDER DETAILS */
+/* #region PERSONAL DETAILS */
+.personal-details{
+  width: 75%;
+  margin: 0 auto;
+  position: relative;
+}
+.personal-details .content {
+  padding: 30px;
+}
+.personal-details__btn{
+  margin-top: 30px;
+}
+/* #endregion PERSONAL DETAILS  */
 @media screen and (max-width: 1660px) {
-
+/* #region ABOUT US */
   .about-us .row2 {
     flex-direction: column;
     position: relative;
@@ -395,11 +511,12 @@ h2 {
   .about-us .row2 p {
     max-width: 80%;
   }
+  /* #endregion ABOUT US */
 }
 
 @media screen and (max-width: 1024px) {
 
-  /* ABOUT US PAGE */
+  /*#region ABOUT US PAGE */
   .about-us>h1 {
     width: 70%;
   }
@@ -442,8 +559,9 @@ h2 {
     display: none;
   }
 
-  /* END OF ABOUT US PAGE */
-  /* CONTACT US PAGE */
+  /*#endregion ABOUT US PAGE */
+  
+  /*#region CONTACT US PAGE */
   .contact-us {
     text-align: center;
   }
@@ -458,14 +576,16 @@ h2 {
     justify-content: center;
   }
 
-  /* END OF CONTACT US PAGE */
-  /* COURSES PAGE */
+  /* #endregion CONTACT US PAGE */
+  
+  /*#region COURSES PAGE */
   .courses-page h1 {
     font-size: 1.5rem;
   }
 
-  /* END OF COURSES PAGE */
-  /* SIGN UP / IN / RESET PASSWORD */
+  /*#endregion END OF COURSES PAGE */
+ 
+  /*#region SIGN UP / IN / RESET PASSWORD */
   .sign-up__bottom h2 {
     font-size: 36px;
   }
@@ -473,12 +593,12 @@ h2 {
   .sign-up__bottom p {
     font-size: 21px;
   }
-  /* END OF SIGN UP / IN / RESET PASSWORD */
+  /*#endregion END OF SIGN UP / IN / RESET PASSWORD */
 }
 
 @media screen and (max-width: 768px) {
 
-  /* ABOUT US PAGE */
+  /*#region ABOUT US PAGE */
   .about-us>h1 {
     font-size: 28px;
   }
@@ -494,8 +614,9 @@ h2 {
     padding-left: 5%;
   }
 
-  /* END OF ABOUT US PAGE */
-  /* PROFILE PAGES */
+  /*#endregion END OF ABOUT US PAGE */
+  
+  /*#region PROFILE PAGES */
   .profile-page .rounds {
     display: none;
   }
@@ -507,16 +628,18 @@ h2 {
     left: 0;
   }
 
-  /* END OF PROFILE PAGES */
-  /* COURSES PAGE */
+  /*#endregion END OF PROFILE PAGES */
+  
+  /*#region COURSES PAGE */
   .courses-page>h1 {
     width: 60%;
     margin-left: 5%;
     padding-bottom: 190px;
   }
 
-  /* END OF COURSES PAGE */
-  /* SIGN UP, SIGN IN , PASSWORD RESET */
+  /*#endregion END OF COURSES PAGE */
+  
+  /*#region SIGN UP, SIGN IN , PASSWORD RESET */
   .sign-up{
     height: auto;
   }
@@ -540,14 +663,85 @@ h2 {
     top: 100px;
     left: 0;
   }
-  /* END OFSIGN UP, SIGN IN , PASSWORD RESET */
+  /*#endregion END OFSIGN UP, SIGN IN , PASSWORD RESET */
 
+  /* #region CART PAGE */
+  .cart-page h1{
+    text-align: center;
+  }
+  .table-bottom{
+    margin: 0;
+    text-align: center;
+  }
+  .table-bottom h2 {
+    margin-top: 20px;
+  }
+  .update-cart{
+    position: inherit;
+    width: 100%;
+    top: 0;
+  }
+  .checkout-btn{
+    position: inherit;
+    top: 0;
+    width: 100% !important;
+  }
+
+/* TABLE RESPONSIVENESS */
+  table tbody tr {
+      margin-top: 15px;
+  }
+  .my-cart tr td:first-child {
+    width: 100%;
+  }
+  .my-cart tr td:first-child::before{
+    display: none;
+  }
+  .my-cart tr td{
+    border-right: none;
+    text-align: right;
+  }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table td {
+    padding: 10px;
+    border-bottom: 1px solid #F44E0C;
+    display: block;
+    text-align: center;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  /* #endregion CART PAGE */
 }
 
 @media screen and (max-width: 600px) {
  
 }
 @media screen and (max-width: 480px) {
+  /* #region MY COURSES */
   .my-courses-page h1{
     text-align: center;
     display: block;
@@ -555,4 +749,5 @@ h2 {
   .my-courses-page > a{
       margin: 10px auto;
   }
+  /* #endregion MY COURSES */
 }

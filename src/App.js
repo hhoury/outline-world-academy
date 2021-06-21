@@ -15,6 +15,9 @@ import CartPage from './pages/CartPage';
 import PasswordModal from './components/UI/PasswordModal'
 import React, {useState} from 'react'
 import MyCoursesPage from './pages/MyCoursesPage';
+import OrderDetailsPage from './pages/OrderDetailsPage';
+import PersonalDetailsPage from './pages/PersonalDetailsPage';
+import PaymentPage from './pages/PaymentPage';
 
 const App = () => {
    const [passwordModalIsShowing, setPasswordModalIsShowing] = useState(false)
@@ -32,6 +35,9 @@ const App = () => {
                <Route path='/about-us'><AboutPage /></Route>
                <Route path='/profile'><ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler}/></Route>
                <Route path='/cart'><CartPage /></Route>
+               <Route path='/order-details'><OrderDetailsPage /></Route>
+               <Route path='/personal-details'><PersonalDetailsPage /></Route>
+               <Route path='/payment'><PaymentPage /></Route>
                <Route path='/blog'><BlogPage /></Route>
                <Route path='/contact-us'><ContactUsPage /></Route>
                <Route path='/courses'><CoursesPage /></Route>

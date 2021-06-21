@@ -1,0 +1,14 @@
+.orderList{
+    margin-right: 30px;
+    padding: 30px;
+    background-color: #262626;
+}
+.orderList h1 {
+    font-size: 28px;
+    display: inline-block;
+    margin: 0;
+}
+.orderList > a {
+    float: right;
+    font-weight: 100;
+}

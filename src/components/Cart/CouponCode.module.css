@@ -1,0 +1,28 @@
+.Coupon {
+    padding: 30px;
+    background-color: #262626;
+    margin-top: 30px;
+}
+.Coupon  input {
+    background-color: #3A3A3A;
+    display: inline-block;
+    outline: none;
+    border: none;
+    padding: 10px;
+    height: 40px;
+    color: #fff;
+    margin-right: 15px;
+}
+.Coupon button {
+    outline: none;
+    color: #fff;
+    border: none;
+    background-color: #F44E0C;
+    display: inline-block;
+    cursor: pointer;
+    height: 40px;
+    width: 110px;
+}
+.Coupon button:hover {
+    background-color: rgba(244,78,12,0.9);;
+}

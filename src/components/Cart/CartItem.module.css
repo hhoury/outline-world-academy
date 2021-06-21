@@ -1,0 +1,25 @@
+
+.cartItem button{
+    font-size: 36px;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #F44E0C;
+    cursor: pointer;
+    font-weight: 100;
+}   
+
+.cartItem button:focus {
+    outline: none;
+}
+.cartItem figure,.cartItem button {
+    margin: 0 20px 0 0;
+    text-align: left;
+}
+.cartItem figure,.cartItem p {
+    display: inline-block;
+}
+.cartItem figure img {
+    width: 150px;
+    height: 150px;
+}

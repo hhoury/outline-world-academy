@@ -1,0 +1,19 @@
+.OrderItem{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-weight: 100;
+}
+.OrderItem figure,.OrderItem p{
+    margin: 0;
+}
+.OrderItem p{
+    font-size: 21px;
+}
+.OrderItem figure img {
+    width: 130px;
+    height: 130px;
+}
