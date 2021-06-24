@@ -2,6 +2,7 @@
     margin-right: 30px;
     padding: 30px;
     background-color: #262626;
+    align-self: flex-start;
 }
 .orderList h1 {
     font-size: 28px;

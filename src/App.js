@@ -18,7 +18,7 @@ import MyCoursesPage from './pages/MyCoursesPage';
 import OrderDetailsPage from './pages/OrderDetailsPage';
 import PersonalDetailsPage from './pages/PersonalDetailsPage';
 import PaymentPage from './pages/PaymentPage';
-
+import CartProvider from './store/CartProvider';
 const App = () => {
    const [passwordModalIsShowing, setPasswordModalIsShowing] = useState(false)
    const showPasswordModalHandler = () => {
@@ -28,7 +28,7 @@ const App = () => {
       setPasswordModalIsShowing(false);
    }
    return (
-      <div>
+      <CartProvider>
          {passwordModalIsShowing && <PasswordModal onClose={hidePasswordModalHandler} />}
          <main>
             <Switch>
@@ -36,7 +36,7 @@ const App = () => {
                <Route path='/profile'><ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler}/></Route>
                <Route path='/cart'><CartPage /></Route>
                <Route path='/order-details'><OrderDetailsPage /></Route>
-               <Route path='/personal-details'><PersonalDetailsPage /></Route>
+               <Route path='/personal-details'><PersonalDetailsPage />xp</Route>
                <Route path='/payment'><PaymentPage /></Route>
                <Route path='/blog'><BlogPage /></Route>
                <Route path='/contact-us'><ContactUsPage /></Route>
@@ -56,7 +56,7 @@ const App = () => {
             </Switch>
 
          </main>
-      </div>
+      </CartProvider>
    )
 }
 

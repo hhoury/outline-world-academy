@@ -18,7 +18,7 @@ const CartPage = () => {
     const removeItemHandler = (event) => {
         console.log(event);
     }
-    const checkoutHandler = () => {
+    const checkoutHandler = (id) => {
         history.push('./order-details')
     }
     console.log(CART_ITEMS);
@@ -40,7 +40,7 @@ const CartPage = () => {
                     </thead>
                     <tbody>
                         {CART_ITEMS.map((item) =>
-                            <CartItem key={item.id} id={item.id} onRemoveFromCart={removeItemHandler}
+                            <CartItem key={item.id} id={item.id} onRemoveFromCart={removeItemHandler(item.id)}
                                 title={item.title} price={item.price}
                                 chapters={item.chapters} subtotal={item.subtotal} />)}
                     </tbody>

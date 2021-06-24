@@ -1,8 +1,9 @@
-
 .checkout__steps {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 30px;
+    width: 100%;
 }
 .checkout__step {
     display: flex;
@@ -28,10 +29,10 @@
 .checkout__step:after {
     right: 0;
 }
-.checkout__step-number, .checkout__step-label {
+.checkout__stepNumber, .checkout__stepLabel {
     display: block;
 }
-.checkout__step-number {
+.checkout__stepNumber {
     width: 16px;
     height: 16px;
     font-size: 0;
@@ -40,37 +41,47 @@
     z-index: 20;
     border: 1px solid #f44e0c;
 }
-.checkout__step-label {
+.checkout__stepLabel {
     margin-bottom: 15px;
     color: #fff;
     word-break: break-word;
+    font-weight: 100;
+    position: absolute;
+    top: 30px;
 }
-.checkout__step--first {
+.checkout__stepFirst {
     align-items: flex-start;
 }
-.checkout__step--first:before {
+.checkout__stepFirst:before {
     display: none;
 }
-.checkout__step--first:after {
+.checkout__stepFirst:after {
     width: 100%;
 }
-.checkout__step--last {
+.checkout__stepLast {
     align-items: flex-end;
 }
-.checkout__step--last:before {
+.checkout__stepLast:before {
     width: 100%;
 }
-.checkout__step--last:after {
+.checkout__stepLast:after {
     display: none;
 }
-.checkout__step--active:before, .checkout__step--previous:before, .checkout__step--completed:before {
-    background-color: #bada55;
+.checkout__stepActive:before, .checkout__stepPrevious:before, .checkout__stepCompleted:before {
+    background-color: #F44E0C;
 }
-.checkout__step--active .checkout__step-number, .checkout__step--previous .checkout__step-number, .checkout__step--completed .checkout__step-number {
+.checkout__stepActive .checkout__stepNumber, .checkout__stepPrevious .checkout__stepNumber, .checkout__stepCompleted .checkout__stepNumber {
     width: 18px;
     height: 18px;
-    background-color: #bada55;
+    
 }
-.checkout__step--previous:after, .checkout__step--completed:after {
-    background-color: #bada55;
+.checkout__stepDone {
+    background-color: #F44E0C;
+}
+.checkout__stepPrevious:after, .checkout__stepCompleted:after {
+    background-color: #F44E0C;
+}
+.checkout__labelDone{
+    color: #F44E0C;
+    font-weight: 400;
 }
