@@ -1,0 +1,28 @@
+.CourseChapterDetails > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+.CourseChapterDetails p {
+    color: #F44E0C;
+    text-align: right;
+    margin: 0;
+}
+.CourseChapterDetails h1{
+    color: #6b6a6a;
+    font-weight: 400;
+}
+.CourseChapterDetails .highlighted {
+    color: #fff;
+}
+@media screen and (max-width:768px) {
+    .CourseChapterDetails > div {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+}

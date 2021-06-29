@@ -1,18 +1,21 @@
-.CardInformationForm{
+.CardInformationForm {
     padding: 30px;
     background-color: #262626;
     font-weight: 100;
     margin-right: 35px;
     align-self: flex-start;
 }
+
 .CardInformationForm h1 {
     font-size: 28px;
     display: inline-block;
     margin: 0;
 }
-.CardInformationForm > a {
+
+.CardInformationForm>a {
     float: right;
 }
+
 .CardInformationForm label {
     color: #F44E0C;
     display: block;
@@ -28,12 +31,33 @@
     width: 100%;
     outline: none;
 }
-.CardInformationForm > div {
+
+.CardInformationForm>div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
+
 }
-.CardInformationForm > div span{
-  width: 48%;
+
+.CardInformationForm>div span {
+    width: 48%;
+}
+
+@media screen and (max-width:480px) {
+    .CardInformationForm>div {
+        flex-direction: column;
+    }
+
+    .CardInformationForm>div span {
+        width: 100%;
+    }
+    .CardInformationForm h1{
+        display: block;
+    }
+    .CardInformationForm>a {
+        margin-top: 15px;
+    }
+    .CardInformationForm label{
+        clear: both;
+    }
 }

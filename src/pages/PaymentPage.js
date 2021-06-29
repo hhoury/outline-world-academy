@@ -17,7 +17,7 @@ const PaymentPage = () => {
                 <CheckoutSteps />
                 <div className='row content'>
                     <CardInformationForm />
-                    <div className='col-lg-4 col-md-4 col-sm-5'>
+                    <div className='col-lg-4 col-md-12 col-sm-12 payment-summary'>
                         <Summary subtotal={200} tax={10} />
                         <Button className='personal-details__btn' onClick={proceedHandler}>REVIEW & PAY</Button>
                     </div>

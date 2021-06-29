@@ -41,3 +41,19 @@
 .PersonalDetailsForm .name span{
   width: 48%;
 }
+@media screen and (max-width:480px) {
+    .PersonalDetailsForm > a {
+        float: right;
+        display: block;
+    }
+    .PersonalDetailsForm .name{
+        clear: both;
+        flex-direction: column;
+    }
+    .PersonalDetailsForm .name span{
+        width: 100%;
+    }
+    .PersonalDetailsForm {
+        margin-right: 0;
+    }
+}

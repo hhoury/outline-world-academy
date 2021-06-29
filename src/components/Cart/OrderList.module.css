@@ -13,3 +13,14 @@
     float: right;
     font-weight: 100;
 }
+@media screen and (max-width: 480px) {
+    .orderList{
+        text-align: center;
+    }
+    .orderList h1{
+        display: block;
+    }
+    .orderList >a{
+        float: none;
+    }
+}

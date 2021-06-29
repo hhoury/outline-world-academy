@@ -1,10 +1,14 @@
 import React from 'react'
 import classes from './MyCoursesItem.module.css'
 import Button from '../UI/Button'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { ProgressBar } from 'react-bootstrap'
 import mycourses from '../../assets/mycourses.jpg'
 const MyCoursesItem = (props) => {
+    const history = useHistory();
+    const viewCourseHandler = () => {
+        history.push('/courses/'+ props.id)
+    }
 
     return (
         <div className={`${classes['my-couses-item']} mr-auto`}>
@@ -20,7 +24,7 @@ const MyCoursesItem = (props) => {
                     <p>%{props.progress} Complete</p>
                     <ProgressBar now={props.progress} />
                 </div>
-                <Button className={classes.btn}>View Course</Button>
+                <Button onClick={viewCourseHandler}  className={classes.btn}>View Course</Button>
             </div>
         </div>
     )

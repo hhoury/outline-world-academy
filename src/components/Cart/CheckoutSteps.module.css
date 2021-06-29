@@ -2,8 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 30px;
     width: 100%;
+    margin: 50px auto;
 }
 .checkout__step {
     display: flex;
@@ -84,4 +84,9 @@
 .checkout__labelDone{
     color: #F44E0C;
     font-weight: 400;
+}
+@media screen and (max-width:430px) {
+    .checkout__steps {
+        font-size: 12px;
+    }
 }

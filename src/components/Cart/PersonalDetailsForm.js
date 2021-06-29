@@ -5,7 +5,7 @@ import classes from './PersonalDetailsForm.module.css'
 const PersonalDetails = () => {
     return (
         <>
-            <form className={`col-lg-7 col-md-7 col-sm-12 ${classes.PersonalDetailsForm}`}>
+            <form className={`col-lg-7 col-md-12 col-sm-12 ${classes.PersonalDetailsForm}`}>
                 <h1>Personal Details</h1>
                 <Link to='/order-details'>Back</Link>
 

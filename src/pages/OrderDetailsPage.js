@@ -20,12 +20,11 @@ const proceedHandler = () => {
                 <CheckoutSteps />
                 <div className='row content'>
                     <OrderList />
-                    <div className='col-lg-4 col-md-4 col-sm-5'>
+                    <div className='col-lg-4 col-md-12 col-sm-12 order-summary'>
                         <Summary subtotal={200} tax={10} />
                         <CouponCode />
                         <Button className='order-details__btn' onClick={proceedHandler}>Proceed</Button>
                     </div>
-
                 </div>
             </div>
             <Footer />

@@ -8,7 +8,7 @@ const OrderList = () => {
         id: 1, course: { id: 1, title: 'Corona Renderer for instructors', price: 400 }
     }]
     return (
-        <div className={`col-lg-7 col-md-7 col-sm-12 ${classes.orderList}`}>
+        <div className={`col-lg-7 col-md-12 col-sm-12 ${classes.orderList}`}>
                 <h1>YOUR ORDER</h1>
                 <Link to='/cart' className='ml-auto'>Edit Cart</Link>
                 <ul>

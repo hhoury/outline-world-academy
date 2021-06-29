@@ -5,7 +5,7 @@ import classes from './CardInformationForm.module.css'
 const CardInformation = () => {
     return (
         <>
-            <form className={`col-lg-7 col-md-7 col-sm-12 ${classes.CardInformationForm}`}>
+            <form className={`col-lg-7 col-md-12 col-sm-12 ${classes.CardInformationForm}`}>
 
                 <h1>Card Information</h1>
                 <Link to=''>Back</Link>
