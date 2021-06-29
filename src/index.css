@@ -423,14 +423,14 @@ h2 {
 }
 .course-details .course-chapters .arrows a{
   height: 65px;
-  width: 80px;
+  width: 75px;
   background-color: #F44E0C;
   color: #fff;
   font-size: 48px;
     text-align: center;
 }
 
-.course-details .course-chapters .course-chapters-footer {
+.course-details .course-chapters .course-chapters-footer{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -439,6 +439,39 @@ h2 {
 }
 /* #endregion COURSES DETAILS PAGE */
 
+/* #region  COURSE CHAPTER LESSON PAGE */
+.chapter-lesson {
+  width: 90%;
+  margin: 0 auto;
+}
+.chapter-lesson .chapter-lesson-footer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 20px;
+}
+.chapter-lesson .lesson-video{
+  width: 80%;
+  margin: 30px auto;
+  text-align: center;
+}
+.chapter-lesson .lesson-video video{
+  height: 600px;
+}
+.chapter-lesson  .arrows {
+  display: flex;
+  gap: 15px;
+}
+.chapter-lesson  .arrows a{
+  height: 65px;
+  width: 75px;
+  background-color: #F44E0C;
+  color: #fff;
+  font-size: 48px;
+    text-align: center;
+}
+
+/* #endregion  COURSE CHAPTER LESSON PAGE */
 
 /* #region POPOVER */
 #popover-contained {
@@ -917,7 +950,7 @@ h2 {
     margin: 0 auto 30px;
     width: 100%;
   }
-  .course-details .course-chapters .course-chapters-footer {
+  .course-details .course-chapters .course-chapters-footer{
     justify-content: space-around;
     width: 100%;
   }
