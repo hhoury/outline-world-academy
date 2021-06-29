@@ -20,6 +20,20 @@ a:hover {
   text-decoration: none;
 }
 
+.home-header {
+  position: absolute;
+  left: 5%;
+  z-index: 2;
+}
+.carousel-inner img {
+  max-height: 700px;
+}
+.carousel-indicators li{
+  border-radius: 100%;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
 /* #region SIGN UP PAGE*/
 .sign-up {
   background-image: url('./assets/asset-bg.png');
@@ -613,9 +627,7 @@ margin-top: 20px;
 }
 
 /* #endregion MY CART */
-.carousel {
-  background-color: #fff;
-}
+
 
 /* #region ORDER DETAILS */
 .order-details {

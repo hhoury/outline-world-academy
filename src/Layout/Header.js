@@ -8,7 +8,7 @@ import ResponsiveMenu from './ResponsiveMenu'
 const Header = (props) => {
 
     return (
-        <header className={classes.header}>
+        <header className={`${classes.header} ${props.className}`}>
             <NavLink to='/home'>
                 <img src={image} alt='outline world academy' />
             </NavLink>
