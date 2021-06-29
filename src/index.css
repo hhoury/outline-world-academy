@@ -457,6 +457,7 @@ margin-top: 20px;
 }
 .chapter-lesson .lesson-video video{
   height: 600px;
+  width: 100%;
 }
 .chapter-lesson  .arrows {
   display: flex;
