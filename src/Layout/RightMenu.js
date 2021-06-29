@@ -8,7 +8,7 @@ const RightMenu = (props) => {
     const [show, setShow] = useState(false);
     const [target, setTarget] = useState(null);
     const ref = useRef(null);
-    const handleClick = (event) => {
+    const userMenuHandler = (event) => {
         setShow(!show);
         setTarget(event.target);
     };
@@ -20,7 +20,7 @@ const RightMenu = (props) => {
         <>
             <div className={classes['right-menu']}>
                 <ul>
-                    <li><button className={classes.btn} onClick={handleClick}  ><i className="fal fa-user"></i></button></li>
+                    <li><button className={classes.btn} onClick={userMenuHandler}  ><i className="fal fa-user"></i></button></li>
                     <li><Link to='/cart'><i className="fal fa-shopping-bag"></i></Link></li>
                     <li><Link to='/home'><i className="fal fa-search"></i></Link></li>
                 </ul>
@@ -32,8 +32,7 @@ const RightMenu = (props) => {
                 container={ref.current}
                 containerPadding={20}
             >
-                <Popover id="popover-contained">
-
+                {/* <Popover id="popover-contained">
                     <Popover.Content>
                         <ul>
                             <li>
@@ -48,6 +47,28 @@ const RightMenu = (props) => {
                                 <button className={classes.logoutBtn} onClick={logoutHandler}>
                                     <span><i className="fal fa-sign-out"></i></span>Log out
                                 </button>
+                            </li>
+                        </ul>
+                    </Popover.Content>
+                </Popover> */}
+
+                <Popover id="popover-contained">
+                    <Popover.Content>
+                        <ul>
+                            <li>
+                                <Link to='/sign-in'>
+                                    <span><i class="fal fa-sign-in"></i></span>Login
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to='/sign-up'>
+                                    <span><i class="fal fa-user-plus"></i></span>Signup
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to='/password-reset'>
+                                    <span>Forgot Your Password?</span>
+                                </Link>
                             </li>
                         </ul>
                     </Popover.Content>

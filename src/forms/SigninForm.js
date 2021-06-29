@@ -33,7 +33,7 @@ const SigninForm = (props) => {
                     <Link to='/password-reset'>Forgot password?</Link>
                 </div>
                 <div style={{ clear: 'both' }}></div>
-                <p>Don't have an account? <Link href='/sign-up'>Create an Account</Link></p>
+                <p>Don't have an account? <Link to='/sign-up'>Create an Account</Link></p>
                 
             </form>
             <div className={classes.footer}>

@@ -7,8 +7,6 @@ const Logo = () => {
         <NavLink to='/home' className={classes.logo}>
             <img src={image} alt='outline world academy' />
         </NavLink>
-        
-
     )
 }
 
