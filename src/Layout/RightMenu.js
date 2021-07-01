@@ -57,17 +57,17 @@ const RightMenu = (props) => {
                         <ul>
                             <li>
                                 <Link to='/sign-in'>
-                                    <span><i class="fal fa-sign-in"></i></span>Login
+                                    <span><i className="fal fa-sign-in"></i></span>Login
                                 </Link>
                             </li>
                             <li>
                                 <Link to='/sign-up'>
-                                    <span><i class="fal fa-user-plus"></i></span>Signup
+                                    <span><i className="fal fa-user-plus"></i></span>Signup
                                 </Link>
                             </li>
                             <li>
                                 <Link to='/password-reset'>
-                                    <span>Forgot Your Password?</span>
+                                    <span>Password Reset</span>
                                 </Link>
                             </li>
                         </ul>

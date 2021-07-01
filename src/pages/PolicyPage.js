@@ -8,7 +8,7 @@ const PolicyPage = () => {
         <article className='privacy-policy'>
             <h1>Privacy Policy</h1>
             <h2>Who we are</h2>
-            <p>Our website address is:<a rel='noreferrer' href='http://www.stateofartacademy.com' target='_blank' > https://www.stateofartacademy.com.</a></p>
+            <p>Our Website Address is:<a rel='noreferrer' href='http://www.stateofartacademy.com' target='_blank' > https://www.stateofartacademy.com.</a></p>
             <h2>What personal data we collect and why we collect it</h2>
             <h3>Comments</h3>
             <p>When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor’s IP address and browser user

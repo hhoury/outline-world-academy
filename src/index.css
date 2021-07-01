@@ -25,6 +25,9 @@ a:hover {
   left: 5%;
   z-index: 2;
 }
+.carousel {
+  max-height: 700px;
+}
 .carousel-inner img {
   max-height: 700px;
 }
@@ -400,7 +403,7 @@ h2 {
   margin: 150px 0 50px 5%;
   width: 90%;
 }
-.course-details .course-chapters h1{
+.course-details .course-chapters h2{
     margin-bottom: 40px;
 }
 
@@ -648,7 +651,7 @@ margin-top: 20px;
 /* #region PERSONAL DETAILS */
 .personal-details {
   width: 75%;
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   position: relative;
 }
 
