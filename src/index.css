@@ -8,7 +8,9 @@ body {
   background-color: #191919;
   color: #fff;
 }
-
+.invalid-button{
+  cursor: not-allowed;
+}
 li {
   list-style: none;
 }
@@ -801,13 +803,12 @@ margin-top: 20px;
   .profile-page .rounds {
     display: none;
   }
-
-  .profile-page>a {
+  /* .profile-page > a {
     position: relative !important;
     margin: 30px auto;
     top: 0;
-    left: 0;
-  }
+    left: 5% impo;
+  } */
 
   /*#endregion END OF PROFILE PAGES */
 

@@ -32,7 +32,7 @@ const RightMenu = (props) => {
                 container={ref.current}
                 containerPadding={20}
             >
-                {/* <Popover id="popover-contained">
+                <Popover id="popover-contained">
                     <Popover.Content>
                         <ul>
                             <li>
@@ -50,9 +50,9 @@ const RightMenu = (props) => {
                             </li>
                         </ul>
                     </Popover.Content>
-                </Popover> */}
+                </Popover>
 
-                <Popover id="popover-contained">
+                {/* <Popover id="popover-contained">
                     <Popover.Content>
                         <ul>
                             <li>
@@ -73,6 +73,7 @@ const RightMenu = (props) => {
                         </ul>
                     </Popover.Content>
                 </Popover>
+             */}
             </Overlay>
         </>
     )

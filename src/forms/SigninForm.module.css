@@ -1,5 +1,6 @@
 .signIn{
     text-align: center;
+    max-width: 825px;
 }
 
 h1 {
@@ -116,6 +117,11 @@ h1 {
   .footer{
     width: 70%;
     margin:  15px auto 0;
+  }
+  @media screen and (max-width: 1440px) {
+    .signIn{
+      overflow-y: auto;
+    }
   }
 @media screen and (max-width:1120px) {
    .signIn form{

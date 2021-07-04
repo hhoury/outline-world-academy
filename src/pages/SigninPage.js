@@ -5,7 +5,7 @@ import Logo from '../Layout/Logo'
 const SigninPage = () => {
     return (
         <div className='sign-up container-fluid'>
-            <div className='col-lg-5 col-md-5 left-side'>
+            <div className='col-lg-5 col-md-5 col-sm-12 left-side'>
                 <Logo />
                 <div className='sign-up__bottom'>
                     <h2>Welcome Back! </h2>
@@ -13,7 +13,7 @@ const SigninPage = () => {
             euismod tincidunt ut laoreet dolore magna aliquam erat</p>
                 </div>
             </div>
-            <SigninForm className='col-lg-5 col-md-5'/>
+            <SigninForm className='col-lg-6 col-md-6 col-sm-12'/>
         </div>
 
     )

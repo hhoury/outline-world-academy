@@ -5,7 +5,7 @@ import Logo from '../Layout/Logo'
 const ForgotPasswordPage = () => {
     return (
         <div className='sign-up container-fluid'>
-            <div className='col-lg-5 col-md-5 left-side'>
+            <div className='col-lg-5 col-md-5 col-sm-12 left-side'>
                <Logo />
                 <div className='sign-up__bottom'>
                     <h2>Forgot your password? </h2>
@@ -14,7 +14,7 @@ const ForgotPasswordPage = () => {
                 </div>
             </div>
 
-            <ForgotPasswordForm className='col-lg-5 col-md-5 ' />
+            <ForgotPasswordForm className='col-lg-6 col-md-6 col-sm-12 ' />
         </div>
     )
 }

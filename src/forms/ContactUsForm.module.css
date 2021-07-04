@@ -32,6 +32,11 @@
     border-bottom: 1px solid #535353;
     -webkit-appearance: none;
 }
+.invalid {
+    color: red;
+    background-color: red;
+    border-bottom: 1px solid red;
+}
 @media screen and (max-width: 1024px) {
    
 }

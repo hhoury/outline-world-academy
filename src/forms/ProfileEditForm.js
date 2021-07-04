@@ -3,8 +3,23 @@ import classes from './ProfileEditForm.module.css'
 import RightMenu from '../Layout/RightMenu'
 import Button from '../components/UI/Button'
 import profileImage from '../assets/profile.jpg'
+import useInput from '../hooks/use-input'
 
+const isNotEmpty = (value) => {
+  return value.trim() !== ''
+}
+
+const isEmail = email => {
+  if (email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+    return (true)
+  }
+  else {
+    return false
+  }
+}
 const ProfileEditForm = (props) => {
+    
+
     const [isEditMode, setIsEditMode] = useState(false)
     const deleteAccountHandler = () => {
 
@@ -19,13 +34,7 @@ const ProfileEditForm = (props) => {
     const editPhotoHandler =(event) => {
         event.preventDefault();
     }
-    //   const [user, setUser] = useState([])
 
-    //   const EditUserHandler = (uName,uAge) => {
-    //     setUsersList((prevUser) => {
-    //       return [...prevUser,{id: Math.random().toString(),name: uName,age: uAge}]
-    //     });
-    //   }
     const user = {
         name: 'Mohanad',
         email: 'hhhh@gmail.com',
@@ -33,13 +42,61 @@ const ProfileEditForm = (props) => {
         password: '123456',
         image: { profileImage }
     }
+    const {
+        value: enteredName,
+        hasError: nameInputHasError,
+        isValid: enteredNameIsValid,
+        valueChangeHandler: nameChangedHandler,
+        inputBlurHandler: nameBlurHandler,
+        reset: resetNameInput
+    } = useInput(isNotEmpty);
+    
+    
+    
+  const {
+    value: enteredEmail,
+    hasError: emailInputHasError,
+    isValid: enteredEmailIsValid,
+    valueChangeHandler: emailChangedHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmailInput
+  } = useInput(isEmail);
+
+  const {
+    value: enteredPassword,
+    hasError: passwordInputHasError,
+    isValid: enteredPasswordIsValid,
+    valueChangeHandler: passwordChangedHandler,
+    inputBlurHandler: passwordBlurHandler,
+    reset: resetPasswordInput
+  } = useInput(isNotEmpty);
+
+  const nameClasses = nameInputHasError ? 'invalid' : '';
+  const emailClasses = emailInputHasError ? 'invalid' : '';
+  const passwordClasses = passwordInputHasError ? 'invalid' : '';
+
+    let formIsValid = false;
+    if (enteredEmailIsValid && enteredPasswordIsValid && enteredNameIsValid) {
+        formIsValid = true;
+    }
+    const formSubmitHandler = (event) => {
+        event.preventDefault();
+        if (!formIsValid) {
+            return;
+        }
+        console.log('form submitted successfully');
+        resetEmailInput();
+        resetPasswordInput();
+        resetNameInput();
+        
+    }
     return (
         <div className={`${classes.ProfileEdit}`}>
             <div className={classes.top}>
                 <p> Hello, {user.name}</p>
                 <RightMenu />
             </div>
-            <form>
+            <form id='profileForm' name='profileForm' onSubmit={formSubmitHandler}> 
                 <figure>
                     <img src={profileImage} alt='profile' />
                     {isEditMode &&
@@ -52,13 +109,19 @@ const ProfileEditForm = (props) => {
 
                 <span>
                     <label htmlFor='username'>Full Name</label>
-                    <input readOnly={!isEditMode} id='username' name='username' type='text' defaultValue={user.name} />
+                    <input readOnly={!isEditMode} id='username' name='username' type='text' defaultValue={user.name} className={nameClasses}
+                       value={user.name}
+                       onChange={nameChangedHandler}
+                       onBlur={nameBlurHandler}/>
                     {isEditMode && <span><i className="far fa-edit"></i></span>}
                 </span>
 
                 <span>
                     <label htmlFor='email'>Email</label>
-                    <input readOnly={!isEditMode} type='text' id='email' name='email' defaultValue={user.email} />
+                    <input readOnly={!isEditMode} type='email' id='email' name='email' defaultValue={user.email}  className={emailClasses}
+                      value={user.email}
+                      onChange={emailChangedHandler}
+                      onBlur={emailBlurHandler} />
                     {isEditMode && <span><i className="far fa-edit"></i></span> }
                 </span>
 
@@ -70,11 +133,16 @@ const ProfileEditForm = (props) => {
 
                 <span>
                     <label htmlFor='password'>{!isEditMode ? 'Password' : 'New Password'}</label>
-                    <input readOnly={!isEditMode} id='password' name='password' type='password' defaultValue={user.password} />
+                    <input readOnly={!isEditMode} id='password' name='password' type='password' defaultValue={user.password} className={passwordClasses}
+                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        value={user.password}
+                        onChange={passwordChangedHandler}
+                        onBlur={passwordBlurHandler}/>
                     {isEditMode && <span><i className="far fa-edit"></i></span> }
                 </span>
 
-                <Button onClick={editProfileHandler} className={classes.btn} >{!isEditMode ? 'EDIT PROFILE' : 'Save Changes'}</Button>
+                <Button disabled={!formIsValid} onClick={editProfileHandler} className={classes.btn} >{!isEditMode ? 'EDIT PROFILE' : 'Save Changes'}</Button>
 
                 {!isEditMode && <button onClick={deleteAccountHandler} className={classes.deleteAccount}>Delete Account?</button>}
             </form>

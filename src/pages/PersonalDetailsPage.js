@@ -18,10 +18,10 @@ const PersonalDetailsPage = () => {
             <div className='personal-details'>
                 <CheckoutSteps />
                 <div className='row content'>
-                    <PersonalDetailsForm/>
+                    <PersonalDetailsForm />
                     <div className='col-lg-4 col-md-12 col-sm-12 personal-details-summary'>
                         <Summary subtotal={200} tax={10} />
-                        <Button className='personal-details__btn' onClick={proceedHandler}>Proceed</Button>
+                        <Button type='submit' className='personal-details__btn' onClick={proceedHandler}>Proceed</Button>
                     </div>
 
                 </div>
