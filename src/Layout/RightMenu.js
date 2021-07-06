@@ -72,8 +72,8 @@ const RightMenu = (props) => {
                             </li>
                         </ul>
                     </Popover.Content>
-                </Popover>
-             */}
+                </Popover> */}
+            
             </Overlay>
         </>
     )

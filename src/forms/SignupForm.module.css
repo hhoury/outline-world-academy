@@ -17,7 +17,7 @@ h1 {
   outline: none;
   display: block;
   background: rgba(0, 0, 0, 0);
-  margin: 35px 0;
+  margin: 20px 0;
   width: 100%;
   padding: 15px 0;
   border: none;
@@ -84,7 +84,7 @@ input[type="password"]::-ms-reveal {
   font-size: 16px;
   font-weight: lighter;
   width: 70%;
-  margin: 75px auto 0 auto;
+  margin: 35px auto 0 auto;
 }
 
 .text a {
@@ -94,13 +94,13 @@ input[type="password"]::-ms-reveal {
 }
 
 .btn {
-  margin: 70px 0 15px 0;
+  margin: 40px 0 15px 0;
   letter-spacing: 5px;
 }
 
 .signUp .social {
   width: 70%;
-  margin-top: 60px
+  margin-top: 40px
 }
 
 @media screen and (max-width: 1440px) {

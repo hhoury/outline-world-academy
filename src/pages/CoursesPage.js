@@ -24,6 +24,10 @@ const CoursesPage = () => {
         id: '5',
         title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
         thumbnail: '/src/assets/course2.png'
+    }, {
+        id: '6',
+        title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
+        thumbnail: '/src/assets/course2.png'
     }
     ]
     return (

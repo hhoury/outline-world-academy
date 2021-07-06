@@ -1,15 +1,18 @@
 import React from 'react'
 import classes from './CourseChapters.module.css'
 import thumbnail from '../../assets/chapter-thumbnail.png'
+import { Link } from 'react-router-dom'
 
 const CourseChapters = (props) => {
     return (
         <li className={`${classes.CourseChapter} row`}>
             <div className={classes.chapterNumber}>{props.number}.</div>
             <div className={`col-md-6 col-sm-12 ${classes.courseThumbnail}`}>
-                <figure>
-                    <img src={thumbnail} alt={props.title} />
-                </figure>
+                <Link to={`/courses/${props.courseId}/chapter/${props.id}`}>
+                    <figure>
+                        <img src={thumbnail} alt={props.title} />
+                    </figure>
+                </Link>
                 <div className={classes.border}></div>
             </div>
 

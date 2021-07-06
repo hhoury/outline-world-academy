@@ -1,8 +1,6 @@
  .course-item {
     position: relative;
-    max-width: 865px;
-    margin: 15px 35px 0 0;
-    padding: 0;
+    margin: 15px auto;
   }
   
  .course-item figure,
@@ -13,15 +11,18 @@
   
  .course-item h1 {
     position: absolute;
-    bottom: 80px;
-    left: 5%;
+    bottom: 60px;
+    left: 2%;
     color: #fff !important;
     max-width: 80%;
+    margin: 0;
+    text-align: left;
+    font-size: 28px;
   }
   
  .course-item a {
     position: absolute;
-    width: 100%;
+    width: calc(100% - 30px);
     background-color: #F44E0C;
     bottom: 0;
     z-index: 2;

@@ -1,54 +1,53 @@
-header {
+.Header {
     width: 90%;
     margin: 0 auto;
-    padding: 60px 0;
+    padding: 50px 0;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     text-transform: uppercase;
-    font-weight: 200;
 }
 
-header > a {
+.Header > a {
     background-color: #F44E0C;
     padding: 10px 15px;
     height: 60px;
     width: 190px;
 }
-header > a img{
+.Header > a img{
     height: auto;
     max-width: 100%;
 }
 
 
-header .menu{
+.Header .menu{
     position: relative;
     display: flex;
     gap: 30px;
     font-size: 18px;
     letter-spacing: 5px;
 }
-header .menu > ul {
+.Header .menu > ul {
     display: flex;
-    gap: 60px;
+    gap: 30px;
     align-items: center;
 }
-header .menu a{
+.Header .menu a{
     color: #fff;
-    font-weight: 600;
+    font-weight: 400;
 }
-header .menu a:hover {
+.Header .menu a:hover {
     color: #F44E0C;
 }
-header a.active{
+.Header a.active{
     color: #F44E0C;
 }
 
 @media screen and (max-width: 1024px) {
-    header .menu{
+    .Header .menu{
         gap: 15px;
     }
-  header  .menu > ul{
+  .Header  .menu > ul{
         gap: 30px;
         display: none;
     }

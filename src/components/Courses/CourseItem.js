@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import classes from './CourseItem.module.css'
 const CourseItem = (props) => {
     return (
-        <li key={props.id} className={`col-lg-5 col-md-5 col-sm-11 ${classes['course-item']}`} >
+        <li key={props.id} className={`col-lg-4 col-md-4 col-sm-6 ${classes['course-item']}`} >
             <figure>
                 <img src={props.thumbnail} alt={props.title} />
             </figure>

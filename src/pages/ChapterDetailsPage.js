@@ -12,9 +12,9 @@ const ChapterDetailsPage = () => {
     const chapter = {
         id: 1, title: 'Lorem Ipsum Dolor', progress: 60, number: '01.',
         lessons: [
-            { number: '1.1', title: 'lorem ipsum dolor lesson', progress: 100 },
-            { number: '1.2', title: 'lorem ipsum dolor lesson', progress: 100 },
-            { number: '1.3', title: 'lorem ipsum dolor lesson', progress: 20 }
+            { id:1,number: '1.1', title: 'lorem ipsum dolor lesson', progress: 100 },
+            { id:2,number: '1.2', title: 'lorem ipsum dolor lesson', progress: 100 },
+            { id:3,number: '1.3', title: 'lorem ipsum dolor lesson', progress: 20 }
         ]
     }
 
@@ -35,7 +35,11 @@ const ChapterDetailsPage = () => {
                 </div>
                 <ul>
                     {chapter.lessons.map((lesson) =>
-                        <CourseChapterDetails key={lesson.number}
+                        <CourseChapterDetails
+                            courseId={course.id}
+                            chapterId={chapter.id}
+                            key={lesson.number}
+                            id={lesson.number}
                             number={lesson.number}
                             title={lesson.title}
                             thumbnail={lesson.thumbnail}
@@ -45,8 +49,8 @@ const ChapterDetailsPage = () => {
                 <div className='course-chapters-footer'>
                     <Link to=''>Back to Chapters</Link>
                     <div className='arrows'>
-                        <Link><i class="far fa-arrow-left"></i></Link>
-                        <Link><i class="far fa-arrow-right"></i></Link>
+                        <Link><i className="far fa-arrow-left"></i></Link>
+                        <Link><i className="far fa-arrow-right"></i></Link>
                     </div>
                 </div>
             </div>

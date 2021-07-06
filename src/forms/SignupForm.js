@@ -66,7 +66,7 @@ const SignupForm = (props) => {
         resetEmailInput();
         resetPasswordInput();
         resetNameInput();
-        
+
     }
     const [passwordShown, setPasswordShown] = useState(false);
     const showPasswordHandler = (event) => {
@@ -89,8 +89,20 @@ const SignupForm = (props) => {
 
                 <div style={{ position: 'relative' }}>
                     <input required name='passwordTextbox' type={!passwordShown ? 'password' : 'text'} placeholder='Create Password'
-                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        className={passwordClasses}
+                        value={enteredPassword}
+                        onChange={passwordChangedHandler}
+                        onBlur={passwordBlurHandler} />
+                    <button type="button" className={classes.toggle} style={!passwordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showPasswordHandler}>
+                        <i className="fal fa-eye"></i>
+                    </button>
+                </div>
+                <div style={{ position: 'relative' }}>
+                    <input required name='passwordTextbox' type={!passwordShown ? 'password' : 'text'} placeholder='Confirm Password'
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                         className={passwordClasses}
                         value={enteredPassword}
                         onChange={passwordChangedHandler}
@@ -100,6 +112,8 @@ const SignupForm = (props) => {
                     </button>
                 </div>
                 <input type='text' placeholder='Job (optional)' />
+
+                    <input type="file" />
                 <Button type='submit' className={classes.btn}>Sign Up</Button>
                 <CheckBox className={classes.checkbox} />
             </form>

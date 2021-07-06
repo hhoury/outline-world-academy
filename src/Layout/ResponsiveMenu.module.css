@@ -41,7 +41,7 @@
   
   .responsive-wrap .toggler {
     position: absolute;
-    top: 60px;
+    top: 50px;
     right: 25px;
     z-index: 2;
     cursor: pointer;
@@ -62,7 +62,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    top: 55px;
+    top: 45px;
     right: 20px;
   }
   

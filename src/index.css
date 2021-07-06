@@ -237,6 +237,7 @@ h2 {
 }
 
 .about-us .row2 {
+  width: 75%;
   margin-top: 200px;
   z-index: 2;
   left: 25%;
@@ -263,7 +264,7 @@ h2 {
 }
 
 .about-us .the-process__text {
-  margin-left: 5%;
+  padding-left: 5%;
   display: flex;
   flex-direction: column;
   gap: 80px;
@@ -339,7 +340,7 @@ h2 {
   background-repeat: no-repeat;
 }
 
-.courses-page>h1 {
+.courses-page > h1 {
   width: 40%;
   margin-left: 5%;
   padding-bottom: 190px;
@@ -347,16 +348,11 @@ h2 {
 
 .courses-page main h1 {
   color: #F44E0C;
-  margin: 15px 0;
-}
-
-.courses-page main {
-  margin: 0 0 50px 5%;
+  margin: 15px 0 15px 5%;
 }
 
 .courses-page main ul {
-  margin: 0;
-  padding: 55px 0;
+  margin: 50px;
 }
 
 /* #endregion COURSES PAGE */
@@ -390,7 +386,7 @@ h2 {
   background-repeat: no-repeat;
 }
 
-.course-details>h1 {
+.course-details > div > h1 {
   width: 55%;
   margin-left: 5%;
   font-size: 108px;
@@ -401,8 +397,17 @@ h2 {
   font-weight: bold;
   outline: 2px;
 }
+.course-details .course-add-cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.course-details .course-add-cart button {
+  width: 20%;
+}
 .course-details .course-chapters{
-  margin: 150px 0 50px 5%;
+  margin: 180px 0 50px 5%;
   width: 90%;
 }
 .course-details .course-chapters h2{
@@ -462,6 +467,7 @@ h2 {
 .chapter-lesson {
   width: 90%;
   margin: 0 auto;
+  margin: 180px auto 0 auto;
 }
 .chapter-lesson .chapter-lesson-footer {
 display: flex;
@@ -764,7 +770,10 @@ margin-top: 20px;
   /*#endregion END OF SIGN UP / IN / RESET PASSWORD */
 }
 .course-details > h1{
-  min-height: 480px;
+  margin-left: 5%;
+  min-height: 350px;
+  font-weight: bold;
+  
 }
 @media screen and (max-width: 1440px) {
   .course-details > h1{
