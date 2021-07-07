@@ -41,7 +41,7 @@ a:hover {
 }
 /* #region SIGN UP PAGE*/
 .sign-up {
-  background-image: url('./assets/asset-bg.png');
+  background-image: url('./assets/asset-bg.jpg');
   background-size: cover;
   width: 100%;
   height: 100vh;
@@ -380,7 +380,7 @@ h2 {
 
 /* #region COURSES DETAILS PAGE  */
 .course-details {
-  background-image: url('./assets/course-details.png');
+  background-image: url('./assets/course-details.jpg');
   background-size: 100% 620px;
   min-height: 620px;
   background-repeat: no-repeat;

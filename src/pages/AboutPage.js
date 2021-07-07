@@ -1,10 +1,10 @@
 import React from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
-import image1 from '../assets/about1.png'
-import image2 from '../assets/about2.png'
-import image3 from '../assets/about3.png'
-import image4 from '../assets/about4.png'
+import image1 from '../assets/about1.jpg'
+import image2 from '../assets/about2.jpg'
+import image3 from '../assets/about3.jpg'
+import image4 from '../assets/about4.jpg'
 
 
 const AboutPage = () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
-import thumbnail from '../assets/chapter-thumbnail.png'
+import thumbnail from '../assets/chapter-thumbnail.jpg'
 import CourseChapters from '../components/Courses/CourseChapters'
 import Button from '../components/UI/Button'
 const CourseDetailsPage = (props) => {

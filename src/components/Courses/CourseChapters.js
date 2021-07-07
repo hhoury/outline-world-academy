@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './CourseChapters.module.css'
-import thumbnail from '../../assets/chapter-thumbnail.png'
+import thumbnail from '../../assets/chapter-thumbnail.jpg'
 import { Link } from 'react-router-dom'
 
 const CourseChapters = (props) => {
