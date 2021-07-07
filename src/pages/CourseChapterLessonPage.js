@@ -1,15 +1,19 @@
 import React from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import video from '../assets/video.mp4'
 import video1 from '../assets/video1.ogg'
 
 const CourseChapterLessonPage = () => {
+    const history = useHistory();
     const course = { id: 1, title: 'corona renderer' }
     const chapter = { id: 1, number: '01.', title: 'Lorem Ipsum Dolor' }
     const lesson = { id: 1, title: 'Lorem Ipsum Dolor', number: '1.3' }
 
+    const goBackToLessonHandler = () => {
+        history.goBack();
+    }
     return (
         <div className='course-details' >
             <Header fullMenu={false} />
@@ -24,7 +28,7 @@ const CourseChapterLessonPage = () => {
                     Your browser does not support the video.
                 </video>
                 <div className='chapter-lesson-footer'>
-                    <Link to=''>Back to Lessons</Link>
+                    <button onClick={goBackToLessonHandler} className='goBackButton'>Back to Lessons</button>
                     <div className='arrows'>
                         <Link><i className="far fa-arrow-left"></i></Link>
                         <Link><i className="far fa-arrow-right"></i></Link>

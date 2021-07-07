@@ -188,9 +188,9 @@ h2 {
 
 .about-us>h1 {
   width: 40%;
-  margin-left: 5%;
+  margin: 20px 0 0 5%;
   padding-bottom: 190px;
-  /* position: absolute; */
+ 
 }
 
 .about-us .why-us {
@@ -200,6 +200,7 @@ h2 {
   -moz-box-shadow: 0px -100px 25px 10px rgb(25 25 25/ 70%);
   position: relative;
   min-height: 820px;
+  margin-top: 80px;
 }
 
 .about-us .why-us h1 {
@@ -432,6 +433,7 @@ h2 {
  top: -30px;
 }
 .course-details .course-chapters-header h1{
+  font-size: 32px;
   font-weight: bold;
   color: #F44E0C;
 }
@@ -448,11 +450,11 @@ h2 {
   gap: 15px;
 }
 .course-details .course-chapters .arrows a{
-  height: 65px;
-  width: 75px;
+  height: 45px;
+  width: 55px;
   background-color: #F44E0C;
   color: #fff;
-  font-size: 48px;
+  font-size: 32px;
     text-align: center;
 }
 
@@ -477,6 +479,13 @@ justify-content: space-between;
 align-items: center;
 margin-top: 20px;
 }
+.goBackButton {
+  outline: none;
+  border: none;
+  color: #F44E0C;
+  cursor: pointer;
+  background: none;
+}
 .chapter-lesson .lesson-video{
   width: 80%;
   margin: 30px auto;
@@ -491,12 +500,12 @@ margin-top: 20px;
   gap: 15px;
 }
 .chapter-lesson  .arrows a{
-  height: 65px;
-  width: 75px;
+  height: 45px;
+  width: 55px;
   background-color: #F44E0C;
   color: #fff;
-  font-size: 48px;
-    text-align: center;
+  font-size: 35px;
+  text-align: center;
 }
 
 /* #endregion  COURSE CHAPTER LESSON PAGE */
@@ -772,7 +781,7 @@ margin-top: 20px;
   /*#endregion END OF SIGN UP / IN / RESET PASSWORD */
 }
 .course-details > h1{
-  margin-left: 5%;
+  margin: 80px 0 0 5%;
   min-height: 350px;
   font-weight: bold;
   

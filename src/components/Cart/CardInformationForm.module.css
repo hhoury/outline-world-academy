@@ -12,7 +12,7 @@
     margin: 0;
 }
 
-.CardInformationForm>a {
+.CardInformationForm > button{
     float: right;
 }
 

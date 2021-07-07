@@ -3,7 +3,7 @@ import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import CourseChapterDetails from '../components/Courses/CourseChapterDetails'
 import { ProgressBar } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 
 const ChapterDetailsPage = () => {
@@ -12,10 +12,15 @@ const ChapterDetailsPage = () => {
     const chapter = {
         id: 1, title: 'Lorem Ipsum Dolor', progress: 60, number: '01.',
         lessons: [
-            { id:1,number: '1.1', title: 'lorem ipsum dolor lesson', progress: 100 },
-            { id:2,number: '1.2', title: 'lorem ipsum dolor lesson', progress: 100 },
-            { id:3,number: '1.3', title: 'lorem ipsum dolor lesson', progress: 20 }
+            { id: 1, number: '1.1', title: 'lorem ipsum dolor lesson', progress: 100 },
+            { id: 2, number: '1.2', title: 'lorem ipsum dolor lesson', progress: 100 },
+            { id: 3, number: '1.3', title: 'lorem ipsum dolor lesson', progress: 20 }
         ]
+    }
+
+    const history = useHistory();
+    const goBackToChaptersHandler = () => {
+        history.goBack();
     }
 
     return (
@@ -47,7 +52,8 @@ const ChapterDetailsPage = () => {
                             progress={lesson.progress} />)}
                 </ul>
                 <div className='course-chapters-footer'>
-                    <Link to=''>Back to Chapters</Link>
+                    <button onClick={goBackToChaptersHandler} className='goBackButton'>Back to Chapters</button>
+
                     <div className='arrows'>
                         <Link><i className="far fa-arrow-left"></i></Link>
                         <Link><i className="far fa-arrow-right"></i></Link>

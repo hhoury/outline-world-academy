@@ -1,14 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
 import classes from './CardInformationForm.module.css'
 
 const CardInformation = () => {
+    const history = useHistory();
+        
+    const goBackHandler = () => {
+        history.goBack();
+    }
     return (
         <>
             <form className={`col-lg-7 col-md-12 col-sm-12 ${classes.CardInformationForm}`}>
 
                 <h1>Card Information</h1>
-                <Link to=''>Back</Link>
+               
+                <button onClick={goBackHandler} className='goBackButton'>Back</button>
                 <label>Card Number</label>
                 <input id='cardNumber' name='cardNumber' type='text' />
                <div > 
