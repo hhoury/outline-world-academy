@@ -22,6 +22,11 @@ const isEmail = email => {
 
 
 const SignupForm = (props) => {
+
+   
+    const imageHandler = () => {
+
+    }
     const {
         value: enteredName,
         hasError: nameInputHasError,
@@ -111,9 +116,19 @@ const SignupForm = (props) => {
                         <i className="fal fa-eye"></i>
                     </button>
                 </div>
+                
                 <input type='text' placeholder='Job (optional)' />
 
-                    <input type="file" />
+                <div className={classes.uploadPhoto}>
+                    <input type="file" accept="image/*" name="image-upload" id="input" 
+                    onChange={imageHandler} />
+                    <div className={classes.label}>
+                       <span> Upload Your Profile Photo </span>
+                        <label className={classes['image-upload']} htmlFor="input">
+                        <i className="far fa-user"></i>
+                        </label>
+                    </div>
+                </div>
                 <Button type='submit' className={classes.btn}>Sign Up</Button>
                 <CheckBox className={classes.checkbox} />
             </form>

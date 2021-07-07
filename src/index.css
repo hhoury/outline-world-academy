@@ -111,13 +111,13 @@ a:hover {
   height: 50px;
   display: flex;
   align-items: center;
-  column-gap: 30px;
+  column-gap: 20px;
 }
 
 .contact-us ul li span {
   display: inline-block;
   color: #F44E0C;
-  font-size: 48px;
+  font-size: 40px;
   width: 35px;
   grid-column-start: 1;
   grid-column-end: 1;
@@ -342,10 +342,12 @@ h2 {
 
 .courses-page > h1 {
   width: 40%;
-  margin-left: 5%;
-  padding-bottom: 190px;
+  margin: 20px 0 0 5%;
+  
 }
-
+.courses-page main{
+  margin-top: 230px;
+}
 .courses-page main h1 {
   color: #F44E0C;
   margin: 15px 0 15px 5%;

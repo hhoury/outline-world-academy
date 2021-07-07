@@ -1,7 +1,7 @@
 .Header {
     width: 90%;
     margin: 0 auto;
-    padding: 50px 0;
+    padding: 30px 0;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -29,7 +29,7 @@
 }
 .Header .menu > ul {
     display: flex;
-    gap: 30px;
+    gap: 20px;
     align-items: center;
 }
 .Header .menu a{
