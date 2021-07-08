@@ -7,27 +7,33 @@ const CoursesPage = () => {
     const COURSES = [{
         id: '1',
         title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course1.jpg'
+        thumbnail: '/src/assets/course1.jpg',
+        price: 200
     }, {
         id: '2',
         title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course2.jpg'
+        thumbnail: '/src/assets/course2.jpg',
+        price: 300
     }, {
         id: '3',
         title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course2.jpg'
+        thumbnail: '/src/assets/course2.jpg',
+        price: 400
     }, {
         id: '4',
         title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course2.jpg'
+        thumbnail: '/src/assets/course2.jpg',
+        price: 100
     }, {
         id: '5',
         title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course2.jpg'
+        thumbnail: '/src/assets/course2.jpg',
+        price: 50
     }, {
         id: '6',
         title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course2.jpg'
+        thumbnail: '/src/assets/course2.jpg',
+        price: 20
     }
     ]
     return (
@@ -41,7 +47,7 @@ const CoursesPage = () => {
                 <ul className='row'>
                     {COURSES.map((course) =>
                     <CourseItem 
-                    key={course.id} id={course.id} title={course.title} thumbnail={course1} />
+                    key={course.id} id={course.id} title={course.title} price={course.price} thumbnail={course1} />
                        )
                         }
                 </ul>

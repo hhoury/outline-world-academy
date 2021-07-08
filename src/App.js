@@ -21,7 +21,6 @@ import PaymentPage from './pages/PaymentPage';
 import CourseDetailsPage from './pages/CourseDetailsPage'
 import ChapterDetailsPage from './pages/ChapterDetailsPage'
 import CourseChapterLessonPage from './pages/CourseChapterLessonPage'
-
 import CartProvider from './store/CartProvider';
 
 const App = () => {

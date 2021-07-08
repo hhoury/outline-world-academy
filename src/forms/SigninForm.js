@@ -53,7 +53,6 @@ const SigninForm = (props) => {
     if (!formIsValid) {
       return;
     }
-    console.log('form submitted successfully');
     resetEmailInput();
     resetPasswordInput();
   }

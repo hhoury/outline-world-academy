@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom'
 import { Overlay, Popover } from 'react-bootstrap'
 
 
+
+
 const RightMenu = (props) => {
+
     const [show, setShow] = useState(false);
     const [target, setTarget] = useState(null);
     const ref = useRef(null);
@@ -15,6 +18,8 @@ const RightMenu = (props) => {
     const logoutHandler = () => {
         
     }
+
+
    
     return (
         <>
@@ -25,14 +30,14 @@ const RightMenu = (props) => {
                     <li><Link to='/home'><i className="fal fa-search"></i></Link></li>
                 </ul>
             </div>
-            <Overlay className={classes.overlay}
+            <Overlay 
                 show={show}
                 target={target}
                 placement="bottom"
                 container={ref.current}
                 containerPadding={20}
             >
-                <Popover id="popover-contained">
+                {/* <Popover id="menu-popover-contained">
                     <Popover.Content>
                         <ul>
                             <li>
@@ -50,9 +55,9 @@ const RightMenu = (props) => {
                             </li>
                         </ul>
                     </Popover.Content>
-                </Popover>
+                </Popover> */}
 
-                {/* <Popover id="popover-contained">
+                <Popover id="menu-popover-contained">
                     <Popover.Content>
                         <ul>
                             <li>
@@ -65,14 +70,10 @@ const RightMenu = (props) => {
                                     <span><i className="fal fa-user-plus"></i></span>Signup
                                 </Link>
                             </li>
-                            <li>
-                                <Link to='/password-reset'>
-                                    <span>Password Reset</span>
-                                </Link>
-                            </li>
+                           
                         </ul>
                     </Popover.Content>
-                </Popover> */}
+                </Popover>
             
             </Overlay>
         </>

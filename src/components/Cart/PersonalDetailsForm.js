@@ -94,7 +94,6 @@ const PersonalDetails = () => {
         if (!formIsValid) {
             return;
         }
-        console.log('form submitted successfully');
         resetEmailInput();
         resetFNameInput();
         resetLNameInput();

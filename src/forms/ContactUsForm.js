@@ -57,7 +57,6 @@ const ContactUsForm = (props) => {
                 {
                   return;
                 }
-                console.log('form submitted successfully');
                 resetEmailInput();
                 resetNameInput();
                 resetMessageInput();

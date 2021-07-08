@@ -43,7 +43,6 @@ const ModalOverlay = (props) => {
         if (!formIsValid) {
             return;
         }
-        console.log('form submitted successfully');
         resetPasswordInput();
     }
     return (

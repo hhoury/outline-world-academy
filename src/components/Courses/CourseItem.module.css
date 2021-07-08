@@ -1,14 +1,14 @@
  .course-item {
     position: relative;
     margin: 15px auto;
-  }
-  
+
+  }  
  .course-item figure,
  .course-item img {
     width: 100%;
     height: 100%;
-  }
-  
+    cursor: pointer;
+  }  
  .course-item h1 {
     position: absolute;
     bottom: 60px;
@@ -18,17 +18,83 @@
     margin: 0;
     text-align: left;
     font-size: 28px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none; 
+  } 
+ /* .addCartButton{
+    border: 1px solid #F44E0C;
+    background-color: #fff;
+    color: #F44E0C;
+    border-radius: 25px;
+    font-weight: bold;
+}
+.addCartButton:hover{
+  background: #fff;
+  opacity: 0.9;
+} */
+.course-item .footer {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  width: calc(100% - 30px);
+  height: 60px;
+  bottom: 0;
+  z-index: 2;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+}
+.course-item a {
+  background-color: #F44E0C;
+  color: #fff;
+  width: 50%;
+  height: 100%;
+  padding: 15px 0;
+}
+.course-item  .btn {
+  background-image: -webkit-linear-gradient(45deg, #F44E0C 50%, transparent 50%);
+  background-image: linear-gradient(45deg, #F44E0C 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+  height: 100%;
+  vertical-align: center;
+  width: 50%;
+  color: #F44E0C;
+  background-color: #fff;
+  font-weight: bold;
+}
+.course-item .btn:hover{
+  background-position: 0;
+  color: #fff;
+  background-color: #F44E0C;
+}
+.course-item  .btn i{
+  font-weight: bold;
+  margin-left: 5px;
+}
+.course-item  .btn:active{
+  background-color: #ccc;
+}
+@media screen and (max-width:1440px) {
+  .course-item h1 {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .course-item a {
+    padding: 7px 0;
+  }
+  @media screen and (max-width: 575px) {
+    .course-item a {
+      padding: 15px 0;
+    }
   }
   
- .course-item a {
-    position: absolute;
-    width: calc(100% - 30px);
-    background-color: #F44E0C;
-    bottom: 0;
-    z-index: 2;
-    height: 60px;
-    color: #fff;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 60px;
-  }
+}

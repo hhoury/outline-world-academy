@@ -358,6 +358,25 @@ h2 {
   margin: 50px;
 }
 
+
+/* #addToCart-popover-contained{
+  background-color: #F44E0C;
+  opacity: 0.8;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 25px;
+  inset: 5px auto auto 0px !important;
+}
+#addToCart-popover-contained .popover-body ul li{
+  color: #fff;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none; 
+   -khtml-user-select: none; 
+     -moz-user-select: none; 
+      -ms-user-select: none; 
+          user-select: none; 
+} */
 /* #endregion COURSES PAGE */
 
 /* #region  MY COURSES */
@@ -479,7 +498,7 @@ justify-content: space-between;
 align-items: center;
 margin-top: 20px;
 }
-.goBackButton {
+.goBackButton,.goBackButton:focus {
   outline: none;
   border: none;
   color: #F44E0C;
@@ -511,7 +530,7 @@ margin-top: 20px;
 /* #endregion  COURSE CHAPTER LESSON PAGE */
 
 /* #region POPOVER */
-#popover-contained {
+#menu-popover-contained {
   background-color: #F44E0C;
   color: #fff;
   text-align: center;
@@ -521,31 +540,32 @@ margin-top: 20px;
 
 }
 
-#popover-contained ul {
+#menu-popover-contained ul {
   margin: 0 auto;
   padding: 0;
   color: #fff;
   font-weight: 100;
 }
 
-#popover-contained ul li {
+#menu-popover-contained ul li {
   margin: 5px auto;
 }
 
-#popover-contained ul li span {
+#menu-popover-contained ul li span {
   margin: auto 10px auto 0;
 }
 
-#popover-contained a {
+#menu-popover-contained a {
   color: #fff;
 }
 
-#popover-contained a:hover {
+#menu-popover-contained a:hover {
   color: #191919;
 }
 
-#popover-contained .arrow::after {
+#menu-popover-contained .arrow::after,#addToCart-popover-contained .arrow::after {
   border-bottom-color: #F44E0C;
+  border-top-color: #F44E0C;
 }
 
 /* #endregion POPOVER */
@@ -569,6 +589,23 @@ margin-top: 20px;
   font-weight: bold;
 }
 
+.cart-page .empty-cart {
+  color: #F44E0C;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 50px 0;
+}
+.cart-page .empty-cart i{
+  margin: 50px 0 20px 0;
+  font-size: 120px;
+  color: #ccc;
+}
+.cart-page .empty-cart .empty-cart-button{
+  width: 250px;
+  margin: 20px auto;
+  font-weight: 600;
+}
 .my-cart table {
   width: 100%;
 }
@@ -683,6 +720,7 @@ margin-top: 20px;
 }
 
 /* #endregion PERSONAL DETAILS  */
+
 @media screen and (max-width: 1660px) {
 
   /* #region ABOUT US */

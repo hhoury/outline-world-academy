@@ -1,7 +1,7 @@
 .CourseChapter {
     display: flex;
     position: relative;
-    margin-bottom: 160px;
+    margin-bottom: 60px;
 }
 
 .CourseChapter:nth-child(even) {
