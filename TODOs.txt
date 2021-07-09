@@ -1,0 +1,6 @@
+SPINNER ON SUBMITTING FORM, ADDING TO CART ,LOADING COURSES
+SEARCH BAR MODAL
+item added to cart modal
+All APIs
+user sign in , sign up, authentication
+redux user state

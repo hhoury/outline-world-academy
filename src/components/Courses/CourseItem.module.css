@@ -75,6 +75,11 @@
   color: #fff;
   background-color: #F44E0C;
 }
+.course-item .btnGoToCart{
+  background-color: #191919;
+  border: 1px solid #F44E0C;
+  box-sizing: border-box;
+}
 .course-item  .btn i{
   font-weight: bold;
   margin-left: 5px;
