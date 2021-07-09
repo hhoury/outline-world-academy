@@ -1,8 +1,9 @@
 SPINNER ON SUBMITTING FORM, ADDING TO CART ,LOADING COURSES
+checkout steps
 SEARCH BAR MODAL
 item added to cart modal
 All APIs
 user sign in , sign up, authentication
 redux user state
 login / sign up forms on checkout but not signed in
- 
+tostify alerts

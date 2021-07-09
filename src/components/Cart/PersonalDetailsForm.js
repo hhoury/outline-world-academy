@@ -106,7 +106,7 @@ const PersonalDetails = () => {
     return (
         <>
             <form onSubmit={formSubmitHandler} className={`col-lg-7 col-md-12 col-sm-12 ${classes.PersonalDetailsForm}`}>
-                <h1>Personal Details</h1>
+                <h1>Billing Details</h1>
                 <Link to='/order-details'>Back</Link>
 
                 <div className={classes.name}>
