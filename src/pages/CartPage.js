@@ -5,27 +5,51 @@ import Footer from '../Layout/Footer'
 import CartItem from '../components/Cart/CartItem'
 import Button from '../components/UI/Button'
 import { useHistory } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const notify = () => toast.error("Course Removed from Cart",
+    {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+    });
 
 const CartPage = () => {
 
     const cartCtx = useContext(CartContext)
     const totalAmount = cartCtx.totalAmount.toFixed(2)
-
     const history = useHistory();
 
     const removeItemHandler = (id) => {
         cartCtx.removeItem(id)
+        notify();
     }
     const checkoutHandler = () => {
         history.push('./order-details')
     }
-    const keepShoppingButtonHandler = () =>  {
+    const keepShoppingButtonHandler = () => {
         history.push('./courses')
 
     }
     return (
         <>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover={false}
+            />
+            <ToastContainer />
             <Header fullMenu={true} />
             <div className='cart-page'>
                 {
@@ -54,14 +78,14 @@ const CartPage = () => {
                                     <tbody>
 
                                         {cartCtx.items.map((item) =>
-                                            <CartItem 
-                                            key={item.id} 
-                                            id={item.id} 
-                                            onRemove={removeItemHandler.bind(null,item.id)}
-                                            title={item.title} 
-                                            price={item.price.toFixed(2)}
-                                            chapters={item.chapters}
-                                            subtotal={item.price.toFixed(2)} />)}
+                                            <CartItem
+                                                key={item.id}
+                                                id={item.id}
+                                                onRemove={removeItemHandler.bind(null, item.id)}
+                                                title={item.title}
+                                                price={item.price.toFixed(2)}
+                                                chapters={item.chapters.length}
+                                                subtotal={item.price.toFixed(2)} />)}
                                     </tbody>
 
                                 </table>

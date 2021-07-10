@@ -1,12 +1,15 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef,useContext } from 'react'
 import classes from './RightMenu.module.css'
 import { Link } from 'react-router-dom'
 import { Overlay, Popover } from 'react-bootstrap'
-
+import CartContext from '../store/cart-context'
 
 
 
 const RightMenu = (props) => {
+
+    const cartCtx = useContext(CartContext);
+
 
     const [show, setShow] = useState(false);
     const [target, setTarget] = useState(null);
@@ -26,7 +29,10 @@ const RightMenu = (props) => {
             <div className={classes['right-menu']}>
                 <ul>
                     <li><button className={classes.btn} onClick={userMenuHandler}  ><i className="fal fa-user"></i></button></li>
-                    <li><Link to='/cart'><i className="fal fa-shopping-bag"></i></Link></li>
+                    <li className={classes.shoppingCart}>
+                        <Link to='/cart'><i className="fal fa-shopping-bag"></i></Link>
+                   {cartCtx.items.length !== 0 &&     <span>{cartCtx.items.length}</span>}
+                    </li>
                     <li><Link to='/home'><i className="fal fa-search"></i></Link></li>
                 </ul>
             </div>

@@ -32,12 +32,30 @@
     color: #fff;
 
 }
+.shoppingCart{
+    position: relative;
+}
+.shoppingCart a{
+    z-index: 2;
+}
+.shoppingCart span{
+    padding-left: 5px;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: #F44E0C;
+    border-radius: 100%;
+    top: 0px;
+    right: -5px;
+    z-index: 2;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 600;
+}
 
 @media screen and (max-width: 1024px) {
-    
     .right-menu ul {
         border: none;
         margin-right: 50px;
     }
-    
 }
