@@ -23,7 +23,8 @@
 }
 .Summary ul li:last-child {
     font-weight: 100;
-    font-size: 32px;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 .Summary hr{
     margin: 50px 0 20px 0;

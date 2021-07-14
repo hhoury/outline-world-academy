@@ -16,11 +16,11 @@ const PersonalDetailsPage = () => {
             <Header fullMenu={true} />
 
             <div className='personal-details'>
-                <CheckoutSteps />
+                <CheckoutSteps step1 step2 />
                 <div className='row content'>
                     <PersonalDetailsForm />
                     <div className='col-lg-4 col-md-12 col-sm-12 personal-details-summary'>
-                        <Summary subtotal={200} tax={10} />
+                        <Summary />
                         <Button type='submit' className='personal-details__btn' onClick={proceedHandler}>Proceed</Button>
                     </div>
 

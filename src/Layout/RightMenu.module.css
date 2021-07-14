@@ -52,7 +52,16 @@
     text-align: center;
     font-weight: 600;
 }
-
+.right-menu .cartButton {
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.right-menu .cartButton:hover{
+    color: #F44E0C;
+}
 @media screen and (max-width: 1024px) {
     .right-menu ul {
         border: none;

@@ -36,37 +36,31 @@ const App = () => {
          {passwordModalIsShowing && <PasswordModal onClose={hidePasswordModalHandler} />}
          <main>
             <Switch>
-               
-
                <Route path='/cart'><CartPage /></Route>
                <Route path='/order-details'><OrderDetailsPage /></Route>
                <Route path='/personal-details'><PersonalDetailsPage /></Route>
-               <Route path='/payment'><PaymentPage /></Route>
-
+               <Route path='/payment'><PaymentPage /></Route> 
                <Route path='/courses/:id/chapter/:id/:id'><CourseChapterLessonPage /></Route>
                <Route path='/courses/:id/chapter/:id'><ChapterDetailsPage /></Route>
                <Route path='/courses/:id'><CourseDetailsPage /></Route>
                <Route path='/courses'><CoursesPage /></Route>
                <Route path='/my-courses'><MyCoursesPage /></Route>
-               
                <Route path='/profile'><ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler}/></Route>
-               <Route path='/sign-up'><SignupPage /></Route>
+               <Route path='/sign-up' component={SignupPage} />
                <Route path='/sign-in'><SigninPage /></Route>
                <Route path='/password-reset'><ForgotPasswordPage /></Route>
-
                <Route path='/about-us'><AboutPage /></Route>
                <Route path='/blog'><BlogPage /></Route>
                <Route path='/contact-us'><ContactUsPage /></Route>
                <Route path='/policy'><PolicyPage /></Route>
+               <Route path='/home'><HomePage /></Route>
                <Route path='/' exact>
                   <Redirect to='/home' />
                </Route>
-               <Route path='/home'><HomePage /></Route>
                <Route path='*'>
                   <NotFoundPage />
                </Route>
             </Switch>
-
          </main>
       </CartProvider>
    )

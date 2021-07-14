@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Form from './Form'
 import classes from './SigninForm.module.css'
 import Button from '../components/UI/Button'
 import CheckBox from '../components/UI/CheckBox'
 import SocialMedia from '../components/UI/SocialMedia'
 import Recaptcha from '../components/UI/Recaptcha'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import useInput from '../hooks/use-input'
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../components/UI/Message'
+import Loader from '../components/UI/Loader'
+import { login } from '../actions/userActions'
 
 const isNotEmpty = (value) => {
   return value.trim() !== ''
 }
-
 const isEmail = email => {
   if (email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
     return (true)
@@ -20,9 +23,7 @@ const isEmail = email => {
     return false
   }
 }
-
 const SigninForm = (props) => {
-
   const {
     value: enteredEmail,
     hasError: emailInputHasError,
@@ -48,24 +49,39 @@ const SigninForm = (props) => {
   if (enteredEmailIsValid && enteredPasswordIsValid) {
     formIsValid = true;
   }
-  const formSubmitHandler = (event) => {
-    event.preventDefault();
-    if (!formIsValid) {
-      return;
-    }
-    resetEmailInput();
-    resetPasswordInput();
-  }
-
   const [passwordShown, setPasswordShown] = useState(false);
   const showPasswordHandler = (event) => {
     event.preventDefault();
     setPasswordShown(!passwordShown);
 
   }
+  
+  const dispatch = useDispatch()
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { loading, error, userInfo } = userLogin
+
+
+  // useEffect(() => {
+  //   if (userInfo) {
+  //    history.push('/')
+  //   }
+  // }, [history, userInfo])
+
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+    if (!formIsValid) {
+      return;
+    }
+    dispatch(login(enteredEmail, enteredPassword))
+    resetEmailInput();
+    resetPasswordInput();
+  }
   return (
     <Form className={`${classes.signIn} ${props.className}`}>
       <h1>SIGN IN</h1>
+      {error && <Message variant='danger'>{error}</Message>}
+      {loading && <Loader />}
       <form onSubmit={formSubmitHandler}>
         <input required type='email' placeholder='Email Address' className={emailClasses}
           value={enteredEmail}
@@ -101,10 +117,7 @@ const SigninForm = (props) => {
         <SocialMedia className={classes.social} />
         <div className={classes.policy}><Link to='/policy'>Privacy Policy</Link></div>
       </div>
-
-
     </Form>
   )
 }
-
 export default SigninForm

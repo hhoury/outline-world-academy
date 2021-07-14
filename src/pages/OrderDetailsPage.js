@@ -17,11 +17,11 @@ const proceedHandler = () => {
             <Header fullMenu={true} />
 
             <div className='order-details'>
-                <CheckoutSteps />
+                <CheckoutSteps step1/>
                 <div className='row content'>
                     <OrderList />
                     <div className='col-lg-4 col-md-12 col-sm-12 order-summary'>
-                        <Summary subtotal={200} tax={10} />
+                        <Summary />
                         <CouponCode />
                         <Button className='order-details__btn' onClick={proceedHandler}>Proceed</Button>
                     </div>

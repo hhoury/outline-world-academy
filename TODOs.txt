@@ -8,3 +8,65 @@ All APIs
 user sign in , sign up, authentication
 redux user state
 login / sign up forms on checkout but not signed in
+react hook form
+==========================================================================
+###### APIs###############
+
+https://api.outlineworldacademy.com/api/auth/registration/ 
+Register api  you will get an email once you click on email you will be active user 
+
+https://api.outlineworldacademy.com/api/auth/login/ Login api ( username is not required only email and password are required ) 
+after login you will get access token, refresh token and user details you will always attach the access token to the authorization he3l siteader
+
+https://api.outlineworldacademy.com/api/auth/logout/ Logout api 
+
+https://api.outlineworldacademy.com/api/auth/password/reset/ Reset Password after getting the email  for forgotpassword you should follow this on react side  <Route path="reset/:uid/:token" component={PasswordResetView}/>
+for example I got this email https://api.outlineworldacademy.com/password-reset-confirm/i/app5er-2a2246254a95913cda4687d7f0d5f5c7/ i is the uid and app5er-2a2246254a95913cda4687d7f0d5f5c7 is the token you addd the new password and new password1 and make a post method to the endpoint  /api/auth/password-reset-confirm
+
+https://api.outlineworldacademy.com/api/auth/password/change/ Change password 
+
+
+https://api.outlineworldacademy.com/api/auth/user/ user (GET, PUT, PATCH)
+
+https://api.outlineworldacademy.com/api/auth/token/verify/ to check and verify if token is valid i.e ( access token, referesh token ) it will return nothing if token is valid and it will return this response when not valid
+ {
+    "detail": "Token is invalid or expired",
+    "code": "token_not_valid"
+} 
+
+https://api.outlineworldacademy.com/api/auth/token/refresh/ post method to get new access token with expirey date for it 
+
+https://api.outlineworldacademy.com/api/auth/facebook/ post method send access token and code and follow the below tutorials for using the facebook sdk on react 
+
+https://dev.to/quod_ai/how-to-integrate-facebook-login-api-into-your-react-app-33de
+https://jasonwatmore.com/post/2020/10/28/react-facebook-how-to-use-the-facebook-sdk-in-a-react-app
+
+
+https://api.outlineworldacademy.com/api/auth/google/ post method send Access token, Id token and code check this npm package https://www.npmjs.com/package/react-google-oauth2
+
+https://api.outlineworldacademy.com/api/newsletter/outlineacademy/subscribe/ newsletter below is the api in axios
+
+var axios = require('axios');
+var FormData = require('form-data');
+var data = new FormData();
+data.append('email_field', 'ahmadhaidarahmad555@hotmail.com');
+data.append('name_field', 'ahmadhaidarahmad24');
+
+var config = {
+  method: 'post',
+  url: 'https://api.outlineworldacademy.com/api/newsletter/outlineacademy/subscribe/',
+  headers: { 
+    ...data.getHeaders()
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+the challenging thing in this api is that it returns html as response you should always take the paragraph content i.e <p>Your subscription request was successfully received and an activation email has been sent to you.you will find a link which you need to follow in order to activate your subscription</p>

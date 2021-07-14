@@ -214,6 +214,7 @@ h2 {
 .about-us .why-us h1 {
   color: #F44E0C;
   max-width: 220px;
+  margin-left: 10px;
 }
 
 .about-us .why-us figure.figure-1 {

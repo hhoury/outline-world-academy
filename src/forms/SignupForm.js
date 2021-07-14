@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Form from './Form'
 import classes from './SignupForm.module.css'
 import Button from '../components/UI/Button'
@@ -6,6 +6,10 @@ import CheckBox from '../components/UI/CheckBox'
 import SocialMedia from '../components/UI/SocialMedia'
 import { Link } from 'react-router-dom'
 import useInput from '../hooks/use-input'
+import { register } from '../actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../components/UI/Message'
+import Loader from '../components/UI/Loader'
 
 const isNotEmpty = (value) => {
     return value.trim() !== ''
@@ -22,11 +26,7 @@ const isEmail = email => {
 
 
 const SignupForm = (props) => {
-
-   
-    const imageHandler = () => {
-
-    }
+    //#region form inputs
     const {
         value: enteredName,
         hasError: nameInputHasError,
@@ -54,43 +54,106 @@ const SignupForm = (props) => {
         reset: resetPasswordInput
     } = useInput(isNotEmpty);
 
+    const {
+        value: enteredConfirmPassword,
+        hasError: confirmPasswordInputHasError,
+        isValid: enteredConfirmPasswordIsValid,
+        valueChangeHandler: confirmPasswordChangedHandler,
+        inputBlurHandler: confirmPasswordBlurHandler,
+        reset: resetConfirmPasswordInput
+    } = useInput(isNotEmpty);
+
+    const [photo, setPhoto] = useState(null);
+    const [photoName, setPhotoName] = useState('Upload Your Profile Photo');
+    const [message, setMessage] = useState(null);
+    const [job,setJob] = useState('')
+    const onJobChange = (e) => {
+        setJob(e.target.value)
+    }
     const nameClasses = nameInputHasError ? 'invalid' : '';
     const emailClasses = emailInputHasError ? 'invalid' : '';
     const passwordClasses = passwordInputHasError ? 'invalid' : '';
-
+    const confirmPasswordClasses = confirmPasswordInputHasError ? 'invalid' : '';
+    const photoRef = useRef()
+    //#endregion
     let formIsValid = false;
-    if (enteredEmailIsValid && enteredPasswordIsValid && enteredNameIsValid) {
+    if (enteredEmailIsValid &&
+        enteredPasswordIsValid &&
+        enteredConfirmPasswordIsValid &&
+        enteredNameIsValid) {
         formIsValid = true;
     }
-    const formSubmitHandler = (event) => {
-        event.preventDefault();
-        if (!formIsValid) {
-            return;
-        }
-        resetEmailInput();
-        resetPasswordInput();
-        resetNameInput();
 
-    }
     const [passwordShown, setPasswordShown] = useState(false);
     const showPasswordHandler = (event) => {
         event.preventDefault();
         setPasswordShown(!passwordShown);
     }
+
+    const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
+    const showConfirmPasswordHandler = (event) => {
+        event.preventDefault();
+        setConfirmPasswordShown(!confirmPasswordShown);
+    }
+    const uploadPhoto = (e) => {
+        setPhoto({
+          pictureAsFile: e.target.files[0],
+        });
+        setPhotoName(photoRef.current.files[0].name)
+      };
+
+    const dispatch = useDispatch()
+
+    const userRegister = useSelector((state) => state.userRegister)
+    const { loading, error, userInfo } = userRegister
+
+
+
+    const formSubmitHandler = (event) => {
+        event.preventDefault();
+        if (!formIsValid) {
+            return;
+        }
+        else
+            if (enteredPassword !== enteredConfirmPassword) {
+                setMessage('Passwords do not match')
+            }
+            else {
+                const formData = new FormData();
+                formData.append('full_name', enteredName);
+                formData.append('email',enteredEmail);
+                formData.append('password',enteredPassword);
+                formData.append('password1',enteredConfirmPassword);
+                formData.append('job',job);
+                formData.append('avatar',photo.pictureAsFile);
+                formData.append('phone','+96170040294');
+                dispatch(register(formData))
+            }
+        resetEmailInput();
+        resetPasswordInput();
+        resetConfirmPasswordInput();
+        resetNameInput();
+        setJob('')
+        setPhoto(null)
+        setPhotoName('Upload Your Profile Photo')
+    }
     return (
         <Form className={`${classes.signUp} ${props.className}`}>
             <h1>SIGN UP</h1>
+            {message && <Message variant='danger'>{message}</Message>}
+            {error && <Message variant='danger'>{error}</Message>}
+            {loading && <Loader />}
             <form onSubmit={formSubmitHandler}>
-                <input required type='email' placeholder='Email Address' className={emailClasses}
-                    value={enteredEmail}
-                    onChange={emailChangedHandler}
-                    onBlur={emailBlurHandler} />
+              
 
                 <input required type='text' placeholder='Full Name' className={nameClasses}
                     value={enteredName}
                     onChange={nameChangedHandler}
                     onBlur={nameBlurHandler} />
-
+  <input required type='email' placeholder='Email Address' className={emailClasses}
+                    value={enteredEmail}
+                    onChange={emailChangedHandler}
+                    onBlur={emailBlurHandler} />
                 <div style={{ position: 'relative' }}>
                     <input required name='passwordTextbox' type={!passwordShown ? 'password' : 'text'} placeholder='Create Password'
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -104,27 +167,26 @@ const SignupForm = (props) => {
                     </button>
                 </div>
                 <div style={{ position: 'relative' }}>
-                    <input required name='passwordTextbox' type={!passwordShown ? 'password' : 'text'} placeholder='Confirm Password'
+                    <input required name='confirmPasswordTextbox' type={!confirmPasswordShown ? 'password' : 'text'} placeholder='Confirm Password'
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                        className={passwordClasses}
-                        value={enteredPassword}
-                        onChange={passwordChangedHandler}
-                        onBlur={passwordBlurHandler} />
-                    <button type="button" className={classes.toggle} style={!passwordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showPasswordHandler}>
+                        className={confirmPasswordClasses}
+                        value={enteredConfirmPassword}
+                        onChange={confirmPasswordChangedHandler}
+                        onBlur={confirmPasswordBlurHandler} />
+                    <button type="button" className={classes.toggle} style={!confirmPasswordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showConfirmPasswordHandler}>
                         <i className="fal fa-eye"></i>
                     </button>
                 </div>
-                
-                <input type='text' placeholder='Job (optional)' />
+
+                <input type='text' placeholder='Job (optional)' value={job} onChange={onJobChange} />
 
                 <div className={classes.uploadPhoto}>
-                    <input type="file" accept="image/*" name="image-upload" id="input" 
-                    onChange={imageHandler} />
+                    <input ref={photoRef} type="file" accept="image/*" name="image-upload" id="input" onChange={uploadPhoto}/>
                     <div className={classes.label}>
-                       <span> Upload Your Profile Photo </span>
+                        <span> {photoName}   </span>
                         <label className={classes['image-upload']} htmlFor="input">
-                        <i className="far fa-user"></i>
+                            <i className="far fa-user"></i>
                         </label>
                     </div>
                 </div>

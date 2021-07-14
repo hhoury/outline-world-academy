@@ -14,11 +14,11 @@ const PaymentPage = () => {
             <Header fullMenu={true} />
 
             <div className='personal-details'>
-                <CheckoutSteps />
+                <CheckoutSteps step1 step2 step3/>
                 <div className='row content'>
                     <CardInformationForm />
                     <div className='col-lg-4 col-md-12 col-sm-12 payment-summary'>
-                        <Summary subtotal={200} tax={10} />
+                        <Summary />
                         <Button className='personal-details__btn' onClick={proceedHandler}>REVIEW & PAY</Button>
                     </div>
 
