@@ -1,0 +1,122 @@
+.cartLoginForm{
+    padding: 50px 0;
+    width: 35%;
+    margin: 0 auto;
+    min-width: 500px;
+    border: 1px solid #F44E0C;
+    border-radius: 50px;
+    -webkit-box-shadow: 0px 0px 10px 7px rgba(0,0,0,0.28); 
+box-shadow: 0px 0px 10px 7px rgba(0,0,0,0.28);
+}
+  .cartLoginForm h1 {
+    font-size: 36px;
+    font-weight: 200;
+    text-align: center;
+  }
+  .cartLoginForm form {
+    width: 70%;
+    margin:  30px auto 0;
+  }
+  .cartLoginForm p {
+    clear: both;
+    text-align: left;
+    margin-top: 25px;
+    font-weight: 100;
+  }
+  .cartLoginForm input {
+    outline: none;
+    display: block;
+    background: rgba(0, 0, 0, 0);
+    margin: 20px 0;
+    width: 100%;
+    padding: 15px 0;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: none;
+    color: #fff;
+    -webkit-appearance: none;
+  }
+  
+  .cartLoginForm input:focus {
+    border-bottom: 1px solid #F44E0C;
+  }
+  
+  .cartLoginForm input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    font-weight: 200;
+    opacity: 1;
+    /* Firefox */
+  }
+  
+  .cartLoginForm input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #fff;
+    font-weight: 200;
+  }
+  
+  .cartLoginForm input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #fff;
+    font-weight: 200;
+  }
+  
+  input[type="password"]::-ms-reveal {
+    display: none;
+  }
+  .cartLoginForm p {
+    margin-top: 35px;
+    font-weight: 300;
+  }
+  .toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    z-index: 9;
+    font-size: 26px;
+  }
+  
+  .toggle:focus {
+    outline: none;
+  }
+  
+  .fa {
+    font-size: 2rem;
+  }
+  
+  .text {
+    text-align: justify;
+    font-size: 16px;
+    font-weight: lighter;
+    margin-top: 50px;
+  }
+  
+  .text a {
+    color: #F44E0C;
+    text-decoration: none;
+    padding: 0 4px;
+  }
+  .cartLoginForm .forgotPassword{
+    margin: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  .cartLoginForm .forgotPassword label {
+      width: auto;
+  }
+  .cartLoginForm .forgotPassword .checkbox input{
+        display: none;
+  }
+  .cartLoginForm .forgotPassword a{
+    float: right;
+  }
+  .cartLoginForm .btn {
+    margin-top: 40px;
+    letter-spacing: 5px;
+  }

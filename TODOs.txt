@@ -1,26 +1,26 @@
-checkout steps
-cart badge and pop up
+husevyna@microcreditoabruzzo.it
+Hassan70
+https://tempmailo.com
+
+zaqosaze@microcreditoabruzzo.it
+Hassan70
+#####################
+checkout steps links
+cart pop up
 tostify alerts
 item added to cart modal
 SEARCH BAR MODAL
 SPINNER ON SUBMITTING FORM, ADDING TO CART ,LOADING COURSES
 All APIs
 user sign in , sign up, authentication
-redux user state
 login / sign up forms on checkout but not signed in
 react hook form
 ==========================================================================
-###### APIs###############
+###### APIs ######
 
-https://api.outlineworldacademy.com/api/auth/registration/ 
-Register api  you will get an email once you click on email you will be active user 
 
-https://api.outlineworldacademy.com/api/auth/login/ Login api ( username is not required only email and password are required ) 
-after login you will get access token, refresh token and user details you will always attach the access token to the authorization he3l siteader
-
-https://api.outlineworldacademy.com/api/auth/logout/ Logout api 
-
-https://api.outlineworldacademy.com/api/auth/password/reset/ Reset Password after getting the email  for forgotpassword you should follow this on react side  <Route path="reset/:uid/:token" component={PasswordResetView}/>
+https://api.outlineworldacademy.com/api/auth/password/reset/ Reset Password after getting the email  for forgotpassword you should follow this on react side  
+<Route path="reset/:uid/:token" component={PasswordResetView}/>
 for example I got this email https://api.outlineworldacademy.com/password-reset-confirm/i/app5er-2a2246254a95913cda4687d7f0d5f5c7/ i is the uid and app5er-2a2246254a95913cda4687d7f0d5f5c7 is the token you addd the new password and new password1 and make a post method to the endpoint  /api/auth/password-reset-confirm
 
 https://api.outlineworldacademy.com/api/auth/password/change/ Change password 

@@ -10,6 +10,8 @@ import { register } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/UI/Message'
 import Loader from '../components/UI/Loader'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const isNotEmpty = (value) => {
     return value.trim() !== ''
@@ -26,6 +28,16 @@ const isEmail = email => {
 
 
 const SignupForm = (props) => {
+    const notify = () => toast.success("A verification email has been sent to " + enteredEmail,
+{
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+});
     //#region form inputs
     const {
         value: enteredName,
@@ -128,6 +140,7 @@ const SignupForm = (props) => {
                 formData.append('avatar',photo.pictureAsFile);
                 formData.append('phone','+96170040294');
                 dispatch(register(formData))
+                notify();
             }
         resetEmailInput();
         resetPasswordInput();
@@ -139,6 +152,18 @@ const SignupForm = (props) => {
     }
     return (
         <Form className={`${classes.signUp} ${props.className}`}>
+             <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={true}
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={true}
+                pauseOnHover={false}
+            />
+            <ToastContainer />
             <h1>SIGN UP</h1>
             {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}

@@ -17,6 +17,8 @@ const CardInformation = () => {
                 <button onClick={goBackHandler} className='goBackButton'>Back</button>
                 <label>Card Number</label>
                 <input id='cardNumber' name='cardNumber' type='text' />
+                <label>Card Number</label>
+                <input id='cardNumber' name='cardNumber' type='text' placeholder="0000 0000 0000 0000" minlength="19" maxlength="19"/>
                <div > 
                <span>
                     <label>Expiry Date</label>
@@ -24,7 +26,7 @@ const CardInformation = () => {
                 </span>
                 <span>
                     <label>Card Code (CVC)</label>
-                    <input id='cvc' name='cvc' type='text' />
+                    <input id='cvc' name='cvc' type='password' placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="3"/>
                 </span>
                </div>
 

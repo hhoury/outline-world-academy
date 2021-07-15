@@ -46,13 +46,14 @@ const App = () => {
                <Route path='/courses'><CoursesPage /></Route>
                <Route path='/my-courses'><MyCoursesPage /></Route>
                <Route path='/profile'><ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler}/></Route>
-               <Route path='/sign-up' component={SignupPage} />
+               <Route path='/sign-up'><SignupPage /></Route>
                <Route path='/sign-in'><SigninPage /></Route>
                <Route path='/password-reset'><ForgotPasswordPage /></Route>
                <Route path='/about-us'><AboutPage /></Route>
                <Route path='/blog'><BlogPage /></Route>
                <Route path='/contact-us'><ContactUsPage /></Route>
                <Route path='/policy'><PolicyPage /></Route>
+               <Route path="reset/:uid/:token"></Route>
                <Route path='/home'><HomePage /></Route>
                <Route path='/' exact>
                   <Redirect to='/home' />
