@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { forwardRef, useRef, useImperativeHandle } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import classes from './PersonalDetailsForm.module.css'
 import useInput from '../../hooks/use-input'
 
@@ -16,7 +16,8 @@ const isEmail = email => {
     }
 }
 
-const PersonalDetails = () => {
+const PersonalDetails = forwardRef((props, ref) => {
+    const history = useHistory()
     const {
         value: enteredFName,
         hasError: fnameInputHasError,
@@ -84,28 +85,32 @@ const PersonalDetails = () => {
     const streetClasses = streetInputHasError ? 'invalid' : '';
     const phoneClasses = phoneInputHasError ? 'invalid' : '';
 
-    
+
     let formIsValid = false;
     if (enteredEmailIsValid && enteredFNameIsValid && enteredLNameIsValid && enteredCountryIsValid && enteredTownIsValid && enteredStreetIsValid && enteredPhoneIsValid) {
         formIsValid = true;
     }
-    const formSubmitHandler = (event) => {
-        event.preventDefault();
-        if (!formIsValid) {
-            return;
+    useImperativeHandle(ref, () => ({
+        formSubmitHandler(event) {
+            console.log(formIsValid);
+            event.preventDefault();
+            if (!formIsValid) {
+                return;
+            }
+            resetEmailInput();
+            resetFNameInput();
+            resetLNameInput();
+            resetCountryInput();
+            resetTownInput();
+            resetStreetInput();
+            resetPhoneInput();
+            history.push('/payment')
         }
-        resetEmailInput();
-        resetFNameInput();
-        resetLNameInput();
-        resetCountryInput();
-        resetTownInput();
-        resetStreetInput();
-        resetPhoneInput();
-        
-    }
+    })
+    )
     return (
         <>
-            <form onSubmit={formSubmitHandler} className={`col-lg-7 col-md-12 col-sm-12 ${classes.PersonalDetailsForm}`}>
+            <form className={`col-lg-7 col-md-12 col-sm-12 ${classes.PersonalDetailsForm}`}>
                 <h1>Billing Details</h1>
                 <Link to='/order-details'>Back</Link>
 
@@ -113,52 +118,51 @@ const PersonalDetails = () => {
                     <span>
                         <label htmlFor='fname'>First name</label>
                         <input id='fname' name='fname' type='text' required className={fNameClasses}
-                         value={enteredFName}
-                         onChange={fnameChangedHandler}
-                         onBlur={fnameBlurHandler} />
+                            value={enteredFName}
+                            onChange={fnameChangedHandler}
+                            onBlur={fnameBlurHandler} />
                     </span>
                     <span>
                         <label htmlFor='lname'>Last Name</label>
-                        <input id='lname' name='lname' type='text' required className={lNameClasses} 
-                         value={enteredLName}
-                         onChange={lnameChangedHandler}
-                         onBlur={lnameBlurHandler} />
+                        <input id='lname' name='lname' type='text' required className={lNameClasses}
+                            value={enteredLName}
+                            onChange={lnameChangedHandler}
+                            onBlur={lnameBlurHandler} />
                     </span>
                 </div>
                 <label htmlFor='email'>Email</label>
                 <input type='email' id='email' name='email' required className={emailClasses}
-                 value={enteredEmail}
-                 onChange={emailChangedHandler}
-                 onBlur={emailBlurHandler} />
+                    value={enteredEmail}
+                    onChange={emailChangedHandler}
+                    onBlur={emailBlurHandler} />
 
                 <label htmlFor='country'>Country / Region</label>
                 <input type='text' id='country' name='country' required className={countryClasses}
-                 value={enteredCountry}
+                    value={enteredCountry}
                     onChange={countryChangedHandler}
                     onBlur={countryBlurHandler} />
 
                 <label htmlFor='town'>Town / City</label>
                 <input type='text' id='town' name='town' required className={townClasses}
-                 value={enteredTown}
+                    value={enteredTown}
                     onChange={townChangedHandler}
                     onBlur={townBlurHandler} />
 
                 <label htmlFor='street'>Street adress</label>
                 <input type='text' id='street' name='street' required className={streetClasses}
-                 value={enteredStreet}
+                    value={enteredStreet}
                     onChange={streetChangedHandler}
                     onBlur={streetBlurHandler} />
 
                 <label htmlFor='phone'>Phone</label>
                 <input type='tel' id='phone' name='phone' required className={phoneClasses}
-                 value={enteredPhone}
+                    value={enteredPhone}
                     onChange={phoneChangedHandler}
                     onBlur={phoneBlurHandler} />
             </form>
-
         </>
 
     )
-}
+})
 
 export default PersonalDetails

@@ -16,7 +16,7 @@ const CardInformation = () => {
                 <label>Cardholder's Name:</label>
                 <input id='cardHolder' name='cardHolder' type='text' />
                 <label>Card Number</label>
-                <input id='cardNumber' type="number" name='cardNumber'  placeholder="0000 0000 0000 0000" minlength="16" maxLength="16"/>
+                <input id='cardNumber' type="number" name='cardNumber'  placeholder="0000 0000 0000 0000" minLength="16" maxLength="16"/>
                <div > 
                <span>
                     <label>Expiry Date</label>
@@ -24,7 +24,7 @@ const CardInformation = () => {
                 </span>
                 <span>
                     <label>Card Code (CVC)</label>
-                    <input id='cvc' name='cvc' type='password' placeholder="&#9679;&#9679;&#9679;" minlength="3" maxLength="3"/>
+                    <input id='cvc' name='cvc' type='password' placeholder="&#9679;&#9679;&#9679;" minLength="3" maxLength="3"/>
                 </span>
                </div>
             </form>
