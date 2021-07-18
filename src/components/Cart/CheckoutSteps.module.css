@@ -30,6 +30,7 @@
     right: 0;
 }
 .checkout__stepNumber, .checkout__stepLabel {
+
     display: block;
 }
 .checkout__stepNumber {

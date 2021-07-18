@@ -11,14 +11,12 @@ const CardInformation = () => {
     return (
         <>
             <form className={`col-lg-7 col-md-12 col-sm-12 ${classes.CardInformationForm}`}>
-
                 <h1>Card Information</h1>
-               
                 <button onClick={goBackHandler} className='goBackButton'>Back</button>
+                <label>Cardholder's Name:</label>
+                <input id='cardHolder' name='cardHolder' type='text' />
                 <label>Card Number</label>
-                <input id='cardNumber' name='cardNumber' type='text' />
-                <label>Card Number</label>
-                <input id='cardNumber' name='cardNumber' type='text' placeholder="0000 0000 0000 0000" minlength="19" maxlength="19"/>
+                <input id='cardNumber' type="number" name='cardNumber'  placeholder="0000 0000 0000 0000" minlength="16" maxLength="16"/>
                <div > 
                <span>
                     <label>Expiry Date</label>
@@ -26,10 +24,9 @@ const CardInformation = () => {
                 </span>
                 <span>
                     <label>Card Code (CVC)</label>
-                    <input id='cvc' name='cvc' type='password' placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="3"/>
+                    <input id='cvc' name='cvc' type='password' placeholder="&#9679;&#9679;&#9679;" minlength="3" maxLength="3"/>
                 </span>
                </div>
-
             </form>
         </>
     )

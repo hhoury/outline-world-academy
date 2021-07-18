@@ -88,13 +88,10 @@ const SignupForm = (props) => {
     const confirmPasswordClasses = confirmPasswordInputHasError ? 'invalid' : '';
     const photoRef = useRef()
     //#endregion
-    let formIsValid = false;
-    if (enteredEmailIsValid &&
-        enteredPasswordIsValid &&
-        enteredConfirmPasswordIsValid &&
-        enteredNameIsValid) {
-        formIsValid = true;
-    }
+    let formIsValid = (enteredEmailIsValid &&
+    enteredPasswordIsValid &&
+    enteredConfirmPasswordIsValid &&
+    enteredNameIsValid)
 
     const [passwordShown, setPasswordShown] = useState(false);
     const showPasswordHandler = (event) => {
@@ -106,7 +103,7 @@ const SignupForm = (props) => {
     const showConfirmPasswordHandler = (event) => {
         event.preventDefault();
         setConfirmPasswordShown(!confirmPasswordShown);
-    }
+}
     const uploadPhoto = (e) => {
         setPhoto({
           pictureAsFile: e.target.files[0],
@@ -167,7 +164,7 @@ const SignupForm = (props) => {
             <h1>SIGN UP</h1>
             {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}
-            {loading && <Loader />}
+            {loading && <Loader message='Creating your Account' />}
             <form onSubmit={formSubmitHandler}>
               
 

@@ -1,20 +1,22 @@
 husevyna@microcreditoabruzzo.it
 Hassan70
 https://tempmailo.com
-
-zaqosaze@microcreditoabruzzo.it
+wecebi@forexlist.in
+tineca@microcreditoabruzzo.it
 Hassan70
 #####################
 checkout steps links
+confirmation page
 cart pop up
-tostify alerts
 item added to cart modal
 SEARCH BAR MODAL
 SPINNER ON SUBMITTING FORM, ADDING TO CART ,LOADING COURSES
 All APIs
+lazy load
 user sign in , sign up, authentication
 login / sign up forms on checkout but not signed in
 react hook form
+login redirect to next page
 ==========================================================================
 ###### APIs ######
 

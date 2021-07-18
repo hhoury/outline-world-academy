@@ -22,14 +22,12 @@ const PersonalDetailsPage = () => {
     </div>
 
 </div>);
-  const dispatch = useDispatch()
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
     return (
         <>
             <Header fullMenu={true} />
-
             <div className='personal-details'>
                 <CheckoutSteps step1 step2 />
                 {userInfo? loggedInUser : <CartLoginForm/> }

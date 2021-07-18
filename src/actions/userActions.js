@@ -42,7 +42,7 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         const { data } = await axios.post('https://api.outlineworldacademy.com/api/auth/logout/')
-        console.log(data);
+     
         localStorage.removeItem('userInfo')
         dispatch({ type: USER_LOGOUT })
         document.location.href = '/'

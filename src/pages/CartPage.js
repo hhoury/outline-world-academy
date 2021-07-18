@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import CartContext from '../store/cart-context'
+import React from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import CartItem from '../components/Cart/CartItem'
@@ -7,6 +6,8 @@ import Button from '../components/UI/Button'
 import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from 'react-redux'
+import { removeFromCart } from '../actions/cartActions'
 
 const notify = () => toast.error("Course Removed from Cart",
     {
@@ -20,12 +21,15 @@ const notify = () => toast.error("Course Removed from Cart",
     });
 
 const CartPage = () => {
-    const cartCtx = useContext(CartContext)
-    const totalAmount = cartCtx.totalAmount.toFixed(2)
-    const history = useHistory();
 
+
+    const history = useHistory();
+    const dispatch = useDispatch()
+
+    const cart = useSelector((state) => state.cart)
+    const { cartItems,totalAmount } = cart
     const removeItemHandler = (id) => {
-        cartCtx.removeItem(id)
+        dispatch(removeFromCart(id))
         notify();
     }
     const checkoutHandler = () => {
@@ -35,13 +39,16 @@ const CartPage = () => {
         history.push('./courses')
     }
 
-    const loggedInUser = (cartCtx.items.length === 0 ?
+    const loggedInUser = (cartItems.length === 0 ?
         <div className='empty-cart'>
             <h3>0 Courses in Cart</h3>
             <div>
                 <i className="far fa-shopping-cart"></i>
                 <p>Your cart is empty. Keep shopping to find a course!</p>
-                <Button onClick={keepShoppingButtonHandler} className='empty-cart-button'>Keep Shopping</Button>
+                <Button onClick={keepShoppingButtonHandler}
+                    className='empty-cart-button'>
+                    Keep Shopping
+                </Button>
             </div>
         </div>
         :
@@ -57,8 +64,10 @@ const CartPage = () => {
                             <th scope="col">Subtotal</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        {cartCtx.items.map((item) =>
+
+                        {cartItems.map((item) =>
                             <CartItem
                                 key={item.id}
                                 id={item.id}

@@ -30,8 +30,15 @@
     border: none;
     width: 100%;
     outline: none;
+    letter-spacing: 5px;
 }
-
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
 .CardInformationForm>div {
     display: flex;
     flex-direction: row;

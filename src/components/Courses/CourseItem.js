@@ -1,42 +1,47 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import classes from './CourseItem.module.css'
-import CartContext from '../../store/cart-context'
 import Button from '../UI/Button'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addToCart } from '../../actions/cartActions'
+import { useDispatch,useSelector } from 'react-redux'
+
 
 const notify = () => toast.success("Course Added to Cart",
-{
-    position: "top-right",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-});
+    {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+    });
 
 const CourseItem = (props) => {
-  
+    const dispatch = useDispatch()
+    const cart = useSelector((state) => state.cart)
+    const { cartItems } = cart
+
     const history = useHistory();
-    const cartCtx = useContext(CartContext);
     const addToCartHandler = () => {
-        cartCtx.addItem({
-            id: props.id,
-            title: props.title,
-            price: props.price,
-            chapters: props.chapters
-        })
+        dispatch(addToCart(
+            {
+                id: props.id,
+                title: props.title,
+                price: props.price,
+                chapters: props.chapters
+            }
+        ))
         notify();
     }
     const goToCartHandler = () => {
         history.push('/cart')
     }
-    const existingCartItemIndex = cartCtx.items.findIndex(item => item.id === props.id);
-    const existingCartItem = cartCtx.items[existingCartItemIndex];
-
-
+   
+    const existingCartItemIndex = cartItems.findIndex(item => item.id === props.id);
+    const existingCartItem = cartItems[existingCartItemIndex];
 
     return (
         <>
@@ -59,16 +64,15 @@ const CourseItem = (props) => {
                 <h1>{props.title}</h1>
                 <div className={classes.footer}>
                     <Link to={`/courses/${props.id}`}>View Course Details</Link>
-                    {!existingCartItem ? <Button onClick={addToCartHandler} className={classes.btn}>Add To Cart <i className="far fa-shopping-cart"></i></Button> :
+
+                    {!existingCartItem ?
+                        <Button onClick={addToCartHandler.bind(props.id)} className={classes.btn}>Add To Cart <i className="far fa-shopping-cart"></i></Button>
+                        :
                         <Button onClick={goToCartHandler} className={`${classes.btn} ${classes.btnGoToCart}`}>Go To Cart <i className="far fa-shopping-cart"></i></Button>
                     }
-
                 </div>
             </li>
         </>
-
-
-
     )
 }
 

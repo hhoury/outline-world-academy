@@ -65,7 +65,7 @@ const CartLoginForm = () => {
         dispatch(login(enteredEmail, enteredPassword))
         resetEmailInput();
         resetPasswordInput();
-        document.location.href = '/cart'
+        // document.location.href = '/cart'
     }
 
     return (

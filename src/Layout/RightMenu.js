@@ -2,7 +2,6 @@ import React, { useState, useRef, useContext } from 'react'
 import classes from './RightMenu.module.css'
 import { Link, useHistory } from 'react-router-dom'
 import { Overlay, OverlayTrigger, Popover } from 'react-bootstrap'
-import CartContext from '../store/cart-context'
 import { logout } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -14,6 +13,9 @@ const RightMenu = (props) => {
 
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
+
+    const cart = useSelector((state) => state.cart)
+    const {cartItems} = cart
 
     const logoutHandler = () => {
         dispatch(logout())
@@ -58,11 +60,6 @@ const RightMenu = (props) => {
     </Popover>);
 
     const history = useHistory();
-
-
-    
-    const cartCtx = useContext(CartContext);
-
 
     const [showUserMenu, setShowUserMenu] = useState(false);
     const [targetUserMenu, setTargetUserMenu] = useState(null);
@@ -109,7 +106,7 @@ const RightMenu = (props) => {
                             <i className="fal fa-shopping-bag"></i>
                         </button>
 
-                        {cartCtx.items.length !== 0 && <span>{cartCtx.items.length}</span>}
+                        {cartItems.length !== 0 && <span>{cartItems.length}</span>}
                     </li>
                     <li><Link to='/home'><i className="fal fa-search"></i></Link></li>
                 </ul>
