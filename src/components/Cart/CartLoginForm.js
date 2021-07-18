@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/UI/Message'
 import Loader from '../../components/UI/Loader'
@@ -7,7 +7,7 @@ import useInput from '../../hooks/use-input'
 import Button from '../../components/UI/Button'
 import CheckBox from '../../components/UI/CheckBox'
 import classes from './CartLoginForm.module.css'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 const isNotEmpty = (value) => {
     return value.trim() !== ''
   }
@@ -21,6 +21,7 @@ const isNotEmpty = (value) => {
   }
 
 const CartLoginForm = () => {
+  const history = useHistory();
       const {
     value: enteredEmail,
     hasError: emailInputHasError,
@@ -50,7 +51,6 @@ const CartLoginForm = () => {
   const showPasswordHandler = (event) => {
     event.preventDefault();
     setPasswordShown(!passwordShown);
-
   }
   
   const dispatch = useDispatch()
@@ -65,9 +65,12 @@ const CartLoginForm = () => {
         dispatch(login(enteredEmail, enteredPassword))
         resetEmailInput();
         resetPasswordInput();
-        // document.location.href = '/cart'
     }
-
+    useEffect(() => {
+      if (userInfo) {
+        history.push('/billing-details')
+      }
+    }, [history, userInfo,])
     return (
         <div className={classes.cartLoginForm}>
              <h1>Sign in</h1>

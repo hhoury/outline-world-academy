@@ -38,7 +38,7 @@ const App = () => {
             <Switch>
                <Route path='/cart'><CartPage /></Route>
                <Route path='/order-details'><OrderDetailsPage /></Route>
-               <Route path='/personal-details'><PersonalDetailsPage /></Route>
+               <Route path='/billing-details'><PersonalDetailsPage /></Route>
                <Route path='/payment'><PaymentPage /></Route>
                <Route path='/order-review'><OrderReviewPage /></Route>
                <Route path='/courses/:id/chapter/:id/:id'><CourseChapterLessonPage /></Route>

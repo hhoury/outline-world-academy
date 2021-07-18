@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom'
 const OrderDetailsPage = () => {
     const history = useHistory();
 const proceedHandler = () => {
-    history.push('/personal-details')
+    history.push('/billing-details')
 }
     return (
         <>

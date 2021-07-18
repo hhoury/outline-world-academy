@@ -30,7 +30,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                 </div>
             }
             {step2 ?
-                <LinkContainer style={{ cursor: 'pointer' }} to='/personal-details'>
+                <LinkContainer style={{ cursor: 'pointer' }} to='/billing-details'>
 
                     <div className={`${classes.checkout__step}
 ${classes.checkout__stepPrevious}`}>

@@ -76,6 +76,7 @@ const SigninForm = (props) => {
     dispatch(login(enteredEmail, enteredPassword))
     resetEmailInput();
     resetPasswordInput();
+    // document.location.href = '/'
   }
   return (
     <Form className={`${classes.signIn} ${props.className}`}>

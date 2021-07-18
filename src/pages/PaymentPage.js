@@ -15,7 +15,7 @@ const PaymentPage = () => {
     return (
         <>
             <Header fullMenu={true} />
-            <div className='personal-details'>
+            <div className='billing-details'>
                 <CheckoutSteps step1 step2 step3/>
                 <div className='row content'>
                     <CardInformationForm />

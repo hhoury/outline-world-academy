@@ -13,6 +13,7 @@ import {
       },
     })
     localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+    localStorage.setItem('totalAmount', JSON.stringify(getState().cart.totalAmount))
   }
   
   export const removeFromCart = (id) => (dispatch, getState) => {
@@ -21,6 +22,7 @@ import {
       payload: id,
     })
     localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+    localStorage.setItem('totalAmount', JSON.stringify(getState().cart.totalAmount))
   }
   
   export const saveShippingAddress = (data) => (dispatch) => {
