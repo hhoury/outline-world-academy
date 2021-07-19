@@ -9,7 +9,9 @@ import OrderItem from '../components/Cart/OrderItem'
 const OrderReviewPage = () => {
     const cart = useSelector((state) => state.cart)
     const { cartItems, shippingAddress, totalAmount, paymentInfo } = cart
+    const placeOrderHandler = () => {
 
+    }
     return (
         <>
             <Header fullMenu={true} />
@@ -60,25 +62,28 @@ const OrderReviewPage = () => {
                         <ul className='payment'>
                             <li>
                                 <span>Cardholder's Name:</span>
-                                <span></span>
+                                <span>{paymentInfo.cardholder}</span>
                             </li>
                             <li>
                                 <span>Card Number:</span>
-                                <span>
+                                <span>{paymentInfo.cardNumber}
                                 </span>
                             </li>
                             <li>
                                 <span>Expiry Date:</span>
-                                <span>
+                                <span>{paymentInfo.expiryDate}
                                 </span>
                             </li>
                             <li>
                                 <span>CVC:</span>
-                                <span></span>
+                                <span>{paymentInfo.cvc}</span>
                             </li>
                         </ul>
                     </div>
+                    <div className='order-review__summary'>
                     <Summary />
+                    <Button onClick={placeOrderHandler} className='order-review__button'>Place Order</Button>
+                    </div>
                 </div>
 
             </div>
