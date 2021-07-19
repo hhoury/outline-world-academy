@@ -5,15 +5,13 @@ import CheckoutSteps from '../components/Cart/CheckoutSteps'
 import Summary from '../components/Cart/Summary'
 import Button from '../components/UI/Button'
 import PersonalDetailsForm from '../components/Cart/PersonalDetailsForm'
-import { useHistory } from 'react-router-dom'
 import CartLoginForm from '../components/Cart/CartLoginForm'
 import {  useSelector } from 'react-redux'
 
 const PersonalDetailsPage = () => {
     const formRef = useRef();
-    const history = useHistory()
     const proceedHandler = (e) => {
-        formRef.current.formSubmitHandler(e)
+        formRef.current.formSubmitHandler(e);
     }
     const loggedInUser = (<div className='row content'>
     <PersonalDetailsForm ref={formRef} />

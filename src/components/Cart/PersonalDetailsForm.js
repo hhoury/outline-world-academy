@@ -1,7 +1,9 @@
-import React, { forwardRef, useRef, useImperativeHandle } from 'react'
+import React, { forwardRef, useImperativeHandle, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import classes from './PersonalDetailsForm.module.css'
 import useInput from '../../hooks/use-input'
+import { useDispatch, useSelector } from 'react-redux'
+import {saveShippingAddress} from '../../actions/cartActions'
+import classes from './PersonalDetailsForm.module.css'
 
 const isNotEmpty = (value) => {
     return value.trim() !== ''
@@ -17,6 +19,7 @@ const isEmail = email => {
 }
 
 const PersonalDetails = forwardRef((props, ref) => {
+    const dispatch = useDispatch()
     const history = useHistory()
     const {
         value: enteredFName,
@@ -24,7 +27,8 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredFNameIsValid,
         valueChangeHandler: fnameChangedHandler,
         inputBlurHandler: fnameBlurHandler,
-        reset: resetFNameInput
+        reset: resetFNameInput,
+        setValue: setFNameValue
     } = useInput(isNotEmpty);
 
     const {
@@ -33,7 +37,8 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredLNameIsValid,
         valueChangeHandler: lnameChangedHandler,
         inputBlurHandler: lnameBlurHandler,
-        reset: resetLNameInput
+        reset: resetLNameInput,
+        setValue: setLNameValue
     } = useInput(isNotEmpty);
 
     const {
@@ -42,7 +47,8 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredEmailIsValid,
         valueChangeHandler: emailChangedHandler,
         inputBlurHandler: emailBlurHandler,
-        reset: resetEmailInput
+        reset: resetEmailInput,
+        setValue: setEmailValue
     } = useInput(isEmail);
     const {
         value: enteredCountry,
@@ -50,7 +56,8 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredCountryIsValid,
         valueChangeHandler: countryChangedHandler,
         inputBlurHandler: countryBlurHandler,
-        reset: resetCountryInput
+        reset: resetCountryInput,
+        setValue: setCountryValue
     } = useInput(isNotEmpty);
     const {
         value: enteredTown,
@@ -58,7 +65,8 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredTownIsValid,
         valueChangeHandler: townChangedHandler,
         inputBlurHandler: townBlurHandler,
-        reset: resetTownInput
+        reset: resetTownInput,
+        setValue: setTownValue
     } = useInput(isNotEmpty);
     const {
         value: enteredStreet,
@@ -66,7 +74,8 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredStreetIsValid,
         valueChangeHandler: streetChangedHandler,
         inputBlurHandler: streetBlurHandler,
-        reset: resetStreetInput
+        reset: resetStreetInput,
+        setValue: setStreetValue
     } = useInput(isNotEmpty);
     const {
         value: enteredPhone,
@@ -74,16 +83,24 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredPhoneIsValid,
         valueChangeHandler: phoneChangedHandler,
         inputBlurHandler: phoneBlurHandler,
-        reset: resetPhoneInput
+        reset: resetPhoneInput,
+        setValue: setPhoneValue
     } = useInput(isNotEmpty);
-
-    const fNameClasses = fnameInputHasError ? 'invalid' : '';
-    const lNameClasses = lnameInputHasError ? 'invalid' : '';
-    const emailClasses = emailInputHasError ? 'invalid' : '';
-    const countryClasses = countryInputHasError ? 'invalid' : '';
-    const townClasses = townInputHasError ? 'invalid' : '';
-    const streetClasses = streetInputHasError ? 'invalid' : '';
-    const phoneClasses = phoneInputHasError ? 'invalid' : '';
+    
+    const cart = useSelector((state) => state.cart)
+    const { shippingAddress } = cart
+    useEffect(() => {
+        if(shippingAddress)
+        {
+            setFNameValue(shippingAddress.fname)
+            setLNameValue(shippingAddress.lname)
+            setEmailValue(shippingAddress.email)
+            setCountryValue(shippingAddress.country)
+            setTownValue(shippingAddress.town)
+            setStreetValue(shippingAddress.street)
+            setPhoneValue(shippingAddress.phone)
+        }
+    }, [shippingAddress])
 
 
     let formIsValid = false;
@@ -92,73 +109,110 @@ const PersonalDetails = forwardRef((props, ref) => {
     }
     useImperativeHandle(ref, () => ({
         formSubmitHandler(event) {
-            console.log(formIsValid);
             event.preventDefault();
             if (!formIsValid) {
                 return;
             }
-            resetEmailInput();
-            resetFNameInput();
-            resetLNameInput();
-            resetCountryInput();
-            resetTownInput();
-            resetStreetInput();
-            resetPhoneInput();
+            dispatch(saveShippingAddress({
+                fname: enteredFName,
+                lname: enteredLName,
+                email: enteredEmail,
+                country: enteredCountry,
+                town: enteredTown,
+                street: enteredStreet,
+                phone: enteredPhone
+            }))
             history.push('/payment')
         }
     })
     )
     return (
         <>
-            <form className={`col-lg-7 col-md-12 col-sm-12 ${classes.PersonalDetailsForm}`}>
+            <form onSubmit={props.proceedHandler} className={`col-lg-7 col-md-12 col-sm-12 ${classes.PersonalDetailsForm}`}>
+                
                 <h1>Billing Details</h1>
                 <Link to='/order-details'>Back</Link>
 
                 <div className={classes.name}>
                     <span>
                         <label htmlFor='fname'>First name</label>
-                        <input id='fname' name='fname' type='text' required className={fNameClasses}
+                        <input
+                            id='fname'
+                            name='fname'
+                            type='text'
+                            required
+                            style={ fnameInputHasError ? {border: '1px solid red'}:{}}
                             value={enteredFName}
                             onChange={fnameChangedHandler}
                             onBlur={fnameBlurHandler} />
                     </span>
                     <span>
                         <label htmlFor='lname'>Last Name</label>
-                        <input id='lname' name='lname' type='text' required className={lNameClasses}
+                        <input
+                            id='lname'
+                            name='lname'
+                            type='text'
+                            required
                             value={enteredLName}
                             onChange={lnameChangedHandler}
-                            onBlur={lnameBlurHandler} />
+                            onBlur={lnameBlurHandler} 
+                             style={ lnameInputHasError ? {border: '1px solid red'}:{}}/>
                     </span>
                 </div>
                 <label htmlFor='email'>Email</label>
-                <input type='email' id='email' name='email' required className={emailClasses}
+                <input
+                    type='email'
+                    id='email'
+                    name='email'
+                    required
                     value={enteredEmail}
                     onChange={emailChangedHandler}
-                    onBlur={emailBlurHandler} />
+                    onBlur={emailBlurHandler} 
+                     style={ emailInputHasError ? {border: '1px solid red'}:{}}/>
 
                 <label htmlFor='country'>Country / Region</label>
-                <input type='text' id='country' name='country' required className={countryClasses}
+                <input
+                    type='text'
+                    id='country'
+                    name='country'
+                    required
                     value={enteredCountry}
                     onChange={countryChangedHandler}
-                    onBlur={countryBlurHandler} />
+                    onBlur={countryBlurHandler} 
+                     style={ countryInputHasError ? {border: '1px solid red'}:{}}/>
 
                 <label htmlFor='town'>Town / City</label>
-                <input type='text' id='town' name='town' required className={townClasses}
+                <input 
+                type='text' 
+                id='town' 
+                name='town' 
+                required
                     value={enteredTown}
                     onChange={townChangedHandler}
-                    onBlur={townBlurHandler} />
+                    onBlur={townBlurHandler} 
+                     style={ townInputHasError ? {border: '1px solid red'}:{}}/>
 
                 <label htmlFor='street'>Street adress</label>
-                <input type='text' id='street' name='street' required className={streetClasses}
+                <input
+                    type='text'
+                    id='street'
+                    name='street'
+                    required
                     value={enteredStreet}
                     onChange={streetChangedHandler}
-                    onBlur={streetBlurHandler} />
+                    onBlur={streetBlurHandler} 
+                     style={ streetInputHasError ? {border: '1px solid red'}:{}}/>
 
                 <label htmlFor='phone'>Phone</label>
-                <input type='tel' id='phone' name='phone' required className={phoneClasses}
+                <input
+                    type='tel'
+                    id='phone'
+                    name='phone'
+                    required
                     value={enteredPhone}
                     onChange={phoneChangedHandler}
-                    onBlur={phoneBlurHandler} />
+                    onBlur={phoneBlurHandler} 
+                    style={ phoneInputHasError ? {border: '1px solid red'}:{}}/>
             </form>
         </>
 

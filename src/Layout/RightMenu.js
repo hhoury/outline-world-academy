@@ -1,7 +1,7 @@
-import React, { useState, useRef, useContext } from 'react'
+import React, { useState, useRef } from 'react'
 import classes from './RightMenu.module.css'
 import { Link, useHistory } from 'react-router-dom'
-import { Overlay, OverlayTrigger, Popover } from 'react-bootstrap'
+import {  OverlayTrigger, Popover } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 

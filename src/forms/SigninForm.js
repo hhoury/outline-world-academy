@@ -61,13 +61,6 @@ const SigninForm = (props) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
 
-
-  // useEffect(() => {
-  //   if (userInfo) {
-  //    history.push('/')
-  //   }
-  // }, [history, userInfo])
-
   const formSubmitHandler = (event) => {
     event.preventDefault();
     if (!formIsValid) {

@@ -3,14 +3,14 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from "redux-devtools-extension";
 import { cartReducer } from './reducers/cartReducers'
 import {
-    userLoginReducer,
-    userRegisterReducer,
-    userDetailsReducer,
-    userUpdateProfileReducer,
-    userDeleteReducer,
-    userUpdateReducer,
-  } from './reducers/userReducers'
-  
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
+  userDeleteReducer,
+  userUpdateReducer,
+} from './reducers/userReducers'
+
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
@@ -20,36 +20,44 @@ const reducer = combineReducers({
   userUpdate: userUpdateReducer,
   cart: cartReducer,
 })
-  
+
 const cartItemsFromStorage = localStorage.getItem('cartItems')
-? JSON.parse(localStorage.getItem('cartItems'))
-: []
+  ? JSON.parse(localStorage.getItem('cartItems'))
+  : []
 
 const totalAmountFromStorage = localStorage.getItem('totalAmount')
-? JSON.parse(localStorage.getItem('totalAmount'))
-: []
+  ? JSON.parse(localStorage.getItem('totalAmount'))
+  : []
 
 const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
   ? JSON.parse(localStorage.getItem('shippingAddress'))
   : {}
 
-  const userInfoFromStorage = localStorage.getItem('userInfo')
+  const paymentInfoFromStorage = localStorage.getItem('paymentInfo')
+  ? JSON.parse(localStorage.getItem('paymentInfo'))
+  : {}
+
+const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
   : null
 
-const initialState= {  cart: {
-  cartItems: cartItemsFromStorage,
-  shippingAddress: shippingAddressFromStorage,
-  totalAmount: totalAmountFromStorage? totalAmountFromStorage: 0
-},
-userLogin: { userInfo: userInfoFromStorage },
+const initialState = {
+  cart:
+  {
+    cartItems: cartItemsFromStorage,
+    shippingAddress: shippingAddressFromStorage,
+    totalAmount: totalAmountFromStorage ? totalAmountFromStorage : 0,
+    paymentInfo: paymentInfoFromStorage
+  },
+  userLogin: { userInfo: userInfoFromStorage },
 }
 
 const middleware = [thunk]
 
 const store = createStore(
-  reducer, initialState,
+  reducer,
+  initialState,
   composeWithDevTools(applyMiddleware(...middleware))
-  )
+)
 
 export default store

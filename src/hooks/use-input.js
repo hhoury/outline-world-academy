@@ -15,6 +15,10 @@ const inputStateReducer = (state, action) => {
     return {
       isTouched: false, value: ''
     }
+    if (action.type === 'SET_VALUE')
+    return {
+      value: action.value
+    }
 }
 
 const useInput = (validateValue) => {
@@ -33,14 +37,17 @@ const useInput = (validateValue) => {
   const reset = () => {
     dispatch({ type: 'RESET' })
   }
-
+  const setValue = (newVal) => {
+    dispatch({ type: 'SET_VALUE', value: newVal })
+  }
   return {
     value: inputState.value,
     isValid: valueIsValid,
     hasError,
     valueChangeHandler,
     inputBlurHandler,
-    reset
+    reset,
+    setValue
   }
 }
 export default useInput

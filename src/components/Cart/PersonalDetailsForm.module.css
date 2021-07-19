@@ -8,7 +8,6 @@
 .PersonalDetailsForm h1 {
     font-size: 28px;
     display: inline-block;
-    margin: 0;
 }
 .PersonalDetailsForm > a {
     float: right;
@@ -41,6 +40,10 @@
 .PersonalDetailsForm .name span{
   width: 48%;
 }
+.invalid{
+    border: 1px solid red;
+}
+
 @media screen and (max-width:480px) {
     .PersonalDetailsForm > a {
         float: right;

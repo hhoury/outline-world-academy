@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import { useHistory } from 'react-router'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
@@ -7,10 +7,11 @@ import Summary from '../components/Cart/Summary'
 import Button from '../components/UI/Button'
 import CardInformationForm from '../components/Cart/CardInformationForm'
 const PaymentPage = () => {
+    const formRef = useRef();
     const history = useHistory();
     const proceedHandler = (e) => {
         e.preventDefault();
-        history.push('order-review')
+        formRef.current.cardInfoSubmitHandler(e);
     }
     return (
         <>
@@ -18,7 +19,7 @@ const PaymentPage = () => {
             <div className='personal-details'>
                 <CheckoutSteps step1 step2 step3/>
                 <div className='row content'>
-                    <CardInformationForm />
+                    <CardInformationForm ref={formRef} />
                     <div className='col-lg-4 col-md-12 col-sm-12 payment-summary'>
                         <Summary />
                         <Button className='personal-details__btn' onClick={proceedHandler}>REVIEW & PAY</Button>

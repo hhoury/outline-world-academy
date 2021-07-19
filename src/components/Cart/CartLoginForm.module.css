@@ -119,4 +119,13 @@ box-shadow: 0px 0px 10px 7px rgba(0,0,0,0.28);
   .cartLoginForm .btn {
     margin-top: 40px;
     letter-spacing: 5px;
+    position: relative;
+  }
+  .cartLoginForm .btn > span {
+    position: absolute;
+    left: 35px;
+    
+  }
+  .cartLoginForm .btn span span {
+    background-color: #fff;
   }
