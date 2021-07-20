@@ -127,7 +127,9 @@ input[type="password"]::-ms-reveal {
   cursor: pointer;
   font-size: 30px;
 }
-
+.signUp .btn span span {
+  background-color: #fff;
+}
 @media screen and (max-width: 1440px) {
   .signUp {
     overflow-y: auto;

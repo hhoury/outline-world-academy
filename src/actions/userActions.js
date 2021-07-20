@@ -8,10 +8,14 @@ import {
     USER_LOGOUT,
     USER_LOGOUT_FAIL,
     USER_REGISTER_FAIL,
-    USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS,
+    USER_REGISTER_REQUEST,
+    USER_REGISTER_SUCCESS,
     USER_UPDATE_PROFILE_FAIL,
     USER_UPDATE_PROFILE_REQUEST,
-    USER_UPDATE_PROFILE_SUCCESS
+    USER_UPDATE_PROFILE_SUCCESS,
+    PASSWORD_RESET_REQUEST,
+    PASSWORD_RESET_SUCCESS,
+    PASSWORD_RESET_FAIL
 } from "../constants/userConstants"
 
 export const login = (email, password) => async (dispatch) => {
@@ -25,11 +29,7 @@ export const login = (email, password) => async (dispatch) => {
             payload: data
         }
         )
-
         localStorage.setItem('userInfo', JSON.stringify(data))
-        // if (data) {
-        //     document.location.href = '/'
-        // }
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,
@@ -43,7 +43,7 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         const { data } = await axios.post('https://api.outlineworldacademy.com/api/auth/logout/')
-     
+
         localStorage.removeItem('userInfo')
         dispatch({ type: USER_LOGOUT })
         document.location.href = '/'
@@ -137,4 +137,8 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         })
     }
 
+}
+
+export const passwordReset = (password, confirmPassword) => async(dispatch) => {
+    
 }

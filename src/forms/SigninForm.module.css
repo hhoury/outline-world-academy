@@ -122,6 +122,9 @@ h1 {
   .social{
     margin-top: 80px;
   }
+  .signIn .btn span span {
+    background-color: #fff;
+  }
   @media screen and (max-width: 1440px) {
     .signIn{
       overflow-y: auto;

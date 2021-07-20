@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 import {  OverlayTrigger, Popover } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
-
+import SearchModal from '../components/UI/SearchModal'
 // on mouse enter , open
 // on mouse leave  , set timeout then close
 
@@ -73,9 +73,16 @@ const RightMenu = (props) => {
     const cartClickHandler = () => {
         history.push('/cart')
     }
-
+    const [searchOverlayIsShowing, setSearchOverlayIsShowing] = useState(false)
+    const showSearchOverlayHandler = () => {
+       setSearchOverlayIsShowing(true)
+    }
+    const hideSearchOverlayHandler = () => {
+       setSearchOverlayIsShowing(false);
+    }
     return (
         <>
+          {searchOverlayIsShowing && <SearchModal onClose={hideSearchOverlayHandler}/>}
             <div className={classes['right-menu']}>
                 <ul>
                     <li>
@@ -108,7 +115,7 @@ const RightMenu = (props) => {
 
                         {cartItems.length !== 0 && <span>{cartItems.length}</span>}
                     </li>
-                    <li><Link to='/home'><i className="fal fa-search"></i></Link></li>
+                    <li><button onClick={showSearchOverlayHandler} className={classes.searchBtn}><i className="fal fa-search"></i></button></li>
                 </ul>
             </div>
 

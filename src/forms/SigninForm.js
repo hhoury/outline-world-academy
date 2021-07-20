@@ -1,17 +1,17 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import Form from './Form'
 import classes from './SigninForm.module.css'
 import Button from '../components/UI/Button'
 import CheckBox from '../components/UI/CheckBox'
 import SocialMedia from '../components/UI/SocialMedia'
 import Recaptcha from '../components/UI/Recaptcha'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import useInput from '../hooks/use-input'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/UI/Message'
 import Loader from '../components/UI/Loader'
 import { login } from '../actions/userActions'
-
+import { SyncLoader } from "react-spinners"
 const isNotEmpty = (value) => {
   return value.trim() !== ''
 }
@@ -59,7 +59,7 @@ const SigninForm = (props) => {
   const dispatch = useDispatch()
 
   const userLogin = useSelector((state) => state.userLogin)
-  const { loading, error, userInfo } = userLogin
+  const { loading, error } = userLogin
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
@@ -96,10 +96,11 @@ const SigninForm = (props) => {
           </button>
         </div>
 
-        <Button type='submit' className={classes.btn}>Sign In</Button>
+        <Button type='submit' className={classes.btn}> {loading && <SyncLoader size='10px'
+          />} Sign In</Button>
         <div className={classes.forgotPassword}>
           <CheckBox className={classes.checkbox} />
-          <Link to='/password-reset'>Forgot password?</Link>
+          <Link to='/forgot-password'>Forgot password?</Link>
         </div>
         <div style={{ clear: 'both' }}></div>
         <p>Don't have an account? <Link to='/sign-up'>Create an Account</Link></p>

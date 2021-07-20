@@ -1,7 +1,16 @@
 .right-menu {
     font-weight: 200;
 }
-
+.right-menu .searchBtn{
+    outline: none;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.right-menu .searchBtn:hover{
+    color: #F44E0C;
+}
 .right-menu ul{
     flex-direction: row;
     align-items: flex-end;

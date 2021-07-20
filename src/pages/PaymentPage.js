@@ -1,5 +1,4 @@
 import React,{useRef} from 'react'
-import { useHistory } from 'react-router'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import CheckoutSteps from '../components/Cart/CheckoutSteps'
@@ -8,7 +7,6 @@ import Button from '../components/UI/Button'
 import CardInformationForm from '../components/Cart/CardInformationForm'
 const PaymentPage = () => {
     const formRef = useRef();
-    const history = useHistory();
     const proceedHandler = (e) => {
         e.preventDefault();
         formRef.current.cardInfoSubmitHandler(e);

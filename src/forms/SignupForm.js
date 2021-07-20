@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import Form from './Form'
 import classes from './SignupForm.module.css'
 import Button from '../components/UI/Button'
@@ -12,6 +12,7 @@ import Message from '../components/UI/Message'
 import Loader from '../components/UI/Loader'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SyncLoader } from "react-spinners"
 
 const isNotEmpty = (value) => {
     return value.trim() !== ''
@@ -114,7 +115,7 @@ const SignupForm = (props) => {
     const dispatch = useDispatch()
 
     const userRegister = useSelector((state) => state.userRegister)
-    const { loading, error, userInfo } = userRegister
+    const { loading, error } = userRegister
 
 
 
@@ -212,7 +213,8 @@ const SignupForm = (props) => {
                         </label>
                     </div>
                 </div>
-                <Button type='submit' className={classes.btn}>Sign Up</Button>
+                <Button type='submit' className={classes.btn}>{loading && <SyncLoader size='10px'
+          />} Sign Up</Button>
                 <CheckBox className={classes.checkbox} />
             </form>
             <SocialMedia className={classes.social} />

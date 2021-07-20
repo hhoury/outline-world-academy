@@ -62,7 +62,7 @@ const ModalOverlay = (props) => {
                 </button>
             </div>
             <Button type='submit' className={classes.btn}>SUBMIT</Button>
-            <Link onClick={forgotPasswordHandler} to='/password-reset'>Forgot password?</Link>
+            <Link onClick={forgotPasswordHandler} to='/forgot-password'>Forgot password?</Link>
         </form>
     )
 }

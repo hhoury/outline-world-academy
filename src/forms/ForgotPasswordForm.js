@@ -15,8 +15,6 @@ const isEmail = email => {
     }
 }
 const ForgotPasswordForm = (props) => {
-
-
     const {
         value: enteredEmail,
         hasError: emailInputHasError,
@@ -25,10 +23,6 @@ const ForgotPasswordForm = (props) => {
         inputBlurHandler: emailBlurHandler,
         reset: resetEmailInput
     } = useInput(isEmail);
-
-
-
-    const emailClasses = emailInputHasError ? 'invalid' : '';
 
     let formIsValid = false;
     if (enteredEmailIsValid) {
@@ -39,6 +33,7 @@ const ForgotPasswordForm = (props) => {
         if (!formIsValid) {
             return;
         }
+        
         resetEmailInput();
     }
 
@@ -46,13 +41,12 @@ const ForgotPasswordForm = (props) => {
         <Form className={`${props.className} ${classes.forgotPassword}`}>
             <h1>Request reset link</h1>
             <form onSubmit={formSubmitHandler}>
-                <input type='textbox' placeholder='Email Address' required className={emailClasses}
+                <input required type='email' placeholder='Email Address'
                     value={enteredEmail}
                     onChange={emailChangedHandler}
                     onBlur={emailBlurHandler} />
                 <Button type='submit' className={classes.btn}>Submit</Button>
                 <div className={classes.back}><Link to='/sign-in'>Back to sign in</Link></div>
-
             </form>
             <Recaptcha className={classes.recap} />
             <div className={classes.policy}><Link to='/policy'>Privacy Policy</Link></div>

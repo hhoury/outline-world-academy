@@ -4,11 +4,11 @@ import Footer from '../Layout/Footer'
 import Summary from '../components/Cart/Summary'
 import Button from '../components/UI/Button'
 import CheckoutSteps from '../components/Cart/CheckoutSteps'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import OrderItem from '../components/Cart/OrderItem'
 const OrderReviewPage = () => {
     const cart = useSelector((state) => state.cart)
-    const { cartItems, shippingAddress, totalAmount, paymentInfo } = cart
+    const { cartItems, shippingAddress, paymentInfo } = cart
     const placeOrderHandler = () => {
 
     }

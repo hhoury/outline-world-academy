@@ -22,6 +22,7 @@ import CourseDetailsPage from './pages/CourseDetailsPage'
 import ChapterDetailsPage from './pages/ChapterDetailsPage'
 import CourseChapterLessonPage from './pages/CourseChapterLessonPage'
 import OrderReviewPage from './pages/OrderReviewPage'
+import NewPasswordPage from './pages/NewPasswordPage';
 
 const App = () => {
    const [passwordModalIsShowing, setPasswordModalIsShowing] = useState(false)
@@ -31,6 +32,7 @@ const App = () => {
    const hidePasswordModalHandler = () => {
       setPasswordModalIsShowing(false);
    }
+
    return (
       <>
          {passwordModalIsShowing && <PasswordModal onClose={hidePasswordModalHandler} />}
@@ -49,12 +51,12 @@ const App = () => {
                <Route path='/profile'><ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler} /></Route>
                <Route path='/sign-up'><SignupPage /></Route>
                <Route path='/sign-in'><SigninPage /></Route>
-               <Route path='/password-reset'><ForgotPasswordPage /></Route>
+               <Route path='/forgot-password'><ForgotPasswordPage /></Route>
                <Route path='/about-us'><AboutPage /></Route>
                <Route path='/blog'><BlogPage /></Route>
                <Route path='/contact-us'><ContactUsPage /></Route>
                <Route path='/policy'><PolicyPage /></Route>
-               <Route path="reset/:uid/:token"></Route>
+               <Route path='/reset-password/:uid/:token'><NewPasswordPage /></Route>
                <Route path='/home'><HomePage /></Route>
                <Route path='/' exact>
                   <Redirect to='/home' />

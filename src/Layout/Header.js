@@ -5,9 +5,14 @@ import RightMenu from './RightMenu'
 import { NavLink } from 'react-router-dom'
 import ResponsiveMenu from './ResponsiveMenu'
 
+
 const Header = (props) => {
 
+    
+ 
     return (
+        <>
+      
         <header className={`${classes.Header} ${props.className}`}>
             <NavLink to='/home'>
                 <img src={image} alt='outline world academy' />
@@ -24,6 +29,7 @@ const Header = (props) => {
                {props.fullMenu &&  <ResponsiveMenu />}
             </nav>
         </header>
+        </>
     )
 }
 

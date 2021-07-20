@@ -1,26 +1,24 @@
 
 https://tempmailo.com
 tineca@microcreditoabruzzo.it
+bizitura@ryteto.me
 Hassan70
 #####################
-checkout steps links
-confirmation page
 cart pop up
-item added to cart modal
-SEARCH BAR MODAL
-SPINNER ON SUBMITTING FORM, ADDING TO CART ,LOADING COURSES
 All APIs
 lazy load
 user sign in , sign up, authentication
-login / sign up forms on checkout but not signed in
 react hook form
-login redirect to next page
+resend verification email button 
 ==========================================================================
 ###### APIs ######
 
 
 https://api.outlineworldacademy.com/api/auth/password/reset/ Reset Password after getting the email  for forgotpassword you should follow this on react side  
+
 <Route path="reset/:uid/:token" component={PasswordResetView}/>
+
+
 for example I got this email https://api.outlineworldacademy.com/password-reset-confirm/i/app5er-2a2246254a95913cda4687d7f0d5f5c7/ i is the uid and app5er-2a2246254a95913cda4687d7f0d5f5c7 is the token you addd the new password and new password1 and make a post method to the endpoint  /api/auth/password-reset-confirm
 
 https://api.outlineworldacademy.com/api/auth/password/change/ Change password 

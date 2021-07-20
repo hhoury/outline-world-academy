@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Spinner } from 'react-bootstrap'
 import Message from '../../components/UI/Message'
-import Loader from '../../components/UI/Loader'
 import { SyncLoader } from "react-spinners"
 import { login } from '../../actions/userActions'
 import useInput from '../../hooks/use-input'
@@ -110,7 +108,7 @@ const CartLoginForm = () => {
         </Button>
         <div className={classes.forgotPassword}>
           <CheckBox className={classes.checkbox} />
-          <Link to='/password-reset'>Forgot password?</Link>
+          <Link to='/forgot-password'>Forgot password?</Link>
         </div>
         <div style={{ clear: 'both' }}></div>
         <p>Don't have an account? <Link to='/sign-up'>Create an Account</Link></p>

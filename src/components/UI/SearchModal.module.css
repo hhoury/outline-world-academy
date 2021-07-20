@@ -1,0 +1,74 @@
+.search-overlay{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: #F44E0C;
+    opacity: 0.9;
+}
+.search-overlay>div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-overlay span {
+    position: fixed;
+    top: 20px;
+    right: 35px;
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    cursor: pointer;
+    /* font-family: 'sans-serif'; */
+}
+.search-overlay>div .overlay-content {
+    width: 100%;
+}
+.search-overlay>div .overlay-content input:focus{
+    outline: none;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.search-overlay>div .overlay-content input {
+    color: #fff;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid #fff !important;
+    border-radius: 0;
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.search-overlay .overlay-content input::placeholder {
+    color: #fff;
+}
+input:focus{
+    outline: none;
+}
+.search-overlay>div .overlay-content button {
+    position: absolute;
+    top: 10px;
+    background-color: transparent;
+    border: 0;
+    font-size: 24px;
+    color: #fff;
+    right: 20px;
+    cursor: pointer;
+}
+.search-overlay>div .overlay-content button:focus{
+    outline: none;
+    border: none;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
