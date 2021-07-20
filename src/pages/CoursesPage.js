@@ -4,7 +4,8 @@ import Footer from '../Layout/Footer'
 import course1 from '../assets/course1.jpg'
 import CourseItem from '../components/Courses/CourseItem'
 
-const CoursesPage = () => {
+const CoursesPage = ({match}) => {
+    const keyword = match.params.keyword
     const COURSES = [{
         id: '1',
         title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',

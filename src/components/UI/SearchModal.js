@@ -1,9 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import classes from './SearchModal.module.css'
 import ReactDOM from 'react-dom'
-
+import { useHistory } from 'react-router'
 const SearchOverlay = (props) => {
-    
+    const history = useHistory();
+    const [keyword, setKeyword] = useState('')
+    const searchSubmitHandler = (event) => {
+        event.preventDefault()
+        if (keyword.trim()) {
+          history.push(`/search/${keyword}`)
+        } else {
+          history.push('/')
+        }
+    }
     return (
         <div id='search-overlay' className={classes['search-overlay']}>
             <div>
@@ -13,9 +22,10 @@ const SearchOverlay = (props) => {
                     <div className='container'>
                         <div className='row'>
                             <div className='col'>
-                                <form>
+                                <form onSubmit={searchSubmitHandler}>
                                     <div className='form-group'>
-                                        <input placeholder='Search a Course' type='text' className='form-control form-control' />
+                                        <input placeholder='Search a Course' type='text' className='form-control form-control'
+                                          onChange={(e) => setKeyword(e.target.value)}/>
                                     </div>
                                     <button type='submit' title='Search' >
                                         <i className='fa fa-search'></i>

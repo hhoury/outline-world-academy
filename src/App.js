@@ -46,6 +46,8 @@ const App = () => {
                <Route path='/courses/:id/chapter/:id/:id'><CourseChapterLessonPage /></Route>
                <Route path='/courses/:id/chapter/:id'><ChapterDetailsPage /></Route>
                <Route path='/courses/:id'><CourseDetailsPage /></Route>
+               
+               <Route path='/search/:keyword' exact ><CoursesPage /></Route>
                <Route path='/courses'><CoursesPage /></Route>
                <Route path='/my-courses'><MyCoursesPage /></Route>
                <Route path='/profile'><ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler} /></Route>
@@ -57,6 +59,7 @@ const App = () => {
                <Route path='/contact-us'><ContactUsPage /></Route>
                <Route path='/policy'><PolicyPage /></Route>
                <Route path='/reset-password/:uid/:token'><NewPasswordPage /></Route>
+       
                <Route path='/home'><HomePage /></Route>
                <Route path='/' exact>
                   <Redirect to='/home' />
