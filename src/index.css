@@ -311,7 +311,9 @@ h2 {
   height: 100vh;
   margin: 0;
 }
-
+.profile-page .cartLogin   {
+  margin-top: 150px;
+}
 .profile-page .rounds {
   height: 100%;
   background-image: url('./assets/Rounds.jpg');

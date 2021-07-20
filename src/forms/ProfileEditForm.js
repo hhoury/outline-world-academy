@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import classes from './ProfileEditForm.module.css'
 import RightMenu from '../Layout/RightMenu'
 import Button from '../components/UI/Button'
 import profileImage from '../assets/profile.jpg'
 import useInput from '../hooks/use-input'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 const isNotEmpty = (value) => {
-  return value.trim() !== ''
+  return value?.trim() !== ''
 }
 
 const isEmail = email => {
-  if (email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+  if (email?.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
     return (true)
   }
   else {
@@ -20,6 +22,9 @@ const isEmail = email => {
 const ProfileEditForm = (props) => {
     
 
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+    const {user} = userInfo
     const [isEditMode, setIsEditMode] = useState(false)
     const deleteAccountHandler = () => {
 
@@ -35,20 +40,14 @@ const ProfileEditForm = (props) => {
         event.preventDefault();
     }
 
-    const user = {
-        name: 'Mohanad',
-        email: 'hhhh@gmail.com',
-        job: 'developer',
-        password: '123456',
-        image: { profileImage }
-    }
     const {
         value: enteredName,
         hasError: nameInputHasError,
         isValid: enteredNameIsValid,
         valueChangeHandler: nameChangedHandler,
         inputBlurHandler: nameBlurHandler,
-        reset: resetNameInput
+        reset: resetNameInput,
+        setValue: setNameValue
     } = useInput(isNotEmpty);
     
     
@@ -59,7 +58,8 @@ const ProfileEditForm = (props) => {
     isValid: enteredEmailIsValid,
     valueChangeHandler: emailChangedHandler,
     inputBlurHandler: emailBlurHandler,
-    reset: resetEmailInput
+    reset: resetEmailInput,
+    setValue: setEmailValue
   } = useInput(isEmail);
 
   const {
@@ -68,9 +68,10 @@ const ProfileEditForm = (props) => {
     isValid: enteredPasswordIsValid,
     valueChangeHandler: passwordChangedHandler,
     inputBlurHandler: passwordBlurHandler,
-    reset: resetPasswordInput
+    reset: resetPasswordInput,
+    setValue: setPasswordValue
   } = useInput(isNotEmpty);
-
+  const [job, setJob] = useState(user.job)
   const nameClasses = nameInputHasError ? 'invalid' : '';
   const emailClasses = emailInputHasError ? 'invalid' : '';
   const passwordClasses = passwordInputHasError ? 'invalid' : '';
@@ -89,15 +90,22 @@ const ProfileEditForm = (props) => {
         resetNameInput();
         
     }
+    useEffect(() => {
+        if(user){
+            setNameValue(user.full_name);
+            setEmailValue(user.email);
+            setPasswordValue(user.Password);
+        }
+    }, [])
     return (
         <div className={`${classes.ProfileEdit}`}>
             <div className={classes.top}>
-                <p> Hello, {user.name}</p>
+                <p> Hello, {enteredName}</p>
                 <RightMenu />
             </div>
             <form id='profileForm' name='profileForm' onSubmit={formSubmitHandler}> 
                 <figure>
-                    <img src={profileImage} alt='profile' />
+                    <img src={user.avatar} alt='profile' />
                     {isEditMode &&
                         <div>
                             <button onClick={editPhotoHandler} className={classes.editProfile}><i className="far fa-edit"></i></button>
@@ -108,8 +116,8 @@ const ProfileEditForm = (props) => {
 
                 <span>
                     <label htmlFor='username'>Full Name</label>
-                    <input readOnly={!isEditMode} id='username' name='username' type='text' defaultValue={user.name} className={nameClasses}
-                       value={user.name}
+                    <input readOnly={!isEditMode} id='username' name='username' type='text'  className={nameClasses}
+                       value={enteredName}
                        onChange={nameChangedHandler}
                        onBlur={nameBlurHandler}/>
                     {isEditMode && <span><i className="far fa-edit"></i></span>}
@@ -117,8 +125,7 @@ const ProfileEditForm = (props) => {
 
                 <span>
                     <label htmlFor='email'>Email</label>
-                    <input readOnly={!isEditMode} type='email' id='email' name='email' defaultValue={user.email}  className={emailClasses}
-                      value={user.email}
+                    <input readOnly={!isEditMode} type='email' id='email' name='email' value={enteredEmail}  className={emailClasses}
                       onChange={emailChangedHandler}
                       onBlur={emailBlurHandler} />
                     {isEditMode && <span><i className="far fa-edit"></i></span> }
@@ -126,7 +133,13 @@ const ProfileEditForm = (props) => {
 
                 <span>
                     <label htmlFor='job'>Job</label>
-                    <input readOnly={!isEditMode} id='job' name='job' type='text' defaultValue={user.job} />
+                    <input 
+                    readOnly={!isEditMode} 
+                    id='job' 
+                    name='job' 
+                    type='text'
+                    onChange={setJob} 
+                    value={job} />
                     {isEditMode && <span><i className="far fa-edit"></i></span>}
                 </span>
 

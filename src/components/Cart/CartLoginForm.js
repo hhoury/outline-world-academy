@@ -20,7 +20,7 @@ const isEmail = email => {
   }
 }
 
-const CartLoginForm = () => {
+const CartLoginForm = (props) => {
   const history = useHistory();
   const {
     value: enteredEmail,
@@ -79,7 +79,7 @@ const CartLoginForm = () => {
   }, [history, userInfo])
 
   return (
-    <div className={classes.cartLoginForm}>
+    <div className={`${classes.cartLoginForm} ${props.className}`} >
       <h1>Sign in</h1>
       <form onSubmit={loginHandler}>
         <input required type='email' placeholder='Email Address' className={emailClasses}
