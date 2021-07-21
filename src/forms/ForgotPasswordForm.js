@@ -69,7 +69,7 @@ const ForgotPasswordForm = (props) => {
         <Form className={`${props.className} ${classes.forgotPassword}`}>
              <ToastContainer
                 position="top-right"
-                autoClose={3000}
+                autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick={true}

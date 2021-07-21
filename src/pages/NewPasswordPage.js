@@ -3,6 +3,7 @@ import NewPasswordForm from '../forms/NewPasswordForm'
 import Logo from '../Layout/Logo'
 
 const NewPasswordPage = () => {
+    
     return (
         <div className='sign-up container-fluid'>
             <div className='col-lg-5 col-md-5 col-sm-12 left-side'>

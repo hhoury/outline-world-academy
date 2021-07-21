@@ -4,12 +4,36 @@ import Form from './Form'
 import classes from './NewPasswordForm.module.css'
 import useInput from '../hooks/use-input'
 import Message from '../components/UI/Message'
+import { useParams } from 'react-router'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { SyncLoader } from "react-spinners"
+import {useDispatch, useSelector} from 'react-redux'
+import {changePassword} from '../actions/userActions'
 const isNotEmpty = (value) => {
     return value.trim() !== ''
 }
 
 const NewPasswordForm = (props) => {
-    const [message, setMessage] = useState(null);
+    const notify = (message) => toast.warning(message,
+    {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+    });
+
+   // const [showPasswordError, setshowPasswordError] = useState(initialState)
+
+    const {uid,token} = useParams();
+
+    const dispatch = useDispatch();
+    const passwordChange = useSelector((state) => state.changePassword)
+    const { loading, error, message } = passwordChange
+
     const {
         value: enteredPassword,
         hasError: passwordInputHasError,
@@ -27,8 +51,10 @@ const NewPasswordForm = (props) => {
         inputBlurHandler: confirmPasswordBlurHandler,
         reset: resetConfirmPasswordInput
     } = useInput(isNotEmpty);
+    
     const passwordClasses = passwordInputHasError ? 'invalid' : '';
     const confirmPasswordClasses = confirmPasswordInputHasError ? 'invalid' : '';
+    
     let formIsValid = (
         enteredPasswordIsValid &&
         enteredConfirmPasswordIsValid )
@@ -50,9 +76,11 @@ const NewPasswordForm = (props) => {
         }
         else{
             if (enteredPassword !== enteredConfirmPassword) {
-                setMessage('Passwords do not match')
+                
             }
             else {
+                console.log(uid,token,enteredPassword,enteredConfirmPassword);
+               dispatch(changePassword(uid,token,enteredPassword,enteredConfirmPassword))
             }
         }
         resetConfirmPasswordInput()
@@ -60,7 +88,19 @@ const NewPasswordForm = (props) => {
     }
     return (
         <Form className={`${props.className} ${classes.NewPasswordForm}`}>
+               <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={true}
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={true}
+                pauseOnHover={false}
+            />
         <h1>Reset Your Password</h1>
+        
         {message && <Message variant='danger'>{message}</Message>}
         <form onSubmit={formSubmitHandler}>
         <div style={{ position: 'relative' }}>
@@ -88,7 +128,10 @@ const NewPasswordForm = (props) => {
                     </button>
                 </div>
 
-            <Button type='submit' className={classes.btn}>RESET PASSWORD</Button>
+            <Button type='submit' className={classes.btn}>
+            {loading && <SyncLoader size='10px'
+                />}
+                RESET PASSWORD</Button>
         
         </form>
        

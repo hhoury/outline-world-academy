@@ -9,7 +9,8 @@ import {
   userUpdateProfileReducer,
   userDeleteReducer,
   userUpdateReducer,
-  resetPasswordReducer
+  resetPasswordReducer,
+  changePasswordReducer
 } from './reducers/userReducers'
 
 const reducer = combineReducers({
@@ -20,6 +21,7 @@ const reducer = combineReducers({
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
   resetPassword: resetPasswordReducer,
+  changePassword: changePasswordReducer,
   cart: cartReducer,
 })
 

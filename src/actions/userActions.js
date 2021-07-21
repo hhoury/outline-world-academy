@@ -15,7 +15,10 @@ import {
     USER_UPDATE_PROFILE_SUCCESS,
     PASSWORD_RESET_REQUEST,
     PASSWORD_RESET_SUCCESS,
-    PASSWORD_RESET_FAIL
+    PASSWORD_RESET_FAIL,
+    PASSWORD_CHANGE_REQUEST,
+    PASSWORD_CHANGE_SUCCESS,
+    PASSWORD_CHANGE_FAIL
 } from "../constants/userConstants"
 
 export const login = (email, password) => async (dispatch) => {
@@ -103,6 +106,28 @@ export const resetPassword = (email) => async (dispatch,getState) => {
         })
     }
 }
+
+export const changePassword = (uid,token,password,password1) => async (dispatch,getState) => {
+    try {
+        dispatch({
+            type: PASSWORD_CHANGE_REQUEST
+        })
+        
+        const { data } = await axios.post('https://api.outlineworldacademy.com/api/auth/password/change/ ', {uid,token,password,password1})
+        dispatch({
+            type: PASSWORD_CHANGE_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: PASSWORD_CHANGE_FAIL,
+            payload: error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        })
+    }
+}
+
 export const getUserDetails = (id) => async (dispatch, getState) => {
 
     try {
