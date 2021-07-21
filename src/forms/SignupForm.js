@@ -30,15 +30,15 @@ const isEmail = email => {
 
 const SignupForm = (props) => {
     const notify = () => toast.success("A verification email has been sent to " + enteredEmail,
-{
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-});
+        {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+        });
     //#region form inputs
     const {
         value: enteredName,
@@ -79,7 +79,7 @@ const SignupForm = (props) => {
     const [photo, setPhoto] = useState(null);
     const [photoName, setPhotoName] = useState('Upload Your Profile Photo');
     const [message, setMessage] = useState(null);
-    const [job,setJob] = useState('')
+    const [job, setJob] = useState('')
     const onJobChange = (e) => {
         setJob(e.target.value)
     }
@@ -90,9 +90,9 @@ const SignupForm = (props) => {
     const photoRef = useRef()
     //#endregion
     let formIsValid = (enteredEmailIsValid &&
-    enteredPasswordIsValid &&
-    enteredConfirmPasswordIsValid &&
-    enteredNameIsValid)
+        enteredPasswordIsValid &&
+        enteredConfirmPasswordIsValid &&
+        enteredNameIsValid)
 
     const [passwordShown, setPasswordShown] = useState(false);
     const showPasswordHandler = (event) => {
@@ -104,13 +104,13 @@ const SignupForm = (props) => {
     const showConfirmPasswordHandler = (event) => {
         event.preventDefault();
         setConfirmPasswordShown(!confirmPasswordShown);
-}
+    }
     const uploadPhoto = (e) => {
         setPhoto({
-          pictureAsFile: e.target.files[0],
+            pictureAsFile: e.target.files[0],
         });
         setPhotoName(photoRef.current.files[0].name)
-      };
+    };
 
     const dispatch = useDispatch()
 
@@ -131,12 +131,12 @@ const SignupForm = (props) => {
             else {
                 const formData = new FormData();
                 formData.append('full_name', enteredName);
-                formData.append('email',enteredEmail);
-                formData.append('password',enteredPassword);
-                formData.append('password1',enteredConfirmPassword);
-                formData.append('job',job);
-                formData.append('avatar',photo.pictureAsFile);
-                formData.append('phone','+96170040294');
+                formData.append('email', enteredEmail);
+                formData.append('password', enteredPassword);
+                formData.append('password1', enteredConfirmPassword);
+                formData.append('job', job);
+                formData.append('avatar', photo.pictureAsFile);
+                formData.append('phone', '+96170040294');
                 dispatch(register(formData))
                 notify();
             }
@@ -150,7 +150,7 @@ const SignupForm = (props) => {
     }
     return (
         <Form className={`${classes.signUp} ${props.className}`}>
-             <ToastContainer
+            <ToastContainer
                 position="top-right"
                 autoClose={3000}
                 hideProgressBar={false}
@@ -161,19 +161,18 @@ const SignupForm = (props) => {
                 draggable={true}
                 pauseOnHover={false}
             />
-            <ToastContainer />
             <h1>SIGN UP</h1>
             {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader message='Creating your Account' />}
             <form onSubmit={formSubmitHandler}>
-              
+
 
                 <input required type='text' placeholder='Full Name' className={nameClasses}
                     value={enteredName}
                     onChange={nameChangedHandler}
                     onBlur={nameBlurHandler} />
-  <input required type='email' placeholder='Email Address' className={emailClasses}
+                <input required type='email' placeholder='Email Address' className={emailClasses}
                     value={enteredEmail}
                     onChange={emailChangedHandler}
                     onBlur={emailBlurHandler} />
@@ -205,7 +204,7 @@ const SignupForm = (props) => {
                 <input type='text' placeholder='Job (optional)' value={job} onChange={onJobChange} />
 
                 <div className={classes.uploadPhoto}>
-                    <input ref={photoRef} type="file" accept="image/*" name="image-upload" id="input" onChange={uploadPhoto}/>
+                    <input ref={photoRef} type="file" accept="image/*" name="image-upload" id="input" onChange={uploadPhoto} />
                     <div className={classes.label}>
                         <span> {photoName}   </span>
                         <label className={classes['image-upload']} htmlFor="input">
@@ -214,7 +213,7 @@ const SignupForm = (props) => {
                     </div>
                 </div>
                 <Button type='submit' className={classes.btn}>{loading && <SyncLoader size='10px'
-          />} Sign Up</Button>
+                />} Sign Up</Button>
                 <CheckBox className={classes.checkbox} />
             </form>
             <SocialMedia className={classes.social} />

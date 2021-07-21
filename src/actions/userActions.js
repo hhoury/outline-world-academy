@@ -44,6 +44,10 @@ export const logout = () => async (dispatch) => {
     try {
         const { data } = await axios.post('https://api.outlineworldacademy.com/api/auth/logout/')
 
+        localStorage.removeItem('cartItems')
+        localStorage.removeItem('shippingAddress')
+        localStorage.removeItem('totalAmount')
+        localStorage.removeItem('paymentInfo')
         localStorage.removeItem('userInfo')
         dispatch({ type: USER_LOGOUT })
         document.location.href = '/'
@@ -69,7 +73,6 @@ export const register = (formData) => async (dispatch) => {
             type: USER_LOGIN_SUCCESS,
             payload: data
         })
-        localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (error) {
         dispatch({
             type: USER_REGISTER_FAIL,
@@ -80,7 +83,26 @@ export const register = (formData) => async (dispatch) => {
     }
 
 }
-
+export const resetPassword = (email) => async (dispatch,getState) => {
+    try {
+        dispatch({
+            type: PASSWORD_RESET_REQUEST
+        })
+        
+        const { data } = await axios.post('https://api.outlineworldacademy.com/api/auth/password/reset/ ', {email})
+        dispatch({
+            type: PASSWORD_RESET_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: PASSWORD_RESET_FAIL,
+            payload: error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        })
+    }
+}
 export const getUserDetails = (id) => async (dispatch, getState) => {
 
     try {

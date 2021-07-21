@@ -71,7 +71,7 @@ const ProfileEditForm = (props) => {
     reset: resetPasswordInput,
     setValue: setPasswordValue
   } = useInput(isNotEmpty);
-  const [job, setJob] = useState(user.job)
+  const [job, setJob] = useState('')
   const nameClasses = nameInputHasError ? 'invalid' : '';
   const emailClasses = emailInputHasError ? 'invalid' : '';
   const passwordClasses = passwordInputHasError ? 'invalid' : '';
@@ -95,6 +95,7 @@ const ProfileEditForm = (props) => {
             setNameValue(user.full_name);
             setEmailValue(user.email);
             setPasswordValue(user.Password);
+            setJob(user.job)
         }
     }, [])
     return (

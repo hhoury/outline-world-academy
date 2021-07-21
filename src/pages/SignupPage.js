@@ -7,7 +7,8 @@ const SignupPage = () => {
     const history = useHistory()
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
-    if(userInfo){
+    const {user} = userInfo? userInfo: false
+    if(user){
         history.push('/')
     }
     return (

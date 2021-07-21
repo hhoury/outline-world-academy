@@ -9,7 +9,7 @@
 .icons-group{
   margin-top: 10px;
 }
-.social-media span {
+.social-media button {
   cursor: pointer;
   margin: 0 10px;
   padding: 5px;
@@ -18,12 +18,12 @@
   height: 42px;
   width: 42px;
   display: inline-block;
-}
-.social-media span a {
   text-decoration: none;
   color: #000;
   font-size: 25px;
+  outline: none;
+  border: none;
 }
-.social-media span:hover{
+.social-media button:hover{
   opacity: 0.8;
 }
