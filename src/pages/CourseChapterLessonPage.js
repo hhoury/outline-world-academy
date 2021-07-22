@@ -30,8 +30,8 @@ const CourseChapterLessonPage = () => {
                 <div className='chapter-lesson-footer'>
                     <button onClick={goBackToLessonHandler} className='goBackButton'>Back to Lessons</button>
                     <div className='arrows'>
-                        <Link><i className="far fa-arrow-left"></i></Link>
-                        <Link><i className="far fa-arrow-right"></i></Link>
+                        <Link to=''><i className="far fa-arrow-left"></i></Link>
+                        <Link to=''><i className="far fa-arrow-right"></i></Link>
                     </div>
                 </div>
                </div>

@@ -16,17 +16,6 @@ resend verification email button
 ==========================================================================
 ###### APIs ######
 
-
-https://api.outlineworldacademy.com/api/auth/password/reset/ Reset Password after getting the email  for forgotpassword you should follow this on react side  
-
-<Route path="reset/:uid/:token" component={PasswordResetView}/>
-
-
-for example I got this email https://api.outlineworldacademy.com/password-reset-confirm/i/app5er-2a2246254a95913cda4687d7f0d5f5c7/ i is the uid and app5er-2a2246254a95913cda4687d7f0d5f5c7 is the token you addd the new password and new password1 and make a post method to the endpoint  /api/auth/password-reset-confirm
-
-https://api.outlineworldacademy.com/api/auth/password/change/ Change password 
-
-
 https://api.outlineworldacademy.com/api/auth/user/ user (GET, PUT, PATCH)
 
 https://api.outlineworldacademy.com/api/auth/token/verify/ to check and verify if token is valid i.e ( access token, referesh token ) it will return nothing if token is valid and it will return this response when not valid
@@ -70,4 +59,4 @@ axios(config)
   console.log(error);
 });
 
-the challenging thing in this api is that it returns html as response you should always take the paragraph content i.e <p>Your subscription request was successfully received and an activation email has been sent to you.you will find a link which you need to follow in order to activate your subscription</p>
+the challenging thing in this api is that it returns html as response you should always take the paragraph content i.e <p>Your subscription request was successfully received and an activation email has been sent to you.you will find a link which you need to follow in order to activate your subscription</p>cd ..

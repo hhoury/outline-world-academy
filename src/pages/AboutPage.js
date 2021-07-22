@@ -5,7 +5,7 @@ import image1 from '../assets/about1.jpg'
 import image2 from '../assets/about2.jpg'
 import image3 from '../assets/about3.jpg'
 import image4 from '../assets/about4.jpg'
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const AboutPage = () => {
     return (
@@ -30,7 +30,7 @@ const AboutPage = () => {
             </div>
 
             <figure>
-                <img src={image3} alt='outline world academy process' />
+                <LazyLoadImage src={image3} alt='outline world academy process' />
             </figure>
             <div className='the-process row'>
                 <div className='the-process__text col-lg-6 col-md-6 col-sm-12'>
@@ -41,13 +41,13 @@ const AboutPage = () => {
                 </div>
                 <div className='the-process__images col-lg-5 col-md-5 col-sm-12'>
                     <figure className='about-4'>
-                        <img src={image4} alt='outline world academy' />
+                        <LazyLoadImage src={image4} alt='outline world academy' />
                     </figure>
                     <figure className='about-4'>
-                        <img src={image4} alt='outline world academy' />
+                        <LazyLoadImage src={image4} alt='outline world academy' />
                     </figure>
                     <figure className='about-4'>
-                        <img src={image4} alt='outline world academy' />
+                        <LazyLoadImage src={image4} alt='outline world academy' />
                     </figure>
                 </div>
             </div>

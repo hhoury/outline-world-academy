@@ -2,6 +2,7 @@ import React from 'react'
 import classes from './CourseChapters.module.css'
 import thumbnail from '../../assets/chapter-thumbnail.jpg'
 import { Link } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const CourseChapters = (props) => {
     return (
@@ -10,7 +11,7 @@ const CourseChapters = (props) => {
             <div className={`col-md-6 col-sm-12 ${classes.courseThumbnail}`}>
                 <Link to={`/courses/${props.courseId}/chapter/${props.id}`}>
                     <figure>
-                        <img src={thumbnail} alt={props.title} />
+                        <LazyLoadImage src={thumbnail} alt={props.title} />
                     </figure>
                 </Link>
                 <div className={classes.border}></div>

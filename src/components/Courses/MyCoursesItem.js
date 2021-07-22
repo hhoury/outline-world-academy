@@ -4,6 +4,8 @@ import Button from '../UI/Button'
 import { Link, useHistory } from 'react-router-dom'
 import { ProgressBar } from 'react-bootstrap'
 import mycourses from '../../assets/mycourses.jpg'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 const MyCoursesItem = (props) => {
     const history = useHistory();
     const viewCourseHandler = () => {
@@ -13,7 +15,7 @@ const MyCoursesItem = (props) => {
     return (
         <div className={`${classes['my-couses-item']} mr-auto`}>
             <figure>
-                <img src={mycourses} alt={props.title} />
+                <LazyLoadImage src={mycourses} alt={props.title} />
             </figure>
             <div className={classes.details}>
                 <h2>{props.title}</h2>

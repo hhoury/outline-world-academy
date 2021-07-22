@@ -5,8 +5,8 @@ import Button from '../UI/Button'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addToCart } from '../../actions/cartActions'
-import { useDispatch,useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const notify = () => toast.success("Course Added to Cart",
     {
@@ -39,7 +39,7 @@ const CourseItem = (props) => {
     const goToCartHandler = () => {
         history.push('/cart')
     }
-   
+
     const existingCartItemIndex = cartItems.findIndex(item => item.id === props.id);
     const existingCartItem = cartItems[existingCartItemIndex];
 
@@ -59,7 +59,7 @@ const CourseItem = (props) => {
             <ToastContainer />
             <li key={props.id} className={`col-lg-4 col-md-6 col-sm-6 ${classes['course-item']}`} >
                 <figure >
-                    <img src={props.thumbnail} alt={props.title} />
+                    <LazyLoadImage src={props.thumbnail} alt={props.title} />
                 </figure>
                 <h1>{props.title}</h1>
                 <div className={classes.footer}>

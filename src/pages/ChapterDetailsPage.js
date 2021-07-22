@@ -55,8 +55,8 @@ const ChapterDetailsPage = () => {
                     <button onClick={goBackToChaptersHandler} className='goBackButton'>Back to Chapters</button>
 
                     <div className='arrows'>
-                        <Link><i className="far fa-arrow-left"></i></Link>
-                        <Link><i className="far fa-arrow-right"></i></Link>
+                        <Link to=''><i className="far fa-arrow-left"></i></Link>
+                        <Link to=''><i className="far fa-arrow-right"></i></Link>
                     </div>
                 </div>
             </div>

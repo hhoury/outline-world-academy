@@ -5,7 +5,7 @@ import Button from '../components/UI/Button'
 import profileImage from '../assets/profile.jpg'
 import useInput from '../hooks/use-input'
 import { useDispatch, useSelector } from 'react-redux'
-
+import {LazyLoadImage} from 'react-lazy-load-image-component'
 
 const isNotEmpty = (value) => {
   return value?.trim() !== ''
@@ -106,7 +106,7 @@ const ProfileEditForm = (props) => {
             </div>
             <form id='profileForm' name='profileForm' onSubmit={formSubmitHandler}> 
                 <figure>
-                    <img src={user.avatar} alt='profile' />
+                    <LazyLoadImage src={user.avatar} alt='profile' />
                     {isEditMode &&
                         <div>
                             <button onClick={editPhotoHandler} className={classes.editProfile}><i className="far fa-edit"></i></button>

@@ -6,11 +6,11 @@ import {saveShippingAddress} from '../../actions/cartActions'
 import classes from './PersonalDetailsForm.module.css'
 
 const isNotEmpty = (value) => {
-    return value.trim() !== ''
+    return value?.trim() !== ''
 }
 
 const isEmail = email => {
-    if (email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+    if (email?.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
         return (true)
     }
     else {
@@ -27,7 +27,6 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredFNameIsValid,
         valueChangeHandler: fnameChangedHandler,
         inputBlurHandler: fnameBlurHandler,
-        reset: resetFNameInput,
         setValue: setFNameValue
     } = useInput(isNotEmpty);
 
@@ -37,7 +36,6 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredLNameIsValid,
         valueChangeHandler: lnameChangedHandler,
         inputBlurHandler: lnameBlurHandler,
-        reset: resetLNameInput,
         setValue: setLNameValue
     } = useInput(isNotEmpty);
 
@@ -47,7 +45,6 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredEmailIsValid,
         valueChangeHandler: emailChangedHandler,
         inputBlurHandler: emailBlurHandler,
-        reset: resetEmailInput,
         setValue: setEmailValue
     } = useInput(isEmail);
     const {
@@ -56,7 +53,6 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredCountryIsValid,
         valueChangeHandler: countryChangedHandler,
         inputBlurHandler: countryBlurHandler,
-        reset: resetCountryInput,
         setValue: setCountryValue
     } = useInput(isNotEmpty);
     const {
@@ -65,7 +61,6 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredTownIsValid,
         valueChangeHandler: townChangedHandler,
         inputBlurHandler: townBlurHandler,
-        reset: resetTownInput,
         setValue: setTownValue
     } = useInput(isNotEmpty);
     const {
@@ -74,7 +69,6 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredStreetIsValid,
         valueChangeHandler: streetChangedHandler,
         inputBlurHandler: streetBlurHandler,
-        reset: resetStreetInput,
         setValue: setStreetValue
     } = useInput(isNotEmpty);
     const {
@@ -83,7 +77,6 @@ const PersonalDetails = forwardRef((props, ref) => {
         isValid: enteredPhoneIsValid,
         valueChangeHandler: phoneChangedHandler,
         inputBlurHandler: phoneBlurHandler,
-        reset: resetPhoneInput,
         setValue: setPhoneValue
     } = useInput(isNotEmpty);
     
