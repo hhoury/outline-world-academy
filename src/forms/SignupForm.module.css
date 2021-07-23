@@ -18,7 +18,7 @@ h1 {
   outline: none;
   display: block;
   background: rgba(0, 0, 0, 0);
-  margin: 15px 0;
+  margin: 10px 0;
   width: 100%;
   padding: 15px 0;
   border: none;
@@ -101,12 +101,16 @@ input[type="password"]::-ms-reveal {
 
 .signUp .social {
   width: 70%;
-  margin-top: 40px
+  margin-top: 20px
 }
 .signUp .uploadPhoto{
   position: relative;
   height: 55px;
   border-bottom: 1px solid;
+}
+.signUp form > p {
+  margin-top: 15px;
+  text-align: left;
 }
 .uploadPhoto input[type="file"] {
 	display: none;

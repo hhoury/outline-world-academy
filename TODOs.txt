@@ -9,7 +9,6 @@ pipeleco@acrossgracealley.com
 #####################
 cart pop up
 All APIs
-lazy load
 user sign in , sign up, authentication
 react hook form
 resend verification email button 
@@ -60,3 +59,11 @@ axios(config)
 });
 
 the challenging thing in this api is that it returns html as response you should always take the paragraph content i.e <p>Your subscription request was successfully received and an activation email has been sent to you.you will find a link which you need to follow in order to activate your subscription</p>cd ..
+
+
+React, React Native, Next.js, Gatsby.js, TypeScript
+Code quality tools: ESLint, Stylelint, Prettier
+Testing: Jest, react-testing-library, Cypress.io
+GitHub Actions, CircleCI
+Netlify, Vercel, Heroku, AWS
+See our Project Guidelines

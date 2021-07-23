@@ -215,7 +215,9 @@ const SignupForm = (props) => {
                 <Button type='submit' className={classes.btn}>{loading && <SyncLoader size='10px'
                 />} Sign Up</Button>
                 <CheckBox className={classes.checkbox} />
+                <p>Have an account? <Link to='/sign-in'>Login</Link></p>
             </form>
+           
             <SocialMedia className={classes.social} />
             <div className={classes.text}>
                 <p>By creating an account you are aggreeing to the
