@@ -5,7 +5,6 @@ import course1 from '../assets/course1.jpg'
 import CourseItem from '../components/Courses/CourseItem'
 
 const CoursesPage = (props) => {
-    console.log(props);
    // const keyword = props.match.params.keyword
     const COURSES = [{
         id: '1',

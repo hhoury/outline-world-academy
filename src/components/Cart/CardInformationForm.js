@@ -56,8 +56,7 @@ const CardInformation = forwardRef((props,ref) => {
     } = useInput(isNotEmpty);
 
     const cart = useSelector((state) => state.cart)
-    const { paymentInfo } = cart
-    console.log(paymentInfo);
+    const { paymentInfo } = cart;
     useEffect(() => {
         if(paymentInfo)
         {
@@ -77,7 +76,6 @@ const CardInformation = forwardRef((props,ref) => {
         
         cardInfoSubmitHandler(event) {
             event.preventDefault();
-            console.log(formIsValid);
             if (!formIsValid) {
                 return;
             }

@@ -79,7 +79,6 @@ const NewPasswordForm = (props) => {
                 
             }
             else {
-                console.log(uid,token,enteredPassword,enteredConfirmPassword);
                dispatch(changePassword(uid,token,enteredPassword,enteredConfirmPassword))
             }
         }

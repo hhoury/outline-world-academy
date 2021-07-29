@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { addToCart } from '../../actions/cartActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LinkContainer } from 'react-router-bootstrap'
 
 const notify = () => toast.success("Course Added to Cart",
     {
@@ -16,7 +17,7 @@ const notify = () => toast.success("Course Added to Cart",
         closeOnClick: true,
         pauseOnHover: false,
         draggable: true,
-        progress: undefined,
+        progress: false,
     });
 
 const CourseItem = (props) => {
@@ -56,11 +57,15 @@ const CourseItem = (props) => {
                 draggable={true}
                 pauseOnHover={false}
             />
-            <ToastContainer />
             <li key={props.id} className={`col-lg-4 col-md-6 col-sm-6 ${classes['course-item']}`} >
-                <figure >
-                    <LazyLoadImage src={props.thumbnail} alt={props.title} />
-                </figure>
+            <p className={classes['card-price']}>{props.price}$</p>
+                <LinkContainer to={`/courses/${props.id}`}>
+                   
+                    <figure >
+                        <LazyLoadImage src={props.thumbnail} alt={props.title} />
+                    </figure>
+                    
+                </LinkContainer>
                 <h1>{props.title}</h1>
                 <div className={classes.footer}>
                     <Link to={`/courses/${props.id}`}>View Course Details</Link>

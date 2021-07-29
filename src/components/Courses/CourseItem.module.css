@@ -1,7 +1,6 @@
  .course-item {
     position: relative;
     margin: 15px auto;
-
   }  
  .course-item figure,
  .course-item img {
@@ -89,6 +88,49 @@
 }
 .course-item  .btn:active{
   background-color: #ccc;
+}
+
+.course-item .card-price {
+  display: inline-block;
+  width: auto;
+  height: 38px;
+  background-color: #f44e0c;
+  border-radius: 3px 4px 4px 3px;
+  border-left: 1px solid #f44e0c;
+  margin-left: 19px;
+  position: absolute;
+  color: white;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 38px;
+  padding: 0 10px 0 10px;
+  top: 5px;
+}
+
+/* Makes the triangle */
+.card-price:before {
+	content: "";
+	position: absolute;
+	display: block;
+	left: -19px;
+	width: 0;
+	height: 0;
+	border-top: 19px solid transparent;
+	border-bottom: 19px solid transparent;
+	border-right: 19px solid #f44e0c;
+}
+
+/* Makes the circle */
+.card-price:after {
+	content: "";
+	background-color: white;
+	border-radius: 50%;
+	width: 4px;
+	height: 4px;
+	display: block;
+	position: absolute;
+	left: -9px;
+	top: 17px;
 }
 @media screen and (max-width:1440px) {
   .course-item h1 {

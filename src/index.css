@@ -29,6 +29,9 @@ a:hover {
   cursor: pointer;
   text-decoration: none;
 }
+.carousel-indicators {
+  z-index: 1 !important;
+}
 
 .home-header {
   position: absolute;
@@ -36,9 +39,11 @@ a:hover {
   z-index: 2;
 }
 .carousel {
+  min-height: 300px;
   max-height: 700px;
 }
 .carousel-inner img {
+  min-height: 300px;
   max-height: 700px;
 }
 .carousel-indicators li{
