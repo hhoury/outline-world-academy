@@ -146,7 +146,7 @@ footer .column4 input::placeholder {
 }
 
 
-@media only screen and (max-width: 1024px) {
+@media  screen and (max-width: 1024px) {
 
     footer .column1,
     footer .column2,
@@ -156,7 +156,7 @@ footer .column4 input::placeholder {
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media  screen and (max-width: 768px) {
     footer .column1 div:first-child {
         margin: 0 auto;
     }
@@ -180,10 +180,15 @@ footer .column4 input::placeholder {
         width: 50%;
         margin: 35px auto 0;
     }
+    footer .column1,
+    footer .column2,
+    footer .column3,
+    footer .column4 {
+        margin: 20px;
+    }
+  }
 
-}
-
-@media only screen and (max-width: 480px) {
+@media  screen and (max-width: 480px) {
     footer {
         padding: 20px;
     }
@@ -191,10 +196,10 @@ footer .column4 input::placeholder {
     footer .column3 ul {
         width: 100%;
     }
-
+ 
 }
 
-@media only screen and (max-width: 350px) {
+@media  screen and (max-width: 350px) {
     footer .column3 li {
         overflow-wrap: anywhere;
 
