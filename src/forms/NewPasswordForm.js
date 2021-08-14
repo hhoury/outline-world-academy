@@ -5,7 +5,7 @@ import classes from './NewPasswordForm.module.css'
 import useInput from '../hooks/use-input'
 import Message from '../components/UI/Message'
 import { useParams } from 'react-router'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SyncLoader } from "react-spinners"
 import {useDispatch, useSelector} from 'react-redux'
@@ -15,16 +15,16 @@ const isNotEmpty = (value) => {
 }
 
 const NewPasswordForm = (props) => {
-    const notify = (message) => toast.warning(message,
-    {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-    });
+    // const notify = (message) => toast.warning(message,
+    // {
+    //     position: "top-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: false,
+    //     draggable: true,
+    //     progress: undefined,
+    // });
 
    // const [showPasswordError, setshowPasswordError] = useState(initialState)
 
@@ -32,7 +32,7 @@ const NewPasswordForm = (props) => {
 
     const dispatch = useDispatch();
     const passwordChange = useSelector((state) => state.changePassword)
-    const { loading, error, message } = passwordChange
+    const { loading, message } = passwordChange
 
     const {
         value: enteredPassword,

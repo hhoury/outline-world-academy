@@ -67,3 +67,35 @@ Testing: Jest, react-testing-library, Cypress.io
 GitHub Actions, CircleCI
 Netlify, Vercel, Heroku, AWS
 See our Project Guidelines
+
+
+google client id
+Project name
+OutlineWorldAcademy
+Project ID
+outlineworldacademy
+Project number
+454700765946
+{"web":{"client_id":"454700765946-33hpa1noi4637t65b8caqigrfmlaicvj.apps.googleusercontent.com","project_id":"outlineworldacademy","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"ReNzJ7ZwYsgPdkvN9XcInI-s","redirect_uris":["http://localhost:3000/"],"javascript_origins":["http://localhost:3000"]}}
+
+
+#############################
+#############################
+Object
+accessToken: "EAAE9lu8pFl8BAOVhrqly5ZAwlTm0fWiTELxeMcLy0mv1Rr3M06blmrA3zNBZAbyB2UXuCFBf1rysvEerNe5K1cBye4bhhib6WCMh8k2Wb13Xnb4nOKTI3M8w5nE6wZCX4oeBz08vuOfD9KxczGT8hfQBJZAtPLDdqrAnbyEoCwzTz9JXSAKzC0Hqfhx43ZAwXgHaor592VgZDZD"
+data_access_expiration_time: 1636484750
+email: "hhoury@hotmail.com"
+expiresIn: 6850
+graphDomain: "facebook"
+id: "10158550421558925"
+name: "Hassan Houry"
+picture:
+data:
+height: 50
+is_silhouette: false
+url: "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10158550421558925&height=50&width=50&ext=1631300751&hash=AeRgDeWvE4rtEpcPptA"
+width: 50
+[[Prototype]]: Object
+[[Prototype]]: Object
+signedRequest: "c6xzrO_V8-3rLHapEtou9IUiJYoyLgAuInkaRJ5Clp4.eyJ1c2VyX2lkIjoiMTAxNTg1NTA0MjE1NTg5MjUiLCJjb2RlIjoiQVFENS1HQ0huZHhlMlF0UFp4ZjBGaDFTR1B3NmlyT2pfSlZuLVJZMUpKRXN6S2dROGFDNTZGMnZzdlphSUhUWnNPbk80R2QzSGMwZDRLeGZkbHVVd0ptbVQwT3JZSUQ0azkwLU5CUnlQbldlVHY5SUpteDY1RjRXSkFnMHI4dTVDZWYwTTk3amtVZVNjRVVybmJWeVRLSWVwVFpERFRCQ2pqMmVkWjZPMTZTNHdEcmNicUtQbnl5WVQ1RlZ4cy1Vc2V3WHdJOVU1R3RXaF9BOTJIT19pVHFRNDREXzcxbjhfWE4wcDNFd1Q1U1hPU0hPT1g4bnk1MHQ4dU1rSEJBZkJNYUVtdjhhLTkwcExuem5pQlBLdXZKTmRkVVpVWXJpUDFFckdvT0lvOVN3Y1ZWbFJhMmdxMjEzRWNyMk5ISWtKT09JUWFXUEdMYm9GOVhpeVV4dU9sLWYiLCJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImlzc3VlZF9hdCI6MTYyODcwODc1MX0"
+userID: "10158550421558925"

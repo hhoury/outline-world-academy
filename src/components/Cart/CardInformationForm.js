@@ -21,37 +21,29 @@ const CardInformation = forwardRef((props,ref) => {
     const {
         value: enteredCardHolder,
         hasError: cardHolderInputHasError,
-        isValid: enteredCardHolderIsValid,
         valueChangeHandler: cardHolderChangedHandler,
         inputBlurHandler: cardHolderBlurHandler,
-        reset: resetCardHolderInput,
         setValue: setCardHolderValue
     } = useInput(isNotEmpty);
     const {
         value: enteredCardNumber,
         hasError: cardNumberInputHasError,
-        isValid: enteredCardNumberIsValid,
         valueChangeHandler: cardNumberChangedHandler,
         inputBlurHandler: cardNumberBlurHandler,
-        reset: resetCardNumberInput,
         setValue: setCardNumberValue
     } = useInput(isNotEmpty);
     const {
         value: enteredExpiryDate,
         hasError: ExpiryDateInputHasError,
-        isValid: enteredExpiryDateIsValid,
         valueChangeHandler: expiryDateChangedHandler,
         inputBlurHandler: expiryDateBlurHandler,
-        reset: resetExpiryDateInput,
         setValue: setExpiryDateValue
     } = useInput(isNotEmpty);
     const {
         value: enteredCVC,
         hasError: cVCInputHasError,
-        isValid: enteredCVCIsValid,
         valueChangeHandler: cVCChangedHandler,
         inputBlurHandler: cVCBlurHandler,
-        reset: resetCVCInput,
         setValue: setCVCValue
     } = useInput(isNotEmpty);
 

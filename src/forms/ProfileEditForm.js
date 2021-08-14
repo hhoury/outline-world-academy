@@ -2,9 +2,8 @@ import React, { useState,useEffect } from 'react'
 import classes from './ProfileEditForm.module.css'
 import RightMenu from '../Layout/RightMenu'
 import Button from '../components/UI/Button'
-import profileImage from '../assets/profile.jpg'
 import useInput from '../hooks/use-input'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import {LazyLoadImage} from 'react-lazy-load-image-component'
 
 const isNotEmpty = (value) => {
@@ -63,7 +62,6 @@ const ProfileEditForm = (props) => {
   } = useInput(isEmail);
 
   const {
-    value: enteredPassword,
     hasError: passwordInputHasError,
     isValid: enteredPasswordIsValid,
     valueChangeHandler: passwordChangedHandler,

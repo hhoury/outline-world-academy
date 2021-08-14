@@ -1,6 +1,6 @@
 .social-media{
   clear: both;
-    display: inline-block;
+  display: inline-block;
 }
 .social-media h1 {
     font-size: 20px;
@@ -20,10 +20,14 @@
   display: inline-block;
   text-decoration: none;
   color: #000;
-  font-size: 25px;
+  font-size: 0;
   outline: none;
   border: none;
 }
 .social-media button:hover{
   opacity: 0.8;
+}
+.social-media button i{
+  margin: 0 !important;
+  font-size: 25px;
 }
