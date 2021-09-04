@@ -1,0 +1,26 @@
+.CoursesCarousel{
+    width: 80%;
+    margin: 40px auto;
+}
+.CoursesCarousel h1{
+    font-size: 36px;
+    color: #F44E0C;
+    font-weight: bolder;
+    text-align: center;
+}
+.CoursesCarousel .Carousel3D{
+    margin: 30px auto;
+    width: 60%;
+    height: 500px;
+}
+.CoursesCarousel .CarouselText{
+    width: 60%;
+    text-align: center;
+    margin: 20px auto;
+}
+.CoursesCarousel .ViewCourses{
+    width: 40%;
+    margin: 0 auto;
+    word-spacing: 5px;
+    letter-spacing: 3px;
+}

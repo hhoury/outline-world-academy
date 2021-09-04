@@ -70,6 +70,7 @@ const CartLoginForm = (props) => {
       resetEmailInput();
       resetPasswordInput();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading])
 
   useEffect(() => {

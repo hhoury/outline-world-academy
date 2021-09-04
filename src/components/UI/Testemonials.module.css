@@ -1,0 +1,57 @@
+.Testemonials{
+    margin: 50px 0;
+    position: relative;
+    max-height: 700px;
+}
+.Testemonials .carousel-item{
+    height: 550px;
+}
+.Testemonials h1 {
+    font-size: 36px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50px;
+    z-index: 20;
+    width: 100%;
+    text-align: center;
+}
+.Testemonials .carousel-caption{
+    width: 70%;
+    margin: 0 auto;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+}
+.Testemonials .carousel-caption > div{
+    margin-top: 50px;
+}
+.Testemonials .testomonial-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.Testemonials .testomonial-body p{
+    max-width: 50%;
+}
+.Testemonials .carousel-caption span{
+    color: #f44e0c;
+    font-size: 56px;
+}
+.Testemonials .carousel-caption p{
+    display: inline-block;
+    margin: 10px;
+}
+.Testemonials .carousel-caption .testomonial-footer {
+    margin-top: 20px;
+    width: 100%;
+    font-size: 21px;
+}
+.Testemonials .carousel-caption .testomonial-footer h4{
+    color: #f44e0c;
+    margin: 0;
+}
+.Testemonials .carousel-caption .testomonial-footer p{
+    margin: 0;
+}

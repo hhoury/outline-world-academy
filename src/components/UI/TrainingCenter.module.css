@@ -1,0 +1,19 @@
+.TrainingCenter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-between;
+    padding: 30px;
+    background-color: #F44E0C;
+    -webkit-box-shadow: 0px 0px 21px 13px #F44E0C;
+    box-shadow: 0px 0px 20px 15px #F44E0C;
+    width: 60%;
+    margin: 100px auto;
+    border-radius: 5px;
+}
+.TrainingCenter p, .TrainingCenter div{
+    margin: 0 auto;
+    font-size: 28px;
+    width: 50%;
+    text-align: center;
+}
