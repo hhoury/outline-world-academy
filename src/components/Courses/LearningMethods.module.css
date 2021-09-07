@@ -1,0 +1,30 @@
+.LearningMethods{
+    width: 80%;
+    margin: 100px auto;
+
+}
+.LearningMethods h2{
+    text-align: left;
+    width: min-content;
+    font-size: 56px;
+}
+.LearningMethods .methods{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.LearningMethods .methods div{
+    width: 40%;
+}
+.LearningMethods .methods div h3{
+    font-size: 48px;
+}
+.LearningMethods .methods div p{
+    margin: 20px auto;
+}
+.LearningMethods .methods span{
+    width: 105px;
+    height: 105px;
+}

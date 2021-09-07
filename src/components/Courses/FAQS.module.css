@@ -1,0 +1,28 @@
+.Faqs{
+    width: 80%;
+    margin: 100px auto;
+    background-color: #F44E0C;
+    -webkit-box-shadow: 0px 0px 21px 13px #F44E0C;
+    box-shadow: 0px 0px 20px 15px #F44E0C;
+    padding: 30px;
+    
+}
+.Faqs h2{
+    color: #fff;
+}
+.Faqs div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   align-items: end;
+}
+.Faqs div p{
+    width: 50%;
+}
+.Faqs .download{
+    background-color: #fff;
+    color: #F44E0C;
+    letter-spacing: 2px;
+    width: 40%;
+    margin: 0 auto;
+}

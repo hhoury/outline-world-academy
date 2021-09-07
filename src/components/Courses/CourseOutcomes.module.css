@@ -1,0 +1,28 @@
+.CourseOutcomes{
+    width: 80%;
+    margin: 80px auto;
+}
+.CourseOutcomes h2{
+    text-align: center;
+    color: #F44E0C;
+    font-size: 54px;
+    text-transform: uppercase;
+}
+.CourseOutcomes p{
+    text-align: center;
+    width: 50%;
+    margin: 20px auto;
+}
+.CourseOutcomes > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.CourseOutcomes > div > div{
+    width: 380px;
+    height: 350px;
+    background-color: #333;
+    margin: 15px;
+    padding: 0;
+}
