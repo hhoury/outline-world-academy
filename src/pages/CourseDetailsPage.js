@@ -1,25 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
-import thumbnail from '../assets/chapter-thumbnail.jpg'
 import Button from '../components/UI/Button'
-import certificate from '../assets/certificate.svg'
-import webinars from '../assets/webinars.svg'
-import chapters from '../assets/chapters.svg'
-import lessons from '../assets/lessons.svg'
+import certificateImg from '../assets/certificate.svg'
+import webinarsImg from '../assets/webinars.svg'
+import chaptersImg from '../assets/chapters.svg'
+import lessonsImg from '../assets/lessons.svg'
 import { Row, Col } from 'react-bootstrap'
-// import CourseChapters from '../components/Courses/CourseChapters'
 import courseImage from '../assets/course-details.jpg'
 import LearningMethods from '../components/Courses/LearningMethods'
 import FAQS from '../components/Courses/FAQS'
 import CourseContent from '../components/Courses/CourseContent'
 import CourseOutcomes from '../components/Courses/CourseOutcomes'
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addToCart } from '../actions/cartActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import axios from 'axios'
+import { useParams } from 'react-router'
+
+
 const notify = () => toast.success("Course Added to Cart",
     {
         position: "top-right",
@@ -30,7 +31,9 @@ const notify = () => toast.success("Course Added to Cart",
         draggable: true,
         progress: false,
     });
+
 const CourseDetailsPage = () => {
+    const{id} = useParams();
     const history = useHistory();
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
@@ -52,19 +55,35 @@ const CourseDetailsPage = () => {
         history.push('/cart')
     }
 
-    const course = {
-        id: 1,
-        title: 'Corona renderer for instructors',
-        chapters: [{ number: '01', title: 'Lorem Ipsum', thumbnail: { thumbnail }, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lorem erat, convallis eu interdum eget, blandit vel metus. Mauris quis enim consectetur, vehicula urna id, sodales odio. Maecenas feugiat dignissim eros, at commodo quam gravida non. Morbi non lobortis sem, in porta nulla. Vestibulum pellentesque sem at libero accumsan, eu consequat tellus tristique. ' }, { number: '02', title: 'Lorem Ipsum', thumbnail: { thumbnail }, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lorem erat, convallis eu interdum eget, blandit vel metus. Mauris quis enim consectetur, vehicula urna id, sodales odio. Maecenas feugiat dignissim eros, at commodo quam gravida non. Morbi non lobortis sem, in porta nulla. Vestibulum pellentesque sem at libero accumsan, eu consequat tellus tristique. ' }, { number: '03', title: 'Lorem Ipsum', thumbnail: { thumbnail }, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lorem erat, convallis eu interdum eget, blandit vel metus. Mauris quis enim consectetur, vehicula urna id, sodales odio. Maecenas feugiat dignissim eros, at commodo quam gravida non. Morbi non lobortis sem, in porta nulla. Vestibulum pellentesque sem at libero accumsan, eu consequat tellus tristique. ' }],
-        chaptersCount: 10,
-        lessonsCount: 32,
-        webinarsCount: 2,
-        certificateCount: 1,
-        price: 20
-    }
-    const existingCartItemIndex = cartItems.findIndex(item => item.id === course.id);
-    const existingCartItem = cartItems[existingCartItemIndex];
+    const courseApi = `https://localhost:44362/api/courses/${id}`
+    const chaptersApi = `https://localhost:44362/api/chapters/${id}`
+    const webinarsApi = `https://localhost:44362/api/webinars/${id}`
+    const certificatesApi = `https://localhost:44362/api/certificates/${id}`
+const [course, setCourse] = useState({})
+const [chapters, setChapters] = useState([])
+const [webinars, setWebinars] = useState([])
+const [certificates, setCertificates] = useState([])
+   
+useEffect(() => {
+       axios.all([courseApi,chaptersApi,webinarsApi,certificatesApi])
+       .then((...responses) => {
+         const COURSE = responses[0].data;
+         const CHAPTERS = responses[1].data;
+         const WEBINARS = responses[2].data;
+         const CERTIFICATES = responses[3].data;
+         console.log(COURSE);
+         setCourse(COURSE);
+         setChapters(CHAPTERS);
+         setWebinars(WEBINARS);
+         setCertificates(CERTIFICATES);
+      })
+      .catch(errors => {
+          
+      });
+   }, [id,courseApi,chaptersApi,webinarsApi,certificatesApi])
 
+    const existingCartItemIndex = cartItems.findIndex(item => item.id === course.id);
+    const existingCartItem = existingCartItemIndex? cartItems[existingCartItemIndex]: 0;
     return (
         <>
             <ToastContainer
@@ -93,28 +112,28 @@ const CourseDetailsPage = () => {
                         <Row>
                             <Col lg={3}>
                                 <li>
-                                    <span><img src={chapters} alt='chapters' /></span>
-                                    <p className='count'>{course.chaptersCount}</p>
+                                    <span><img src={chaptersImg} alt='chapters' /></span>
+                                    <p className='count'>{chapters.length}</p>
                                     <p>Chapters</p>
                                 </li>
                             </Col>
                             <Col lg={3}>
                                 <li>
-                                    <span><img src={lessons} alt='lessons' /></span>
+                                    <span><img src={lessonsImg} alt='lessons' /></span>
                                     <p className='count'>{course.lessonsCount}</p>
                                     <p>Lessons</p>
                                 </li>
                             </Col>
                             <Col lg={3}>
                                 <li>
-                                    <span><img src={webinars} alt='webinars' /></span>
+                                    <span><img src={webinarsImg} alt='webinars' /></span>
                                     <p className='count'>{course.webinarsCount}</p>
                                     <p>Webinars</p>
                                 </li>
                             </Col>
                             <Col lg={3}>
                                 <li>
-                                    <span><img src={certificate} alt='certificate' /></span>
+                                    <span><img src={certificateImg} alt='certificate' /></span>
                                     <p className='count'>{course.certificateCount}</p>
                                     <p>Certificate</p>
                                 </li>

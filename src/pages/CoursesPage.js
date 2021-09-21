@@ -1,49 +1,20 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import course1 from '../assets/course1.jpg'
 import CourseItem from '../components/Courses/CourseItem'
+import axios from 'axios'
 
-const CoursesPage = (props) => {
+const CoursesPage =  (props) => {
    // const keyword = props.match.params.keyword
-    const COURSES = [{
-        id: '1',
-        title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course1.jpg',
-        price: 200,
-        chapters:[{number: '01', title:'chapter title',lessons:[{number: '01', title:'lesson title'}]}]
-    }, {
-        id: '2',
-        title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course2.jpg',
-        price: 300,
-        chapters:[{number: '01', title:'chapter title',lessons:[{number: '01', title:'lesson title'}]}]
-    }, {
-        id: '3',
-        title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course2.jpg',
-        price: 400,
-        chapters:[{number: '01', title:'chapter title',lessons:[{number: '01', title:'lesson title'}]}]
-    }, {
-        id: '4',
-        title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course2.jpg',
-        price: 100,
-        chapters:[{number: '01', title:'chapter title',lessons:[{number: '01', title:'lesson title'}]}]
-    }, {
-        id: '5',
-        title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course2.jpg',
-        price: 50,
-        chapters:[{number: '01', title:'chapter title',lessons:[{number: '01', title:'lesson title'}]}]
-    }, {
-        id: '6',
-        title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit',
-        thumbnail: '/src/assets/course2.jpg',
-        price: 20,
-        chapters:[{number: '01', title:'chapter title',lessons:[{number: '01', title:'lesson title'}]}]
-    }
-    ]
+   const [courses, setCourses] = useState([])
+   useEffect(() => {
+       axios.get('https://localhost:44362/api/courses')
+       .then(res => {
+         const COURSES = res.data;
+         setCourses(COURSES)
+      });
+   }, [])
     return (
         <div className='courses-page'>
             <Header fullMenu={true}/>
@@ -53,7 +24,7 @@ const CoursesPage = (props) => {
             <main>
                 <h1>Courses</h1>
                 <ul className='row'>
-                    {COURSES.map((course) =>
+                    {courses.map((course) =>
                     <CourseItem 
                     key={course.id} id={course.id} title={course.title} price={course.price} chapters={course.chapters} lessons={course.chapters.lessons} thumbnail={course1} />
                        )
