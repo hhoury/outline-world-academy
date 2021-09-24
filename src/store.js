@@ -10,10 +10,13 @@ import {
   userDeleteReducer,
   userUpdateReducer,
   resetPasswordReducer,
-  changePasswordReducer
-} from './reducers/userReducers'
+  changePasswordReducer,
+  
+} from './reducers/userReducers';
+import {courseListReducer} from './reducers/courseReducers';
 
 const reducer = combineReducers({
+  courseList: courseListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
@@ -23,6 +26,7 @@ const reducer = combineReducers({
   resetPassword: resetPasswordReducer,
   changePassword: changePasswordReducer,
   cart: cartReducer,
+
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
@@ -53,7 +57,7 @@ const initialState = {
     totalAmount: totalAmountFromStorage ? totalAmountFromStorage : 0,
     paymentInfo: paymentInfoFromStorage
   },
-  userLogin: { userInfo: userInfoFromStorage },
+  userLogin: { userInfo: userInfoFromStorage }
 }
 
 const middleware = [thunk]

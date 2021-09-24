@@ -52,6 +52,7 @@ export const logout = () => async (dispatch) => {
         localStorage.removeItem('totalAmount')
         localStorage.removeItem('paymentInfo')
         localStorage.removeItem('userInfo')
+        
         dispatch({ type: USER_LOGOUT })
         document.location.href = '/'
     }

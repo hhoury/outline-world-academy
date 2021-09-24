@@ -44,6 +44,8 @@ const App = () => {
                <Route path='/billing-details'><PersonalDetailsPage /></Route>
                <Route path='/payment'><PaymentPage /></Route>
                <Route path='/order-review'><OrderReviewPage /></Route>
+
+               
                <Route path='/courses/:id/chapter/:id/:id'><CourseChapterLessonPage /></Route>
                <Route path='/courses/:id/chapter/:id'><ChapterDetailsPage /></Route>
                <Route path='/courses/:id/:id'><CourseDetailsPageOld /></Route>

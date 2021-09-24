@@ -25,16 +25,18 @@ const ProfileEditForm = (props) => {
     const { userInfo } = userLogin
     const {user} = userInfo
     const [isEditMode, setIsEditMode] = useState(false)
+
     const deleteAccountHandler = () => {
 
     }
+
     const editProfileHandler = (event) => {
         event.preventDefault();
         if(isEditMode)
             props.onShowModal();
         setIsEditMode(!isEditMode)
-        
     }
+
     const editPhotoHandler =(event) => {
         event.preventDefault();
     }
@@ -69,6 +71,7 @@ const ProfileEditForm = (props) => {
     reset: resetPasswordInput,
     setValue: setPasswordValue
   } = useInput(isNotEmpty);
+  
   const [job, setJob] = useState('')
   const nameClasses = nameInputHasError ? 'invalid' : '';
   const emailClasses = emailInputHasError ? 'invalid' : '';

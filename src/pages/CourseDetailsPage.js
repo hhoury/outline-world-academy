@@ -59,29 +59,34 @@ const CourseDetailsPage = () => {
     const chaptersApi = `https://localhost:44362/api/chapters/${id}`
     const webinarsApi = `https://localhost:44362/api/webinars/${id}`
     const certificatesApi = `https://localhost:44362/api/certificates/${id}`
-const [course, setCourse] = useState({})
-const [chapters, setChapters] = useState([])
-const [webinars, setWebinars] = useState([])
-const [certificates, setCertificates] = useState([])
+    const lessonsApi = `https://localhost:44362/api/lessons/course/${id}`
+
+    const [course, setCourse] = useState({})
+    const [chapters, setChapters] = useState([])
+    const [lessons, setLessons] = useState([])
+    const [webinars, setWebinars] = useState([])
+    const [certificates, setCertificates] = useState([])
    
 useEffect(() => {
-       axios.all([courseApi,chaptersApi,webinarsApi,certificatesApi])
+       axios.all([courseApi,chaptersApi,webinarsApi,certificatesApi,lessonsApi])
        .then((...responses) => {
+         console.log(responses);
          const COURSE = responses[0].data;
          const CHAPTERS = responses[1].data;
          const WEBINARS = responses[2].data;
          const CERTIFICATES = responses[3].data;
-         console.log(COURSE);
+         const LESSONS= responses[4].data;
          setCourse(COURSE);
          setChapters(CHAPTERS);
          setWebinars(WEBINARS);
          setCertificates(CERTIFICATES);
+         setLessons(LESSONS);
       })
       .catch(errors => {
           
       });
-   }, [id,courseApi,chaptersApi,webinarsApi,certificatesApi])
-
+   }, [id,courseApi,chaptersApi,webinarsApi,certificatesApi,lessonsApi])
+   console.log(lessons);
     const existingCartItemIndex = cartItems.findIndex(item => item.id === course.id);
     const existingCartItem = existingCartItemIndex? cartItems[existingCartItemIndex]: 0;
     return (
@@ -120,21 +125,21 @@ useEffect(() => {
                             <Col lg={3}>
                                 <li>
                                     <span><img src={lessonsImg} alt='lessons' /></span>
-                                    <p className='count'>{course.lessonsCount}</p>
+                                    <p className='count'>{lessons.length}</p>
                                     <p>Lessons</p>
                                 </li>
                             </Col>
                             <Col lg={3}>
                                 <li>
                                     <span><img src={webinarsImg} alt='webinars' /></span>
-                                    <p className='count'>{course.webinarsCount}</p>
+                                    <p className='count'>{webinars.length}</p>
                                     <p>Webinars</p>
                                 </li>
                             </Col>
                             <Col lg={3}>
                                 <li>
                                     <span><img src={certificateImg} alt='certificate' /></span>
-                                    <p className='count'>{course.certificateCount}</p>
+                                    <p className='count'>{certificates.length}</p>
                                     <p>Certificate</p>
                                 </li>
                             </Col>
