@@ -32,7 +32,8 @@ const CourseItem = (props) => {
                 id: props.id,
                 title: props.title,
                 price: props.price,
-                chapters: props.chapters
+                chapters: props.chapters,
+                lessons: props.chapters.lessons
             }
         ))
         notify();

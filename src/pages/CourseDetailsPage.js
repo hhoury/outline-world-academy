@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { useParams } from 'react-router'
-
+import {courseDetails} from '../actions/courseActions'
 
 const notify = () => toast.success("Course Added to Cart",
     {
@@ -38,7 +38,12 @@ const CourseDetailsPage = () => {
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
     const { cartItems } = cart
-
+    
+    const courseDetails = useSelector((state) => state.courseDetails)
+    useEffect(() => {
+        dispatch(courseDetails())
+    }, [dispatch])
+    const { loading, error, course } = courseDetails
     const addToCartHandler = () => {
         dispatch(addToCart(
             {
@@ -61,32 +66,30 @@ const CourseDetailsPage = () => {
     const certificatesApi = `https://localhost:44362/api/certificates/${id}`
     const lessonsApi = `https://localhost:44362/api/lessons/course/${id}`
 
-    const [course, setCourse] = useState({})
-    const [chapters, setChapters] = useState([])
-    const [lessons, setLessons] = useState([])
-    const [webinars, setWebinars] = useState([])
-    const [certificates, setCertificates] = useState([])
+    // const [chapters, setChapters] = useState([])
+    // const [lessons, setLessons] = useState([])
+    // const [webinars, setWebinars] = useState([])
+    // const [certificates, setCertificates] = useState([])
    
-useEffect(() => {
-       axios.all([courseApi,chaptersApi,webinarsApi,certificatesApi,lessonsApi])
-       .then((...responses) => {
-         console.log(responses);
-         const COURSE = responses[0].data;
-         const CHAPTERS = responses[1].data;
-         const WEBINARS = responses[2].data;
-         const CERTIFICATES = responses[3].data;
-         const LESSONS= responses[4].data;
-         setCourse(COURSE);
-         setChapters(CHAPTERS);
-         setWebinars(WEBINARS);
-         setCertificates(CERTIFICATES);
-         setLessons(LESSONS);
-      })
-      .catch(errors => {
+// useEffect(() => {
+//        axios.all([courseApi,chaptersApi,webinarsApi,certificatesApi,lessonsApi])
+//        .then((...responses) => {
+//          console.log(responses);
+//          const COURSE = responses[0].data;
+//          const CHAPTERS = responses[1].data;
+//          const WEBINARS = responses[2].data;
+//          const CERTIFICATES = responses[3].data;
+//          const LESSONS= responses[4].data;
+//         //  setCourse(COURSE);
+//         //  setChapters(CHAPTERS);
+//         //  setWebinars(WEBINARS);
+//         //  setCertificates(CERTIFICATES);
+//         //  setLessons(LESSONS);
+//       })
+//       .catch(errors => {
           
-      });
-   }, [id,courseApi,chaptersApi,webinarsApi,certificatesApi,lessonsApi])
-   console.log(lessons);
+//       });
+//    }, [id,courseApi,chaptersApi,webinarsApi,certificatesApi,lessonsApi])
     const existingCartItemIndex = cartItems.findIndex(item => item.id === course.id);
     const existingCartItem = existingCartItemIndex? cartItems[existingCartItemIndex]: 0;
     return (

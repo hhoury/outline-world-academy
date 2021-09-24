@@ -32,7 +32,7 @@ export const listCourses = () => async (dispatch) => {
 
 }
 
-export const listCourseDetails = (id) => async (dispatch) => {
+export const courseDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: COURSE_DETAILS_REQUEST })
         const { data } = await axios.get(`https://localhost:44362/api/courses/${id}`)
