@@ -1,4 +1,9 @@
-import {COURSE_LIST_FAIL,COURSE_LIST_SUCCESS,COURSE_LIST_REQUEST,COURSE_DETAILS_REQUEST,COURSE_DETAILS_SUCCESS,COURSE_DETAILS_FAIL} from '../constants/courseConstants'
+import {COURSE_LIST_FAIL,
+    COURSE_LIST_SUCCESS,
+    COURSE_LIST_REQUEST,
+    COURSE_DETAILS_REQUEST,
+    COURSE_DETAILS_SUCCESS,
+    COURSE_DETAILS_FAIL} from '../constants/courseConstants'
 
 export const courseListReducer = (state = { courses: [] }, action) => {
     switch (action.type) {
@@ -13,7 +18,7 @@ export const courseListReducer = (state = { courses: [] }, action) => {
     }
 }
 
-export const courseDetailsReducer = (state = { course: {chapters: []} }, action) => {
+export const courseDetailsReducer = (state = { course: {} }, action) => {
     switch (action.type) {
         case COURSE_DETAILS_REQUEST:
             return { loading: true, ...state }

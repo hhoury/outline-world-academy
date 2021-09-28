@@ -13,9 +13,12 @@ import {
   changePasswordReducer,
   
 } from './reducers/userReducers';
-import {courseListReducer} from './reducers/courseReducers';
+import {courseListReducer, courseDetailsReducer} from './reducers/courseReducers';
+import {chapterListReducer} from './reducers/chapterReducers';
 
 const reducer = combineReducers({
+  courseChapters: chapterListReducer,
+  courseDetails: courseDetailsReducer,
   courseList: courseListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
@@ -26,9 +29,8 @@ const reducer = combineReducers({
   resetPassword: resetPasswordReducer,
   changePassword: changePasswordReducer,
   cart: cartReducer,
-
 })
-
+//#region from storage (cartItems,totalAmount,shippingAddress,paymentInfo,userInfo)
 const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : []
@@ -48,6 +50,7 @@ const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
 const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
   : null
+//#endregion
 
 const initialState = {
   cart:

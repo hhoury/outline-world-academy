@@ -464,7 +464,7 @@ h2 {
   flex-direction: row;
 }
 .course-details .course-properties .course-purchase div{
-  background-color: #1e1e1e;
+  background-color: #333;
   padding: 20px;
   text-align: center;
   font-size: 26px;

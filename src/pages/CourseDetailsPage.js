@@ -17,9 +17,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { addToCart } from '../actions/cartActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import axios from 'axios'
 import { useParams } from 'react-router'
-import {courseDetails} from '../actions/courseActions'
+import {listCourseDetails} from '../actions/courseActions'
+import { listCourseChapters } from '../actions/chapterActions'
 
 const notify = () => toast.success("Course Added to Cart",
     {
@@ -38,12 +38,6 @@ const CourseDetailsPage = () => {
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
     const { cartItems } = cart
-    
-    const courseDetails = useSelector((state) => state.courseDetails)
-    useEffect(() => {
-        dispatch(courseDetails())
-    }, [dispatch])
-    const { loading, error, course } = courseDetails
     const addToCartHandler = () => {
         dispatch(addToCart(
             {
@@ -55,42 +49,26 @@ const CourseDetailsPage = () => {
         ))
         notify();
     }
-
     const goToCartHandler = () => {
         history.push('/cart')
     }
+    const courseDetails = useSelector((state) => state.courseDetails)
 
-    const courseApi = `https://localhost:44362/api/courses/${id}`
-    const chaptersApi = `https://localhost:44362/api/chapters/${id}`
-    const webinarsApi = `https://localhost:44362/api/webinars/${id}`
-    const certificatesApi = `https://localhost:44362/api/certificates/${id}`
-    const lessonsApi = `https://localhost:44362/api/lessons/course/${id}`
+    const courseChapters = useSelector((state) => state.courseChapters)
 
-    // const [chapters, setChapters] = useState([])
-    // const [lessons, setLessons] = useState([])
-    // const [webinars, setWebinars] = useState([])
-    // const [certificates, setCertificates] = useState([])
-   
-// useEffect(() => {
-//        axios.all([courseApi,chaptersApi,webinarsApi,certificatesApi,lessonsApi])
-//        .then((...responses) => {
-//          console.log(responses);
-//          const COURSE = responses[0].data;
-//          const CHAPTERS = responses[1].data;
-//          const WEBINARS = responses[2].data;
-//          const CERTIFICATES = responses[3].data;
-//          const LESSONS= responses[4].data;
-//         //  setCourse(COURSE);
-//         //  setChapters(CHAPTERS);
-//         //  setWebinars(WEBINARS);
-//         //  setCertificates(CERTIFICATES);
-//         //  setLessons(LESSONS);
-//       })
-//       .catch(errors => {
-          
-//       });
-//    }, [id,courseApi,chaptersApi,webinarsApi,certificatesApi,lessonsApi])
-    const existingCartItemIndex = cartItems.findIndex(item => item.id === course.id);
+    useEffect(() => {
+        dispatch(listCourseDetails(id))
+        dispatch(listCourseChapters(id))
+    }, [dispatch,id])
+    
+    const { loading, error, course } = courseDetails
+    const {chapters} = courseChapters
+    let lessonsCount = 0;
+    for (let index = 0; index < chapters.length; index++) {
+        lessonsCount+= chapters[index].lessons.length;
+    }
+    
+    const existingCartItemIndex = cartItems.findIndex(item => item.id === course?.id);
     const existingCartItem = existingCartItemIndex? cartItems[existingCartItemIndex]: 0;
     return (
         <>
@@ -112,37 +90,37 @@ const CourseDetailsPage = () => {
                 backgroundRepeat: 'no-repeat',
             }}>
                 <Header fullMenu={true} />
-                <h1>{course.title}
+                <h1>{course?.title}
                 </h1>
                 <div className='course-properties'>
-                    <h2>{course.title}</h2>
+                    <h2>{course?.title}</h2>
                     <ul>
                         <Row>
                             <Col lg={3}>
                                 <li>
                                     <span><img src={chaptersImg} alt='chapters' /></span>
-                                    <p className='count'>{chapters.length}</p>
+                                    <p className='count'>{chapters?.length}</p>
                                     <p>Chapters</p>
                                 </li>
                             </Col>
                             <Col lg={3}>
                                 <li>
                                     <span><img src={lessonsImg} alt='lessons' /></span>
-                                    <p className='count'>{lessons.length}</p>
+                                    <p className='count'>{lessonsCount}</p>
                                     <p>Lessons</p>
                                 </li>
                             </Col>
                             <Col lg={3}>
                                 <li>
                                     <span><img src={webinarsImg} alt='webinars' /></span>
-                                    <p className='count'>{webinars.length}</p>
+                                    <p className='count'>{course?.webinars?.length}</p>
                                     <p>Webinars</p>
                                 </li>
                             </Col>
                             <Col lg={3}>
                                 <li>
                                     <span><img src={certificateImg} alt='certificate' /></span>
-                                    <p className='count'>{certificates.length}</p>
+                                    <p className='count'>{course?.certificates?.length}</p>
                                     <p>Certificate</p>
                                 </li>
                             </Col>
@@ -151,7 +129,7 @@ const CourseDetailsPage = () => {
                     <div className='course-purchase'>
                         <div className='course-price'>
                             <span>
-                                ${course.price}
+                                ${course?.price}
                             </span>
                             + VAT 15%
                         </div>
@@ -164,7 +142,10 @@ const CourseDetailsPage = () => {
                 </div>
 
                 <LearningMethods />
-                <CourseContent />
+                {
+                   chapters?.length > 0 &&  <CourseContent chapters={chapters} />
+                }
+               
                 <FAQS />
                 <CourseOutcomes />
                 <Footer />

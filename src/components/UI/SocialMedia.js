@@ -10,10 +10,8 @@ const SocialMedia = (props) => {
     if(userInfo)
         window.location.href= '/home'
     const responseGoogle = (response) => {
-        console.log(response);
     }
     const responseFacebook = (response) => {
-        console.log(response);
     }
 
     return (
