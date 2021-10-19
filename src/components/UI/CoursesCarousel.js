@@ -4,26 +4,26 @@ import { config } from "react-spring";
 import classes from './CoursesCarousel.module.css'
 import { useHistory } from 'react-router';
 import Button from './Button';
-const CoursesCarousel = () => {
+const CoursesCarousel = (props) => {
     const history = useHistory();
     const [goToSlide, setGoToSlide] = useState(0)
     const slides = [
         {
             key: 1,
-            content: <img src="https://picsum.photos/500/800/?random" alt="1" />
+            content: <img className={classes.carouselChapter} src="https://picsum.photos/500/800/?random" alt="1" />
         },
         {
             key: 2,
-            content: <img src="https://picsum.photos/500/800/?random" alt="2" />
+            content:   <img className={classes.carouselChapter} src="https://picsum.photos/500/800/?random" alt="2" />
         },
         {
             key: 3,
-            content: <img src="https://picsum.photos/500/800/?random" alt="3" />
+            content: <img className={classes.carouselChapter} src="https://picsum.photos/500/800/?random" alt="3" />
         }
     ].map((slide, index) => {
         return { ...slide, onClick: () => setGoToSlide(index) };
     });
-    const viewCoursesHandler = () =>{
+    const viewCoursesHandler = () => {
         history.push('/courses')
     }
     return (
@@ -39,8 +39,8 @@ const CoursesCarousel = () => {
                 Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat
             </p>
             <Button className={classes.ViewCourses} onClick={viewCoursesHandler}>View Available Courses</Button>
-           
-            
+
+
         </div>
 
     )
