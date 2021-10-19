@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import { Carousel } from 'react-bootstrap'
@@ -11,9 +11,17 @@ import OurWork from '../components/UI/OurWork'
 import TrainingCenter from '../components/UI/TrainingCenter'
 import Testemonials from '../components/UI/Testemonials'
 import OurClients from '../components/UI/OurClients'
-
+import { useDispatch, useSelector } from 'react-redux'
+import {listFeaturedCourses} from '../actions/courseActions'
 
 const HomePage = () => {
+    const dispatch = useDispatch()
+    const featuredCourseList = useSelector((state) => state.courseList)
+    useEffect(() => {
+        dispatch(listFeaturedCourses())
+    }, [dispatch])
+    const { loading, error, courses } = featuredCourseList
+    console.log(courses);
     return (
         <div>
             <Header fullMenu={true} className='home-header' />
@@ -42,7 +50,7 @@ const HomePage = () => {
                 </Carousel.Item>
             </Carousel>
 
-            <CoursesCarousel />
+            <CoursesCarousel courses={courses} />
 
             <TrainingCenter />
 

@@ -24,3 +24,7 @@
     word-spacing: 5px;
     letter-spacing: 3px;
 }
+
+.CoursesCarousel .carouselChapter  {
+    cursor: pointer;
+}
