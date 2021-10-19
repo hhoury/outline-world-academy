@@ -1,88 +1,28 @@
 import React from 'react'
 import Button from '../components/UI/Button'
 import classes from './ContactUsForm.module.css'
-import useInput from '../hooks/use-input'
-
-const isNotEmpty = (value) => {
- return value.trim() !== ''
-}
-const isEmail = email => {
-  if (email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-    return (true)
-  }
-  else {
-    return false
-  }
-}
+import { useForm } from "react-hook-form";
 
 const ContactUsForm = (props) => {
-    const {
-        value: enteredName,
-        hasError: nameInputHasError,
-        isValid: enteredNameIsValid,
-        valueChangeHandler: nameChangedHandler,
-        inputBlurHandler: nameBlurHandler,
-        reset: resetNameInput 
-      } = useInput(isNotEmpty);
-    
-        const {
-          value: enteredEmail,
-          hasError: emailInputHasError,
-          isValid: enteredEmailIsValid,
-          valueChangeHandler: emailChangedHandler,
-          inputBlurHandler: emailBlurHandler,
-          reset: resetEmailInput 
-        } = useInput(isEmail);
-  
-          const {
-            value: enteredMessage,
-            hasError: messageInputHasError,
-            isValid: enteredMessageIsValid,
-            valueChangeHandler: messageChangedHandler,
-            inputBlurHandler: messageBlurHandler,
-            reset: resetMessageInput 
-          } = useInput(isNotEmpty);
-           
-            const nameClasses = nameInputHasError ? 'invalid' : '';
-            const messageClasses = messageInputHasError ? 'invalid' : '';
-            const emailClasses = emailInputHasError ? 'invalid' : '';
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-            let formIsValid = false;
-            if (enteredNameIsValid && enteredEmailIsValid && enteredMessageIsValid) {
-              formIsValid = true;
-            }
-            const formSubmitHandler = (event) => {
-                event.preventDefault();
-                if(!formIsValid) 
-                {
-                  return;
-                }
-                resetEmailInput();
-                resetNameInput();
-                resetMessageInput();
-            }
 
-    return (
-        <form onSubmit={formSubmitHandler} className={classes.contactForm}>
-            <input required type='text' placeholder='Full Name'  className={nameClasses}
-            value={enteredName}
-            onChange={nameChangedHandler}
-            onBlur={nameBlurHandler}
-            />
 
-            <input required type='email' placeholder='Email address' className={emailClasses}
-             value={enteredEmail}
-             onChange={emailChangedHandler}
-             onBlur={emailBlurHandler}/>
+  const formSubmitHandler = (data) => {
+    console.log(data);
+  }
 
-            <textarea  required type='text' placeholder='Message'
-            value={enteredMessage} className={messageClasses}
-            onChange={messageChangedHandler}
-            onBlur={messageBlurHandler}></textarea>
+  return (
+    <form onSubmit={handleSubmit(formSubmitHandler) } className={classes.contactForm}>
+      <input required type="text" placeholder="Name" {...register("Name", { required: true, maxLength: 80 })} />
 
-            <Button type='submit' className={classes.btn}>SUBMIT</Button>
-        </form>
-    )
+      <input required type="email" placeholder="Email Address" {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
+
+      <textarea required placeholder='Message' type='text' {...register("Message", { required: true, minLength: 160 })} />
+
+      <Button type='submit' className={classes.btn}>SUBMIT</Button>
+    </form>
+  )
 }
 
 export default ContactUsForm

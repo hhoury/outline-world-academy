@@ -53,7 +53,7 @@ const Footer = () => {
                 <div className={`${classes.column4} col-lg-3 col-md-5 col-sm-12`}>
                     <h2>SUBSCRIBE</h2>
                     <p>Enter your email to subscribe in our Newsletter</p>
-                    <input type='text' placeholder='Email' />
+                    <input type='email' required placeholder='Email' />
                     <Button className={classes.btn}>SUBSCRIBE</Button>
                 </div>
             </footer>

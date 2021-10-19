@@ -1,35 +1,22 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Form from './Form'
 import classes from './SignupForm.module.css'
 import Button from '../components/UI/Button'
 import CheckBox from '../components/UI/CheckBox'
 import SocialMedia from '../components/UI/SocialMedia'
 import { Link } from 'react-router-dom'
-import useInput from '../hooks/use-input'
-import { register } from '../actions/userActions'
+import { createAccount } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/UI/Message'
-import Loader from '../components/UI/Loader'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SyncLoader } from "react-spinners"
-
-const isNotEmpty = (value) => {
-    return value.trim() !== ''
-}
-
-const isEmail = email => {
-    if (email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-        return (true)
-    }
-    else {
-        return false
-    }
-}
-
+import { useForm } from "react-hook-form";
 
 const SignupForm = (props) => {
-    const notify = () => toast.success("A verification email has been sent to " + enteredEmail,
+    const { register, handleSubmit, setValue , watch, formState: { errors } } = useForm();
+
+    const notify = () => toast.success("A verification email has been sent to " + watch("email"),
         {
             position: "top-right",
             autoClose: 5000,
@@ -39,60 +26,11 @@ const SignupForm = (props) => {
             draggable: true,
             progress: undefined,
         });
-    //#region form inputs
-    const {
-        value: enteredName,
-        hasError: nameInputHasError,
-        isValid: enteredNameIsValid,
-        valueChangeHandler: nameChangedHandler,
-        inputBlurHandler: nameBlurHandler,
-        reset: resetNameInput
-    } = useInput(isNotEmpty);
-
-    const {
-        value: enteredEmail,
-        hasError: emailInputHasError,
-        isValid: enteredEmailIsValid,
-        valueChangeHandler: emailChangedHandler,
-        inputBlurHandler: emailBlurHandler,
-        reset: resetEmailInput
-    } = useInput(isEmail);
-
-    const {
-        value: enteredPassword,
-        hasError: passwordInputHasError,
-        isValid: enteredPasswordIsValid,
-        valueChangeHandler: passwordChangedHandler,
-        inputBlurHandler: passwordBlurHandler,
-        reset: resetPasswordInput
-    } = useInput(isNotEmpty);
-
-    const {
-        value: enteredConfirmPassword,
-        hasError: confirmPasswordInputHasError,
-        isValid: enteredConfirmPasswordIsValid,
-        valueChangeHandler: confirmPasswordChangedHandler,
-        inputBlurHandler: confirmPasswordBlurHandler,
-        reset: resetConfirmPasswordInput
-    } = useInput(isNotEmpty);
 
     const [photo, setPhoto] = useState(null);
     const [photoName, setPhotoName] = useState('Upload Your Profile Photo');
+
     const [message, setMessage] = useState(null);
-    const [job, setJob] = useState('')
-    const onJobChange = (e) => {
-        setJob(e.target.value)
-    }
-    const nameClasses = nameInputHasError ? 'invalid' : '';
-    const emailClasses = emailInputHasError ? 'invalid' : '';
-    const passwordClasses = passwordInputHasError ? 'invalid' : '';
-    const confirmPasswordClasses = confirmPasswordInputHasError ? 'invalid' : '';
-    const photoRef = useRef()
-    //#endregion
-    let formIsValid = (enteredEmailIsValid &&
-        enteredPasswordIsValid &&
-        enteredConfirmPasswordIsValid &&
-        enteredNameIsValid)
 
     const [passwordShown, setPasswordShown] = useState(false);
     const showPasswordHandler = (event) => {
@@ -106,47 +44,34 @@ const SignupForm = (props) => {
         setConfirmPasswordShown(!confirmPasswordShown);
     }
     const uploadPhoto = (e) => {
+        if (e.target.files == null) return;
         setPhoto({
-            pictureAsFile: e.target.files[0],
+            pictureAsFile: e.target?.files[0],
         });
-        setPhotoName(photoRef.current.files[0].name)
+        setPhotoName(e.target?.files[0].name)
     };
 
     const dispatch = useDispatch()
 
     const userRegister = useSelector((state) => state.userRegister)
-    const { loading, error } = userRegister
+    const { loading, error, success } = userRegister
+
+    const formSubmitHandler = (data) => {
 
 
-
-    const formSubmitHandler = (event) => {
-        event.preventDefault();
-        if (!formIsValid) {
-            return;
+        if (watch("password") !== watch("confirmPassword")) {
+            setMessage('Passwords do not match')
         }
-        else
-            if (enteredPassword !== enteredConfirmPassword) {
-                setMessage('Passwords do not match')
-            }
-            else {
-                const formData = new FormData();
-                formData.append('full_name', enteredName);
-                formData.append('email', enteredEmail);
-                formData.append('password', enteredPassword);
-                formData.append('password1', enteredConfirmPassword);
-                formData.append('job', job);
-                formData.append('avatar', photo.pictureAsFile);
-                formData.append('phone', '+96170040294');
-                dispatch(register(formData))
-                notify();
-            }
-        resetEmailInput();
-        resetPasswordInput();
-        resetConfirmPasswordInput();
-        resetNameInput();
-        setJob('')
-        setPhoto(null)
-        setPhotoName('Upload Your Profile Photo')
+        else {
+            dispatch(createAccount(data.name, data.email, data.password, data.confirmPassword))
+            notify();
+            setValue('name','')
+            setValue('email','')
+            setValue('password','')
+            setValue('confirmPassword','')
+            setValue('job','')
+            setValue('avatar', null)
+        }
     }
     return (
         <Form className={`${classes.signUp} ${props.className}`}>
@@ -158,55 +83,43 @@ const SignupForm = (props) => {
                 closeOnClick={true}
                 rtl={false}
                 pauseOnFocusLoss={false}
-                draggable={true}
-                pauseOnHover={false}
+                draggable={true} pauseOnHover={false}
             />
             <h1>SIGN UP</h1>
             {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}
-            {loading && <Loader message='Creating your Account' />}
-            <form onSubmit={formSubmitHandler}>
+            {/* {loading && <Loader message='Creating your Account' />} */}
+
+            <form onSubmit={handleSubmit(formSubmitHandler)}>
 
 
-                <input required type='text' placeholder='Full Name' className={nameClasses}
-                    value={enteredName}
-                    onChange={nameChangedHandler}
-                    onBlur={nameBlurHandler} />
-                <input required type='email' placeholder='Email Address' className={emailClasses}
-                    value={enteredEmail}
-                    onChange={emailChangedHandler}
-                    onBlur={emailBlurHandler} />
+                <input required type='text' placeholder='Full Name'  {...register("name", { required: true, maxLength: 80 })} />
+
+                <input type="email" placeholder='Email Address' {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+
                 <div style={{ position: 'relative' }}>
                     <input required name='passwordTextbox' type={!passwordShown ? 'password' : 'text'} placeholder='Create Password'
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                        className={passwordClasses}
-                        value={enteredPassword}
-                        onChange={passwordChangedHandler}
-                        onBlur={passwordBlurHandler} />
+                        {...register("password", { required: true, minLength: 8, pattern: "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" })}
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                     <button type="button" className={classes.toggle} style={!passwordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showPasswordHandler}>
                         <i className="fal fa-eye"></i>
                     </button>
                 </div>
                 <div style={{ position: 'relative' }}>
                     <input required name='confirmPasswordTextbox' type={!confirmPasswordShown ? 'password' : 'text'} placeholder='Confirm Password'
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                        className={confirmPasswordClasses}
-                        value={enteredConfirmPassword}
-                        onChange={confirmPasswordChangedHandler}
-                        onBlur={confirmPasswordBlurHandler} />
+                        {...register("confirmPassword", { required: true, minLength: 8, pattern: "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" })}
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                     <button type="button" className={classes.toggle} style={!confirmPasswordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showConfirmPasswordHandler}>
                         <i className="fal fa-eye"></i>
                     </button>
                 </div>
 
-                <input type='text' placeholder='Job (optional)' value={job} onChange={onJobChange} />
+                <input type='text' placeholder='Job (optional)'  {...register("job", { pattern: '^[a-zA-Z ]*$' })} />
 
                 <div className={classes.uploadPhoto}>
-                    <input ref={photoRef} type="file" accept="image/*" name="image-upload" id="input" onChange={uploadPhoto} />
+                    <input id="input" {...register("avatar", onchange = (e) => uploadPhoto(e))} type="file" accept="image/*" />
                     <div className={classes.label}>
-                        <span> {photoName}   </span>
+                        <span>  {photoName}  </span>
                         <label className={classes['image-upload']} htmlFor="input">
                             <i className="far fa-user"></i>
                         </label>
@@ -217,7 +130,7 @@ const SignupForm = (props) => {
                 <CheckBox className={classes.checkbox} />
                 <p>Have an account? <Link to='/sign-in'>Login</Link></p>
             </form>
-           
+
             <SocialMedia className={classes.social} />
             <div className={classes.text}>
                 <p>By creating an account you are aggreeing to the

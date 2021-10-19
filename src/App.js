@@ -63,7 +63,7 @@ const App = () => {
                <Route path='/blog'><BlogPage /></Route>
                <Route path='/contact-us'><ContactUsPage /></Route>
                <Route path='/policy'><PolicyPage /></Route>
-               <Route path='/password-reset-confirm/:uid/:token'><NewPasswordPage /></Route>
+               <Route path='/password-reset/:token'><NewPasswordPage /></Route>
        
                <Route path='/home'><HomePage /></Route>
                <Route path='/' exact>
