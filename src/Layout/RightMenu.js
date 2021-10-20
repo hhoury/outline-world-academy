@@ -12,8 +12,7 @@ const RightMenu = (props) => {
     const dispatch = useDispatch()
 
     const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
-
+    const { userInfo } = userLogin;
     const cart = useSelector((state) => state.cart)
     const {cartItems} = cart
 

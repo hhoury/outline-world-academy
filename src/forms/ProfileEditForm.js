@@ -5,27 +5,13 @@ import Button from '../components/UI/Button'
 import useInput from '../hooks/use-input'
 import { useSelector } from 'react-redux'
 import {LazyLoadImage} from 'react-lazy-load-image-component'
+import { useForm } from "react-hook-form";
 
-const isNotEmpty = (value) => {
-  return value?.trim() !== ''
-}
-
-const isEmail = email => {
-  if (email?.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-    return (true)
-  }
-  else {
-    return false
-  }
-}
 const ProfileEditForm = (props) => {
-    
-
-    const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
-    const {user} = userInfo
+    const { register, handleSubmit, setValue , watch, formState: { errors } } = useForm();
+    const user = props.userInfo
+    const [formIsValid, setFormIsValid] = useState(false)
     const [isEditMode, setIsEditMode] = useState(false)
-
     const deleteAccountHandler = () => {
 
     }
@@ -41,71 +27,24 @@ const ProfileEditForm = (props) => {
         event.preventDefault();
     }
 
-    const {
-        value: enteredName,
-        hasError: nameInputHasError,
-        isValid: enteredNameIsValid,
-        valueChangeHandler: nameChangedHandler,
-        inputBlurHandler: nameBlurHandler,
-        reset: resetNameInput,
-        setValue: setNameValue
-    } = useInput(isNotEmpty);
-    
-    
-    
-  const {
-    value: enteredEmail,
-    hasError: emailInputHasError,
-    isValid: enteredEmailIsValid,
-    valueChangeHandler: emailChangedHandler,
-    inputBlurHandler: emailBlurHandler,
-    reset: resetEmailInput,
-    setValue: setEmailValue
-  } = useInput(isEmail);
-
-  const {
-    hasError: passwordInputHasError,
-    isValid: enteredPasswordIsValid,
-    valueChangeHandler: passwordChangedHandler,
-    inputBlurHandler: passwordBlurHandler,
-    reset: resetPasswordInput,
-    setValue: setPasswordValue
-  } = useInput(isNotEmpty);
-  
-  const [job, setJob] = useState('')
-  const nameClasses = nameInputHasError ? 'invalid' : '';
-  const emailClasses = emailInputHasError ? 'invalid' : '';
-  const passwordClasses = passwordInputHasError ? 'invalid' : '';
-
-    let formIsValid = false;
-    if (enteredEmailIsValid && enteredPasswordIsValid && enteredNameIsValid) {
-        formIsValid = true;
-    }
-    const formSubmitHandler = (event) => {
-        event.preventDefault();
-        if (!formIsValid) {
-            return;
-        }
-        resetEmailInput();
-        resetPasswordInput();
-        resetNameInput();
+    const formSubmitHandler = (data) => {
+       
         
     }
     useEffect(() => {
         if(user){
-            setNameValue(user.full_name);
-            setEmailValue(user.email);
-            setPasswordValue(user.Password);
-            setJob(user.job)
+            setValue('name',user.name)
+            setValue('email',user.email);
+            setValue('job',user.job);
         }
     }, [])
     return (
         <div className={`${classes.ProfileEdit}`}>
             <div className={classes.top}>
-                <p> Hello, {enteredName}</p>
+                <p> Hello, {user.name}</p>
                 <RightMenu />
             </div>
-            <form id='profileForm' name='profileForm' onSubmit={formSubmitHandler}> 
+            <form id='profileForm' name='profileForm' onSubmit={handleSubmit(formSubmitHandler)}> 
                 <figure>
                     <LazyLoadImage src={user?.avatar} alt='profile' />
                     {isEditMode &&
@@ -117,19 +56,15 @@ const ProfileEditForm = (props) => {
                 </figure>
 
                 <span>
-                    <label htmlFor='username'>Full Name</label>
-                    <input readOnly={!isEditMode} id='username' name='username' type='text'  className={nameClasses}
-                       value={enteredName}
-                       onChange={nameChangedHandler}
-                       onBlur={nameBlurHandler}/>
+                    <label htmlFor='name'>Full Name</label>
+                    <input required readOnly={!isEditMode} 
+                       {...register("name", { required: true, minLength: 3, maxLength: 25})} type='text' />
                     {isEditMode && <span><i className="far fa-edit"></i></span>}
                 </span>
 
                 <span>
                     <label htmlFor='email'>Email</label>
-                    <input readOnly={!isEditMode} type='email' id='email' name='email' value={enteredEmail}  className={emailClasses}
-                      onChange={emailChangedHandler}
-                      onBlur={emailBlurHandler} />
+                    <input required readOnly={!isEditMode} type='email' id='email' name='email' value={user.email} />
                     {isEditMode && <span><i className="far fa-edit"></i></span> }
                 </span>
 
@@ -137,22 +72,17 @@ const ProfileEditForm = (props) => {
                     <label htmlFor='job'>Job</label>
                     <input 
                     readOnly={!isEditMode} 
-                    id='job' 
-                    name='job' 
                     type='text'
-                    onChange={setJob} 
-                    value={job} />
+                    {...register("job", { required: true, minLength: 2, maxLength: 25})}
+                    />
                     {isEditMode && <span><i className="far fa-edit"></i></span>}
                 </span>
 
                 <span>
                     <label htmlFor='password'>{!isEditMode ? 'Password' : 'New Password'}</label>
-                    <input readOnly={!isEditMode} id='password' name='password' type='password' defaultValue={user.password} className={passwordClasses}
-                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                        value={user.password}
-                        onChange={passwordChangedHandler}
-                        onBlur={passwordBlurHandler}/>
+                    <input readOnly={!isEditMode} id='password' name='password' type='password'  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                     {...register("password", { required: true, minLength: 8, pattern: "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" })}
+                 />
                     {isEditMode && <span><i className="far fa-edit"></i></span> }
                 </span>
 

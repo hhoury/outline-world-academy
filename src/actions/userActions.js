@@ -136,9 +136,8 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
             type: USER_DETAILS_REQUEST
         })
         const { userLogin: { userInfo } } = getState()
+       
         const token = Cookies.get('refreshToken')
-
-        console.log(token);
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -146,7 +145,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
             }
         }
         const { data } = await axios.post(API + `Accounts/${id}`, config)
-        console.log(data);
+        console.log(API + `Accounts/${id}`);
         dispatch({
             type: USER_DETAILS_SUCCESS,
             payload: data
@@ -175,7 +174,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-        const { data } = await axios.put(API + `Account/profile`, user, config)
+        const { data } = await axios.put(API + `Account/profile`, user, config);
         dispatch({
             type: USER_UPDATE_PROFILE_SUCCESS,
             payload: data

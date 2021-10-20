@@ -24,8 +24,11 @@ import ChapterDetailsPage from './pages/ChapterDetailsPage'
 import CourseChapterLessonPage from './pages/CourseChapterLessonPage'
 import OrderReviewPage from './pages/OrderReviewPage'
 import NewPasswordPage from './pages/NewPasswordPage';
-
+import { useSelector } from 'react-redux';
 const App = () => {
+
+   const userLogin = useSelector((state) => state.userLogin)
+   const { userInfo } = userLogin
    const [passwordModalIsShowing, setPasswordModalIsShowing] = useState(false)
    const showPasswordModalHandler = () => {
       setPasswordModalIsShowing(true)
@@ -45,17 +48,18 @@ const App = () => {
                <Route path='/payment'><PaymentPage /></Route>
                <Route path='/order-review'><OrderReviewPage /></Route>
 
-               
+
                <Route path='/courses/:id/chapter/:id/:id'><CourseChapterLessonPage /></Route>
                <Route path='/courses/:id/chapter/:id'><ChapterDetailsPage /></Route>
                <Route path='/courses/:id/:id'><CourseDetailsPageOld /></Route>
                <Route path='/courses/:id'><CourseDetailsPage /></Route>
-             
-               
+
+
                <Route path='/search/:keyword' exact ><CoursesPage /></Route>
                <Route path='/courses'><CoursesPage /></Route>
                <Route path='/my-courses'><MyCoursesPage /></Route>
-               <Route path='/profile'><ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler} /></Route>
+               <Route path='/profile/'>
+                  <ProfilePage token={userInfo?.refreshToken} onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler} /></Route>
                <Route path='/sign-up'><SignupPage /></Route>
                <Route path='/sign-in'><SigninPage /></Route>
                <Route path='/forgot-password'><ForgotPasswordPage /></Route>
@@ -64,7 +68,7 @@ const App = () => {
                <Route path='/contact-us'><ContactUsPage /></Route>
                <Route path='/policy'><PolicyPage /></Route>
                <Route path='/password-reset/:token'><NewPasswordPage /></Route>
-       
+
                <Route path='/home'><HomePage /></Route>
                <Route path='/' exact>
                   <Redirect to='/home' />

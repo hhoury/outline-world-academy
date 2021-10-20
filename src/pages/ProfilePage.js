@@ -4,11 +4,12 @@ import ProfileEditForm from '../forms/ProfileEditForm'
 import { useSelector } from 'react-redux'
 import CartLoginForm from '../components/Cart/CartLoginForm'
 const ProfilePage = (props) => {
+    
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
     const loggedIn = (
-        <ProfileEditForm onClose={props.onClose} onShowModal={props.onShowPasswordModal} />
+        <ProfileEditForm onClose={props.onClose} userInfo={userInfo} onShowModal={props.onShowPasswordModal} />
     )
     return (
             <div className='profile-page row'>
