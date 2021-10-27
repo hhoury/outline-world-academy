@@ -64,7 +64,7 @@ const CourseDetailsPage = () => {
     const { loading, error, course } = courseDetails
     const {chapters} = courseChapters
     let lessonsCount = 0;
-    for (let index = 0; index < chapters.length; index++) {
+    for (let index = 0; index < chapters?.length; index++) {
         lessonsCount+= chapters[index].lessons.length;
     }
     console.log(chapters);

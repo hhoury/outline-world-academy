@@ -115,7 +115,7 @@ const PersonalDetails = forwardRef((props, ref) => {
                 street: enteredStreet,
                 phone: enteredPhone
             }))
-            history.push('/payment')
+            history.push('/order-review')
         }
     })
     )

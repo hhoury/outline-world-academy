@@ -7,20 +7,21 @@ import Button from '../components/UI/Button'
 import CardInformationForm from '../components/Cart/CardInformationForm'
 const PaymentPage = () => {
     const formRef = useRef();
-    const proceedHandler = (e) => {
+    const placeOrderHandler = (e) => {
         e.preventDefault();
         formRef.current.cardInfoSubmitHandler(e);
     }
+    
     return (
         <>
             <Header fullMenu={true} />
             <div className='personal-details'>
-                <CheckoutSteps step1 step2 step3/>
+                <CheckoutSteps step1 step2 step3 step4/>
                 <div className='row content'>
                     <CardInformationForm ref={formRef} />
                     <div className='col-lg-4 col-md-12 col-sm-12 payment-summary'>
                         <Summary />
-                        <Button className='personal-details__btn' onClick={proceedHandler}>REVIEW & PAY</Button>
+                        <Button className='personal-details__btn' onClick={placeOrderHandler}>Place Order</Button>
                     </div>
                 </div>
             </div>

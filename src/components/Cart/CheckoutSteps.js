@@ -61,10 +61,10 @@ ${classes.checkout__stepPrevious}`}>
             }
 
             {step3 ?
-                <LinkContainer style={{ cursor: 'pointer' }} to='/payment' >
+                <LinkContainer style={{ cursor: 'pointer' }} to='/order-review' >
                     <div className={`${classes.checkout__step} ${classes.checkout__stepActive}`}>
                         <div className={`${classes.checkout__stepLabel} ${step3 ? classes.checkout__labelDone : ''}`}>
-                            Payment
+                            Order Review
                         </div>
                         <div className={`${classes.checkout__stepNumber}  ${step3 ? classes.checkout__stepDone : ''}`}>
                             3
@@ -75,7 +75,7 @@ ${classes.checkout__stepPrevious}`}>
                 :
                 <div className={`${classes.checkout__step} ${classes.checkout__stepActive}`}>
                     <div className={`${classes.checkout__stepLabel} ${step3 ? classes.checkout__labelDone : ''}`}>
-                        Payment
+                        Order Review
                     </div>
                     <div className={`${classes.checkout__stepNumber}  ${step3 ? classes.checkout__stepDone : ''}`}>
                         3
@@ -83,10 +83,10 @@ ${classes.checkout__stepPrevious}`}>
                 </div>
             }
             {
-                step4 ? <LinkContainer style={{ cursor: 'pointer' }} to='/order-review'>
+                step4 ? <LinkContainer style={{ cursor: 'pointer' }} to='/payment'>
                     <div className={`${classes.checkout__step} ${classes.checkout__stepLast}`} >
                         <div className={`${classes.checkout__stepLabel} ${step4 ? classes.checkout__labelDone : ''}`}>
-                            Confirmation
+                            Payment
                         </div>
                         <div className={`${classes.checkout__stepNumber}  ${step4 ? classes.checkout__stepDone : ''}`}>
                             4
@@ -96,7 +96,7 @@ ${classes.checkout__stepPrevious}`}>
                 </LinkContainer> :
                     <div className={`${classes.checkout__step} ${classes.checkout__stepLast}`} >
                         <div className={`${classes.checkout__stepLabel} ${step4 ? classes.checkout__labelDone : ''}`}>
-                            Confirmation
+                            Payment
                         </div>
                         <div className={`${classes.checkout__stepNumber}  ${step4 ? classes.checkout__stepDone : ''}`}>
                             4

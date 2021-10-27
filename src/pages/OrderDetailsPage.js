@@ -7,6 +7,7 @@ import Summary from '../components/Cart/Summary'
 import CouponCode from '../components/Cart/CouponCode'
 import Button from '../components/UI/Button'
 import { useHistory } from 'react-router-dom'
+
 const OrderDetailsPage = () => {
     const history = useHistory();
 const proceedHandler = () => {

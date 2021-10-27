@@ -16,7 +16,9 @@ const CardInformation = forwardRef((props,ref) => {
         history.goBack();
     }
     const cardInfoSubmitHandler = () => {
-        history.push('order-review')
+        console.log('should do everything here');
+        console.log('cardInfoSubmitHandler in cardInformation form');
+       //create order 
     }
     const {
         value: enteredCardHolder,
@@ -77,7 +79,6 @@ const CardInformation = forwardRef((props,ref) => {
                 expiryDate: enteredExpiryDate,
                 cardNumber: enteredCardNumber,
             }))
-            history.push('/order-review')
         }
     })
     )

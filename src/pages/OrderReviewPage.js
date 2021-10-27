@@ -14,18 +14,20 @@ import {
     AccordionItemPanel,
 } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
+import { useHistory } from 'react-router'
 
 const OrderReviewPage = () => {
+    const history = useHistory();
     const cart = useSelector((state) => state.cart)
     const { cartItems, shippingAddress, paymentInfo } = cart
     const placeOrderHandler = () => {
-
+        history.push('/payment')
     }
     return (
         <>
             <Header fullMenu={true} />
             <div className='personal-details'>
-                <CheckoutSteps step1 step2 step3 step4 />
+                <CheckoutSteps step1 step2 step3 />
                 <div className='row order-review '>
                     <div className='order-info col-md-8 col-sm-12'>
                         <Accordion allowMultipleExpanded allowZeroExpanded >
@@ -79,7 +81,7 @@ const OrderReviewPage = () => {
                                     </ul>
                                 </AccordionItemPanel>
                             </AccordionItem>
-                            <AccordionItem>
+                            {/* <AccordionItem>
                                 <AccordionItemHeading>
                                     <AccordionItemButton>
                                         Payment
@@ -107,12 +109,12 @@ const OrderReviewPage = () => {
                                         </li>
                                     </ul>
                                 </AccordionItemPanel>
-                            </AccordionItem>
+                            </AccordionItem> */}
                         </Accordion>
                     </div>
                     <div className='order-review__summary col-md-4 col-sm-12'>
                         <Summary />
-                        <Button onClick={placeOrderHandler} className='order-review__button'>Place Order</Button>
+                        <Button onClick={placeOrderHandler} className='order-review__button'>Proceed</Button>
                     </div>
                 </div>
 

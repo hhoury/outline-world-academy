@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { removeFromCart } from '../actions/cartActions'
-
+import {createOrder} from '../actions/orderActions'
 const notify = () => toast.error("Course Removed from Cart",
     {
         position: "top-right",
@@ -33,6 +33,7 @@ const CartPage = () => {
         notify();
     }
     const checkoutHandler = () => {
+        dispatch(createOrder(cartItems))
         history.push('./order-details')
     }
     const keepShoppingButtonHandler = () => {
