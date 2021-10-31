@@ -27,8 +27,9 @@ export const createAccount = (name, email, password, confirmPassword) => async (
         dispatch({
             type: USER_REGISTER_REQUEST
         })
+        
         const { res } = await axios.post(API + 'Accounts/register/', {name, email, password, confirmPassword})
-        console.log(res);
+
         dispatch({
             type: USER_REGISTER_SUCCESS,
             payload: res
@@ -67,8 +68,6 @@ export const login = (email, password) => async (dispatch) => {
 }
 export const logout = () => async (dispatch) => {
     try {
-        // const { data } = await axios.post(API + 'Accounts/logout/')
-
         localStorage.removeItem('cartItems')
         localStorage.removeItem('shippingAddress')
         localStorage.removeItem('totalAmount')
@@ -145,7 +144,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
             }
         }
         const { data } = await axios.post(API + `Accounts/${id}`, config)
-        console.log(API + `Accounts/${id}`);
         dispatch({
             type: USER_DETAILS_SUCCESS,
             payload: data

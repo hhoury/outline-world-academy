@@ -81,35 +81,6 @@ const OrderReviewPage = () => {
                                     </ul>
                                 </AccordionItemPanel>
                             </AccordionItem>
-                            {/* <AccordionItem>
-                                <AccordionItemHeading>
-                                    <AccordionItemButton>
-                                        Payment
-                                    </AccordionItemButton>
-                                </AccordionItemHeading>
-                                <AccordionItemPanel>
-                                    <ul className='payment'>
-                                        <li>
-                                            <span>Cardholder's Name:</span>
-                                            <span>{paymentInfo.cardholder}</span>
-                                        </li>
-                                        <li>
-                                            <span>Card Number:</span>
-                                            <span>{paymentInfo.cardNumber}
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>Expiry Date:</span>
-                                            <span>{paymentInfo.expiryDate}
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>CVC:</span>
-                                            <span>{paymentInfo.cvc}</span>
-                                        </li>
-                                    </ul>
-                                </AccordionItemPanel>
-                            </AccordionItem> */}
                         </Accordion>
                     </div>
                     <div className='order-review__summary col-md-4 col-sm-12'>

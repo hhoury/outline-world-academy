@@ -4,7 +4,7 @@ import useInput from '../../hooks/use-input'
 import { useDispatch, useSelector } from 'react-redux'
 import {saveShippingAddress} from '../../actions/cartActions'
 import classes from './PersonalDetailsForm.module.css'
-
+import {updateBillingAddress} from '../../actions/orderActions'
 const isNotEmpty = (value) => {
     return value?.trim() !== ''
 }
@@ -82,6 +82,9 @@ const PersonalDetails = forwardRef((props, ref) => {
     
     const cart = useSelector((state) => state.cart)
     const { shippingAddress } = cart
+
+    const res = useSelector((state) => state.order);
+    const {order} = res; 
     useEffect(() => {
         if(shippingAddress)
         {
@@ -102,6 +105,7 @@ const PersonalDetails = forwardRef((props, ref) => {
     }
     useImperativeHandle(ref, () => ({
         formSubmitHandler(event) {
+            console.log('form submit handler');
             event.preventDefault();
             if (!formIsValid) {
                 return;
@@ -115,6 +119,7 @@ const PersonalDetails = forwardRef((props, ref) => {
                 street: enteredStreet,
                 phone: enteredPhone
             }))
+            dispatch(updateBillingAddress(order.id,enteredFName,enteredLName,enteredEmail,enteredCountry,enteredTown,enteredStreet,enteredPhone))
             history.push('/order-review')
         }
     })

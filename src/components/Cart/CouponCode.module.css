@@ -13,7 +13,7 @@
     color: #fff;
     margin-right: 15px;
 }
-.Coupon button {
+.Coupon .button {
     outline: none;
     color: #fff;
     border: none;
@@ -23,11 +23,11 @@
     height: 40px;
     width: 110px;
 }
-.Coupon button:hover {
+.Coupon .button:hover {
     background-color: rgba(244,78,12,0.9);;
 }
 @media screen and (max-width:1440px) {
-    .Coupon button{
+    .Coupon .button{
         margin-top: 10px;
     }
 }

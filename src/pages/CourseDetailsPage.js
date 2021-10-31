@@ -67,7 +67,6 @@ const CourseDetailsPage = () => {
     for (let index = 0; index < chapters?.length; index++) {
         lessonsCount+= chapters[index].lessons.length;
     }
-    console.log(chapters);
     const existingCartItemIndex = cartItems.findIndex(item => item.id === course?.id);
     const existingCartItem = existingCartItemIndex? cartItems[existingCartItemIndex]: 0;
     return (

@@ -1,6 +1,7 @@
 import React,{forwardRef, useImperativeHandle, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 import { savePaymentInfo } from '../../actions/cartActions';
+import { placeOrder } from '../../actions/orderActions';
 import { useDispatch , useSelector } from 'react-redux';
 import classes from './CardInformationForm.module.css'
 import useInput from '../../hooks/use-input'
@@ -15,10 +16,7 @@ const CardInformation = forwardRef((props,ref) => {
     const goBackHandler = () => {
         history.goBack();
     }
-    const cardInfoSubmitHandler = () => {
-        console.log('should do everything here');
-        console.log('cardInfoSubmitHandler in cardInformation form');
-       //create order 
+    const cardInfoSubmitHandler = (e) => {
     }
     const {
         value: enteredCardHolder,
@@ -35,12 +33,21 @@ const CardInformation = forwardRef((props,ref) => {
         setValue: setCardNumberValue
     } = useInput(isNotEmpty);
     const {
-        value: enteredExpiryDate,
-        hasError: ExpiryDateInputHasError,
-        valueChangeHandler: expiryDateChangedHandler,
-        inputBlurHandler: expiryDateBlurHandler,
-        setValue: setExpiryDateValue
+        value: enteredExpiryMonth,
+        hasError: ExpiryMonthInputHasError,
+        valueChangeHandler: expiryMonthChangedHandler,
+        inputBlurHandler: expiryMonthBlurHandler,
+        setValue: setExpiryMonthValue
     } = useInput(isNotEmpty);
+
+    const {
+        value: enteredExpiryYear,
+        hasError: ExpiryYearInputHasError,
+        valueChangeHandler: expiryYearChangedHandler,
+        inputBlurHandler: expiryYearBlurHandler,
+        setValue: setExpiryYearValue
+    } = useInput(isNotEmpty);
+
     const {
         value: enteredCVC,
         hasError: cVCInputHasError,
@@ -55,15 +62,23 @@ const CardInformation = forwardRef((props,ref) => {
         if(paymentInfo)
         {
             setCardHolderValue(paymentInfo.cardholder)
-            setExpiryDateValue(paymentInfo.expiryDate)
+            setExpiryMonthValue(paymentInfo.expiryMonth)
+            setExpiryYearValue(paymentInfo.expiryYear)
             setCVCValue(paymentInfo.cvc)
             setCardNumberValue(paymentInfo.cardNumber)
     }}, [paymentInfo])
 
-
-
+    const res = useSelector((state) => state.order);
+    const {order} = res; 
+    const orderId = order.id
+    const ApiOperation = "PAY"
+    const ApiMethod = "POST"
+    const CardNumber = enteredCardNumber
+    const ExpiryMonth = enteredExpiryMonth
+    const ExpiryYear = enteredExpiryYear
+    const SecurityCode = enteredCVC
     let formIsValid = false;
-  if (enteredCardHolder && enteredCardNumber && enteredCVC && enteredExpiryDate) {
+  if (enteredCardHolder && enteredCardNumber && enteredCVC && enteredExpiryMonth && enteredExpiryYear) {
     formIsValid = true;
   }
     useImperativeHandle(ref, () => ({
@@ -76,9 +91,12 @@ const CardInformation = forwardRef((props,ref) => {
             dispatch(savePaymentInfo({
                 cardholder: enteredCardHolder,
                 cvc: enteredCVC,
-                expiryDate: enteredExpiryDate,
+                expiryMonth: enteredExpiryMonth,
+                expiryYear: enteredExpiryYear,
                 cardNumber: enteredCardNumber,
             }))
+            dispatch(placeOrder(orderId, orderId,ApiOperation,ApiMethod,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode
+            ))
         }
     })
     )
@@ -103,13 +121,23 @@ const CardInformation = forwardRef((props,ref) => {
                        />
                <div > 
                <span>
-                    <label>Expiry Date</label>
-                    <input id='expiry' 
-                      style={ ExpiryDateInputHasError ? {border: '1px solid red'}:{}}
-                      name='expiry' type='text' required
-                      value={enteredExpiryDate}
-                      onChange={expiryDateChangedHandler}
-                      onBlur={expiryDateBlurHandler}
+                    <label>Expiry Month</label>
+                    <input id='expiry-month' 
+                      style={ ExpiryMonthInputHasError ? {border: '1px solid red'}:{}}
+                      name='expiry-month' type='text' required placeholder='mm'
+                      value={enteredExpiryMonth}
+                      onChange={expiryMonthChangedHandler}
+                      onBlur={expiryMonthBlurHandler}
+                       />
+                </span>
+                <span>
+                    <label>Expiry year</label>
+                    <input id='expiry-year' 
+                      style={ ExpiryYearInputHasError ? {border: '1px solid red'}:{}}
+                      name='expiry-year' type='text' required
+                      value={enteredExpiryYear} placeholder='yy'
+                      onChange={expiryYearChangedHandler}
+                      onBlur={expiryYearBlurHandler}
                        />
                 </span>
                 <span>
