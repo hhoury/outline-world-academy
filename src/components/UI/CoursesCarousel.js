@@ -14,6 +14,7 @@ const CoursesCarousel = (props) => {
     const dispatch = useDispatch()
     const featuredCourseList = useSelector((state) => state.featuredCourseList)
     const { courses } = featuredCourseList
+    
 //TODO 
 //REPLACE SRC IN CONTENT <img>
     useEffect(() => {
@@ -23,7 +24,7 @@ const CoursesCarousel = (props) => {
             for (let index = 0; index < courses.length; index++) {
                 tempFeatured.push({
                     key: courses[index].id,
-                    content: <img className={classes.carouselChapter}src="https://picsum.photos/500/800/?random" alt="1" />
+                    content: <img className={classes.carouselChapter} src="https://picsum.photos/500/800/?random" alt="1" />
                 })
             }
         }
@@ -32,7 +33,7 @@ const CoursesCarousel = (props) => {
                 return { ...slide, onClick: () => setGoToSlide(index) };
             }))
         }
-    }, [dispatch])
+    }, [])
   
  
     const viewCoursesHandler = () => {

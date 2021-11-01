@@ -85,6 +85,7 @@ const PersonalDetails = forwardRef((props, ref) => {
 
     const res = useSelector((state) => state.order);
     const {order} = res; 
+    
     useEffect(() => {
         if(shippingAddress)
         {

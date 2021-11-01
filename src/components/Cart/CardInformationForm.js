@@ -102,7 +102,7 @@ const CardInformation = forwardRef((props,ref) => {
     )
     return (
         <>
-            <form onSubmit={cardInfoSubmitHandler} className={`col-lg-7 col-md-12 col-sm-12 ${classes.CardInformationForm}`}>
+            <form id='card' name='card' onSubmit={cardInfoSubmitHandler} className={`col-lg-7 col-md-12 col-sm-12 ${classes.CardInformationForm}`}>
                 <h1>Card Information</h1>
                 <button onClick={goBackHandler} className='goBackButton'>Back</button>
                 <label>Cardholder's Name:</label>
