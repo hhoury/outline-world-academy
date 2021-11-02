@@ -7,7 +7,7 @@ import {
     CERTIFICATE_DETAILS_FAIL}
     from '../constants/certificatesConstants'
 
-export const courseListReducer = (state = { certificates: [] }, action) => {
+export const certificateListReducer = (state = { certificates: [] }, action) => {
     switch (action.type) {
         case CERTIFICATE_LIST_REQUEST:
             return { loading: true, certificates: [] }

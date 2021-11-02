@@ -24,7 +24,7 @@ const ModalOverlay = (props) => {
         reset: resetPasswordInput
     } = useInput(isNotEmpty);
 
-    const passwordClasses = passwordInputHasError ? 'invalid' : '';
+    const passwordClasses = passwordInputHasError && 'invalid';
 
     const [passwordShown, setPasswordShown] = useState(false);
     const showPasswordHandler = (event) => {

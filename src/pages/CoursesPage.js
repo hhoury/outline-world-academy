@@ -33,7 +33,6 @@ const CoursesPage = (props) => {
     }, [dispatch, search])
     let { loading, error, courses } = courseList
     if (search) {
-        console.log(courses);
         courses = courses.filter(item => item.title.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase()))
     }
     return (

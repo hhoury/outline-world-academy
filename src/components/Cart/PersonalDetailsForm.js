@@ -106,7 +106,6 @@ const PersonalDetails = forwardRef((props, ref) => {
     }
     useImperativeHandle(ref, () => ({
         formSubmitHandler(event) {
-            console.log('form submit handler');
             event.preventDefault();
             if (!formIsValid) {
                 return;
@@ -120,7 +119,7 @@ const PersonalDetails = forwardRef((props, ref) => {
                 street: enteredStreet,
                 phone: enteredPhone
             }))
-            dispatch(updateBillingAddress(order.id,enteredFName,enteredLName,enteredEmail,enteredCountry,enteredTown,enteredStreet,enteredPhone))
+            dispatch(updateBillingAddress(order?.id,enteredFName,enteredLName,enteredEmail,enteredCountry,enteredTown,enteredStreet,enteredPhone))
             history.push('/order-review')
         }
     })
