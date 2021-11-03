@@ -8,10 +8,11 @@ const SearchOverlay = (props) => {
     const searchSubmitHandler = (event) => {
         event.preventDefault()
         if (keyword.trim()) {
-          history.push(`/search/${keyword}`)
+          history.push(`/courses?search=${keyword}`)
         } else {
           history.push('/')
         }
+        props.onClose();
     }
     return (
         <div id='search-overlay' className={classes['search-overlay']}>

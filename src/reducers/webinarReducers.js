@@ -6,7 +6,7 @@ import {
     WEBINAR_DETAILS_SUCCESS,
     WEBINAR_DETAILS_FAIL} from '../constants/webinarsConstants'
 
-export const courseListReducer = (state = { webinars: [] }, action) => {
+export const webinarListReducer = (state = { webinars: [] }, action) => {
     switch (action.type) {
         case WEBINAR_LIST_REQUEST:
             return { loading: true, webinars: [] }

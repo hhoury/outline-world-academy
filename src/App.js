@@ -48,16 +48,17 @@ const App = () => {
                <Route path='/order-review'><OrderReviewPage /></Route>
                <Route path='/payment'><PaymentPage /></Route>
 
-
                <Route path='/courses/:id/chapter/:id/:id'><CourseChapterLessonPage /></Route>
                <Route path='/courses/:id/chapter/:id'><ChapterDetailsPage /></Route>
                <Route path='/courses/:id/:id'><CourseDetailsPageOld /></Route>
-               <Route path='/courses/:id'><CourseDetailsPage /></Route>
+               <Route path='/courses/:id' exact><CourseDetailsPage /></Route>
 
 
-               <Route path='/search/:keyword' exact ><CoursesPage /></Route>
+               <Route path='courses?search=keyword'  ><CoursesPage /></Route>
                <Route path='/courses'><CoursesPage /></Route>
                <Route path='/my-courses'><MyCoursesPage /></Route>
+               
+            
                <Route path='/profile/'>
                   <ProfilePage token={userInfo?.refreshToken} onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler} /></Route>
                <Route path='/sign-up'><SignupPage /></Route>

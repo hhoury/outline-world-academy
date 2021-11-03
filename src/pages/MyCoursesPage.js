@@ -11,6 +11,7 @@ const MyCoursesPage = () => {
         { id: 2, img: '', courseTitle: 'Corona Renderer for Instructors', nbOfChapters: 5, nbOfLessons: 24, progress: 80, thumbnail: { mycourse } },
         { id: 3, img: '', courseTitle: 'Corona Renderer for Instructors', nbOfChapters: 8, nbOfLessons: 18, progress: 10, thumbnail: { mycourse } },
     ]
+    
     return (
         <>
             <Header fullMenu={false} />

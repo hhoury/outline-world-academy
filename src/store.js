@@ -11,15 +11,19 @@ import {
   userUpdateReducer,
   resetPasswordReducer,
   changePasswordReducer,
-  
 } from './reducers/userReducers';
-import {courseListReducer, courseDetailsReducer} from './reducers/courseReducers';
-import {chapterListReducer} from './reducers/chapterReducers';
+import { courseListReducer, courseDetailsReducer, featuredCourseListReducer } from './reducers/courseReducers';
+import { chapterListReducer } from './reducers/chapterReducers';
+import { orderReducer, couponReducer } from './reducers/orderReducers'
+import {registeredCourseListReducer,registeredCourseDetailsReducer} from './reducers/registeredCourseReducers'
 
 const reducer = combineReducers({
   courseChapters: chapterListReducer,
   courseDetails: courseDetailsReducer,
   courseList: courseListReducer,
+  featuredCourseList: featuredCourseListReducer,
+  registeredCourseList: registeredCourseListReducer,
+  registeredCourseDetails: registeredCourseDetailsReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
@@ -28,9 +32,11 @@ const reducer = combineReducers({
   userUpdate: userUpdateReducer,
   resetPassword: resetPasswordReducer,
   changePassword: changePasswordReducer,
+  order: orderReducer,
   cart: cartReducer,
+  coupon: couponReducer
 })
-//#region from storage (cartItems,totalAmount,shippingAddress,paymentInfo,userInfo)
+
 const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : []
@@ -43,7 +49,7 @@ const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
   ? JSON.parse(localStorage.getItem('shippingAddress'))
   : {}
 
-  const paymentInfoFromStorage = localStorage.getItem('paymentInfo')
+const paymentInfoFromStorage = localStorage.getItem('paymentInfo')
   ? JSON.parse(localStorage.getItem('paymentInfo'))
   : {}
 

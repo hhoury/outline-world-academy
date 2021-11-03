@@ -21,13 +21,12 @@ const notify = () => toast.error("Course Removed from Cart",
     });
 
 const CartPage = () => {
-
-
     const history = useHistory();
     const dispatch = useDispatch()
 
     const cart = useSelector((state) => state.cart)
     const { cartItems,totalAmount } = cart
+
     const removeItemHandler = (id) => {
         dispatch(removeFromCart(id))
         notify();

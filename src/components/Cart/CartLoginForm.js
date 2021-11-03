@@ -40,8 +40,8 @@ const CartLoginForm = (props) => {
     reset: resetPasswordInput
   } = useInput(isNotEmpty);
 
-  const emailClasses = emailInputHasError ? 'invalid' : '';
-  const passwordClasses = passwordInputHasError ? 'invalid' : '';
+  const emailClasses = emailInputHasError && 'invalid';
+  const passwordClasses = passwordInputHasError && 'invalid';
 
   let formIsValid = false;
   if (enteredEmailIsValid && enteredPasswordIsValid) {

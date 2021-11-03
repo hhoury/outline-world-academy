@@ -923,10 +923,14 @@ margin-top: 20px;
   /* #endregion CONTACT US PAGE */
 
   /*#region COURSES PAGE */
-  .courses-page h1 {
+  .courses-page main h1 {
     font-size: 1.5rem;
   }
-
+  .courses-page main .noCourseFound{
+    font-size: 54px;
+    text-align: center;
+  }
+ 
   /*#endregion END OF COURSES PAGE */
 
   /*#region SIGN UP / IN / RESET PASSWORD */
