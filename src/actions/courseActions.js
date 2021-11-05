@@ -13,7 +13,7 @@ import {
 import { API } from '../constants/appConstants'
 //redux thunk add function within a function
 
-export const listCourses = () => async (dispatch) => {
+export const  listCourses = () => async (dispatch) => {
     try {
         dispatch({ type: COURSE_LIST_REQUEST })
         const { data } = await axios.get(API + 'courses')

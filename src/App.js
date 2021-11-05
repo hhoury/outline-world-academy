@@ -19,7 +19,7 @@ import OrderDetailsPage from './pages/OrderDetailsPage';
 import PersonalDetailsPage from './pages/PersonalDetailsPage';
 import PaymentPage from './pages/PaymentPage';
 import CourseDetailsPage from './pages/CourseDetailsPage'
-import CourseDetailsPageOld from './pages/CourseDetailsPage__old'
+import EnrolledCourseDetailsPage from './pages/EnrolledCourseDetailsPage'
 import ChapterDetailsPage from './pages/ChapterDetailsPage'
 import CourseChapterLessonPage from './pages/CourseChapterLessonPage'
 import OrderReviewPage from './pages/OrderReviewPage'
@@ -50,7 +50,7 @@ const App = () => {
 
                <Route path='/courses/:id/chapter/:id/:id'><CourseChapterLessonPage /></Route>
                <Route path='/courses/:id/chapter/:id'><ChapterDetailsPage /></Route>
-               <Route path='/courses/:id/:id'><CourseDetailsPageOld /></Route>
+               <Route path='/my-courses/:id'><EnrolledCourseDetailsPage /></Route>
                <Route path='/courses/:id' exact><CourseDetailsPage /></Route>
 
 

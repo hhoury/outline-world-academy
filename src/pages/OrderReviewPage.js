@@ -20,7 +20,7 @@ const OrderReviewPage = () => {
     const history = useHistory();
     const cart = useSelector((state) => state.cart)
     const { cartItems, shippingAddress, paymentInfo } = cart
-    const placeOrderHandler = () => {
+    const proceedHandler = () => {
         history.push('/payment')
     }
     return (
@@ -85,7 +85,7 @@ const OrderReviewPage = () => {
                     </div>
                     <div className='order-review__summary col-md-4 col-sm-12'>
                         <Summary />
-                        <Button onClick={placeOrderHandler} className='order-review__button'>Proceed</Button>
+                        <Button onClick={proceedHandler} className='order-review__button'>Proceed</Button>
                     </div>
                 </div>
 

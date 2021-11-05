@@ -16,7 +16,7 @@ const CourseChapterLessonPage = () => {
     }
     return (
         <div className='course-details' >
-            <Header fullMenu={false} />
+            <Header fullMenu={false} withName={true}/>
             <h1>{course.title}</h1>
             <div className='chapter-lesson'>
                 <h2>Chapter {chapter.number} <br/> {chapter.title}</h2>

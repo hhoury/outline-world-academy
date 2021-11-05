@@ -92,13 +92,15 @@ export const applyCoupon = (orderId, couponCode) => async (dispatch) => {
 }
 
 
-export const placeOrder = (orderId, transactionId,ApiOperation,ApiMethod,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode) => async (dispatch) => {
+export const placeOrder = (orderId, transactionId,sessionId,ApiOperation,ApiMethod, CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode) => async (dispatch) => {
 
+    console.log('place order');
+    console.log(sessionId);
     try{
         dispatch({
             type: PLACE_ORDER_REQUEST
         })
-        const { data } = await axios.post(API + 'PaymentApi/processHostedSession', { orderId, transactionId,ApiOperation,ApiMethod,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode })
+        const { data } = await axios.post(API + 'PaymentApi/processHostedSession', { orderId, transactionId,sessionId,ApiOperation,ApiMethod,CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode })
         dispatch({
             type: PLACE_ORDER_SUCCESS,
             payload: data

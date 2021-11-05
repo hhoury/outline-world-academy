@@ -15,14 +15,14 @@ import {
 import { courseListReducer, courseDetailsReducer, featuredCourseListReducer } from './reducers/courseReducers';
 import { chapterListReducer } from './reducers/chapterReducers';
 import { orderReducer, couponReducer } from './reducers/orderReducers'
-import {registeredCourseListReducer,registeredCourseDetailsReducer} from './reducers/registeredCourseReducers'
+import {registeredCourseListReducer,registeredCourseDetailsReducer,isRegisterdCourseReducer} from './reducers/registeredCourseReducers'
 
 const reducer = combineReducers({
   courseChapters: chapterListReducer,
   courseDetails: courseDetailsReducer,
   courseList: courseListReducer,
   featuredCourseList: featuredCourseListReducer,
-  registeredCourseList: registeredCourseListReducer,
+  enrollmentsList: registeredCourseListReducer,
   registeredCourseDetails: registeredCourseDetailsReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
@@ -34,7 +34,8 @@ const reducer = combineReducers({
   changePassword: changePasswordReducer,
   order: orderReducer,
   cart: cartReducer,
-  coupon: couponReducer
+  coupon: couponReducer,
+  isRegisteredCourse: isRegisterdCourseReducer
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')

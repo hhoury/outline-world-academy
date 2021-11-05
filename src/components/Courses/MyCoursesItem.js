@@ -9,7 +9,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 const MyCoursesItem = (props) => {
     const history = useHistory();
     const viewCourseHandler = () => {
-        history.push('/courses/'+ props.id)
+        history.push('/my-courses/'+ props.id)
     }
 
     return (

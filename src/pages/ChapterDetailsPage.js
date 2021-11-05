@@ -24,8 +24,8 @@ const ChapterDetailsPage = () => {
     }
 
     return (
-        <div className='course-details' >
-            <Header fullMenu={false} />
+        <div className='enrolled-course-details' >
+            <Header fullMenu={false} withName={true}    />
 
             <h1>{course.title}</h1>
 
