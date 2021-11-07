@@ -20,11 +20,12 @@ const AboutPage = () => {
                 </div>
                 <div className='row2'>
                     <figure className='figure-2'><img src={image2} alt='why outline world academy' /></figure>
-                    <p>First specialized academy in the region.
-                        <br/>
-                    First academy certfied by Chaos Czech a.s. and Corona renderer in the Region.<br/>
-                    First Academy to provide Yearly Support and assistance.</p>
+                    <div>
+                        <p>First specialized academy in the region.</p>
+                        <p>First academy certfied by Chaos Czech a.s. and Corona renderer in the Region.</p>
+                        <p>First Academy to provide Yearly Support and assistance.</p>
 
+                    </div>
                 </div>
 
 

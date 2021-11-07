@@ -28,3 +28,6 @@
 .CoursesCarousel .carouselChapter  {
     cursor: pointer;
 }
+.CoursesCarousel > div > div > div{
+    z-index: 1 !important;
+}

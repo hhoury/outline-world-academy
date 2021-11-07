@@ -43,8 +43,7 @@ a:hover {
   max-height: 700px;
 }
 .carousel-inner img {
-  min-height: 300px;
-  max-height: 700px;
+  height: 100%;
 }
 .carousel-indicators li{
   border-radius: 100%;
@@ -102,7 +101,6 @@ a:hover {
 
 .contact-us div>p {
   text-align: left;
-  max-width: 620px;
   margin-top: 35px;
 }
 
@@ -199,9 +197,8 @@ h2 {
 }
 
 .about-us>h1 {
-  width: 40%;
-  margin: 20px 0 0 5%;
-  padding-bottom: 190px;
+  width: 60%;
+    margin: 20px 0 250px 5%;
  
 }
 
@@ -996,7 +993,7 @@ margin-top: 20px;
 
   /*#region ABOUT US PAGE */
   .about-us>h1 {
-    font-size: 28px;
+    font-size: 1.4rem;
   }
 
   .about-us .the-process {
@@ -1009,7 +1006,14 @@ margin-top: 20px;
     margin: 0 auto;
     padding-left: 5%;
   }
-
+  .about-us .the-process__text p{
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+  }
+  .about-us .the-process__text h1{
+    text-align: center;
+  }
   /*#endregion END OF ABOUT US PAGE */
 
   /*#region PROFILE PAGES */
@@ -1186,6 +1190,9 @@ margin-top: 20px;
   }
 
   /* #endregion COURSE CHAPTER DETAILS */
+  .contact-us div>p {
+    max-width: none;
+  }
 }
 
 @media screen and (max-width: 600px) {

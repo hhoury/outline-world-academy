@@ -7,7 +7,7 @@
     height: 550px;
 }
 .Testemonials h1 {
-    font-size: 36px;
+    font-size: 36px;    
     font-weight: bolder;
     text-transform: uppercase;
     position: absolute;
@@ -17,11 +17,13 @@
     text-align: center;
 }
 .Testemonials .carousel-caption{
-    width: 70%;
-    margin: 0 auto;
-    height: 75%;
+    min-height: 400px;
+    height: 75%;   
     display: flex;
     flex-direction: column;
+}
+.Testemonials .testomonialImg{
+    height: 100%;
 }
 .Testemonials .carousel-caption > div{
     margin-top: 50px;
