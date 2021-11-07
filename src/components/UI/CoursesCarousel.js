@@ -33,7 +33,7 @@ const CoursesCarousel = (props) => {
                 return { ...slide, onClick: () => setGoToSlide(index) };
             }))
         }
-    }, [])
+    }, [listFeaturedCourses])
   
  
     const viewCoursesHandler = () => {

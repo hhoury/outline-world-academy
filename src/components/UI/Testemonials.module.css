@@ -57,3 +57,10 @@
 .Testemonials .carousel-caption .testomonial-footer p{
     margin: 0;
 }
+@media screen and (max-width: 768px) {
+
+    .Testemonials .carousel-caption > div{
+        margin-top: 0;
+    }
+    
+}

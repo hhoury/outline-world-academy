@@ -18,12 +18,13 @@
     width: 50%;
     text-align: center;
 }
-.TrainingCenter img {
-    width: 100%;
-}
+
 
 @media screen and (max-width: 768px) {
     .TrainingCenter p {
         font-size: 1rem;
+    }
+    .TrainingCenter img {
+        width: 100%;
     }
 }
