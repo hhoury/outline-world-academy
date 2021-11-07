@@ -97,7 +97,6 @@ a:hover {
   width: 90%;
   margin: 0 auto;
   padding: 60px 0;
-  font-weight: 200;
   min-height: 590px;
 }
 
@@ -358,9 +357,9 @@ h2 {
 }
 
 .courses-page > h1 {
-  width: 40%;
+  width: 50%;
   margin: 20px 0 0 5%;
-  
+  font-size: 32px;
 }
 .courses-page main{
   margin-top: 230px;

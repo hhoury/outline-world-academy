@@ -10,9 +10,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 const AboutPage = () => {
     return (
         <div className='about-us' >
-            <Header  fullMenu={true}/>
-            <h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euismod tincidunt ut laoreet dolore magna aliquam erat
+            <Header fullMenu={true} />
+            <h1>Our experience was gained from work in architectural design studios, interior design studios, and furniture companies. Working with different types of clients and environments around the world added a multi-cultural style to our work.
             </h1>
             <div className='why-us'>
                 <div className='row1'>
@@ -21,9 +20,11 @@ const AboutPage = () => {
                 </div>
                 <div className='row2'>
                     <figure className='figure-2'><img src={image2} alt='why outline world academy' /></figure>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </p>
+                    <p>First specialized academy in the region.
+                        <br/>
+                    First academy certfied by Chaos Czech a.s. and Corona renderer in the Region.<br/>
+                    First Academy to provide Yearly Support and assistance.</p>
+
                 </div>
 
 
@@ -36,8 +37,7 @@ const AboutPage = () => {
                 <div className='the-process__text col-lg-6 col-md-6 col-sm-12'>
                     <h1>THE PROCESS</h1>
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </p>
+                        The process is divided into 3 phases: Modeling, Texturing, Lighting. With us you will learn everything from scratch. You will learn how to master each phase, tips, and tricks and how to create realistic renders from scratch. Our courses focus on real production workflow. The courses are made from pre-recorded videos to cover all the basics and live webinars with a Corona certified instructor to cover different topics and all your questions</p>
                 </div>
                 <div className='the-process__images col-lg-5 col-md-5 col-sm-12'>
                     <figure className='about-4'>

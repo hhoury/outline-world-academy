@@ -13,7 +13,7 @@ const OurWork = () => {
             <div className={classes.OurWork}>
                 <h2>Our Work</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                By completing our courses you will be able to create photorealistic images.
                 </p>
             </div>
             <div className={classes.Gallery}>

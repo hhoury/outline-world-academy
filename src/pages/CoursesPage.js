@@ -41,8 +41,7 @@ const CoursesPage = (props) => {
     return (
         <div className='courses-page'>
             <Header fullMenu={true} />
-            <h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euismod tincidunt ut laoreet dolore magna aliquam erat
+            <h1> Outline World Academy was born after 8 years of hard work, dedication, and commitment from every one of our members. We have created this academy to spread our knowledge and experience among all people in the 3D World and we hope that our Academy is the first step in the professional visualization world.
             </h1>
             <main>
                 <h1>Courses</h1>

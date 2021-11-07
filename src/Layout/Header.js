@@ -9,7 +9,7 @@ import ResponsiveMenu from './ResponsiveMenu'
 const Header = (props) => {
 
     
-    const name = JSON.parse(localStorage.getItem('userInfo')).name
+    const name = JSON.parse(localStorage.getItem('userInfo'))?.name
     return (
         <>
         <header className={`${classes.Header} ${props.className}`}>
@@ -26,7 +26,6 @@ const Header = (props) => {
                     <li><NavLink activeClassName={classes.active} to='/contact-us'>contact us</NavLink></li>
                 </ul>
                 }
-
                 {props.withName && <p className={classes.hello}>Hello, {name}</p>}
                 <RightMenu />
                {props.fullMenu &&  <ResponsiveMenu />}
