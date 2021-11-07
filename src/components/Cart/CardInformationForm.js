@@ -105,7 +105,6 @@ const CardInformation = forwardRef((props, ref) => {
         history.goBack();
     }
     const cardInfoSubmitHandler = (e) => {
-       console.log('cardInfoSubmitHandler line 97');
     }
 
     const cart = useSelector((state) => state.cart)
@@ -137,11 +136,6 @@ const CardInformation = forwardRef((props, ref) => {
     useImperativeHandle(ref, () => ({
         cardInfoSubmitHandler(event) {
             event.preventDefault();
-            console.log('line 129');
-            // if (!formIsValid) {
-            //     return;
-            // }
-            console.log(sessionId);
             dispatch(savePaymentInfo({
                 cardholder: watch('cardholder-name') ,
                 cvc: watch('password') ,

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect} from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import mycourse from '../assets/mycourses.jpg'
@@ -9,7 +9,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { GridLoader } from 'react-spinners'
 import { css } from "@emotion/react";
 import Message from '../components/UI/Message'
-
+import {useHistory} from 'react-router'
+import { Button } from 'react-bootstrap'
 const MyCoursesPage = () => {
     const override = css`
   display: block;
@@ -18,9 +19,12 @@ const MyCoursesPage = () => {
   text-align: center;
   color: #F44E0C;
 `;
+const history = useHistory();
+ const checkCoursesHandler = () => {
+
+ }
     const StudentId = JSON.parse(localStorage.getItem('userInfo')).id
     const dispatch = useDispatch()
-    
     useEffect(() => {
         dispatch(registeredListCourses(StudentId))
     }, [])
@@ -31,13 +35,24 @@ const MyCoursesPage = () => {
         <>
             <Header fullMenu={false} withName={true}/>
             <div className='my-courses-page'>
-                <h1>My courses</h1>
-                <Link to=''>View Certificates</Link>
+                {courses?.length > 0 && <h1>My courses</h1>}
+                {courses?.length > 0 && <Link to=''>View Certificates</Link>}
                 <main>
                     {
+                        courses?.length > 0 ? (
                         loading ? <GridLoader color='#F44E0C' css={override} size='30px' /> : error ? <Message message={error} /> :
                             courses?.map((course) =>
-                                <MyCoursesItem key={course.item1.id} id={course.item1.id} title={course.item1.title} chapters={course.item1.chapters.length} lessons={course.item2} progress={course.progress} thumbnail={course.item1.thumbnail} />)
+                                <MyCoursesItem key={course.item1.id} id={course.item1.id} title={course.item1.title} chapters={course.item1.chapters.length} lessons={course.item2} progress={course.progress} thumbnail={course.item1.thumbnail} />))
+                                :
+                                ( <div className='empty-cart'>
+                                <h3>You are not Enrolled in any course</h3>
+                                <div>
+                                    <p>Check Our Courses to Find a Course For You</p>
+                                    <Button className='check-courses' onClick={checkCoursesHandler}>
+                                        Check Our Courses
+                                    </Button>
+                                </div>
+                            </div>)
                     }
                 </main>
             </div>

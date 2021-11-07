@@ -22,7 +22,7 @@ export const createOrder = (orderItems) => async (dispatch) => {
             type: CREATE_ORDER_REQUEST
         })
 
-        const StudentId = JSON.parse(localStorage.getItem('userInfo')).id
+        const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
         const { data } = await axios.post(API + 'Orders/create-order/', { orderItems, StudentId })
         dispatch({
             type: CREATE_ORDER_SUCCESS,
@@ -94,8 +94,6 @@ export const applyCoupon = (orderId, couponCode) => async (dispatch) => {
 
 export const placeOrder = (orderId, transactionId,sessionId,ApiOperation,ApiMethod, CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode) => async (dispatch) => {
 
-    console.log('place order');
-    console.log(sessionId);
     try{
         dispatch({
             type: PLACE_ORDER_REQUEST

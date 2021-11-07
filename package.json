@@ -2,7 +2,7 @@
   "name": "outline-world-academy",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://109.235.69.20/react/",
+  "homepage": "http://109.235.69.20/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
