@@ -258,6 +258,7 @@ const CardInformation = forwardRef((props, ref) => {
                 <input id='card-number' required type="number"
                     placeholder="0000 0000 0000 0000"
                     readOnly
+                    pattern="/^\d+$/"
                     //  {...register("card-number", {required: true, maxLength: 16, minLength: 16})} 
                 />
                 <div >
@@ -266,8 +267,8 @@ const CardInformation = forwardRef((props, ref) => {
                         <input id='expiry-month'
                             name='expiry-month' 
                             type='text' 
-                            required 
-                           
+                            pattern="/^\d+$/"
+                            required
                             placeholder='mm'
                             {...register("expiry-month", {required: true, maxLength: 2, minLength: 2})} 
                         />
@@ -277,6 +278,7 @@ const CardInformation = forwardRef((props, ref) => {
                         <input id='expiry-year'
                             name='expiry-year' 
                             type='text' 
+                            pattern="/^\d+$/"
                             required
                             placeholder='yy'
                             {...register("expiry-year", {required: true, maxLength: 2, minLength: 2})} 
@@ -287,6 +289,7 @@ const CardInformation = forwardRef((props, ref) => {
                         <input id='security-code'
                         readOnly
                         type='password'
+                        pattern="/^\d+$/"
                         placeholder="&#9679;&#9679;&#9679;"
                         required 
                         // {...register("security-code", {required: true, maxLength: 3, minLength: 4})} 

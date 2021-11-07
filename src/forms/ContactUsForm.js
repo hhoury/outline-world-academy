@@ -16,7 +16,7 @@ const ContactUsForm = (props) => {
     <form onSubmit={handleSubmit(formSubmitHandler) } className={classes.contactForm}>
       <input required type="text" placeholder="Name" {...register("Name", { required: true, maxLength: 80 })} />
 
-      <input required type="email" placeholder="Email Address" {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
+      <input required type="email" pattern="/^\S+@\S+$/i"  placeholder="Email Address" {...register("Email", { required: true})} />
 
       <textarea required placeholder='Message' type='text' {...register("Message", { required: true, minLength: 160 })} />
 

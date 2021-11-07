@@ -64,7 +64,7 @@ const ProfileEditForm = (props) => {
 
                 <span>
                     <label htmlFor='email'>Email</label>
-                    <input required readOnly={!isEditMode} type='email' id='email' name='email' value={user.email} />
+                    <input required readOnly={!isEditMode} pattern="/^\S+@\S+$/i"  type='email' id='email' name='email' value={user.email} />
                     {isEditMode && <span><i className="far fa-edit"></i></span> }
                 </span>
 
@@ -80,8 +80,8 @@ const ProfileEditForm = (props) => {
 
                 <span>
                     <label htmlFor='password'>{!isEditMode ? 'Password' : 'New Password'}</label>
-                    <input readOnly={!isEditMode} id='password' name='password' type='password'  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                     {...register("password", { required: true, minLength: 8, pattern: "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" })}
+                    <input readOnly={!isEditMode} id='password' name='password' type='password'  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                     {...register("password", { required: true, minLength: 8 })}
                  />
                     {isEditMode && <span><i className="far fa-edit"></i></span> }
                 </span>
