@@ -137,3 +137,9 @@
     font-size: 22px;
   }
 }
+@media screen and (max-width: 768px) {
+  .course-item a{
+    line-height: 20px;
+    padding: 15px 0;
+  }
+}

@@ -11,7 +11,7 @@ const Testemonials = () => {
             <Carousel controls={false} keyboard={false} interval={null} >
                 <Carousel.Item className={classes['carousel-item']}>
                     <img
-                        className="d-block w-100"
+                        className={`d-block w-100 ${classes.testomonialImg}`}
                         src={carousel1}
                         alt="First slide"
                     />
@@ -20,7 +20,7 @@ const Testemonials = () => {
                             <div className={classes['testomonial-body']}>
                                 <span><i className="fas fa-quote-left"></i></span>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 
                                 </p>
                                 <span><i className="fas fa-quote-right"></i></span>
@@ -34,26 +34,54 @@ const Testemonials = () => {
 
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item>
+                <Carousel.Item className={classes['carousel-item']}>
                     <img
-                        className="d-block w-100"
+                        className={`d-block w-100 ${classes.testomonialImg}`}
                         src={carousel2}
-                        alt="Second slide"
+                        alt="First slide"
                     />
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <Carousel.Caption className={classes['carousel-caption']}>
+                        <div className={classes.testomonial}>
+                            <div className={classes['testomonial-body']}>
+                                <span><i className="fas fa-quote-left"></i></span>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+
+                                </p>
+                                <span><i className="fas fa-quote-right"></i></span>
+                            </div>
+                            <div className={classes['testomonial-footer']}>
+                                <h4>Mariam Kozbar</h4>
+                                <p>Digital Designer.</p>
+                            </div>
+                        </div>
+
+
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item>
+                <Carousel.Item className={classes['carousel-item']}>
                     <img
-                        className="d-block w-100"
+                        className={`d-block w-100 ${classes.testomonialImg}`}
                         src={carousel3}
-                        alt="Third slide"
+                        alt="First slide"
                     />
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <Carousel.Caption className={classes['carousel-caption']}>
+                        <div className={classes.testomonial}>
+                            <div className={classes['testomonial-body']}>
+                                <span><i className="fas fa-quote-left"></i></span>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+
+                                </p>
+                                <span><i className="fas fa-quote-right"></i></span>
+                            </div>
+                            <div className={classes['testomonial-footer']}>
+                                <h4>Mariam Kozbar</h4>
+                                <p>Digital Designer.</p>
+                            </div>
+                        </div>
+
+
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

@@ -42,7 +42,18 @@
 .Header a.active{
     color: #F44E0C;
 }
-
+.Header .hello {
+    font-size: 18px;
+    color: #F44E0C;
+    word-spacing: normal;
+    letter-spacing: normal;
+    margin: 0;
+    vertical-align: middle;
+    text-transform: capitalize;
+    text-align: right;
+    line-height: 35px;
+    font-weight: bold;
+}
 @media screen and (max-width: 1024px) {
     .Header .menu{
         gap: 15px;

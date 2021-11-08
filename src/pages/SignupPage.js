@@ -18,8 +18,7 @@ const SignupPage = () => {
                 <div className='sign-up__bottom'>
                     <h2>Don't have an </h2>
                     <h2>account?</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                    euismod tincidunt ut laoreet dolore magna aliquam erat</p>
+                    <p>Create an Account and Check Out Our Courses!</p>
                 </div>
             </div>
 

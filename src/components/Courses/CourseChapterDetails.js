@@ -7,7 +7,7 @@ const CourseChapterDetails = (props) => {
         <div className={classes.CourseChapterDetails}>
             <div>
                 <Link to={`/courses/${props.courseId}/chapter/${props.chapterId}/${props.id}`}>
-                <h1 className={props.progress !== 100 && classes.highlighted }>chapter {props.number} {props.title}</h1>
+                <h1 className={props.progress !== 100?  classes.highlighted : ''}>chapter {props.number} {props.title}</h1>
                 </Link>
                 {props.progress === 100 && <p>Completed</p>}
             </div>

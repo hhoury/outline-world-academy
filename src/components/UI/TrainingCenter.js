@@ -5,8 +5,7 @@ const TrainingCenter = () => {
     return (
         <div className={classes.TrainingCenter}>
             <p>
-                Lorem ipsum dolor sit amet,
-                consectetuer adipiscin
+            Outline World Academy graduated will receive a Certificate from Chaos Czech a.s.
             </p>
             <div>
                 <img src={corona} alt='corona'/>

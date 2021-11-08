@@ -21,21 +21,21 @@ const HomePage = () => {
             <Carousel controls={false} keyboard={false} >
                 <Carousel.Item>
                     <LazyLoadImage
-                        className="d-block w-100"
+                        className="d-block w-100 main-carousel"
                         src={carousel1}
                         alt="First slide"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <LazyLoadImage
-                        className="d-block w-100"
+                        className="d-block w-100 main-carousel"
                         src={carousel2}
                         alt="Second slide"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <LazyLoadImage
-                        className="d-block w-100"
+                        className="d-block w-100 main-carousel"
                         src={carousel3}
                         alt="Third slide"
                     />

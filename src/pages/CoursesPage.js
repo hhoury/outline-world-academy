@@ -9,6 +9,7 @@ import { GridLoader } from 'react-spinners'
 import Message from '../components/UI/Message'
 import { css } from "@emotion/react";
 import { useLocation } from 'react-router-dom'
+import { listCourseChapters } from '../actions/chapterActions'
 
 const override = css`
   display: block;
@@ -28,8 +29,10 @@ const CoursesPage = (props) => {
 
     const dispatch = useDispatch()
     const courseList = useSelector((state) => state.courseList)
+
     useEffect(() => {
         dispatch(listCourses())
+
     }, [dispatch, search])
     let { loading, error, courses } = courseList
     if (search) {
@@ -38,8 +41,7 @@ const CoursesPage = (props) => {
     return (
         <div className='courses-page'>
             <Header fullMenu={true} />
-            <h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euismod tincidunt ut laoreet dolore magna aliquam erat
+            <h1> Outline World Academy was born after 8 years of hard work, dedication, and commitment from every one of our members. We have created this academy to spread our knowledge and experience among all people in the 3D World and we hope that our Academy is the first step in the professional visualization world.
             </h1>
             <main>
                 <h1>Courses</h1>
@@ -49,13 +51,14 @@ const CoursesPage = (props) => {
                             courses.length > 0 ?
                                 (
                                     courses.map((course) =>
+
                                         <CourseItem
                                             key={course.id} id={course.id} title={course.title} price={course.price} chapters={course.chapters} lessons={course.chapters.lessons} thumbnail={course1} />
                                     )
                                 )
                                 :
-                              
-                                    <h1>NO Courses Found!</h1>
+
+                                <h1>NO Courses Found!</h1>
                         }
                     </ul>
                 }

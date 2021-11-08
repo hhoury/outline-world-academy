@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef } from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import CheckoutSteps from '../components/Cart/CheckoutSteps'
@@ -18,7 +18,7 @@ const PaymentPage = () => {
       <div className='personal-details'>
         <CheckoutSteps step1 step2 step3 step4 />
         <div className='row content'>
-          <CardInformationForm ref={formRef} />
+          <CardInformationForm  ref={formRef} />
           <div className='col-lg-4 col-md-12 col-sm-12 payment-summary'>
             <Summary />
             <Button className='personal-details__btn' onClick={placeOrderHandler}>Place Order</Button>

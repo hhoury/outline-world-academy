@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Footer.module.css'
 import logo from '../assets/logo.png'
 import Button from '../components/UI/Button'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -14,7 +14,9 @@ const Footer = () => {
                     <div>
                         <img src={logo} alt='outline world academy' />
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum dolor sit amet</p>
+                    <p>Capturing Realism in a Virtual World
+
+                    </p>
                     <div className={classes.social}>
                         <ul>
                             <li><a href='/'><i className="fab fa-facebook-f"></i></a></li>
@@ -22,7 +24,7 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
-               
+
                 <div className={`${classes.column2} col-lg-3 col-md-5 col-sm-12`}>
                     <ul>
                         <li><Link to='/home'>our world</Link></li>
@@ -31,25 +33,26 @@ const Footer = () => {
                         <li><Link to='/blog'>blog</Link></li>
                     </ul>
                 </div>
-               
+
                 <div className={`${classes.column3} col-lg-3 col-md-5 col-sm-12`}>
                     <h2>contact us</h2>
                     <ul>
                         <li>
                             <span><i className="fas fa-map-marker-alt"></i></span>
-                            <p>Lorem ipsum dolor sit amet</p>
+                            <p>5FC6+83 Doha, Qatar
+                            </p>
                         </li>
                         <li>
                             <span><i className="fas fa-phone-alt"></i></span>
-                            <p>Lorem ipsum dolor sit amet</p>
+                            <p>+971 3130 7072</p>
                         </li>
                         <li>
                             <span><i className="fas fa-envelope"></i></span>
-                            <p>www.outlineworldacademy.com</p>
+                            <p>info@outlineworldacademy.com</p>
                         </li>
                     </ul>
                 </div>
-               
+
                 <div className={`${classes.column4} col-lg-3 col-md-5 col-sm-12`}>
                     <h2>SUBSCRIBE</h2>
                     <p>Enter your email to subscribe in our Newsletter</p>

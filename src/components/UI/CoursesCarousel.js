@@ -14,16 +14,64 @@ const CoursesCarousel = (props) => {
     const dispatch = useDispatch()
     const featuredCourseList = useSelector((state) => state.featuredCourseList)
     const { courses } = featuredCourseList
-    
+    const mockCourses = [{
+        certificates: [],
+        chapters: [],
+        dateCreated: "2021-11-07T18:41:34.6967556",
+        description: "publishing industries for previewing layouts and visual mockups.",
+        id: 3,
+        key: 3,
+        isDeleted: false,
+        isFeatured: true,
+        lessons: null,
+        price: 300,
+        thumbnail: "Courses/Thumbnails/1711dc0e-ad78-41dc-af1a-e72479b4f09c_www.jpg",
+        thumbnailFile: null,
+        title: "Course Featured 3",
+        webinars: [],  
+    },
+{
+    certificates: [],
+    chapters: [],
+    dateCreated: "2021-11-07T18:41:34.6967556",
+    description: "publishing industries for previewing layouts and visual mockups.",
+    id: 2,
+    key: 2,
+    isDeleted: false,
+    isFeatured: true,
+    lessons: null,
+    price: 300,
+    thumbnail: "Courses/Thumbnails/1711dc0e-ad78-41dc-af1a-e72479b4f09c_www.jpg",
+    thumbnailFile: null,
+    title: "Course Featured 3",
+    webinars: [],
+},
+{
+    certificates: [],
+    chapters: [],
+    dateCreated: "2021-11-07T18:41:34.6967556",
+    description: "publishing industries for previewing layouts and visual mockups.",
+    id: 1,
+    key: 1,
+    isDeleted: false,
+    isFeatured: true,
+    lessons: null,
+    price: 300,
+    thumbnail: "Courses/Thumbnails/1711dc0e-ad78-41dc-af1a-e72479b4f09c_www.jpg",
+    thumbnailFile: null,
+    title: "Course Featured 3",
+    webinars: [],
+}]
+    console.log(courses);
 //TODO 
 //REPLACE SRC IN CONTENT <img>
     useEffect(() => {
         dispatch(listFeaturedCourses())
         let tempFeatured = []
-        if(courses?.length > 0){
-            for (let index = 0; index < courses.length; index++) {
+        if(mockCourses?.length > 0){
+            for (let index = 0; index < mockCourses.length; index++) {
                 tempFeatured.push({
-                    key: courses[index].id,
+                    key: mockCourses[index].id,
                     content: <img className={classes.carouselChapter} src="https://picsum.photos/500/800/?random" alt="1" />
                 })
             }
@@ -48,8 +96,7 @@ const CoursesCarousel = (props) => {
                 <Carousel offsetRadius='2' config={config.gentle} showNavigation={false} slides={temp} goToSlide={goToSlide} />
             </div>
             <p className={classes.CarouselText}>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-                Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat
+            We provide courses for beginners and professionals. Our courses are tailored to meet your needs.
             </p>
             <Button className={classes.ViewCourses} onClick={viewCoursesHandler}>View Available Courses</Button>
 

@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-between;
     width: 80%;
+    margin-bottom: 20px;
 }
 .CourseChapterDetails p {
     color: #F44E0C;
@@ -12,8 +13,9 @@
 }
 .CourseChapterDetails h1{
     color: #6b6a6a;
-    font-weight: 400;
+    font-weight: 200;
     font-size: 28px;
+    
 }
 .CourseChapterDetails .highlighted {
     color: #fff;

@@ -7,11 +7,11 @@ import {
     CHAPTER_DETAILS_SUCCESS,
     CHAPTER_DETAILS_FAIL
 } from '../constants/chaptersConstants'
-
+import { API } from '../constants/appConstants'
 export const listCourseChapterDetails = (courseId, chapterId) => async (dispatch) => {
     try {
         dispatch({ type: CHAPTER_DETAILS_REQUEST })
-        const { data } = await axios.get(`https://localhost:44362/api/courses/${courseId}/chapter/${chapterId}`)
+        const { data } = await axios.get(`${API}courses/${courseId}/chapter/${chapterId}`)
         dispatch({
             type: CHAPTER_DETAILS_SUCCESS,
             payload: data
@@ -29,7 +29,7 @@ export const listCourseChapterDetails = (courseId, chapterId) => async (dispatch
 export const listCourseChapters = (courseId) => async (dispatch) => {
     try {
         dispatch({ type: CHAPTER_LIST_REQUEST })
-        const { data } = await axios.get(`https://localhost:44362/api/chapters/course/${courseId}`)
+        const { data } = await axios.get(`${API}chapters/course/${courseId}`)
         dispatch({
             type: CHAPTER_LIST_SUCCESS,
             payload: data

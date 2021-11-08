@@ -12,9 +12,24 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SyncLoader } from "react-spinners"
 import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
 const SignupForm = (props) => {
-    const { register, handleSubmit, setValue , watch, formState: { errors } } = useForm();
+   
+    const validationSchema = Yup.object().shape({
+        password: Yup.string()
+            .required('Password is required')
+            .matches('(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
+            .min(8, 'Password must be at least 8 characters'),
+        confirmPassword: Yup.string()
+            .required('Confirm Password is required')
+            .matches('(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
+            .oneOf([Yup.ref('password')], 'Passwords must match')
+            
+    });
+    const formOptions = { resolver: yupResolver(validationSchema) };
+    const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm(formOptions);
 
     const notify = () => toast.success("A verification email has been sent to " + watch("email"),
         {
@@ -26,7 +41,17 @@ const SignupForm = (props) => {
             draggable: true,
             progress: undefined,
         });
-
+    const passwordNotValidNotify = () => toast.error("Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
+        {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined
+        }
+    )
     const [photo, setPhoto] = useState(null);
     const [photoName, setPhotoName] = useState('Upload Your Profile Photo');
 
@@ -65,11 +90,11 @@ const SignupForm = (props) => {
         else {
             dispatch(createAccount(data.name, data.email, data.password, data.confirmPassword))
             notify();
-            setValue('name','')
-            setValue('email','')
-            setValue('password','')
-            setValue('confirmPassword','')
-            setValue('job','')
+            setValue('name', '')
+            setValue('email', '')
+            setValue('password', '')
+            setValue('confirmPassword', '')
+            setValue('job', '')
             setValue('avatar', null)
         }
     }
@@ -95,21 +120,29 @@ const SignupForm = (props) => {
 
                 <input required type='text' placeholder='Full Name'  {...register("name", { required: true, maxLength: 80 })} />
 
-                <input type="email" placeholder='Email Address' {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                <input type="email" placeholder='Email Address'  {...register("email", { required: true})} />
 
                 <div style={{ position: 'relative' }}>
-                    <input required name='passwordTextbox' type={!passwordShown ? 'password' : 'text'} placeholder='Create Password'
-                        {...register("password", { required: true, minLength: 8, pattern: "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" })}
+                    <input 
+                    required
+                    
+                     name='passwordTextbox'
+                      type={!passwordShown ? 'password' : 'text'}
+                       placeholder='Create Password'
+                        {...register("password", {required: true, minLength: 8})}
                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                     <button type="button" className={classes.toggle} style={!passwordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showPasswordHandler}>
                         <i className="fal fa-eye"></i>
                     </button>
                 </div>
                 <div style={{ position: 'relative' }}>
-                    <input required name='confirmPasswordTextbox' type={!confirmPasswordShown ? 'password' : 'text'} placeholder='Confirm Password'
-                        {...register("confirmPassword", { required: true, minLength: 8, pattern: "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" })}
+                    <input required name='confirmPasswordTextbox' 
+                     
+                     type={!confirmPasswordShown ? 'password' : 'text'} placeholder='Confirm Password'
+                        {...register("confirmPassword", { required: true, minLength: 8})}
                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
-                    <button type="button" className={classes.toggle} style={!confirmPasswordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showConfirmPasswordHandler}>
+                    <button type="button" className={classes.toggle} style={!confirmPasswordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} 
+                    onClick={showConfirmPasswordHandler}>
                         <i className="fal fa-eye"></i>
                     </button>
                 </div>

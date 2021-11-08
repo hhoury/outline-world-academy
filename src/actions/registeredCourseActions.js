@@ -5,15 +5,18 @@ import {
     REGISTERED_COURSE_LIST_REQUEST,
     REGISTERED_COURSE_DETAILS_REQUEST,
     REGISTERED_COURSE_DETAILS_SUCCESS,
-    REGISTERED_COURSE_DETAILS_FAIL
+    REGISTERED_COURSE_DETAILS_FAIL,
+    IS_REGISTERED_COURSE_FAIL,
+    IS_REGISTERED_COURSE_SUCCESS,
+    IS_REGISTERED_COURSE_REQUEST,
 } from '../constants/registeredCoursesConstants'
 import { API } from '../constants/appConstants'
 
-export const listCourses = (studentId) => async (dispatch) => {
+export const registeredListCourses = (studentId) => async (dispatch) => {
     try {
         dispatch({ type:     REGISTERED_COURSE_LIST_REQUEST,
         })
-        const { data } = await axios.post(API + 'Enrollments/get-enrollments', {studentId})
+        const { data } = await axios.post(API + 'Enrollments/get-courses', {studentId})
         dispatch({
             type: REGISTERED_COURSE_LIST_SUCCESS,
             payload: data
@@ -28,7 +31,7 @@ export const listCourses = (studentId) => async (dispatch) => {
     }
 }
 
-export const listCourseDetails = (id) => async (dispatch) => {
+export const registeredCourseDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: REGISTERED_COURSE_DETAILS_REQUEST })
         const { data } = await axios.post(API + 'Enrollments/get-course')
@@ -45,4 +48,22 @@ export const listCourseDetails = (id) => async (dispatch) => {
         })
     }
 
+}
+
+export const isRegisteredCourse = (studentId,courseId) => async (dispatch) => {
+    try {
+        dispatch({ type: IS_REGISTERED_COURSE_REQUEST })
+        const { data } = await axios.post(API + 'Enrollments/is-enrolled', {studentId, courseId})
+        dispatch({
+            type: IS_REGISTERED_COURSE_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: IS_REGISTERED_COURSE_FAIL,
+            payload: error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        })
+    }
 }

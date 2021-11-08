@@ -9,19 +9,19 @@ const ContactUsPage = (props) => {
             <div className='row contact-us'>
                 <div className='col-lg-6 col-md-6 col-md-12 col-sm-12'>
                     <h1>Get in touch!</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+                    <p>We are here to help you anytime!</p>
                     <ul>
                         <li>
                             <span><i className="fas fa-map-marker-alt"></i></span>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+                            <p>5FC6+83 Doha, Qatar</p>
                         </li>
                         <li>
                             <span><i className="fas fa-phone-alt"></i></span>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+                            <p>+971 3130 7072</p>
                         </li>
                         <li>
                             <span><i className="fas fa-envelope"></i></span>
-                            <p>www.outlineworldacademy.com</p>
+                            <p>info@outlineworldacademy.com</p>
                         </li>
                     </ul>
                 </div>
