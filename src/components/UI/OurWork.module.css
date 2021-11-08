@@ -40,5 +40,6 @@
 @media screen and (max-width: 768px) {
     .OurWork {
         width: 100%;
+        padding: 50px 0;
     }
 }

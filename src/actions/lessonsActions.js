@@ -7,11 +7,11 @@ import {
     LESSON_DETAILS_SUCCESS,
     LESSON_DETAILS_FAIL
 } from '../constants/lessonsConstants'
-
+import { API } from '../constants/appConstants'
 export const listCourseChapterDetails = (courseId, chapterId) => async (dispatch) => {
     try {
         dispatch({ type: LESSON_DETAILS_REQUEST })
-        const { data } = await axios.get(`https://localhost:44362/api/courses/${courseId}/chapter/${chapterId}`)
+        const { data } = await axios.get(`${API}courses/${courseId}/chapter/${chapterId}`)
         dispatch({
             type: LESSON_DETAILS_SUCCESS,
             payload: data

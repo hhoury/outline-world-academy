@@ -6,7 +6,7 @@ import classes from './CardInformationForm.module.css'
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { API } from '../../constants/appConstants'
 
 const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/form/version/45/merchant/OUTWORLD/session.js`;
 const MPGS_TIMEOUT = 5000;
@@ -152,7 +152,7 @@ const CardInformation = forwardRef((props, ref) => {
             return "PAY";
         },
         endpoint: function () {
-            return "https://localhost:44362/api/PaymentApi/processHostedSession";
+            return `${API}PaymentApi/processHostedSession`;
         },
         secureIdResponseUrl: function () {
             return null;
@@ -188,7 +188,8 @@ const CardInformation = forwardRef((props, ref) => {
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Accept', 'application/json');
-                xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+                // xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+                xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://109.235.69.20');
                 xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {

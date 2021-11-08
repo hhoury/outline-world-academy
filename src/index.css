@@ -991,6 +991,9 @@ margin-top: 20px;
 
 @media screen and (max-width: 768px) {
 
+  .main-carousel{
+    width: auto;
+  }
   /*#region ABOUT US PAGE */
   .about-us>h1 {
     font-size: 1.4rem;
@@ -1031,9 +1034,11 @@ margin-top: 20px;
 
   /*#region COURSES PAGE */
   .courses-page>h1 {
-    width: 60%;
-    margin-left: 5%;
-    padding-bottom: 190px;
+    width: 100%;
+    text-align: justify;
+    font-size: 21px;
+    max-width: 338px;
+    word-break: break-all;
   }
 
   /*#endregion END OF COURSES PAGE */

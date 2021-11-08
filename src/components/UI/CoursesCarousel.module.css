@@ -31,3 +31,15 @@
 .CoursesCarousel > div > div > div{
     z-index: 1 !important;
 }
+
+@media screen and (max-width: 768px) {
+   .CoursesCarousel{
+       width: 100%;
+   }
+   .CoursesCarousel .CarouselText{
+    width: 90%;
+   }
+   .CoursesCarousel .ViewCourses{
+       width: 90%;
+   }
+}

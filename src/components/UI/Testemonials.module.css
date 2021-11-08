@@ -58,9 +58,11 @@
     margin: 0;
 }
 @media screen and (max-width: 768px) {
-
+    .Testemonials .carousel-caption{
+        left:4%;
+        right:4%; 
+    }
     .Testemonials .carousel-caption > div{
         margin-top: 0;
     }
-    
 }

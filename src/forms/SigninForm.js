@@ -35,11 +35,10 @@ const SigninForm = (props) => {
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader message='Signing you in...' />}
       <form onSubmit={handleSubmit(formSubmitHandler)}>
-        <input required type='email' placeholder='Email Address' {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
+        <input required type='email' placeholder='Email Address' {...register("Email", { required: true})} />
         <div style={{ position: 'relative' }}>
           <input name='passwordTextbox' required
             type={!passwordShown ? 'password' : 'text'} placeholder='Password'
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
             {...register("Password", { required: true })} />
 
