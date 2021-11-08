@@ -1,6 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useEffect, useState, useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
-import { savePaymentInfo } from '../../actions/cartActions';
+// import { savePaymentInfo } from '../../actions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
 import classes from './CardInformationForm.module.css'
 import { useForm } from 'react-hook-form';
@@ -105,30 +105,33 @@ const CardInformation = forwardRef((props, ref) => {
         history.goBack();
     }
     const cardInfoSubmitHandler = (e) => {
+        e.preventDefault();
+        console.log('card info payment');
+
     }
 
-    const cart = useSelector((state) => state.cart)
-    const { paymentInfo } = cart;
-    useEffect(() => {
-        if (paymentInfo) {
-            setValue('cardholder-name',paymentInfo.cardholder)
-            setValue('expiry-month',paymentInfo.expiryMonth)
-            setValue('expiry-year',paymentInfo.expiryYear)
-            setValue('security-code',paymentInfo.cvc)
-            setValue('card-number',paymentInfo.cardNumber)
-        }
-    }, [paymentInfo])
+    // const cart = useSelector((state) => state.cart)
+    // const { paymentInfo } = cart;
+    // useEffect(() => {
+    //     if (paymentInfo) {
+    //         setValue('cardholder-name',paymentInfo.cardholder)
+    //         setValue('expiry-month',paymentInfo.expiryMonth)
+    //         setValue('expiry-year',paymentInfo.expiryYear)
+    //         setValue('security-code',paymentInfo.cvc)
+    //         setValue('card-number',paymentInfo.cardNumber)
+    //     }
+    // }, [paymentInfo])
 
     const res = useSelector((state) => state.order);
     const { order } = res;
     const orderId = order.id
-    const ApiOperation = "PAY"
-    const ApiMethod = "POST"
-    const CardNumber = watch('card-number')
-    const ExpiryMonth = watch('expiry-month')
-    const ExpiryYear = watch('expiry-year')
-    const SecurityCode = watch('security-code')
-    const CardHolderName = watch('cardholder-name')
+    // const ApiOperation = "PAY"
+    // const ApiMethod = "POST"
+    // const CardNumber = watch('card-number')
+    // const ExpiryMonth = watch('expiry-month')
+    // const ExpiryYear = watch('expiry-year')
+    // const SecurityCode = watch('security-code')
+    // const CardHolderName = watch('cardholder-name')
     // let formIsValid = false;
     // if (CardNumber && ExpiryMonth && ExpiryYear && SecurityCode && CardHolderName) {
     //     formIsValid = true;
@@ -136,13 +139,13 @@ const CardInformation = forwardRef((props, ref) => {
     useImperativeHandle(ref, () => ({
         cardInfoSubmitHandler(event) {
             event.preventDefault();
-            dispatch(savePaymentInfo({
-                cardholder: watch('cardholder-name') ,
-                cvc: watch('password') ,
-                expiryMonth: watch('expiry-month'),
-                expiryYear: watch('expiry-year'),
-                cardNumber: watch('card-number'),
-            }))
+            // dispatch(savePaymentInfo({
+            //     cardholder: watch('cardholder-name') ,
+            //     cvc: watch('password') ,
+            //     expiryMonth: watch('expiry-month'),
+            //     expiryYear: watch('expiry-year'),
+            //     cardNumber: watch('card-number'),
+            // }))
             pay();
         }
     })
@@ -165,8 +168,6 @@ const CardInformation = forwardRef((props, ref) => {
                 console.log("Session updated with data: " + response.session.id);
                 //   onFormSessionUpdated(response.session.id);
                 setSessionId(response.session.id)
-                console.log('sessionId');
-                console.log(sessionId);
                 //check if the security code was provided by the user
                 if (response.sourceOfFunds.provided.card.securityCode) {
                     console.log("Security code was provided.");
@@ -180,15 +181,14 @@ const CardInformation = forwardRef((props, ref) => {
                     apiOperation: DotNetSample.operation(),
                     sessionId: response.session.id,
                     secureIdResponseUrl: DotNetSample.secureIdResponseUrl(),
-                    orderId: orderId
+                    orderId: orderId == null? localStorage.getItem('orderId'): orderId
                 };
 
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', DotNetSample.endpoint(), true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
-                xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Accept', 'application/json');
-                // xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+                xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
                 xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://109.235.69.20');
                 xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
                 xhr.onreadystatechange = function () {
@@ -197,10 +197,6 @@ const CardInformation = forwardRef((props, ref) => {
                     }
                 };
                 xhr.send(JSON.stringify(data));
-                console.log(orderId, orderId,response.session.id, ApiOperation, ApiMethod, CardHolderName, CardNumber, ExpiryMonth, ExpiryYear, SecurityCode);
-            //     dispatch(placeOrder(orderId, orderId,response.session.id, ApiOperation, ApiMethod,CardHolderName, CardNumber, ExpiryMonth, ExpiryYear, SecurityCode
-            // ))
-
             } else if ("fields_in_error" === response.status) {
                 console.log("Session update failed with field errors.");
                 if (response.errors.cardNumber) {
@@ -267,31 +263,27 @@ const CardInformation = forwardRef((props, ref) => {
                         <label>Expiry Month</label>
                         <input id='expiry-month'
                             name='expiry-month' 
-                            type='text' 
-                            pattern="/^\d+$/"
+                            type="text" pattern="\d*" maxlength="2"
                             required
                             placeholder='mm'
-                            {...register("expiry-month", {required: true, maxLength: 2, minLength: 2})} 
+                            {...register("expiry-month", {required: true})} 
                         />
                     </span>
                     <span>
                         <label>Expiry year</label>
                         <input id='expiry-year'
                             name='expiry-year' 
-                            type='text' 
-                            pattern="/^\d+$/"
+                            type="text" pattern="\d*" maxlength="2"
                             required
                             placeholder='yy'
-                            {...register("expiry-year", {required: true, maxLength: 2, minLength: 2})} 
+                            {...register("expiry-year", {required: true})} 
                         />
                     </span>
                     <span>
                         <label>Card Code (CVC)</label>
                         <input id='security-code'
                         readOnly
-                        type='password'
-                        pattern="/^\d+$/"
-                        placeholder="&#9679;&#9679;&#9679;"
+                        type="text" pattern="\d*" 
                         required 
                         // {...register("security-code", {required: true, maxLength: 3, minLength: 4})} 
                           />

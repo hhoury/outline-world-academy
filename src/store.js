@@ -50,9 +50,9 @@ const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
   ? JSON.parse(localStorage.getItem('shippingAddress'))
   : {}
 
-const paymentInfoFromStorage = localStorage.getItem('paymentInfo')
-  ? JSON.parse(localStorage.getItem('paymentInfo'))
-  : {}
+// const paymentInfoFromStorage = localStorage.getItem('paymentInfo')
+//   ? JSON.parse(localStorage.getItem('paymentInfo'))
+//   : {}
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
@@ -65,7 +65,7 @@ const initialState = {
     cartItems: cartItemsFromStorage,
     shippingAddress: shippingAddressFromStorage,
     totalAmount: totalAmountFromStorage ? totalAmountFromStorage : 0,
-    paymentInfo: paymentInfoFromStorage
+    // paymentInfo: paymentInfoFromStorage
   },
   userLogin: { userInfo: userInfoFromStorage }
 }

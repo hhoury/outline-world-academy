@@ -28,6 +28,7 @@ export const createOrder = (orderItems) => async (dispatch) => {
             type: CREATE_ORDER_SUCCESS,
             payload: data
         })
+        localStorage.setItem('orderId', data.id);
     } catch (error) {
         dispatch({
             type: CREATE_ORDER_FAIL,

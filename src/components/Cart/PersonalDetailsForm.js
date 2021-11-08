@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import {saveShippingAddress} from '../../actions/cartActions'
 import classes from './PersonalDetailsForm.module.css'
 import {updateBillingAddress} from '../../actions/orderActions'
+
 const isNotEmpty = (value) => {
     return value?.trim() !== ''
 }
-
 const isEmail = email => {
     if (email?.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
         return (true)
@@ -119,7 +119,8 @@ const PersonalDetails = forwardRef((props, ref) => {
                 street: enteredStreet,
                 phone: enteredPhone
             }))
-            dispatch(updateBillingAddress(order?.id,enteredFName,enteredLName,enteredEmail,enteredCountry,enteredTown,enteredStreet,enteredPhone))
+            const orderId = localStorage.getItem('orderId')
+            dispatch(updateBillingAddress(orderId,enteredFName,enteredLName,enteredEmail,enteredCountry,enteredTown,enteredStreet,enteredPhone))
             history.push('/order-review')
         }
     })

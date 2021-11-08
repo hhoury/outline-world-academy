@@ -34,7 +34,8 @@ const CouponCode = () => {
     const { order } = res;
     const dispatch = useDispatch()
     const applyCouponHandler = (data) => {
-        dispatch(applyCoupon(order.id, watch('Coupon')))
+        const orderId = localStorage.getItem('orderId')
+        dispatch(applyCoupon(orderId, watch('Coupon')))
     }
     const [couponApplied, setCouponApplied] = useState(false)
 
@@ -43,10 +44,9 @@ const CouponCode = () => {
 
     useEffect(() => {
         if (coupon.discount) {
+            setValue('Coupon', coupon.code)
             notifySuccess()
             setCouponApplied(true)
-            setValue('Coupon', coupon.code)
-
         }
         if (coupon.error) {
             notifyFailed()

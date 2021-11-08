@@ -19,7 +19,7 @@ import { useHistory } from 'react-router'
 const OrderReviewPage = () => {
     const history = useHistory();
     const cart = useSelector((state) => state.cart)
-    const { cartItems, shippingAddress, paymentInfo } = cart
+    const { cartItems, shippingAddress } = cart //, paymentInfo
     const proceedHandler = () => {
         history.push('/payment')
     }

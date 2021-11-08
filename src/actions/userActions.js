@@ -71,7 +71,7 @@ export const logout = () => async (dispatch) => {
         localStorage.removeItem('cartItems')
         localStorage.removeItem('shippingAddress')
         localStorage.removeItem('totalAmount')
-        localStorage.removeItem('paymentInfo')
+        // localStorage.removeItem('paymentInfo')
         localStorage.removeItem('userInfo')
 
         dispatch({ type: USER_LOGOUT })

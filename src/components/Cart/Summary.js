@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 const Summary = (props) => {
     const cart = useSelector((state) => state.cart)
     const { coupon } = useSelector((state) => state.coupon)
-    const { error, discount } = coupon
+    const {  discount } = coupon
     const totalAmount = +cart.totalAmount
     const tax = +(totalAmount * 0.15)
     let total = +0

@@ -20,8 +20,9 @@ const MyCoursesPage = () => {
   color: #F44E0C;
 `;
 const history = useHistory();
- const checkCoursesHandler = () => {
-
+ const checkCoursesHandler = (e) => {
+     e.preventDefault();
+     history.push('/courses')
  }
     const StudentId = JSON.parse(localStorage.getItem('userInfo')).id
     const dispatch = useDispatch()

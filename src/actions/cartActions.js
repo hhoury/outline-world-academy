@@ -36,11 +36,11 @@ import {
 
   }
   
-  export const savePaymentInfo = (data) => (dispatch) => {
-    dispatch({
-      type: CART_SAVE_PAYMENT_INFO,
-      payload: data,
-    })
-    localStorage.setItem('paymentInfo', JSON.stringify(data))
-  }
+  // export const savePaymentInfo = (data) => (dispatch) => {
+  //   dispatch({
+  //     type: CART_SAVE_PAYMENT_INFO,
+  //     payload: data,
+  //   })
+  //   localStorage.setItem('paymentInfo', JSON.stringify(data))
+  // }
   

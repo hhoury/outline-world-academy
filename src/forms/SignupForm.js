@@ -20,12 +20,14 @@ const SignupForm = (props) => {
     const validationSchema = Yup.object().shape({
         password: Yup.string()
             .required('Password is required')
-            .matches('(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
-            .min(8, 'Password must be at least 8 characters'),
+            .matches('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
+            .min(8, 'Password must be at least 8 characters')
+            .label('Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'),
         confirmPassword: Yup.string()
             .required('Confirm Password is required')
-            .matches('(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
+            .matches('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
             .oneOf([Yup.ref('password')], 'Passwords must match')
+            .label('Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters')
             
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
@@ -130,7 +132,8 @@ const SignupForm = (props) => {
                       type={!passwordShown ? 'password' : 'text'}
                        placeholder='Create Password'
                         {...register("password", {required: true, minLength: 8})}
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                        // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
+                        />
                     <button type="button" className={classes.toggle} style={!passwordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showPasswordHandler}>
                         <i className="fal fa-eye"></i>
                     </button>
@@ -140,7 +143,8 @@ const SignupForm = (props) => {
                      
                      type={!confirmPasswordShown ? 'password' : 'text'} placeholder='Confirm Password'
                         {...register("confirmPassword", { required: true, minLength: 8})}
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                        // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                         />
                     <button type="button" className={classes.toggle} style={!confirmPasswordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} 
                     onClick={showConfirmPasswordHandler}>
                         <i className="fal fa-eye"></i>
