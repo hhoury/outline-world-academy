@@ -21,12 +21,16 @@
 .Gallery div,.Gallery ul{
     display: flex;
 }
+.Gallery ul{
+    width: 100%;
+}
 .Gallery div, .Gallery ul li {
     margin: 10px 0;
 }
 
 .Gallery .horizontal {
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .Gallery .vertical {
