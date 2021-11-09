@@ -11,20 +11,38 @@ import { API } from '../../constants/appConstants'
 const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/form/version/45/merchant/OUTWORLD/session.js`;
 const MPGS_TIMEOUT = 5000;
 
-const notify = () => toast.success("Payment Successful!",
-    {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: false,
-    });
 
 const CardInformation = forwardRef((props, ref) => {
-    const { register, watch,setValue, handleSubmit, formState: { errors } } = useForm();
 
+    const notify = (toastMessage) => {
+        error ?
+        toast.error( toastMessage ,
+            {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: false,
+            })
+        :
+        toast.success("Payment Successful!",
+            {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: false,
+            });
+    } 
+
+
+
+    const { register, watch, setValue, handleSubmit, formState: { errors } } = useForm();
+    const [error, setError] = useState(true);
     const onScriptLoad = ({
         initialized,
         formSessionUpdate,
@@ -110,42 +128,13 @@ const CardInformation = forwardRef((props, ref) => {
 
     }
 
-    // const cart = useSelector((state) => state.cart)
-    // const { paymentInfo } = cart;
-    // useEffect(() => {
-    //     if (paymentInfo) {
-    //         setValue('cardholder-name',paymentInfo.cardholder)
-    //         setValue('expiry-month',paymentInfo.expiryMonth)
-    //         setValue('expiry-year',paymentInfo.expiryYear)
-    //         setValue('security-code',paymentInfo.cvc)
-    //         setValue('card-number',paymentInfo.cardNumber)
-    //     }
-    // }, [paymentInfo])
-
     const res = useSelector((state) => state.order);
     const { order } = res;
-    const orderId = order.id
-    // const ApiOperation = "PAY"
-    // const ApiMethod = "POST"
-    // const CardNumber = watch('card-number')
-    // const ExpiryMonth = watch('expiry-month')
-    // const ExpiryYear = watch('expiry-year')
-    // const SecurityCode = watch('security-code')
-    // const CardHolderName = watch('cardholder-name')
-    // let formIsValid = false;
-    // if (CardNumber && ExpiryMonth && ExpiryYear && SecurityCode && CardHolderName) {
-    //     formIsValid = true;
-    // }
+    const orderId = order?.id
+
     useImperativeHandle(ref, () => ({
         cardInfoSubmitHandler(event) {
             event.preventDefault();
-            // dispatch(savePaymentInfo({
-            //     cardholder: watch('cardholder-name') ,
-            //     cvc: watch('password') ,
-            //     expiryMonth: watch('expiry-month'),
-            //     expiryYear: watch('expiry-year'),
-            //     cardNumber: watch('card-number'),
-            // }))
             pay();
         }
     })
@@ -165,6 +154,7 @@ const CardInformation = forwardRef((props, ref) => {
         // HANDLE RESPONSE FOR UPDATE SESSION
         if (response.status) {
             if ("ok" === response.status) {
+                setError(false);
                 console.log("Session updated with data: " + response.session.id);
                 //   onFormSessionUpdated(response.session.id);
                 setSessionId(response.session.id)
@@ -181,7 +171,7 @@ const CardInformation = forwardRef((props, ref) => {
                     apiOperation: DotNetSample.operation(),
                     sessionId: response.session.id,
                     secureIdResponseUrl: DotNetSample.secureIdResponseUrl(),
-                    orderId: orderId == null? localStorage.getItem('orderId'): orderId
+                    orderId: orderId ? localStorage.getItem('orderId') : orderId
                 };
 
                 var xhr = new XMLHttpRequest();
@@ -194,21 +184,34 @@ const CardInformation = forwardRef((props, ref) => {
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         document.documentElement.innerHTML = this.response;
+                      
                     }
                 };
                 xhr.send(JSON.stringify(data));
+                var res = JSON.parse(this.responseText)
+                if(res.paid)
+                {
+                    setError(false)
+                    notify()
+                    history.push('/my-courses')
+                }
             } else if ("fields_in_error" === response.status) {
+                setError(error => true);
                 console.log("Session update failed with field errors.");
                 if (response.errors.cardNumber) {
                     console.log("Card number invalid or missing.");
+                    notify('Card number invalid or missing');
                 }
                 if (response.errors.expiryYear) {
-                    console.log("Expiry year invalid or missing.");
+                    notify('Expiry year invalid or missing');
                 }
                 if (response.errors.expiryMonth) {
+                    notify('Expiry month invalid or missing');
                     console.log("Expiry month invalid or missing.");
+
                 }
                 if (response.errors.securityCode) {
+                    notify('Security code invalid');
                     console.log("Security code invalid.");
                 }
             } else if ("request_timeout" === response.status) {
@@ -245,48 +248,47 @@ const CardInformation = forwardRef((props, ref) => {
                 <button onClick={goBackHandler} className='goBackButton'>Back</button>
                 <label>Cardholder's Name:</label>
                 <input id='cardholder-name'
-                    name='cardholder-name' 
-                    {...register("cardholder-name", {required: true, maxLength: 80})} 
+                    name='cardholder-name'
+                    {...register("cardholder-name", { required: true, maxLength: 80 })}
                     type='text'
-                     required
-                    
-                   />
+                    required
+
+                />
                 <label>Card Number</label>
                 <input id='card-number' required type="number"
                     placeholder="0000 0000 0000 0000"
                     readOnly
                     pattern="/^\d+$/"
-                    //  {...register("card-number", {required: true, maxLength: 16, minLength: 16})} 
+                //  {...register("card-number", {required: true, maxLength: 16, minLength: 16})} 
                 />
                 <div >
                     <span>
                         <label>Expiry Month</label>
                         <input id='expiry-month'
-                            name='expiry-month' 
-                            type="text" pattern="\d*" maxlength="2"
+                            name='expiry-month'
+                            type="text" pattern="\d*" maxLength={2}
                             required
                             placeholder='mm'
-                            {...register("expiry-month", {required: true})} 
+                            {...register("expiry-month", { required: true })}
                         />
                     </span>
                     <span>
                         <label>Expiry year</label>
                         <input id='expiry-year'
-                            name='expiry-year' 
-                            type="text" pattern="\d*" maxlength="2"
+                            name='expiry-year'
+                            type="text" pattern="\d*" maxLength={2}
                             required
                             placeholder='yy'
-                            {...register("expiry-year", {required: true})} 
+                            {...register("expiry-year", { required: true })}
                         />
                     </span>
                     <span>
                         <label>Card Code (CVC)</label>
                         <input id='security-code'
-                        readOnly
-                        type="text" pattern="\d*" 
-                        required 
-                        // {...register("security-code", {required: true, maxLength: 3, minLength: 4})} 
-                          />
+                            readOnly
+                            type="text" pattern="\d*"
+                            required
+                        />
                     </span>
                 </div>
             </form>
