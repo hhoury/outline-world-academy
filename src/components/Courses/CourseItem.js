@@ -8,6 +8,7 @@ import { addToCart } from '../../actions/cartActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { LinkContainer } from 'react-router-bootstrap'
+import { isRegisteredCourse } from '../../actions/registeredCourseActions'
 
 const notify = () => toast.success("Course Added to Cart",
     {
@@ -21,10 +22,14 @@ const notify = () => toast.success("Course Added to Cart",
     });
 
 const CourseItem = (props) => {
+  
+    const goToMyCoursesHandler = () => {
+        history.push('/my-courses')
+    }
+
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
     const { cartItems } = cart
-
     const history = useHistory();
     const addToCartHandler = () => {
         dispatch(addToCart(
@@ -59,22 +64,27 @@ const CourseItem = (props) => {
                 pauseOnHover={false}
             />
             <li key={props.id} className={`col-lg-4 col-md-6 col-sm-6 ${classes['course-item']}`} >
-            <p className={classes['card-price']}>{props.price}$</p>
+                <p className={classes['card-price']}>{props.price}$</p>
                 <LinkContainer to={`/courses/${props.id}`}>
-                   
+
                     <figure >
                         <LazyLoadImage src={props.thumbnail} alt={props.title} />
                     </figure>
-                    
+
                 </LinkContainer>
                 <h1>{props.title}</h1>
                 <div className={classes.footer}>
                     <Link to={`/courses/${props.id}`}>View Course Details</Link>
 
-                    {!existingCartItem ?
-                        <Button onClick={addToCartHandler.bind(props.id)} className={classes.btn}>Add To Cart <i className="far fa-shopping-cart"></i></Button>
-                        :
-                        <Button onClick={goToCartHandler} className={`${classes.btn} ${classes.btnGoToCart}`}>Go To Cart <i className="far fa-shopping-cart"></i></Button>
+                    {
+                        props.isEnrolled?
+                            <Button onClick={goToMyCoursesHandler} className={classes.btn}>Go To Your Courses</Button>
+                            :
+
+                            !existingCartItem ?
+                                <Button onClick={addToCartHandler.bind(props.id)} className={classes.btn}>Add To Cart <i className="far fa-shopping-cart"></i></Button>
+                                :
+                                <Button onClick={goToCartHandler} className={`${classes.btn} ${classes.btnGoToCart}`}>Go To Cart <i className="far fa-shopping-cart"></i></Button>
                     }
                 </div>
             </li>

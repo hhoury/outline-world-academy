@@ -10,6 +10,7 @@ import Message from '../components/UI/Message'
 import { css } from "@emotion/react";
 import { useLocation } from 'react-router-dom'
 import { listCourseChapters } from '../actions/chapterActions'
+import { registeredListCourses } from '../actions/registeredCourseActions'
 
 const override = css`
   display: block;
@@ -26,13 +27,23 @@ function useQuery() {
 const CoursesPage = (props) => {
     let query = useQuery();
     const search = query.get('search');
-
     const dispatch = useDispatch()
     const courseList = useSelector((state) => state.courseList)
-
+    const StudentId = JSON.parse(localStorage.getItem('userInfo')).id
+    const enrollmentsList = useSelector((state) => state.enrollmentsList)
+    let { data } = enrollmentsList
+    const registeredCourses = data?.courses
+    let registeredCoursesItemsIds = []
+    registeredCourses?.forEach(element => {
+        registeredCoursesItemsIds.push(element.item1.id)
+    });
+    console.log(registeredCoursesItemsIds);
     useEffect(() => {
         dispatch(listCourses())
-
+        if (StudentId)
+        {
+             dispatch(registeredListCourses(StudentId))
+        }
     }, [dispatch, search])
     let { loading, error, courses } = courseList
     if (search) {
@@ -52,8 +63,15 @@ const CoursesPage = (props) => {
                                 (
                                     courses.map((course) =>
 
-                                        <CourseItem
-                                            key={course.id} id={course.id} title={course.title} price={course.price} chapters={course.chapters} lessons={course.chapters.lessons} thumbnail={course1} />
+                                        <CourseItem 
+                                            key={course.id} 
+                                            isEnrolled={registeredCoursesItemsIds.includes(course.id)}
+                                            id={course.id} 
+                                            title={course.title} 
+                                            price={course.price} 
+                                            chapters={course.chapters} 
+                                            lessons={course.chapters.lessons} 
+                                            thumbnail={course1} />
                                     )
                                 )
                                 :

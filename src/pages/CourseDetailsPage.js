@@ -20,6 +20,7 @@ import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router'
 import {listCourseDetails} from '../actions/courseActions'
 import { listCourseChapters } from '../actions/chapterActions'
+import {isRegisteredCourse} from '../actions/registeredCourseActions'
 
 const notify = () => toast.success("Course Added to Cart",
     {
@@ -34,6 +35,9 @@ const notify = () => toast.success("Course Added to Cart",
 
 const CourseDetailsPage = () => {
     const{id} = useParams();
+    const StudentId = JSON.parse(localStorage.getItem('userInfo')).id
+    const registered = useSelector((state) => state.isRegisteredCourse)
+    const isEnrolled = registered.data;
     const history = useHistory();
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
@@ -52,6 +56,9 @@ const CourseDetailsPage = () => {
     const goToCartHandler = () => {
         history.push('/cart')
     }
+    const goToMyCoursesHandler = () => {
+        history.push('/my-courses')
+    }
     const courseDetails = useSelector((state) => state.courseDetails)
 
     const courseChapters = useSelector((state) => state.courseChapters)
@@ -59,6 +66,7 @@ const CourseDetailsPage = () => {
     useEffect(() => {
         dispatch(listCourseDetails(id))
         dispatch(listCourseChapters(id))
+        dispatch(isRegisteredCourse(StudentId, id))
     }, [dispatch,id])
     
     const { loading, error, course } = courseDetails
@@ -67,8 +75,9 @@ const CourseDetailsPage = () => {
     for (let index = 0; index < chapters?.length; index++) {
         lessonsCount+= chapters[index].lessons.length;
     }
+    
     const existingCartItemIndex = cartItems.findIndex(item => item.id === course?.id);
-    const existingCartItem = existingCartItemIndex? cartItems[existingCartItemIndex]: 0;
+    const existingCartItem = existingCartItemIndex !== null? cartItems[existingCartItemIndex]: 0;
     return (
         <>
             <ToastContainer
@@ -132,7 +141,13 @@ const CourseDetailsPage = () => {
                             </span>
                             + VAT 15%
                         </div>
-                        {existingCartItem ?
+                        {
+                            isEnrolled?
+                        
+                            <Button onClick={goToMyCoursesHandler}>Go To Your Courses</Button> 
+                            :
+
+                        existingCartItem ?
                             <Button onClick={goToCartHandler}>Go To Cart</Button>
                             :
                             <Button onClick={addToCartHandler}>Add to cart</Button>

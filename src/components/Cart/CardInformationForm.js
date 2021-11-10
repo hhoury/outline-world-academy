@@ -27,7 +27,7 @@ const CardInformation = forwardRef((props, ref) => {
                 progress: false,
             })
         :
-        toast.success("Payment Successful!",
+        toast.success(toastMessage,
             {
                 position: "top-right",
                 autoClose: 3000,
@@ -84,7 +84,6 @@ const CardInformation = forwardRef((props, ref) => {
             return;
         }
         PaymentSession.updateSessionFromForm('card');
-        notify();
     }
 
     const loadScript = async (formSessionUpdate) => {
@@ -184,22 +183,21 @@ const CardInformation = forwardRef((props, ref) => {
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         document.documentElement.innerHTML = this.response;
-                      
+                        var res = JSON.parse(this.responseText)
+                        if(res.paid)
+                        {
+                            setError(false)
+                            notify('Payment Successful!')
+                            history.push('/my-courses')
+                        }
                     }
                 };
                 xhr.send(JSON.stringify(data));
-                var res = JSON.parse(this.responseText)
-                if(res.paid)
-                {
-                    setError(false)
-                    notify()
-                    history.push('/my-courses')
-                }
+               
             } else if ("fields_in_error" === response.status) {
                 setError(error => true);
                 console.log("Session update failed with field errors.");
                 if (response.errors.cardNumber) {
-                    console.log("Card number invalid or missing.");
                     notify('Card number invalid or missing');
                 }
                 if (response.errors.expiryYear) {
@@ -207,12 +205,10 @@ const CardInformation = forwardRef((props, ref) => {
                 }
                 if (response.errors.expiryMonth) {
                     notify('Expiry month invalid or missing');
-                    console.log("Expiry month invalid or missing.");
 
                 }
                 if (response.errors.securityCode) {
                     notify('Security code invalid');
-                    console.log("Security code invalid.");
                 }
             } else if ("request_timeout" === response.status) {
                 console.log("Session update failed with request timeout: " + response.errors.message);
