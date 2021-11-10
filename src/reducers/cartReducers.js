@@ -59,6 +59,7 @@ import {
         return {
           ...state,
           cartItems: [],
+          totalAmount: 0
         }
       default:
         return state

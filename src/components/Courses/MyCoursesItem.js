@@ -11,6 +11,7 @@ const MyCoursesItem = (props) => {
     const viewCourseHandler = () => {
         history.push('/my-courses/'+ props.id)
     }
+    const isCourseCompleted = false;
 
     return (
         <div className={`${classes['my-couses-item']} mr-auto`}>

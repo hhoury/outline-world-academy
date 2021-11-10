@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../constants/appConstants'
-
+import {clearCartItems} from '../../actions/cartActions'
 const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/form/version/45/merchant/OUTWORLD/session.js`;
 const MPGS_TIMEOUT = 5000;
 
@@ -15,8 +15,7 @@ const MPGS_TIMEOUT = 5000;
 const CardInformation = forwardRef((props, ref) => {
 
     const notify = (toastMessage) => {
-        error ?
-        toast.error( toastMessage ,
+        toast.error(toastMessage,
             {
                 position: "top-right",
                 autoClose: 3000,
@@ -26,8 +25,9 @@ const CardInformation = forwardRef((props, ref) => {
                 draggable: true,
                 progress: false,
             })
-        :
-        toast.success(toastMessage,
+    }
+    const notifySuccess = () => {
+        toast.success('Payment Successful',
             {
                 position: "top-right",
                 autoClose: 3000,
@@ -37,7 +37,8 @@ const CardInformation = forwardRef((props, ref) => {
                 draggable: true,
                 progress: false,
             });
-    } 
+    }
+
 
 
 
@@ -182,18 +183,18 @@ const CardInformation = forwardRef((props, ref) => {
                 xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
-                        document.documentElement.innerHTML = this.response;
-                        var res = JSON.parse(this.responseText)
-                        if(res.paid)
-                        {
-                            setError(false)
-                            notify('Payment Successful!')
+                        var res = JSON.parse(this.response)
+                        console.log(res);
+                        console.log(res.data)
+                        if (res.paid) {
+                            dispatch(clearCartItems())
+                            notifySuccess()
                             history.push('/my-courses')
                         }
                     }
                 };
                 xhr.send(JSON.stringify(data));
-               
+
             } else if ("fields_in_error" === response.status) {
                 setError(error => true);
                 console.log("Session update failed with field errors.");
