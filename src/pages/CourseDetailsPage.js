@@ -35,7 +35,7 @@ const notify = () => toast.success("Course Added to Cart",
 
 const CourseDetailsPage = () => {
     const{id} = useParams();
-    const StudentId = JSON.parse(localStorage.getItem('userInfo')).id
+    const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
     const registered = useSelector((state) => state.isRegisteredCourse)
     const isEnrolled = registered.data;
     const history = useHistory();

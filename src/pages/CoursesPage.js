@@ -29,7 +29,7 @@ const CoursesPage = (props) => {
     const search = query.get('search');
     const dispatch = useDispatch()
     const courseList = useSelector((state) => state.courseList)
-    const StudentId = JSON.parse(localStorage.getItem('userInfo')).id
+    const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
     const enrollmentsList = useSelector((state) => state.enrollmentsList)
     let { data } = enrollmentsList
     const registeredCourses = data?.courses
@@ -37,7 +37,6 @@ const CoursesPage = (props) => {
     registeredCourses?.forEach(element => {
         registeredCoursesItemsIds.push(element.item1.id)
     });
-    console.log(registeredCoursesItemsIds);
     useEffect(() => {
         dispatch(listCourses())
         if (StudentId)

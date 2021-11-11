@@ -24,10 +24,11 @@ const history = useHistory();
      e.preventDefault();
      history.push('/courses')
  }
-    const StudentId = JSON.parse(localStorage.getItem('userInfo')).id
+    const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(registeredListCourses(StudentId))
+        if(StudentId)
+            dispatch(registeredListCourses(StudentId))
     }, [])
     const enrollmentsList = useSelector((state) => state.enrollmentsList)
     let { loading, error, data } = enrollmentsList

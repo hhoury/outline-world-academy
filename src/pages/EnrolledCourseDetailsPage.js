@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const EnrolledCourseDetailsPage = (props) => {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const StudentId = JSON.parse(localStorage.getItem('userInfo')).id
+    const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
     const registered = useSelector((state) => state.isRegisteredCourse)
     const isEnrolled = registered.data;
     const courseDetails = useSelector((state) => state.courseDetails)
