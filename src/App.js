@@ -25,8 +25,10 @@ import CourseChapterLessonPage from './pages/CourseChapterLessonPage'
 import OrderReviewPage from './pages/OrderReviewPage'
 import NewPasswordPage from './pages/NewPasswordPage';
 import { useSelector } from 'react-redux';
+import Cookies from 'js-cookie'
 const App = () => {
 
+   const token = Cookies.get('accessToken')
    const userLogin = useSelector((state) => state.userLogin)
    const { userInfo } = userLogin
    const [passwordModalIsShowing, setPasswordModalIsShowing] = useState(false)
@@ -60,7 +62,7 @@ const App = () => {
                
             
                <Route path='/profile/'>
-                  <ProfilePage token={userInfo?.refreshToken} onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler} /></Route>
+                  <ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler} /></Route>
                <Route path='/sign-up'><SignupPage /></Route>
                <Route path='/sign-in'><SigninPage /></Route>
                <Route path='/forgot-password'><ForgotPasswordPage /></Route>

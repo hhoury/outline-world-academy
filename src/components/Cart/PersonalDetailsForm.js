@@ -208,7 +208,7 @@ const PersonalDetails = forwardRef((props, ref) => {
                     type='tel'
                     id='phone'
                     name='phone'
-                    pattern="/^\d{10}$/"
+                    pattern="/\d+/"
                     required
                     value={enteredPhone}
                     onChange={phoneChangedHandler}

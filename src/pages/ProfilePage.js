@@ -3,8 +3,9 @@ import Logo from '../Layout/Logo'
 import ProfileEditForm from '../forms/ProfileEditForm'
 import { useSelector } from 'react-redux'
 import CartLoginForm from '../components/Cart/CartLoginForm'
+import Cookies from 'js-cookie'
 const ProfilePage = (props) => {
-    
+    const token = Cookies.get('accessToken')
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
@@ -17,7 +18,7 @@ const ProfilePage = (props) => {
                     <Logo />
                 </div>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                {userInfo ? loggedIn : (
+                {token ? loggedIn : (
                 <CartLoginForm className='cartLogin' />
             )}
                 </div>

@@ -11,12 +11,21 @@ import {
     IS_REGISTERED_COURSE_REQUEST,
 } from '../constants/registeredCoursesConstants'
 import { API } from '../constants/appConstants'
+import Cookies from 'js-cookie'
 
 export const registeredListCourses = (studentId) => async (dispatch) => {
     try {
         dispatch({ type:     REGISTERED_COURSE_LIST_REQUEST,
         })
-        const { data } = await axios.post(API + 'Enrollments/get-courses', {studentId})
+
+        const token = Cookies.get('accessToken')
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        }
+        const { data } = await axios.post(API + 'Enrollments/get-courses', {studentId},config)
         dispatch({
             type: REGISTERED_COURSE_LIST_SUCCESS,
             payload: data
@@ -33,8 +42,15 @@ export const registeredListCourses = (studentId) => async (dispatch) => {
 
 export const registeredCourseDetails = (id) => async (dispatch) => {
     try {
+        const token = Cookies.get('accessToken')
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        }
         dispatch({ type: REGISTERED_COURSE_DETAILS_REQUEST })
-        const { data } = await axios.post(API + 'Enrollments/get-course')
+        const { data } = await axios.post(API + 'Enrollments/get-course', {id},config)
         dispatch({
             type: REGISTERED_COURSE_DETAILS_SUCCESS,
             payload: data
@@ -51,9 +67,16 @@ export const registeredCourseDetails = (id) => async (dispatch) => {
 }
 
 export const isRegisteredCourse = (studentId,courseId) => async (dispatch) => {
+    const token = Cookies.get('accessToken')
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    }
     try {
         dispatch({ type: IS_REGISTERED_COURSE_REQUEST })
-        const { data } = await axios.post(API + 'Enrollments/is-enrolled', {studentId, courseId})
+        const { data } = await axios.post(API + 'Enrollments/is-enrolled', { courseId}, config)
         dispatch({
             type: IS_REGISTERED_COURSE_SUCCESS,
             payload: data

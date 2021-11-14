@@ -171,7 +171,8 @@ const CardInformation = forwardRef((props, ref) => {
                     apiOperation: DotNetSample.operation(),
                     sessionId: response.session.id,
                     secureIdResponseUrl: DotNetSample.secureIdResponseUrl(),
-                    orderId: orderId ? localStorage.getItem('orderId') : orderId
+                    orderId: orderId ? localStorage.getItem('orderId') : orderId,
+                    studentId: JSON.parse(localStorage.getItem('userInfo'))?.id
                 };
 
                 var xhr = new XMLHttpRequest();

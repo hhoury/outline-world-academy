@@ -15,7 +15,7 @@ import {
 } from '../constants/orderConstants'
 import { API } from '../constants/appConstants'
 import {useSelector} from 'react-redux'
-
+import Cookies from 'js-cookie'
 export const createOrder = (orderItems) => async (dispatch) => {
     try {
         dispatch({
@@ -23,7 +23,17 @@ export const createOrder = (orderItems) => async (dispatch) => {
         })
 
         const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
-        const { data } = await axios.post(API + 'Orders/create-order/', { orderItems, StudentId })
+
+        const token = Cookies.get('accessToken')
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+
+        const { data } = await axios.post(API + 'Orders/create-order/', { orderItems },config)
         dispatch({
             type: CREATE_ORDER_SUCCESS,
             payload: data
@@ -41,9 +51,11 @@ export const createOrder = (orderItems) => async (dispatch) => {
 
 export const updateBillingAddress = (orderId, firstName, lastName, email, country, city,
     streetAddress, phoneNumber) => async (dispatch) => {
+        const token = Cookies.get('accessToken')
         const config = {
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
             }
         }
         try {
@@ -70,13 +82,19 @@ export const updateBillingAddress = (orderId, firstName, lastName, email, countr
 
 
 export const applyCoupon = (orderId, couponCode) => async (dispatch) => {
-
+    const token = Cookies.get('accessToken')
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    }
 
     try {
         dispatch({
             type: APPLY_COUPON_REQUEST
         })
-        const { data } = await axios.post(API + 'Orders/apply-coupon/', { orderId, couponCode })
+        const { data } = await axios.post(API + 'Orders/apply-coupon/', { orderId, couponCode },config)
         dispatch({
             type: APPLY_COUPON_SUCCESS,
             payload: data
@@ -94,12 +112,18 @@ export const applyCoupon = (orderId, couponCode) => async (dispatch) => {
 
 
 export const placeOrder = (orderId, transactionId,sessionId,ApiOperation,ApiMethod, CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode) => async (dispatch) => {
-
+    const token = Cookies.get('accessToken')
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    }
     try{
         dispatch({
             type: PLACE_ORDER_REQUEST
         })
-        const { data } = await axios.post(API + 'PaymentApi/processHostedSession', { orderId, transactionId,sessionId,ApiOperation,ApiMethod,CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode })
+        const { data } = await axios.post(API + 'PaymentApi/processHostedSession', { orderId, transactionId,sessionId,ApiOperation,ApiMethod,CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode },config)
         dispatch({
             type: PLACE_ORDER_SUCCESS,
             payload: data

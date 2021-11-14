@@ -8,10 +8,20 @@ import {
     CHAPTER_DETAILS_FAIL
 } from '../constants/chaptersConstants'
 import { API } from '../constants/appConstants'
+import Cookies from 'js-cookie'
+
 export const listCourseChapterDetails = (courseId, chapterId) => async (dispatch) => {
     try {
         dispatch({ type: CHAPTER_DETAILS_REQUEST })
-        const { data } = await axios.get(`${API}courses/${courseId}/chapter/${chapterId}`)
+        const token = Cookies.get('accessToken')
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        const { data } = await axios.post(`${API}courses/${courseId}/chapter/${chapterId}`,null,config)
         dispatch({
             type: CHAPTER_DETAILS_SUCCESS,
             payload: data
