@@ -44,6 +44,7 @@ const CoursesPage = (props) => {
              dispatch(registeredListCourses(StudentId))
         }
     }, [dispatch, search])
+    
     let { loading, error, courses } = courseList
     if (search) {
         courses = courses.filter(item => item.title.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase()))

@@ -7,25 +7,20 @@ import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../constants/appConstants'
-import {clearCartItems} from '../../actions/cartActions'
+import { clearCartItems } from '../../actions/cartActions'
 import useInput from '../../hooks/use-input';
+
 const isNotEmpty = (value) => {
     return value.trim() !== ''
-  }
+}
 
 const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/form/version/45/merchant/OUTWORLD/session.js`;
 const MPGS_TIMEOUT = 5000;
 
-
 const CardInformation = forwardRef((props, ref) => {
-    const {
-        value: enteredCVC,
-        hasError: cvcHasError,
-        isValid: enteredCVCIsValid,
-        valueChangeHandler: cvcChangedHandler,
-        inputBlurHandler: cvcBlurHandler,
-        setValue: setCVCValue
-    } = useInput(isNotEmpty);
+    const [loader, setLoader] = useState(false)
+
+
     const notify = (toastMessage) => {
         toast.error(toastMessage,
             {
@@ -50,9 +45,12 @@ const CardInformation = forwardRef((props, ref) => {
                 progress: false,
             });
     }
+    
+    const [cvcValue, setCvcValue] = useState('')
 
-
-
+    const cvcChangeHandler = (e) => {
+        setCvcValue(e.target.value)
+    }
 
     const { register, watch, setValue, handleSubmit, formState: { errors } } = useForm();
     const [error, setError] = useState(true);
@@ -91,6 +89,12 @@ const CardInformation = forwardRef((props, ref) => {
     };
 
     const pay = () => {
+        if(cvcValue.trim() === '')
+        {
+            notify('Security code invalid')
+            return
+        }
+        setLoader(true)
         const { PaymentSession } = window;
 
         if (!PaymentSession) {
@@ -134,9 +138,10 @@ const CardInformation = forwardRef((props, ref) => {
     const goBackHandler = () => {
         history.goBack();
     }
+
+
     const cardInfoSubmitHandler = (e) => {
         e.preventDefault();
-        console.log('card info payment');
     }
 
     const res = useSelector((state) => state.order);
@@ -146,12 +151,6 @@ const CardInformation = forwardRef((props, ref) => {
     useImperativeHandle(ref, () => ({
         cardInfoSubmitHandler(event) {
             event.preventDefault();
-            console.log('enteredCVC');
-            console.log(enteredCVC);
-            if(enteredCVC.trim() === ''){
-                notify('Security code invalid');
-                return;
-            }
             pay();
         }
     })
@@ -205,6 +204,7 @@ const CardInformation = forwardRef((props, ref) => {
                         var res = JSON.parse(this.response)
                         if (res.paid) {
                             dispatch(clearCartItems())
+                            setLoader(false)
                             notifySuccess()
                             history.push('/my-courses')
                         }
@@ -229,7 +229,7 @@ const CardInformation = forwardRef((props, ref) => {
                 if (response.errors.securityCode) {
                     notify('Security code invalid');
                 }
-               
+
             } else if ("request_timeout" === response.status) {
                 console.log("Session update failed with request timeout: " + response.errors.message);
             } else if ("system_error" === response.status) {
@@ -301,14 +301,11 @@ const CardInformation = forwardRef((props, ref) => {
                     <span>
                         <label>Card Code (CVC)</label>
                         <input id='security-code'
-                            readOnly
-                            type="text" 
+                            type="text"
                             pattern="\d*"
                             required
-                            value={enteredCVC}
-                            onChange={cvcChangedHandler}
-                            onBlur={cvcBlurHandler} 
-
+                            value={cvcValue}
+                            onChange={cvcChangeHandler}
                         />
                     </span>
                 </div>
