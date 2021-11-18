@@ -8,12 +8,24 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../constants/appConstants'
 import {clearCartItems} from '../../actions/cartActions'
+import useInput from '../../hooks/use-input';
+const isNotEmpty = (value) => {
+    return value.trim() !== ''
+  }
+
 const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/form/version/45/merchant/OUTWORLD/session.js`;
 const MPGS_TIMEOUT = 5000;
 
 
 const CardInformation = forwardRef((props, ref) => {
-
+    const {
+        value: enteredCVC,
+        hasError: cvcHasError,
+        isValid: enteredCVCIsValid,
+        valueChangeHandler: cvcChangedHandler,
+        inputBlurHandler: cvcBlurHandler,
+        setValue: setCVCValue
+    } = useInput(isNotEmpty);
     const notify = (toastMessage) => {
         toast.error(toastMessage,
             {
@@ -125,7 +137,6 @@ const CardInformation = forwardRef((props, ref) => {
     const cardInfoSubmitHandler = (e) => {
         e.preventDefault();
         console.log('card info payment');
-
     }
 
     const res = useSelector((state) => state.order);
@@ -135,6 +146,12 @@ const CardInformation = forwardRef((props, ref) => {
     useImperativeHandle(ref, () => ({
         cardInfoSubmitHandler(event) {
             event.preventDefault();
+            console.log('enteredCVC');
+            console.log(enteredCVC);
+            if(enteredCVC.trim() === ''){
+                notify('Security code invalid');
+                return;
+            }
             pay();
         }
     })
@@ -172,7 +189,8 @@ const CardInformation = forwardRef((props, ref) => {
                     sessionId: response.session.id,
                     secureIdResponseUrl: DotNetSample.secureIdResponseUrl(),
                     orderId: orderId ? localStorage.getItem('orderId') : orderId,
-                    studentId: JSON.parse(localStorage.getItem('userInfo'))?.id
+                    // studentId: JSON.parse(localStorage.getItem('userInfo'))?.id
+                    studentId: 4
                 };
 
                 var xhr = new XMLHttpRequest();
@@ -185,8 +203,6 @@ const CardInformation = forwardRef((props, ref) => {
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         var res = JSON.parse(this.response)
-                        console.log(res);
-                        console.log(res.data)
                         if (res.paid) {
                             dispatch(clearCartItems())
                             notifySuccess()
@@ -197,6 +213,7 @@ const CardInformation = forwardRef((props, ref) => {
                 xhr.send(JSON.stringify(data));
 
             } else if ("fields_in_error" === response.status) {
+                console.log(response.errors);
                 setError(error => true);
                 console.log("Session update failed with field errors.");
                 if (response.errors.cardNumber) {
@@ -212,6 +229,7 @@ const CardInformation = forwardRef((props, ref) => {
                 if (response.errors.securityCode) {
                     notify('Security code invalid');
                 }
+               
             } else if ("request_timeout" === response.status) {
                 console.log("Session update failed with request timeout: " + response.errors.message);
             } else if ("system_error" === response.status) {
@@ -284,8 +302,13 @@ const CardInformation = forwardRef((props, ref) => {
                         <label>Card Code (CVC)</label>
                         <input id='security-code'
                             readOnly
-                            type="text" pattern="\d*"
+                            type="text" 
+                            pattern="\d*"
                             required
+                            value={enteredCVC}
+                            onChange={cvcChangedHandler}
+                            onBlur={cvcBlurHandler} 
+
                         />
                     </span>
                 </div>

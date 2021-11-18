@@ -35,7 +35,11 @@ export const userLoginReducer = (state = {}, action) => {
     case USER_LOGIN_REQUEST:
       return { loading: true }
     case USER_LOGIN_SUCCESS:
-      return { loading: false, userInfo: action.payload }
+      console.log(action.payload);
+      return { loading: false, userInfo: {id: action.payload.id,
+      email:action.payload.email,
+    job:action.payload.job,
+  name: action.payload.name} }
     case USER_LOGIN_FAIL:
       return { loading: false, error: action.payload }
     case USER_LOGOUT:

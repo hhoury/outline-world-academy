@@ -62,7 +62,6 @@ const CoursesCarousel = (props) => {
     title: "Course Featured 3",
     webinars: [],
 }]
-    console.log(courses);
 //TODO 
 //REPLACE SRC IN CONTENT <img>
     useEffect(() => {
@@ -99,10 +98,7 @@ const CoursesCarousel = (props) => {
             We provide courses for beginners and professionals. Our courses are tailored to meet your needs.
             </p>
             <Button className={classes.ViewCourses} onClick={viewCoursesHandler}>View Available Courses</Button>
-
-
         </div>
-
     )
 }
 

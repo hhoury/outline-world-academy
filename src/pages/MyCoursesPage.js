@@ -11,6 +11,7 @@ import { css } from "@emotion/react";
 import Message from '../components/UI/Message'
 import {useHistory} from 'react-router'
 import { Button } from 'react-bootstrap'
+import Cookies from 'js-cookie'
 const MyCoursesPage = () => {
     const override = css`
   display: block;
@@ -24,11 +25,12 @@ const history = useHistory();
      e.preventDefault();
      history.push('/courses')
  }
-    const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
+ const token = Cookies.get('accessToken')
+    // const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
     const dispatch = useDispatch()
     useEffect(() => {
-        if(StudentId)
-            dispatch(registeredListCourses(StudentId))
+        if(token)
+            dispatch(registeredListCourses(token))
     }, [])
     const enrollmentsList = useSelector((state) => state.enrollmentsList)
     let { loading, error, data } = enrollmentsList

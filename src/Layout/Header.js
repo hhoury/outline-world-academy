@@ -7,8 +7,8 @@ import ResponsiveMenu from './ResponsiveMenu'
 import Cookies from 'js-cookie'
 
 const Header = (props) => {
-    console.log(Cookies.get('accessToken'));
     const name = JSON.parse(localStorage.getItem('userInfo'))?.name
+    
     return (
 
         <header className={`${classes.Header} ${props.className}`}>

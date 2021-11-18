@@ -5,14 +5,16 @@ import {  OverlayTrigger, Popover } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 import SearchModal from '../components/UI/SearchModal'
+import Cookies from 'js-cookie'
+
 // on mouse enter , open
 // on mouse leave  , set timeout then close
 
 const RightMenu = (props) => {
     const dispatch = useDispatch()
-
-    const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin;
+    const isLoggedIn = Cookies.get('accessToken')
+    // const userLogin = useSelector((state) => state.userLogin)
+    // const { userInfo } = userLogin;
     const cart = useSelector((state) => state.cart)
     const {cartItems} = cart
 
@@ -94,7 +96,8 @@ const RightMenu = (props) => {
                             containerPadding={20}
                             rootClose={true}
                             onHide={userMenuHandler}
-                            overlay={userInfo? loggedInUserPopover : nonLoggedUserPopover}
+
+                            overlay={isLoggedIn ? loggedInUserPopover : nonLoggedUserPopover}
                         >
                             <button id='menuButton'
                                 className={classes.btn}

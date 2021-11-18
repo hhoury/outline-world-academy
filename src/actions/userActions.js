@@ -23,6 +23,8 @@ import {
 } from "../constants/userConstants"
 import {API} from '../constants/appConstants'
 import Cookies from 'js-cookie'
+
+
 export const createAccount = (name, email, password, confirmPassword) => async (dispatch) => {
     
     try {
@@ -52,14 +54,18 @@ export const login = (email, password) => async (dispatch) => {
         dispatch({
             type: USER_LOGIN_REQUEST
         })
-        const { data } = await axios.post(API + 'Accounts/authenticate/', { email, password })
-        console.log(data);
-        dispatch({
-            type: USER_LOGIN_SUCCESS,
-            payload: data
+        // const { data } = 
+        await axios.post(API + 'Accounts/authenticate/', { email, password })
+        .then((response) => {
+            if(response.data.accessToken){
+                Cookies.set('accessToken',response.data.accessToken, {expires: 7})
+            }
+            dispatch({
+                type: USER_LOGIN_SUCCESS,
+                payload: response.data
+            })
+            localStorage.setItem('userInfo', JSON.stringify({name: response.data.name,email: response.data.email, job: response.data.job,avatar: response.data.avatar}))
         })
-        Cookies.set('accessToken',data.jwtToken)
-        localStorage.setItem('userInfo', {name: data.name,email: data.email,refreshToken: data.refreshToken})
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,

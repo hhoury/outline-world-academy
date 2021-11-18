@@ -13,19 +13,18 @@ import {
 import { API } from '../constants/appConstants'
 import Cookies from 'js-cookie'
 
-export const registeredListCourses = (studentId) => async (dispatch) => {
+export const registeredListCourses = (token) => async (dispatch) => {
     try {
         dispatch({ type:     REGISTERED_COURSE_LIST_REQUEST,
         })
 
-        const token = Cookies.get('accessToken')
         const config = {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`
             }
         }
-        const { data } = await axios.post(API + 'Enrollments/get-courses', {studentId},config)
+        const { data } = await axios.post(API + 'Enrollments/get-courses',null,config)
         dispatch({
             type: REGISTERED_COURSE_LIST_SUCCESS,
             payload: data
@@ -40,7 +39,7 @@ export const registeredListCourses = (studentId) => async (dispatch) => {
     }
 }
 
-export const registeredCourseDetails = (id) => async (dispatch) => {
+export const registeredCourseDetails = () => async (dispatch) => {
     try {
         const token = Cookies.get('accessToken')
         const config = {
@@ -50,7 +49,7 @@ export const registeredCourseDetails = (id) => async (dispatch) => {
             }
         }
         dispatch({ type: REGISTERED_COURSE_DETAILS_REQUEST })
-        const { data } = await axios.post(API + 'Enrollments/get-course', {id},config)
+        const { data } = await axios.post(API + 'Enrollments/get-course',config)
         dispatch({
             type: REGISTERED_COURSE_DETAILS_SUCCESS,
             payload: data

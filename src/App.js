@@ -26,9 +26,9 @@ import OrderReviewPage from './pages/OrderReviewPage'
 import NewPasswordPage from './pages/NewPasswordPage';
 import { useSelector } from 'react-redux';
 import Cookies from 'js-cookie'
+
 const App = () => {
 
-   const token = Cookies.get('accessToken')
    const userLogin = useSelector((state) => state.userLogin)
    const { userInfo } = userLogin
    const [passwordModalIsShowing, setPasswordModalIsShowing] = useState(false)
@@ -39,6 +39,13 @@ const App = () => {
       setPasswordModalIsShowing(false);
    }
 
+   const isLoggedIn = Cookies.get('accessToken')
+   if (!isLoggedIn) {
+      localStorage.removeItem('cartItems')
+      localStorage.removeItem('totalAmount')
+      localStorage.removeItem('shippingAddress')
+      localStorage.removeItem('userInfo')
+   }
    return (
       <>
          {passwordModalIsShowing && <PasswordModal onClose={hidePasswordModalHandler} />}
@@ -46,23 +53,64 @@ const App = () => {
             <Switch>
                <Route path='/cart'><CartPage /></Route>
                <Route path='/order-details'><OrderDetailsPage /></Route>
-               <Route path='/billing-details'><PersonalDetailsPage /></Route>
-               <Route path='/order-review'><OrderReviewPage /></Route>
-               <Route path='/payment'><PaymentPage /></Route>
-
-               <Route path='/courses/:id/chapter/:id/:id'><CourseChapterLessonPage /></Route>
-               <Route path='/courses/:id/chapter/:id'><ChapterDetailsPage /></Route>
-               <Route path='/my-courses/:id'><EnrolledCourseDetailsPage /></Route>
-               <Route path='/courses/:id' exact><CourseDetailsPage /></Route>
-
-
+               <Route path='/billing-details'>
+                     <PersonalDetailsPage />
+               </Route>
+               <Route path='/order-review'>
+                  {isLoggedIn ?
+                     <OrderReviewPage />
+                     :
+                     <Redirect to={{ pathname: '/sign-in' }} />
+                  }
+               </Route>
+               <Route path='/payment'>
+                  {isLoggedIn ?
+                     <PaymentPage />
+                     :
+                     <Redirect to={{ pathname: '/sign-in' }} />
+                  }
+               </Route>
+               <Route path='/courses/:id/chapter/:id/:id'>
+                  {isLoggedIn ?
+                     <CourseChapterLessonPage />
+                     :
+                     <Redirect to={{ pathname: '/sign-in' }} />
+                  }
+               </Route>
+               <Route path='/courses/:id/chapter/:id'>
+               {isLoggedIn ?
+                      <ChapterDetailsPage />
+                     :
+                     <Redirect to={{ pathname: '/sign-in' }} />
+                  }
+                
+               </Route>
+               <Route path='/my-courses/:id'>
+                  {isLoggedIn ?
+                     <EnrolledCourseDetailsPage />
+                     :
+                     <Redirect to={{ pathname: '/sign-in' }} />
+                  }
+               </Route>
+               <Route path='/courses/:id' exact>
+                  <CourseDetailsPage />
+               </Route>
                <Route path='courses?search=keyword'  ><CoursesPage /></Route>
                <Route path='/courses'><CoursesPage /></Route>
-               <Route path='/my-courses'><MyCoursesPage /></Route>
-               
-            
+               <Route path='/my-courses'>
+                  {isLoggedIn ?
+                     <MyCoursesPage />
+                     :
+                     <Redirect to={{ pathname: '/sign-in' }} />
+                  }
+               </Route>
                <Route path='/profile/'>
-                  <ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler} /></Route>
+                  {isLoggedIn ?
+                     <ProfilePage onClose={hidePasswordModalHandler} onShowPasswordModal={showPasswordModalHandler} />
+                     :
+                     <Redirect to={{ pathname: '/sign-in' }} />
+                  }
+               </Route>
                <Route path='/sign-up'><SignupPage /></Route>
                <Route path='/sign-in'><SigninPage /></Route>
                <Route path='/forgot-password'><ForgotPasswordPage /></Route>
@@ -70,8 +118,19 @@ const App = () => {
                <Route path='/blog'><BlogPage /></Route>
                <Route path='/contact-us'><ContactUsPage /></Route>
                <Route path='/policy'><PolicyPage /></Route>
-               <Route path='/password-reset/:token'><NewPasswordPage /></Route>
-
+               <Route path='/password-reset/:token'> {isLoggedIn ?
+                  <NewPasswordPage />
+                  :
+                  <Redirect to={{ pathname: '/sign-in' }} />
+               }
+               </Route>
+               <Route path='/payment'>
+                  {isLoggedIn ?
+                     <PaymentPage />
+                     :
+                     <Redirect to={{ pathname: '/sign-in' }} />
+                  }
+               </Route>
                <Route path='/home'><HomePage /></Route>
                <Route path='/' exact>
                   <Redirect to='/home' />

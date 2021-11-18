@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import course1 from '../assets/course1.jpg'

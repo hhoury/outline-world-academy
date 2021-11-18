@@ -22,7 +22,7 @@ export const createOrder = (orderItems) => async (dispatch) => {
             type: CREATE_ORDER_REQUEST
         })
 
-        const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
+        const StudentId = 4//JSON.parse(localStorage.getItem('userInfo'))?.id
 
         const token = Cookies.get('accessToken')
         const config = {
@@ -33,7 +33,7 @@ export const createOrder = (orderItems) => async (dispatch) => {
         }
 
 
-        const { data } = await axios.post(API + 'Orders/create-order/', { orderItems },config)
+        const { data } = await axios.post(API + 'Orders/create-order/', { StudentId, orderItems },config)
         dispatch({
             type: CREATE_ORDER_SUCCESS,
             payload: data
