@@ -203,7 +203,10 @@ const CardInformation = forwardRef((props, ref) => {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         var res = JSON.parse(this.response)
                         if (res.paid) {
+                            
                             dispatch(clearCartItems())
+                            localStorage.removeItem('cartItems')
+                            localStorage.removeItem('totalAmount')
                             setLoader(false)
                             notifySuccess()
                             history.push('/my-courses')
