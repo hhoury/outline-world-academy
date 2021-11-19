@@ -18,11 +18,13 @@ const Header = (props) => {
             <nav className={`${classes.menu} ml-auto `}>
                 {
                     props.fullMenu && <ul className={classes['full-menu']}>
-                        <li><NavLink activeClassName={classes.active} exact to='/home'>Home</NavLink></li>
-                        <li><NavLink activeClassName={classes.active} to='/about-us'>about</NavLink></li>
+                        <li><NavLink activeClassName={classes.active} exact to='/home'>our world</NavLink></li>
                         <li><NavLink activeClassName={classes.active} to='/courses'>courses</NavLink></li>
-                        <li><NavLink activeClassName={classes.active} to='/blog'>blog</NavLink></li>
                         <li><NavLink activeClassName={classes.active} to='/contact-us'>contact us</NavLink></li>
+                        <li><NavLink activeClassName={classes.active} to='/about-us'>about</NavLink></li>
+                        
+                        <li><NavLink activeClassName={classes.active} to='/blog'>blog</NavLink></li>
+                   
                     </ul>
                 }
                 {props.withName && <p className={classes.hello}>Hello, {name}</p>}
