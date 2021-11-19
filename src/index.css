@@ -38,9 +38,11 @@ a:hover {
   left: 5%;
   z-index: 2;
 }
-.carousel {
-  min-height: 300px;
-  max-height: 700px;
+.home-carousel {
+  height: 100vh;
+}
+.home-carousel .carousel-inner,.home-carousel .carousel-inner .carousel-item,.home-carousel .carousel-inner .carousel-item img {
+  height: 100%;
 }
 .carousel-inner img {
   height: 100%;

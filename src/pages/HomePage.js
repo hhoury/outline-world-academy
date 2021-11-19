@@ -18,7 +18,7 @@ const HomePage = () => {
         <div>
             <Header fullMenu={true} className='home-header' />
 
-            <Carousel controls={false} keyboard={false} >
+            <Carousel className='home-carousel' controls={false} keyboard={false} >
                 <Carousel.Item>
                     <LazyLoadImage
                         className="d-block w-100 main-carousel"
