@@ -85,6 +85,8 @@ a:hover {
 }
 
 .sign-up__bottom h2 {
+  margin: 0;
+  line-height: 55px;
   color: #F44E0C;
   font-size: 54px;
   font-weight: bold;
@@ -516,6 +518,9 @@ h2 {
 }
 .course-details .course-properties .course-purchase div, .course-details .course-properties .course-purchase button{
   width: 50%;
+  font-weight: bold;
+  font-weight: bold;
+  font-size: 26px;
 }
 .course-details .goToCart{
   background-color: #262626;

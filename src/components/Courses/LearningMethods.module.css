@@ -7,6 +7,7 @@
     text-align: left;
     width: min-content;
     font-size: 56px;
+    text-transform: uppercase;
 }
 .LearningMethods .methods{
     margin-top: 50px;
@@ -20,6 +21,8 @@
 }
 .LearningMethods .methods div h3{
     font-size: 48px;
+    color: #fff;
+    font-weight: bold;
 }
 .LearningMethods .methods div p{
     margin: 20px auto;
