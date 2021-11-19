@@ -38,6 +38,15 @@ a:hover {
   left: 5%;
   z-index: 2;
 }
+.home-h1{
+  width: 50%;
+  margin: 20px 0 0 5%;
+  font-size: 32px;
+  position: absolute;
+  z-index: 2;
+  top: 150px;
+  font-weight: 600;
+}
 .home-carousel {
   height: 100vh;
 }
@@ -201,6 +210,7 @@ h2 {
 .about-us>h1 {
   width: 60%;
     margin: 20px 0 250px 5%;
+    font-weight: bold;
  
 }
 
@@ -218,6 +228,7 @@ h2 {
   color: #F44E0C;
   max-width: 220px;
   margin-left: 10px;
+  font-weight: bold;
 }
 
 .about-us .why-us figure.figure-1 {
@@ -256,7 +267,9 @@ h2 {
   left: 25%;
   gap: 35px;
 }
-
+.about-us .row2 div{
+  margin-left: 15px;
+}
 .about-us .row2 p {
   max-width: 520px;
   line-height: 1.6;
@@ -285,6 +298,7 @@ h2 {
 
 .about-us .the-process__text h1 {
   color: #F44E0C;
+  font-weight: bold;
 }
 
 .about-us .the-process__text p {
@@ -366,6 +380,7 @@ h2 {
 .courses-page main h1 {
   color: #F44E0C;
   margin: 15px 0 15px 5%;
+  font-weight: bold;
 }
 
 .courses-page main ul {
@@ -989,7 +1004,10 @@ margin-top: 20px;
 }
 
 @media screen and (max-width: 768px) {
-
+  .home-h1{
+    font-size: 18px;
+    width: 80%;
+  }
   .main-carousel{
     width: auto;
   }
@@ -1015,6 +1033,10 @@ margin-top: 20px;
   }
   .about-us .the-process__text h1{
     text-align: center;
+  }
+  .about-us .row2 div{
+    margin-left: 0;
+    max-width: none;
   }
   /*#endregion END OF ABOUT US PAGE */
 

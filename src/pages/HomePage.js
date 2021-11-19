@@ -15,9 +15,10 @@ import OurClients from '../components/UI/OurClients'
 
 const HomePage = () => {
     return (
-        <div>
+        <div className='homePage'>
             <Header fullMenu={true} className='home-header' />
-
+            <h1 className='home-h1'> Welcome to Outline World Academy. We have created this academy to spread our knowledge and experience among all people in the 3D World and we hope that our Academy is the first step in the professional visualization world.
+            </h1>
             <Carousel className='home-carousel' controls={false} keyboard={false} >
                 <Carousel.Item>
                     <LazyLoadImage
