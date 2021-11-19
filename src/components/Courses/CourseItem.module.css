@@ -1,29 +1,32 @@
  .course-item {
-    position: relative;
-    margin: 15px auto;
-  }  
+   position: relative;
+   margin: 15px auto;
+ }
+
  .course-item figure,
  .course-item img {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }  
+   width: 100%;
+   height: 100%;
+   cursor: pointer;
+ }
+
  .course-item h1 {
-    position: absolute;
-    bottom: 60px;
-    left: 2%;
-    color: #fff !important;
-    max-width: 80%;
-    margin: 0;
-    text-align: left;
-    font-size: 28px;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none; 
-     -khtml-user-select: none; 
-       -moz-user-select: none; 
-        -ms-user-select: none; 
-            user-select: none; 
-  } 
+   position: absolute;
+   bottom: 60px;
+   left: 2%;
+   color: #fff !important;
+   max-width: 80%;
+   margin: 0;
+   text-align: left;
+   font-size: 28px;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+ }
+
  /* .addCartButton{
     border: 1px solid #F44E0C;
     background-color: #fff;
@@ -35,29 +38,30 @@
   background: #fff;
   opacity: 0.9;
 } */
-.course-item .footer {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  width: calc(100% - 30px);
-  height: 60px;
-  bottom: 0;
-  z-index: 2;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-.course-item a {
-  background-color: #F44E0C;
-  color: #fff;
-  width: 50%;
-  height: 60px;
-  line-height: 60px;
-}
-.course-item a:hover {
-  background-color: #d04108;
-}
-.course-item  .btn {
+ .course-item .footer {
+   position: absolute;
+   width: calc(100% - 30px);
+   height: 60px;
+   bottom: 0;
+   z-index: 2;
+   text-align: center;
+   background-color: #F44E0C;
+ }
+
+ .course-item a {
+   color: #fff;
+   min-width: 100%;
+   line-height: 60px;
+   width: 100%;
+   display: block;
+   word-spacing: 5px;
+ }
+
+ .course-item a:hover {
+   background-color: #e14c11;
+ }
+
+ /* .course-item  .btn {
   background-image: -webkit-linear-gradient(45deg, #F44E0C 50%, transparent 50%);
   background-image: linear-gradient(45deg, #F44E0C 50%, transparent 50%);
   background-position: 100%;
@@ -75,21 +79,41 @@
   background-position: 0;
   color: #fff;
   background-color: #F44E0C;
-}
-.course-item .btnGoToCart{
+} */
+
+ .course-item .btn {
+   width: 50px;
+   height: 50px;
+   border-radius: 100%;
+   background-color: #F44E0C;
+   position: absolute;
+   top: 20px;
+   right: 30px;
+ }
+ .course-item .btn i {
+   color: #fff;
+   font-size: 24px;
+   position: absolute;
+   top: 25%;
+   right: 15px;
+ }
+
+
+ /* .course-item .btnGoToCart{
   background-color: #191919;
   border: 1px solid #F44E0C;
   box-sizing: border-box;
-}
-.course-item  .btn i{
+} */
+
+ /* .course-item  .btn i{
   font-weight: bold;
   margin-left: 5px;
 }
 .course-item  .btn:active{
   background-color: #ccc;
-}
+} */
 
-.course-item .card-price {
+ /* .course-item .card-price {
   display: inline-block;
   width: auto;
   height: 38px;
@@ -105,10 +129,10 @@
   padding: 0 10px 0 10px;
   top: 5px;
   min-width: 80px;
-}
+} */
 
-/* Makes the triangle */
-.card-price:before {
+ /* Makes the triangle */
+ /* .card-price:before {
 	content: "";
 	position: absolute;
 	display: block;
@@ -118,10 +142,10 @@
 	border-top: 19px solid transparent;
 	border-bottom: 19px solid transparent;
 	border-right: 19px solid #f44e0c;
-}
+} */
 
-/* Makes the circle */
-.card-price:after {
+ /* Makes the circle */
+ /* .card-price:after {
 	content: "";
 	background-color: white;
 	border-radius: 50%;
@@ -131,15 +155,16 @@
 	position: absolute;
 	left: -9px;
 	top: 17px;
-}
-@media screen and (max-width:1440px) {
-  .course-item h1 {
-    font-size: 22px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .course-item a{
-    line-height: 20px;
-    padding: 15px 0;
-  }
-}
+} */
+ @media screen and (max-width:1440px) {
+   .course-item h1 {
+     font-size: 22px;
+   }
+ }
+
+ @media screen and (max-width: 768px) {
+   .course-item a {
+     line-height: 20px;
+     padding: 15px 0;
+   }
+ }

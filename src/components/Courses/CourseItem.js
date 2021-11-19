@@ -64,19 +64,19 @@ const CourseItem = (props) => {
                 pauseOnHover={false}
             />
             <li key={props.id} className={`col-lg-4 col-md-6 col-sm-6 ${classes['course-item']}`} >
-                <p className={classes['card-price']}>{props.price}$</p>
+                {/* <p className={classes['card-price']}>{props.price}$</p> */}
                 <LinkContainer to={`/courses/${props.id}`}>
-
                     <figure >
                         <LazyLoadImage src={props.thumbnail} alt={props.title} />
                     </figure>
-
+                  
                 </LinkContainer>
+                <Button onClick={addToCartHandler.bind(props.id)} className={classes.btn}><i className="fal fa-shopping-bag"></i></Button>
                 <h1>{props.title}</h1>
                 <div className={classes.footer}>
                     <Link to={`/courses/${props.id}`}>View Course Details</Link>
 
-                    {
+                    {/* {
                         props.isEnrolled?
                             <Button onClick={goToMyCoursesHandler} className={classes.btn}>Go To Your Courses</Button>
                             :
@@ -85,7 +85,7 @@ const CourseItem = (props) => {
                                 <Button onClick={addToCartHandler.bind(props.id)} className={classes.btn}>Add To Cart <i className="far fa-shopping-cart"></i></Button>
                                 :
                                 <Button onClick={goToCartHandler} className={`${classes.btn} ${classes.btnGoToCart}`}>Go To Cart <i className="far fa-shopping-cart"></i></Button>
-                    }
+                    } */}
                 </div>
             </li>
         </>
