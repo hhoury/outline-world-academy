@@ -12,7 +12,7 @@ const ResponsiveMenu = () => {
                 <div>
                     <div>
                         <ul>
-                            <li><NavLink activeClassName={classes.active} exact to='/home'>Home</NavLink></li>
+                            <li><NavLink activeClassName={classes.active} exact to='/our-world'>our world</NavLink></li>
                             <li><NavLink activeClassName={classes.active} to='/about-us'>about</NavLink></li>
                             <li>
                                 <NavLink activeClassName={classes.active} to='/courses'>courses</NavLink>

@@ -131,9 +131,9 @@ const App = () => {
                      <Redirect to={{ pathname: '/sign-in' }} />
                   }
                </Route>
-               <Route path='/home'><HomePage /></Route>
+               <Route path='/our-world'><HomePage /></Route>
                <Route path='/' exact>
-                  <Redirect to='/home' />
+                  <Redirect to='/our-world' />
                </Route>
                <Route path='*'>
                   <NotFoundPage />

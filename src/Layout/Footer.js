@@ -27,7 +27,7 @@ const Footer = () => {
 
                 <div className={`${classes.column2} col-lg-3 col-md-5 col-sm-12`}>
                     <ul>
-                        <li><Link to='/home'>our world</Link></li>
+                        <li><Link to='/our-world'>our world</Link></li>
                         <li><Link to='/courses'>courses</Link></li>
                         <li><Link to='/about-us'>about</Link></li>
                         <li><Link to='/blog'>blog</Link></li>

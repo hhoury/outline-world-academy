@@ -8,7 +8,7 @@ const SocialMedia = (props) => {
     const userLogin = useSelector((state) => state.userLogin)
     const {userInfo } = userLogin
     if(userInfo)
-        window.location.href= '/home'
+        window.location.href= '/our-world'
     const responseGoogle = (response) => {
     }
     const responseFacebook = (response) => {
