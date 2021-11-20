@@ -670,7 +670,7 @@ margin-top: 20px;
   margin: 0 auto;
   padding: 0;
   color: #fff;
-  font-weight: 100;
+  font-weight: bold;
 }
 
 #menu-popover-contained ul li {
@@ -681,6 +681,9 @@ margin-top: 20px;
   margin: auto 10px auto 0;
 }
 
+#menu-popover-contained ul li a span i {
+  font-weight: bold;
+}
 #menu-popover-contained a {
   color: #fff;
 }
