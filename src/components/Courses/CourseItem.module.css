@@ -41,7 +41,7 @@
  .course-item .footer {
    position: absolute;
    width: calc(100% - 30px);
-   height: 60px;
+   height: 50px;
    bottom: 0;
    z-index: 2;
    text-align: center;
@@ -51,7 +51,7 @@
  .course-item a {
    color: #fff;
    min-width: 100%;
-   line-height: 60px;
+   line-height: 50px;
    width: 100%;
    display: block;
    word-spacing: 5px;
