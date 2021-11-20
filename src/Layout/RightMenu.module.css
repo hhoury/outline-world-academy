@@ -39,7 +39,10 @@
     background: transparent;
     cursor: pointer;
     color: #fff;
-
+    font-weight: bold;
+}
+.right-menu .btn, .logoutBtn span i{
+    font-weight: bold;
 }
 .shoppingCart{
     position: relative;

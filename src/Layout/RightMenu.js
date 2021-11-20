@@ -7,21 +7,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import SearchModal from '../components/UI/SearchModal'
 import Cookies from 'js-cookie'
 
-// on mouse enter , open
-// on mouse leave  , set timeout then close
 
 const RightMenu = (props) => {
     const dispatch = useDispatch()
     const isLoggedIn = Cookies.get('accessToken')
-    // const userLogin = useSelector((state) => state.userLogin)
-    // const { userInfo } = userLogin;
+    
     const cart = useSelector((state) => state.cart)
     const {cartItems} = cart
 
     const logoutHandler = () => {
         dispatch(logout())
     }
-
     const loggedInUserPopover = (<Popover id="menu-popover-contained">
         <Popover.Content>
             <ul>
@@ -70,7 +66,6 @@ const RightMenu = (props) => {
         setTargetUserMenu(event.target);
     }
 
-
     const cartClickHandler = () => {
         history.push('/cart')
     }
@@ -96,12 +91,11 @@ const RightMenu = (props) => {
                             containerPadding={20}
                             rootClose={true}
                             onHide={userMenuHandler}
-
                             overlay={isLoggedIn ? loggedInUserPopover : nonLoggedUserPopover}
                         >
                             <button id='menuButton'
                                 className={classes.btn}
-                                onClick={userMenuHandler}  ><i className="fal fa-user"></i>
+                                onClick={userMenuHandler}><i className="fal fa-user"></i>
                             </button>
 
                         </OverlayTrigger>

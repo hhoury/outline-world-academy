@@ -25,6 +25,7 @@ const ProfileEditForm = (props) => {
 
     const editPhotoHandler =(event) => {
         event.preventDefault();
+        
     }
 
     const formSubmitHandler = (data) => {

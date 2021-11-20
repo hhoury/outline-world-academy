@@ -1,3 +1,44 @@
+https://api.outlineworldacademy.com/api/auth/user/ user (GET, PUT, PATCH)
+
+https://api.outlineworldacademy.com/api/auth/token/verify/ to check and verify if token is valid i.e ( access token, referesh token ) it will return nothing if token is valid and it will return this response when not valid
+ {
+    "detail": "Token is invalid or expired",
+    "code": "token_not_valid"
+} 
+
+https://api.outlineworldacademy.com/api/auth/facebook/ post method send access token and code and follow the below tutorials for using the facebook sdk on react 
+
+https://dev.to/quod_ai/how-to-integrate-facebook-login-api-into-your-react-app-33de
+https://jasonwatmore.com/post/2020/10/28/react-facebook-how-to-use-the-facebook-sdk-in-a-react-app
+
+
+https://api.outlineworldacademy.com/api/auth/google/ post method send Access token, Id token and code check this npm package https://www.npmjs.com/package/react-google-oauth2
+
+https://api.outlineworldacademy.com/api/newsletter/outlineacademy/subscribe/ newsletter below is the api in axios
+
+var config = {
+  method: 'post',
+  url: 'https://api.outlineworldacademy.com/api/newsletter/outlineacademy/subscribe/',
+  headers: { 
+    ...data.getHeaders()
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+the challenging thing in this api is that it returns html as response you should always take the paragraph content i.e <p>Your subscription request was successfully received and an activation email has been sent to you.you will find a link which you need to follow in order to activate your subscription</p>
+
+
+
+
+
 
 https://tempmailo.com
 tineca@microcreditoabruzzo.it

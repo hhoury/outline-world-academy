@@ -18,7 +18,6 @@ const SigninForm = (props) => {
   const showPasswordHandler = (event) => {
     event.preventDefault();
     setPasswordShown(!passwordShown);
-
   }
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const dispatch = useDispatch()
@@ -27,8 +26,10 @@ const SigninForm = (props) => {
   const { loading, error } = userLogin
 
   const formSubmitHandler = (data) => {
+    console.log('formSubmitHandler');
     dispatch(login(watch('Email'), watch('Password')))
   }
+
   return (
     <Form className={`${classes.signIn} ${props.className}`}>
       <h1>SIGN IN</h1>
@@ -58,7 +59,7 @@ const SigninForm = (props) => {
       </form>
       <div className={classes.footer}>
         <Recaptcha className={classes.signInRecaptcha} />
-        <SocialMedia className={classes.social} />
+        {/* <SocialMedia className={classes.social} /> */}
         <div className={classes.policy}><Link to='/policy'>Privacy Policy</Link></div>
       </div>
     </Form>

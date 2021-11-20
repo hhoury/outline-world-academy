@@ -12,7 +12,6 @@ const CartItem = (props) => {
                 <p>{props.title}</p>
             </td>
             <td data-label='price'><span>{props.price}</span></td>
-            <td data-label='chapters'><span>{props.chapters}</span></td>
             <td data-label='subtotal'><span>{props.subtotal}</span></td>
         </tr>
     )

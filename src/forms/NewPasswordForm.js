@@ -14,6 +14,7 @@ import { useHistory } from 'react-router';
 
 
 const NewPasswordForm = (props) => {
+    const {uid} = useParams();
     const { token } = useParams();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const NewPasswordForm = (props) => {
 
             }
             else {
-                await dispatch(changePassword(token, watch('password'), watch('confirmPassword')))
+                await dispatch(changePassword(uid,token, watch('password'), watch('confirmPassword')))
                 history.push('/sign-in')
             }
     }

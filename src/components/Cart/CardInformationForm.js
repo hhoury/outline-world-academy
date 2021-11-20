@@ -9,10 +9,21 @@ import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../constants/appConstants'
 import { clearCartItems } from '../../actions/cartActions'
 import useInput from '../../hooks/use-input';
+import { css } from "@emotion/react";
+import { GridLoader } from 'react-spinners'
 
 const isNotEmpty = (value) => {
     return value.trim() !== ''
 }
+const override = css`
+    position: absolute;
+    z-index: 10;
+    top: 45%;
+    height: 500px;
+    width: 100%;
+    text-align: center;
+    color: #F44E0C;
+`;
 
 const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/form/version/45/merchant/OUTWORLD/session.js`;
 const MPGS_TIMEOUT = 5000;
@@ -94,7 +105,9 @@ const CardInformation = forwardRef((props, ref) => {
             notify('Security code invalid')
             return
         }
+        console.log(loader);
         setLoader(true)
+        console.log(loader);
         const { PaymentSession } = window;
 
         if (!PaymentSession) {
@@ -141,7 +154,7 @@ const CardInformation = forwardRef((props, ref) => {
 
 
     const cardInfoSubmitHandler = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
     }
 
     const res = useSelector((state) => state.order);
@@ -207,8 +220,10 @@ const CardInformation = forwardRef((props, ref) => {
                             dispatch(clearCartItems())
                             localStorage.removeItem('cartItems')
                             localStorage.removeItem('totalAmount')
+                            console.log(loader);
                             setLoader(false)
                             notifySuccess()
+                            console.log(loader);
                             history.push('/my-courses')
                         }
                     }
@@ -262,6 +277,7 @@ const CardInformation = forwardRef((props, ref) => {
                 draggable={true}
                 pauseOnHover={false}
             />
+             {loader && <GridLoader color='#F44E0C' css={override} size='30px' />}
             <form id='card' name='card' onSubmit={handleSubmit(cardInfoSubmitHandler)} className={`col-lg-7 col-md-12 col-sm-12 ${classes.CardInformationForm}`}>
                 <h1>Card Information</h1>
                 <button onClick={goBackHandler} className='goBackButton'>Back</button>

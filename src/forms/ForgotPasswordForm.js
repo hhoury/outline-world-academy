@@ -50,7 +50,7 @@ const ForgotPasswordForm = (props) => {
             {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}
             <form onSubmit={handleSubmit(formSubmitHandler)}>
-                <input required type='email' pattern="/^\S+@\S+$/i" placeholder='Email Address' {...register("Email", { required: true })} />
+                <input required type='email' placeholder='Email Address' {...register("Email", { required: true })} />
                 <Button type='submit' className={classes.btn}>{loading && <SyncLoader size='10px'
                 />}Submit</Button>
                 <div className={classes.back}><Link to='/sign-in'>Back to sign in</Link></div>

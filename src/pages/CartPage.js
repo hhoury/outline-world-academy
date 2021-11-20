@@ -60,7 +60,6 @@ const CartPage = () => {
                         <tr>
                             <th scope="col">Item</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Chapters</th>
                             <th scope="col">Subtotal</th>
                         </tr>
                     </thead>
@@ -74,7 +73,6 @@ const CartPage = () => {
                                 onRemove={removeItemHandler.bind(null, item.id)}
                                 title={item.title}
                                 price={item.price.toFixed(2)}
-                                chapters={item.chapters.length}
                                 subtotal={item.price.toFixed(2)} />)}
                     </tbody>
                 </table>

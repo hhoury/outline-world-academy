@@ -36,10 +36,14 @@ export const userLoginReducer = (state = {}, action) => {
       return { loading: true }
     case USER_LOGIN_SUCCESS:
       console.log(action.payload);
-      return { loading: false, userInfo: {id: action.payload.id,
-      email:action.payload.email,
-    job:action.payload.job,
-  name: action.payload.name} }
+      return {
+        loading: false, userInfo: {
+          id: action.payload.id,
+          email: action.payload.email,
+          job: action.payload.job,
+          name: action.payload.name
+        }
+      }
     case USER_LOGIN_FAIL:
       return { loading: false, error: action.payload }
     case USER_LOGOUT:
@@ -53,7 +57,7 @@ export const resetPasswordReducer = (state = {}, action) => {
     case PASSWORD_RESET_REQUEST:
       return { loading: true }
     case PASSWORD_RESET_SUCCESS:
-      return { loading: false, userInfo: action.payload,success: true }
+      return { loading: false, userInfo: action.payload, success: true }
     case PASSWORD_RESET_FAIL:
       return { loading: false, error: action.payload }
     default:

@@ -16,7 +16,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
 const SignupForm = (props) => {
-   
+
     const validationSchema = Yup.object().shape({
         password: Yup.string()
             .required('Password is required')
@@ -28,7 +28,7 @@ const SignupForm = (props) => {
             .matches('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
             .oneOf([Yup.ref('password')], 'Passwords must match')
             .label('Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters')
-            
+
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm(formOptions);
@@ -43,6 +43,19 @@ const SignupForm = (props) => {
             draggable: true,
             progress: undefined,
         });
+
+        const notifyPasswordDontMatch = () => {
+            toast.success("Passwords do not match",
+        {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+        });
+        }
     const passwordNotValidNotify = () => toast.error("Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
         {
             position: "top-right",
@@ -54,6 +67,8 @@ const SignupForm = (props) => {
             progress: undefined
         }
     )
+
+
     const [photo, setPhoto] = useState(null);
     const [photoName, setPhotoName] = useState('Upload Your Profile Photo');
 
@@ -84,13 +99,20 @@ const SignupForm = (props) => {
     const { loading, error, success } = userRegister
 
     const formSubmitHandler = (data) => {
-
-
         if (watch("password") !== watch("confirmPassword")) {
-            setMessage('Passwords do not match')
+            notifyPasswordDontMatch();
         }
         else {
-            dispatch(createAccount(data.name, data.email, data.password, data.confirmPassword))
+            const formData = new FormData();
+            formData.append('full_name', data.name);
+            formData.append('email', data.email);
+            formData.append('password', data.password);
+            formData.append('password1', data.confirmPassword);
+            formData.append('job', data.job);
+            formData.append('avatar', photo.pictureAsFile);
+            formData.append('phone', '+96170040294');
+            console.log('formData');
+            dispatch(createAccount(formData))
             notify();
             setValue('name', '')
             setValue('email', '')
@@ -98,6 +120,8 @@ const SignupForm = (props) => {
             setValue('confirmPassword', '')
             setValue('job', '')
             setValue('avatar', null)
+            setPhoto(null)
+            setPhotoName('')
         }
     }
     return (
@@ -122,31 +146,32 @@ const SignupForm = (props) => {
 
                 <input required type='text' placeholder='Full Name'  {...register("name", { required: true, maxLength: 80 })} />
 
-                <input type="email" placeholder='Email Address'  {...register("email", { required: true})} />
+                <input type="email" placeholder='Email Address' 
+                 {...register("email", { required: true })} />
 
                 <div style={{ position: 'relative' }}>
-                    <input 
-                    required
-                    
-                     name='passwordTextbox'
-                      type={!passwordShown ? 'password' : 'text'}
-                       placeholder='Create Password'
-                        {...register("password", {required: true, minLength: 8})}
-                        // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
-                        />
+                    <input
+                        required
+
+                        name='passwordTextbox'
+                        type={!passwordShown ? 'password' : 'text'}
+                        placeholder='Create Password'
+                        {...register("password", { required: true, minLength: 8 })}
+                    // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
+                    />
                     <button type="button" className={classes.toggle} style={!passwordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showPasswordHandler}>
                         <i className="fal fa-eye"></i>
                     </button>
                 </div>
                 <div style={{ position: 'relative' }}>
-                    <input required name='confirmPasswordTextbox' 
-                     
-                     type={!confirmPasswordShown ? 'password' : 'text'} placeholder='Confirm Password'
-                        {...register("confirmPassword", { required: true, minLength: 8})}
-                        // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                         />
-                    <button type="button" className={classes.toggle} style={!confirmPasswordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} 
-                    onClick={showConfirmPasswordHandler}>
+                    <input required name='confirmPasswordTextbox'
+
+                        type={!confirmPasswordShown ? 'password' : 'text'} placeholder='Confirm Password'
+                        {...register("confirmPassword", { required: true, minLength: 8 })}
+                    // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                    />
+                    <button type="button" className={classes.toggle} style={!confirmPasswordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }}
+                        onClick={showConfirmPasswordHandler}>
                         <i className="fal fa-eye"></i>
                     </button>
                 </div>
@@ -168,7 +193,8 @@ const SignupForm = (props) => {
                 <p>Have an account? <Link to='/sign-in'>Login</Link></p>
             </form>
 
-            <SocialMedia className={classes.social} />
+            {/* <SocialMedia className={classes.social} /> */}
+
             <div className={classes.text}>
                 <p>By creating an account you are aggreeing to the
                     <Link to='/policy'>Terms of Service</Link>

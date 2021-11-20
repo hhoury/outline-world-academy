@@ -10,6 +10,7 @@ const PaymentPage = () => {
   const formRef = useRef();
   const placeOrderHandler = (e) => {
     e.preventDefault();
+    console.log(formRef.current.loader);
     formRef.current.cardInfoSubmitHandler(e);
   }
   return (

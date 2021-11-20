@@ -38,6 +38,7 @@
     height: 100%;
     width: 100%;
     position: relative;
+    cursor: pointer;
 }
 .CourseContent .chapter h2{
     font-size: 56px;
