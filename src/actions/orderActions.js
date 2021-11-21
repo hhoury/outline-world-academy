@@ -16,13 +16,13 @@ import {
 import { API } from '../constants/appConstants'
 import {useSelector} from 'react-redux'
 import Cookies from 'js-cookie'
+
+
 export const createOrder = (orderItems) => async (dispatch) => {
     try {
         dispatch({
             type: CREATE_ORDER_REQUEST
         })
-
-        const StudentId = 4//JSON.parse(localStorage.getItem('userInfo'))?.id
 
         const token = Cookies.get('accessToken')
         const config = {
@@ -33,7 +33,7 @@ export const createOrder = (orderItems) => async (dispatch) => {
         }
 
 
-        const { data } = await axios.post(API + 'Orders/create-order/', { StudentId, orderItems },config)
+        const { data } = await axios.post(API + 'courses/create_order/', { orderItems },config)
         dispatch({
             type: CREATE_ORDER_SUCCESS,
             payload: data
@@ -52,6 +52,7 @@ export const createOrder = (orderItems) => async (dispatch) => {
 export const updateBillingAddress = (orderId, firstName, lastName, email, country, city,
     streetAddress, phoneNumber) => async (dispatch) => {
         const token = Cookies.get('accessToken')
+        const address_details = {firstName,lastName,email,country,city,streetAddress,phoneNumber}
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -62,9 +63,8 @@ export const updateBillingAddress = (orderId, firstName, lastName, email, countr
             dispatch({
                 type: UPDATE_BILLING_ADDRESS_REQUEST
             })
-            await axios.post(API + 'Orders/update-billing/', {
-                orderId, firstName, lastName, email, country, city,
-                streetAddress, phoneNumber
+            await axios.post(API + 'courses/create_order_address', {
+                orderId, address_details 
             }, config);
             dispatch({
                 type: UPDATE_BILLING_ADDRESS_SUCCESS
@@ -81,7 +81,7 @@ export const updateBillingAddress = (orderId, firstName, lastName, email, countr
     }
 
 
-export const applyCoupon = (orderId, couponCode) => async (dispatch) => {
+export const applyCoupon = (order_id, coupon_code) => async (dispatch) => {
     const token = Cookies.get('accessToken')
     const config = {
         headers: {
@@ -94,7 +94,7 @@ export const applyCoupon = (orderId, couponCode) => async (dispatch) => {
         dispatch({
             type: APPLY_COUPON_REQUEST
         })
-        const { data } = await axios.post(API + 'Orders/apply-coupon/', { orderId, couponCode },config)
+        const { data } = await axios.post(API + 'courses/apply_coupon/', { order_id, coupon_code },config)
         dispatch({
             type: APPLY_COUPON_SUCCESS,
             payload: data
@@ -123,7 +123,7 @@ export const placeOrder = (orderId, transactionId,sessionId,ApiOperation,ApiMeth
         dispatch({
             type: PLACE_ORDER_REQUEST
         })
-        const { data } = await axios.post(API + 'PaymentApi/processHostedSession', { orderId, transactionId,sessionId,ApiOperation,ApiMethod,CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode },config)
+        const { data } = await axios.post(API + 'courses/processHostedSession', { orderId, transactionId,sessionId,ApiOperation,ApiMethod,CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode },config)
         dispatch({
             type: PLACE_ORDER_SUCCESS,
             payload: data

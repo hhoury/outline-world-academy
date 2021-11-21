@@ -24,13 +24,9 @@ import ChapterDetailsPage from './pages/ChapterDetailsPage'
 import CourseChapterLessonPage from './pages/CourseChapterLessonPage'
 import OrderReviewPage from './pages/OrderReviewPage'
 import NewPasswordPage from './pages/NewPasswordPage';
-import { useSelector } from 'react-redux';
 import Cookies from 'js-cookie'
 
 const App = () => {
-
-   const userLogin = useSelector((state) => state.userLogin)
-   const { userInfo } = userLogin
    const [passwordModalIsShowing, setPasswordModalIsShowing] = useState(false)
    const showPasswordModalHandler = () => {
       setPasswordModalIsShowing(true)

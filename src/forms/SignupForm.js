@@ -43,7 +43,16 @@ const SignupForm = (props) => {
             draggable: true,
             progress: undefined,
         });
-
+        const notifyError = (msg) => toast.error({msg},
+        {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+        });
         const notifyPasswordDontMatch = () => {
             toast.success("Passwords do not match",
         {
@@ -111,17 +120,23 @@ const SignupForm = (props) => {
             formData.append('job', data.job);
             formData.append('avatar', photo.pictureAsFile);
             formData.append('phone', '+96170040294');
-            console.log('formData');
             dispatch(createAccount(formData))
-            notify();
-            setValue('name', '')
-            setValue('email', '')
-            setValue('password', '')
-            setValue('confirmPassword', '')
-            setValue('job', '')
-            setValue('avatar', null)
-            setPhoto(null)
-            setPhotoName('')
+            if(success)
+            {
+                notify();
+                setValue('name', '')
+                setValue('email', '')
+                setValue('password', '')
+                setValue('confirmPassword', '')
+                setValue('job', '')
+                setValue('avatar', null)
+                setPhoto(null)
+                setPhotoName('')
+            }
+            else{
+                notifyError(error?.message);
+            }
+            
         }
     }
     return (

@@ -15,8 +15,9 @@ import { API } from '../constants/appConstants'
 
 export const  listCourses = () => async (dispatch) => {
     try {
+        
         dispatch({ type: COURSE_LIST_REQUEST })
-        const { data } = await axios.get(API + 'courses')
+        const { data } = await axios.get(API + 'courses/courses')
         dispatch({
             type: COURSE_LIST_SUCCESS,
             payload: data
@@ -33,7 +34,7 @@ export const  listCourses = () => async (dispatch) => {
 export const listFeaturedCourses = () => async (dispatch) => {
     try {
         dispatch({ type: FEATURED_COURSE_LIST_REQUEST })
-        const { data } = await axios.get(API + 'courses/featured')
+        const { data } = await axios.get(API + 'courses/featured_courses')
         dispatch({
             type: FEATURED_COURSE_LIST_SUCCESS,
             payload: data
@@ -47,10 +48,16 @@ export const listFeaturedCourses = () => async (dispatch) => {
         })
     }
 }
-export const listCourseDetails = (id) => async (dispatch) => {
+export const listCourseDetails = (course_id) => async (dispatch) => {
     try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
         dispatch({ type: COURSE_DETAILS_REQUEST })
-        const { data } = await axios.get(API + `courses/${id}`)
+        const { data } = await axios.post(API + 'courses/course_details', {course_id},{config})
+
         dispatch({
             type: COURSE_DETAILS_SUCCESS,
             payload: data

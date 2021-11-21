@@ -24,7 +24,7 @@ export const registeredListCourses = (token) => async (dispatch) => {
                 Authorization: `Bearer ${token}`
             }
         }
-        const { data } = await axios.post(API + 'Enrollments/get-courses',null,config)
+        const { data } = await axios.post(API + 'courses/my_courses/',null,config)
         dispatch({
             type: REGISTERED_COURSE_LIST_SUCCESS,
             payload: data

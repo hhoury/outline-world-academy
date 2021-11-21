@@ -11,6 +11,7 @@ const ProfileEditForm = (props) => {
     const { register, handleSubmit, setValue , watch, formState: { errors } } = useForm();
 
     const user = props.userInfo
+    console.log(user);
     const [formIsValid, setFormIsValid] = useState(false)
     const [isEditMode, setIsEditMode] = useState(false)
     const [photo, setPhoto] = useState(null);
@@ -20,7 +21,6 @@ const ProfileEditForm = (props) => {
     }
 
     const inputFile = useRef(null) 
-
 
     const editProfileHandler = (event) => {
         event.preventDefault();
@@ -48,8 +48,7 @@ const ProfileEditForm = (props) => {
         formData.append('password1', data.confirmPassword);
         formData.append('job', data.job);
         formData.append('avatar', photo.pictureAsFile);
-        formData.append('phone', '+96170040294');
-        
+        formData.append('phone', '+96170040294'); 
     }
     useEffect(() => {
         if(user){
@@ -58,6 +57,7 @@ const ProfileEditForm = (props) => {
             setValue('job',user.job);
         }
     }, [])
+
     return (
         <div className={`${classes.ProfileEdit}`}>
             <input type='file' id='file' ref={inputFile} onChange={(e) => uploadPhoto(e)}
@@ -70,7 +70,8 @@ const ProfileEditForm = (props) => {
                 <figure>
                     <LazyLoadImage src={user?.avatar} alt='profile' />
                     {isEditMode &&
-                        <div className={isEditMode? classes.editProfilePhoto : ''} onClick={editPhotoHandler} >
+                        <div className={isEditMode? classes.editProfilePhoto : ''} 
+                        onClick={editPhotoHandler} >
                             <button className={classes.editProfile}><i className="far fa-edit"></i></button>
                             <p>Edit Profile Photo</p>
                         </div>

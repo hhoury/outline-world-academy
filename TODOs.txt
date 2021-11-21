@@ -1,5 +1,52 @@
 https://api.outlineworldacademy.com/api/auth/user/ user (GET, PUT, PATCH)
+1- https://api.outlineworldacademy.com/api/courses/courses/  GET
+2- https://api.outlineworldacademy.com/api/courses/my_courses/ POST (no parameters)
+3- https://api.outlineworldacademy.com/api/courses/featured_courses/ GET 
+4- https://api.outlineworldacademy.com/api/courses/processHostedSession/ POST params: 
+{
+"sessionId":"",
+"orderId":
+}
+5-localhost:9001/api/courses/create_order/ POST params: 
+{ "order_items": [
+        {
+            "course_id": 1
+        }
+    ]
+}
+6-https://api.outlineworldacademy.com/api/courses/create_order_address/ POST params:
+{
+"order_id":""
+"address_details" : {
+"firstName":"",
+"lastName":"",
+"email":"",
+"country":"",
+"city":"",
+"street":"",
+"phone":""
+}
+}
+7-https://api.outlineworldacademy.com/api/courses/apply_coupon/ POST params:
+{
+"coupon_code":"",
+"order_id":""
+}
+8-https://api.outlineworldacademy.com/api/courses/course_details/ POST params:
+{
+"course_id":""
+}
+9-https://api.outlineworldacademy.com/api/courses/watched_lesson/ POST params: 
+{
+"lesson_id":""
+"chapter_id":""
+}
+10-https://api.outlineworldacademy.com/api/courses/chapter_lessons/ POSt params:
+{
+"chapter_id":""
+}
 
+11- https://api.outlineworldacademy.com/api/user-details/ POST  No params just bearer token
 https://api.outlineworldacademy.com/api/auth/token/verify/ to check and verify if token is valid i.e ( access token, referesh token ) it will return nothing if token is valid and it will return this response when not valid
  {
     "detail": "Token is invalid or expired",

@@ -45,7 +45,8 @@ const CoursesPage = (props) => {
         }
     }, [dispatch, search])
     
-    let { loading, error, courses } = courseList
+    let { loading, error } = courseList
+    let courses = courseList.courses.courses
     if (search) {
         courses = courses.filter(item => item.title.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase()))
     }
@@ -59,7 +60,7 @@ const CoursesPage = (props) => {
                 {loading ? <GridLoader color='#F44E0C' css={override} size='30px' /> : error ? <Message message={error} /> :
                     <ul className='row'>
                         {
-                            courses.length > 0 ?
+                            courses?.length > 0 ?
                                 (
                                     courses.map((course) =>
 

@@ -14,6 +14,7 @@ const CoursesCarousel = (props) => {
     const dispatch = useDispatch()
     const featuredCourseList = useSelector((state) => state.featuredCourseList)
     const { courses } = featuredCourseList
+    const featured_courses = courses?.courses
     const mockCourses = [{
         certificates: [],
         chapters: [],

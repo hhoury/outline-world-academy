@@ -25,7 +25,7 @@ const override = css`
     color: #F44E0C;
 `;
 
-const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/form/version/45/merchant/OUTWORLD/session.js`;
+const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/form/version/61/merchant/OUTWORLD/session.js`;
 const MPGS_TIMEOUT = 5000;
 
 const CardInformation = forwardRef((props, ref) => {
@@ -100,14 +100,14 @@ const CardInformation = forwardRef((props, ref) => {
     };
 
     const pay = () => {
-        if(cvcValue.trim() === '')
-        {
-            notify('Security code invalid')
-            return
-        }
-        console.log(loader);
-        setLoader(true)
-        console.log(loader);
+        // if(cvcValue.trim() === '')
+        // {
+        //     notify('Security code invalid')
+        //     return
+        // }
+        // console.log(loader);
+        // setLoader(true)
+        // console.log(loader);
         const { PaymentSession } = window;
 
         if (!PaymentSession) {
@@ -173,7 +173,7 @@ const CardInformation = forwardRef((props, ref) => {
             return "PAY";
         },
         endpoint: function () {
-            return `${API}PaymentApi/processHostedSession`;
+            return `${API}courses/processHostedSession`;
         },
         secureIdResponseUrl: function () {
             return null;
@@ -190,6 +190,7 @@ const CardInformation = forwardRef((props, ref) => {
                 //check if the security code was provided by the user
                 if (response.sourceOfFunds.provided.card.securityCode) {
                     console.log("Security code was provided.");
+                    notify('Security code invalid')
                 }
 
                 //check if the user entered a Mastercard credit card
@@ -220,8 +221,8 @@ const CardInformation = forwardRef((props, ref) => {
                             dispatch(clearCartItems())
                             localStorage.removeItem('cartItems')
                             localStorage.removeItem('totalAmount')
-                            console.log(loader);
-                            setLoader(false)
+                            // console.log(loader);
+                            // setLoader(false)
                             notifySuccess()
                             console.log(loader);
                             history.push('/my-courses')
@@ -323,6 +324,7 @@ const CardInformation = forwardRef((props, ref) => {
                             type="text"
                             pattern="\d*"
                             required
+                            readOnly
                             value={cvcValue}
                             onChange={cvcChangeHandler}
                         />

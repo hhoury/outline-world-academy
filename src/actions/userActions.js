@@ -31,7 +31,7 @@ export const createAccount = (formData) => async (dispatch) => {
         dispatch({
             type: USER_REGISTER_REQUEST
         })
-
+        console.log(formData);
         const { data } = await axios.post(API + 'auth/registration/', formData)
         console.log(data);
         dispatch({
@@ -139,7 +139,7 @@ export const changePassword = (uid,token,password, confirmPassword) => async (di
     }
 }
 
-export const getUserDetails = (id) => async (dispatch, getState) => {
+export const getUserDetails = () => async (dispatch, getState) => {
 
     try {
         dispatch({
@@ -154,7 +154,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
                 Authorization: `Bearer ${token}`
             }
         }
-        const { data } = await axios.post(API + `Accounts/${token}`, config)
+        const { data } = await axios.post(API + 'user-details', config)
         dispatch({
             type: USER_DETAILS_SUCCESS,
             payload: data
