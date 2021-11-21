@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, useRef } from 'react'
 import classes from './ProfileEditForm.module.css'
 import RightMenu from '../Layout/RightMenu'
 import Button from '../components/UI/Button'
@@ -9,12 +9,18 @@ import { useForm } from "react-hook-form";
 
 const ProfileEditForm = (props) => {
     const { register, handleSubmit, setValue , watch, formState: { errors } } = useForm();
+
     const user = props.userInfo
     const [formIsValid, setFormIsValid] = useState(false)
     const [isEditMode, setIsEditMode] = useState(false)
+    const [photo, setPhoto] = useState(null);
+
     const deleteAccountHandler = () => {
 
     }
+
+    const inputFile = useRef(null) 
+
 
     const editProfileHandler = (event) => {
         event.preventDefault();
@@ -25,11 +31,24 @@ const ProfileEditForm = (props) => {
 
     const editPhotoHandler =(event) => {
         event.preventDefault();
-        
+        inputFile.current.click();
     }
+    const uploadPhoto = (e) => {
+        if (e.target.files == null) return;
+        setPhoto({
+            pictureAsFile: e.target?.files[0],
+        });
+    };
 
     const formSubmitHandler = (data) => {
-       
+        const formData = new FormData();
+        formData.append('full_name', data.name);
+        formData.append('email', data.email);
+        formData.append('password', data.password);
+        formData.append('password1', data.confirmPassword);
+        formData.append('job', data.job);
+        formData.append('avatar', photo.pictureAsFile);
+        formData.append('phone', '+96170040294');
         
     }
     useEffect(() => {
@@ -41,6 +60,8 @@ const ProfileEditForm = (props) => {
     }, [])
     return (
         <div className={`${classes.ProfileEdit}`}>
+            <input type='file' id='file' ref={inputFile} onChange={(e) => uploadPhoto(e)}
+             style={{display: 'none'}} accept="image/*" />
             <div className={classes.top}>
                 <p> Hello, {user.name}</p>
                 <RightMenu />
@@ -49,8 +70,8 @@ const ProfileEditForm = (props) => {
                 <figure>
                     <LazyLoadImage src={user?.avatar} alt='profile' />
                     {isEditMode &&
-                        <div>
-                            <button onClick={editPhotoHandler} className={classes.editProfile}><i className="far fa-edit"></i></button>
+                        <div className={isEditMode? classes.editProfilePhoto : ''} onClick={editPhotoHandler} >
+                            <button className={classes.editProfile}><i className="far fa-edit"></i></button>
                             <p>Edit Profile Photo</p>
                         </div>
                     }

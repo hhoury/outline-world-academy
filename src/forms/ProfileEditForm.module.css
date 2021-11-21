@@ -73,6 +73,9 @@
     z-index: 2;
     top: 0;
 }
+.editProfilePhoto{
+    cursor: pointer;
+}
 .ProfileEdit figure div .editProfile {
     position: absolute;
     top: 70px;
