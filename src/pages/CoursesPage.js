@@ -35,7 +35,7 @@ const CoursesPage = (props) => {
     const registeredCourses = data?.courses
     let registeredCoursesItemsIds = []
     registeredCourses?.forEach(element => {
-        registeredCoursesItemsIds.push(element.item1.id)
+        registeredCoursesItemsIds.push(element.id)
     });
     useEffect(() => {
         dispatch(listCourses())
@@ -46,9 +46,9 @@ const CoursesPage = (props) => {
     }, [dispatch, search])
     
     let { loading, error } = courseList
-    let courses = courseList.courses.courses
+    let courses = courseList.courses?.courses
     if (search) {
-        courses = courses.filter(item => item.title.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase()))
+        courses = courses?.filter(item => item.title.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase()))
     }
     return (
         <div className='courses-page'>

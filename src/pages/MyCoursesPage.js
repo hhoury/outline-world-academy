@@ -26,7 +26,6 @@ const history = useHistory();
      history.push('/courses')
  }
  const token = Cookies.get('accessToken')
-    // const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
     const dispatch = useDispatch()
     useEffect(() => {
         if(token)
@@ -46,7 +45,7 @@ const history = useHistory();
                         courses?.length > 0 ? (
                         loading ? <GridLoader color='#F44E0C' css={override} size='30px' /> : error ? <Message message={error} /> :
                             courses?.map((course) =>
-                                <MyCoursesItem key={course.item1.id} id={course.item1.id} title={course.item1.title} chapters={course.item1.chapters.length} lessons={course.item2} progress={course.progress} thumbnail={course.item1.thumbnail} />))
+                                <MyCoursesItem key={course.course_id} id={course.course_id} title={course.title} chapters={course.chapters.length} progress={course.progress} thumbnail={course.thumbnail} />))
                                 :
                                 ( <div className='empty-cart'>
                                 <h3>You are not Enrolled in any course</h3>

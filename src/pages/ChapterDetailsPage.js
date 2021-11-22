@@ -1,13 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import CourseChapterDetails from '../components/Courses/CourseChapterDetails'
 import { ProgressBar } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
+import {listCourseChapterDetails} from '../actions/lessonsActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router'
 
-
-const ChapterDetailsPage = () => {
-
+const ChapterDetailsPage = (props) => {
     const course = { id: 1, title: 'corona renderer' }
     const chapter = {
         id: 1, title: 'Lorem Ipsum Dolor', progress: 60, number: '01.',
@@ -17,12 +18,18 @@ const ChapterDetailsPage = () => {
             { id: 3, number: '1.3', title: 'lorem ipsum dolor lesson', progress: 20 }
         ]
     }
+    
+    
+    const dispatch = useDispatch()
+    const {chid} = useParams();
 
     const history = useHistory();
     const goBackToChaptersHandler = () => {
         history.goBack();
     }
-
+    useEffect(() => {
+        dispatch(listCourseChapterDetails(chid))
+    }, [])
     return (
         <div className='enrolled-course-details' >
             <Header fullMenu={false} withName={true}    />

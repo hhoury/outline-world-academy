@@ -31,9 +31,9 @@ export const createAccount = (formData) => async (dispatch) => {
         dispatch({
             type: USER_REGISTER_REQUEST
         })
-        console.log(formData);
+        
         const { data } = await axios.post(API + 'auth/registration/', formData)
-        console.log(data);
+        
         dispatch({
             type: USER_REGISTER_SUCCESS,
             payload: data

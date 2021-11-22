@@ -65,7 +65,7 @@ export const registeredCourseDetails = () => async (dispatch) => {
 
 }
 
-export const isRegisteredCourse = (studentId,courseId) => async (dispatch) => {
+export const isRegisteredCourse = (course_id) => async (dispatch) => {
     const token = Cookies.get('accessToken')
     const config = {
         headers: {
@@ -75,7 +75,9 @@ export const isRegisteredCourse = (studentId,courseId) => async (dispatch) => {
     }
     try {
         dispatch({ type: IS_REGISTERED_COURSE_REQUEST })
-        const { data } = await axios.post(API + 'Enrollments/is-enrolled', { courseId}, config)
+        const { data } = await axios.post(API + 'courses/course_details/', {course_id}, config)
+        console.log('course_details');
+        console.log(data);
         dispatch({
             type: IS_REGISTERED_COURSE_SUCCESS,
             payload: data

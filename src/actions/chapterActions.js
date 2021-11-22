@@ -10,7 +10,7 @@ import {
 import { API } from '../constants/appConstants'
 import Cookies from 'js-cookie'
 
-export const listCourseChapterDetails = ( chapterId) => async (dispatch) => {
+export const listCourseChapterDetails = (chapter_id) => async (dispatch) => {
     try {
         dispatch({ type: CHAPTER_DETAILS_REQUEST })
         const token = Cookies.get('accessToken')
@@ -21,7 +21,7 @@ export const listCourseChapterDetails = ( chapterId) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post(`${API}courses/chapter_lessons`,{chapterId},config)
+        const { data } = await axios.post(`${API}courses/chapter_lessons`,{chapter_id},config)
         dispatch({
             type: CHAPTER_DETAILS_SUCCESS,
             payload: data
@@ -36,7 +36,7 @@ export const listCourseChapterDetails = ( chapterId) => async (dispatch) => {
     }
 }
 
-export const listCourseChapters = (courseId) => async (dispatch) => {
+export const listCourseChapters = (course_id) => async (dispatch) => {
     try {
         const token = Cookies.get('accessToken')
         const config = {
@@ -46,7 +46,7 @@ export const listCourseChapters = (courseId) => async (dispatch) => {
             }
         }
         dispatch({ type: CHAPTER_LIST_REQUEST })
-        const { data } = await axios.post(`${API}courses/course_details`,{courseId},{config})
+        const { data } = await axios.post(`${API}courses/course_details/`,{course_id},{config})
         dispatch({
             type: CHAPTER_LIST_SUCCESS,
             payload: data

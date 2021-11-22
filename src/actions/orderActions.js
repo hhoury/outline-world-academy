@@ -29,7 +29,6 @@ export const createOrder = (order_items) => async (dispatch) => {
         });
         order_items = items;
         const token = Cookies.get('accessToken')
-        console.log(token);
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +36,6 @@ export const createOrder = (order_items) => async (dispatch) => {
             }
         }
         const { data } = await axios.post(API + 'courses/create_order/', {order_items} ,config)
-        console.log(data);
         dispatch({
             type: CREATE_ORDER_SUCCESS,
             payload: data
@@ -74,7 +72,6 @@ export const updateBillingAddress = (order_id, firstName, lastName, email, count
             dispatch({
                 type: UPDATE_BILLING_ADDRESS_SUCCESS
             })
-            console.log(data);
         }
         catch (error) {
             dispatch({
@@ -100,9 +97,9 @@ export const applyCoupon = (order_id, coupon_code) => async (dispatch) => {
         dispatch({
             type: APPLY_COUPON_REQUEST
         })
-        console.log(order_id,coupon_code);
+        
         const { data } = await axios.post(API + 'courses/apply_coupon/', { order_id, coupon_code },config)
-        console.log(data);
+        
         dispatch({
             type: APPLY_COUPON_SUCCESS,
             payload: data.order
@@ -132,7 +129,7 @@ export const placeOrder = (orderId, transactionId,sessionId,ApiOperation,ApiMeth
             type: PLACE_ORDER_REQUEST
         })
         const { data } = await axios.post(API + 'courses/processHostedSession', { orderId, transactionId,sessionId,ApiOperation,ApiMethod,CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode },config)
-        console.log(data);
+        
         dispatch({
             type: PLACE_ORDER_SUCCESS,
             payload: data

@@ -36,7 +36,6 @@ import {
 
   }
   export const clearCartItems = () => (dispatch) => {
-    console.log('clearCartItems');
     dispatch({
       type: CART_CLEAR_ITEMS
     })
