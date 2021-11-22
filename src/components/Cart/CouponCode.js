@@ -29,6 +29,7 @@ const CouponCode = () => {
             draggable: true,
             progress: false,
         });
+
     const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm();
     const res = useSelector((state) => state.order);
     const { order } = res;
@@ -43,14 +44,18 @@ const CouponCode = () => {
     const { coupon } = couponData
 
     useEffect(() => {
-        if (coupon.discount) {
-            setValue('Coupon', coupon.code)
-            notifySuccess()
-            setCouponApplied(true)
+        if(coupon)
+        {
+            if (coupon.order) {
+                setValue('Coupon', coupon.code)
+                notifySuccess()
+                setCouponApplied(true)
+            }
+            if (coupon.error) {
+                notifyFailed()
+            }
         }
-        if (coupon.error) {
-            notifyFailed()
-        }
+     
     }, [coupon])
     return (
         <>

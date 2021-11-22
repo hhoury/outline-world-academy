@@ -8,6 +8,7 @@ import Button from '../../components/UI/Button'
 import CheckBox from '../../components/UI/CheckBox'
 import classes from './CartLoginForm.module.css'
 import { Link, useHistory } from 'react-router-dom'
+
 const isNotEmpty = (value) => {
   return value.trim() !== ''
 }
@@ -40,8 +41,8 @@ const CartLoginForm = (props) => {
     reset: resetPasswordInput
   } = useInput(isNotEmpty);
 
-  const emailClasses = emailInputHasError && 'invalid';
-  const passwordClasses = passwordInputHasError && 'invalid';
+  const emailClasses = emailInputHasError?  'invalid': '';
+  const passwordClasses = passwordInputHasError ? 'invalid' : '';
 
   let formIsValid = false;
   if (enteredEmailIsValid && enteredPasswordIsValid) {
@@ -75,7 +76,7 @@ const CartLoginForm = (props) => {
 
   useEffect(() => {
     if (userInfo) {
-      history.push('/billing-details')
+      history.push('/order-details')
     }
   }, [history, userInfo])
 
@@ -97,7 +98,8 @@ const CartLoginForm = (props) => {
             onChange={passwordChangedHandler}
             onBlur={passwordBlurHandler} />
 
-          <button type="button" className={classes.toggle} style={!passwordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showPasswordHandler}>
+          <button type="button" className={classes.toggle} 
+          style={!passwordShown ? { color: '#fff', transition: 'all 0.3s ease-out' } : { color: '#F44E0C', transition: 'all 0.3s ease-out' }} onClick={showPasswordHandler}>
             <i className="fal fa-eye"></i>
           </button>
         </div>

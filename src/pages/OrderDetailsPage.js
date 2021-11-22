@@ -9,15 +9,27 @@ import Button from '../components/UI/Button'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-
+import Cookies from 'js-cookie'
+import CartLoginForm from '../components/Cart/CartLoginForm'
 
 const OrderDetailsPage = () => {
     const history = useHistory();
+   
+    const token = Cookies.get('accessToken')
     const proceedHandler = () => {
-        
+       
         history.push('/billing-details')
-
     }
+    const loggedInUser = (
+         <div className='row content'>
+                    <OrderList />
+                    <div className='col-lg-4 col-md-12 col-sm-12 order-summary'>
+                        <Summary />
+                        <CouponCode />
+                        <Button className='order-details__btn' onClick={proceedHandler}>Proceed</Button>
+                    </div>
+                </div>
+    )
     const couponData =  useSelector((state) => state.coupon)
     const {coupon}  = couponData
     useEffect(() => {
@@ -28,14 +40,7 @@ const OrderDetailsPage = () => {
 
             <div className='order-details'>
                 <CheckoutSteps step1 />
-                <div className='row content'>
-                    <OrderList />
-                    <div className='col-lg-4 col-md-12 col-sm-12 order-summary'>
-                        <Summary />
-                        <CouponCode />
-                        <Button className='order-details__btn' onClick={proceedHandler}>Proceed</Button>
-                    </div>
-                </div>
+                {token? loggedInUser : <CartLoginForm/> }
             </div>
             <Footer />
         </>

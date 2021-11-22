@@ -36,6 +36,7 @@ const App = () => {
    }
 
    const isLoggedIn = Cookies.get('accessToken')
+   console.log(isLoggedIn);
    if (!isLoggedIn) {
       localStorage.removeItem('cartItems')
       localStorage.removeItem('totalAmount')
@@ -50,7 +51,12 @@ const App = () => {
                <Route path='/cart'><CartPage /></Route>
                <Route path='/order-details'><OrderDetailsPage /></Route>
                <Route path='/billing-details'>
-                     <PersonalDetailsPage />
+                  {
+                     isLoggedIn ?
+                        <PersonalDetailsPage />
+                        :
+                        <Redirect to={{ pathname: '/sign-in' }} />
+                  }
                </Route>
                <Route path='/order-review'>
                   {isLoggedIn ?
@@ -74,12 +80,12 @@ const App = () => {
                   }
                </Route>
                <Route path='/courses/:id/chapter/:id'>
-               {isLoggedIn ?
-                      <ChapterDetailsPage />
+                  {isLoggedIn ?
+                     <ChapterDetailsPage />
                      :
                      <Redirect to={{ pathname: '/sign-in' }} />
                   }
-                
+
                </Route>
                <Route path='/my-courses/:id'>
                   {isLoggedIn ?

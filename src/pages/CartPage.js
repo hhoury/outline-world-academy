@@ -33,7 +33,7 @@ const CartPage = () => {
     }
     const checkoutHandler = () => {
         dispatch(createOrder(cartItems))
-        history.push('./order-details')
+    history.push('./order-details')
     }
     const keepShoppingButtonHandler = () => {
         history.push('./courses')

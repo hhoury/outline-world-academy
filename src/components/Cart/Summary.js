@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 const Summary = (props) => {
     const cart = useSelector((state) => state.cart)
     const { coupon } = useSelector((state) => state.coupon)
+
     const {  discount } = coupon
     const totalAmount = +cart.totalAmount
     const tax = +(totalAmount * 0.15)
@@ -19,7 +20,7 @@ const Summary = (props) => {
             <ul>
                 <li><span>Subtotal</span><span>${totalAmount}</span></li>
                 <li><span>Tax</span><span>${tax.toFixed(2)}</span></li>
-                {discount && <li><span>Discount</span><span>${discount.toFixed(2)}</span></li>}
+                {discount && <li><span>Discount</span><span>${discount}</span></li>}
                 <hr />
                 <li><span>Total</span><span>${total.toFixed(2)}</span></li>
             </ul>

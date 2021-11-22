@@ -19,7 +19,7 @@ const CourseContent = (props) => {
                         <div className={classes.chapter}>
                             <div>
                                 <h2>{props.chapters[index].title}</h2>
-                                <img src={chap} alt="1" />
+                                <img src={props.chapters[index].thumbnail} alt="1" />
                                 <p>
                                     {props.chapters[index].description}
                                 </p>

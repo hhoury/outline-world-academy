@@ -77,3 +77,11 @@
     margin: 10px;
     font-size: 14px;
 }
+
+.CourseContent div div:nth-child(2) {
+    max-width: 500px;
+}
+.CourseContent div div:nth-child(2) div div img {
+    max-width: 100%;
+    max-height: 100%;
+}

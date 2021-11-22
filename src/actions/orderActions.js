@@ -18,27 +18,32 @@ import {useSelector} from 'react-redux'
 import Cookies from 'js-cookie'
 
 
-export const createOrder = (orderItems) => async (dispatch) => {
+export const createOrder = (order_items) => async (dispatch) => {
+    const items = []
     try {
         dispatch({
             type: CREATE_ORDER_REQUEST
         })
-
+        order_items.forEach(element => {
+            items.push({'course_id': element.id})
+        });
+        order_items = items;
         const token = Cookies.get('accessToken')
+        console.log(token);
         const config = {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`
             }
         }
-
-
-        const { data } = await axios.post(API + 'courses/create_order/', { orderItems },config)
+        const { data } = await axios.post(API + 'courses/create_order/', {order_items} ,config)
+        console.log(data);
         dispatch({
             type: CREATE_ORDER_SUCCESS,
             payload: data
         })
-        localStorage.setItem('orderId', data.id);
+        
+        localStorage.setItem('orderId', data.order.id);
     } catch (error) {
         dispatch({
             type: CREATE_ORDER_FAIL,
@@ -49,10 +54,10 @@ export const createOrder = (orderItems) => async (dispatch) => {
     }
 }
 
-export const updateBillingAddress = (orderId, firstName, lastName, email, country, city,
-    streetAddress, phoneNumber) => async (dispatch) => {
+export const updateBillingAddress = (order_id, firstName, lastName, email, country, city,
+    street, phone) => async (dispatch) => {
         const token = Cookies.get('accessToken')
-        const address_details = {firstName,lastName,email,country,city,streetAddress,phoneNumber}
+        const address_details = {firstName,lastName,email,country,city,street,phone}
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -63,12 +68,13 @@ export const updateBillingAddress = (orderId, firstName, lastName, email, countr
             dispatch({
                 type: UPDATE_BILLING_ADDRESS_REQUEST
             })
-            await axios.post(API + 'courses/create_order_address', {
-                orderId, address_details 
+           const {data} =  await axios.post(API + 'courses/create_order_address/', {
+                order_id, address_details 
             }, config);
             dispatch({
                 type: UPDATE_BILLING_ADDRESS_SUCCESS
             })
+            console.log(data);
         }
         catch (error) {
             dispatch({
@@ -94,10 +100,12 @@ export const applyCoupon = (order_id, coupon_code) => async (dispatch) => {
         dispatch({
             type: APPLY_COUPON_REQUEST
         })
+        console.log(order_id,coupon_code);
         const { data } = await axios.post(API + 'courses/apply_coupon/', { order_id, coupon_code },config)
+        console.log(data);
         dispatch({
             type: APPLY_COUPON_SUCCESS,
-            payload: data
+            payload: data.order
         })
     }
     catch (error) {
@@ -124,6 +132,7 @@ export const placeOrder = (orderId, transactionId,sessionId,ApiOperation,ApiMeth
             type: PLACE_ORDER_REQUEST
         })
         const { data } = await axios.post(API + 'courses/processHostedSession', { orderId, transactionId,sessionId,ApiOperation,ApiMethod,CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode },config)
+        console.log(data);
         dispatch({
             type: PLACE_ORDER_SUCCESS,
             payload: data

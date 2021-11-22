@@ -1,3 +1,7 @@
+admin:
+houri
+hassan@123
+Coupon20
 https://api.outlineworldacademy.com/api/auth/user/ user (GET, PUT, PATCH)
 1- https://api.outlineworldacademy.com/api/courses/courses/  GET
 2- https://api.outlineworldacademy.com/api/courses/my_courses/ POST (no parameters)

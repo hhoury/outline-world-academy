@@ -11,7 +11,6 @@ import Cookies from 'js-cookie'
 const RightMenu = (props) => {
     const dispatch = useDispatch()
     const isLoggedIn = Cookies.get('accessToken')
-    
     const cart = useSelector((state) => state.cart)
     const {cartItems} = cart
 

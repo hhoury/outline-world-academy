@@ -11,6 +11,7 @@ import { clearCartItems } from '../../actions/cartActions'
 import useInput from '../../hooks/use-input';
 import { css } from "@emotion/react";
 import { GridLoader } from 'react-spinners'
+import Cookies from 'js-cookie';
 
 const isNotEmpty = (value) => {
     return value.trim() !== ''
@@ -29,6 +30,8 @@ const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/f
 const MPGS_TIMEOUT = 5000;
 
 const CardInformation = forwardRef((props, ref) => {
+
+    const token = Cookies.get('accessToken')
     const [loader, setLoader] = useState(false)
 
 
@@ -56,7 +59,7 @@ const CardInformation = forwardRef((props, ref) => {
                 progress: false,
             });
     }
-    
+
     const [cvcValue, setCvcValue] = useState('')
 
     const cvcChangeHandler = (e) => {
@@ -173,7 +176,7 @@ const CardInformation = forwardRef((props, ref) => {
             return "PAY";
         },
         endpoint: function () {
-            return `${API}courses/processHostedSession`;
+            return `${API}courses/processHostedSession/`;
         },
         secureIdResponseUrl: function () {
             return null;
@@ -190,7 +193,7 @@ const CardInformation = forwardRef((props, ref) => {
                 //check if the security code was provided by the user
                 if (response.sourceOfFunds.provided.card.securityCode) {
                     console.log("Security code was provided.");
-                    notify('Security code invalid')
+                    // notify('Security code invalid')
                 }
 
                 //check if the user entered a Mastercard credit card
@@ -201,23 +204,23 @@ const CardInformation = forwardRef((props, ref) => {
                     apiOperation: DotNetSample.operation(),
                     sessionId: response.session.id,
                     secureIdResponseUrl: DotNetSample.secureIdResponseUrl(),
-                    orderId: orderId ? localStorage.getItem('orderId') : orderId,
-                    // studentId: JSON.parse(localStorage.getItem('userInfo'))?.id
-                    studentId: 4
+                    orderId: orderId ? localStorage.getItem('orderId') : orderId
                 };
 
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', DotNetSample.endpoint(), true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.setRequestHeader('Authorization', `Bearer ${token}`);
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
                 xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://109.235.69.20');
+                xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://api.outlineworldacademy.com/');
                 xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         var res = JSON.parse(this.response)
                         if (res.paid) {
-                            
+
                             dispatch(clearCartItems())
                             localStorage.removeItem('cartItems')
                             localStorage.removeItem('totalAmount')
@@ -246,7 +249,8 @@ const CardInformation = forwardRef((props, ref) => {
 
                 }
                 if (response.errors.securityCode) {
-                    notify('Security code invalid');
+                    console.log(response.errors.securityCode);
+                    // notify('Security code invalid');
                 }
 
             } else if ("request_timeout" === response.status) {
@@ -278,7 +282,7 @@ const CardInformation = forwardRef((props, ref) => {
                 draggable={true}
                 pauseOnHover={false}
             />
-             {loader && <GridLoader color='#F44E0C' css={override} size='30px' />}
+            {loader && <GridLoader color='#F44E0C' css={override} size='30px' />}
             <form id='card' name='card' onSubmit={handleSubmit(cardInfoSubmitHandler)} className={`col-lg-7 col-md-12 col-sm-12 ${classes.CardInformationForm}`}>
                 <h1>Card Information</h1>
                 <button onClick={goBackHandler} className='goBackButton'>Back</button>
@@ -287,13 +291,14 @@ const CardInformation = forwardRef((props, ref) => {
                     name='cardholder-name'
                     {...register("cardholder-name", { required: true, maxLength: 80 })}
                     type='text'
-                    required
-
+                    required 
                 />
                 <label>Card Number</label>
-                <input id='card-number' required type="number"
+                <input id='card-number'
+                    required
+                    type="number"
                     placeholder="0000 0000 0000 0000"
-                    readOnly
+                    readOnly 
                     pattern="/^\d+$/"
                 //  {...register("card-number", {required: true, maxLength: 16, minLength: 16})} 
                 />
@@ -303,7 +308,7 @@ const CardInformation = forwardRef((props, ref) => {
                         <input id='expiry-month'
                             name='expiry-month'
                             type="text" pattern="\d*" maxLength={2}
-                            required
+                            required readOnly
                             placeholder='mm'
                             {...register("expiry-month", { required: true })}
                         />
@@ -312,8 +317,10 @@ const CardInformation = forwardRef((props, ref) => {
                         <label>Expiry year</label>
                         <input id='expiry-year'
                             name='expiry-year'
-                            type="text" pattern="\d*" maxLength={2}
-                            required
+                            type="text" 
+                            pattern="\d*"
+                             maxLength={2}
+                            required readOnly
                             placeholder='yy'
                             {...register("expiry-year", { required: true })}
                         />
@@ -321,8 +328,8 @@ const CardInformation = forwardRef((props, ref) => {
                     <span>
                         <label>Card Code (CVC)</label>
                         <input id='security-code'
-                            type="text"
-                            pattern="\d*"
+                            type="number"
+                            pattern="/^\d+$/"
                             required
                             readOnly
                             value={cvcValue}
