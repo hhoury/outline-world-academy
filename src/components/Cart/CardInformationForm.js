@@ -26,7 +26,7 @@ const override = css`
     color: #F44E0C;
 `;
 
-const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/form/version/61/merchant/OUTWORLD/session.js`;
+const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/form/version/45/merchant/OUTWORLD/session.js`;
 const MPGS_TIMEOUT = 5000;
 
 const CardInformation = forwardRef((props, ref) => {
@@ -308,7 +308,7 @@ const CardInformation = forwardRef((props, ref) => {
                         <input id='expiry-month'
                             name='expiry-month'
                             type="text" pattern="\d*" maxLength={2}
-                            required readOnly
+                            required 
                             placeholder='mm'
                             {...register("expiry-month", { required: true })}
                         />
@@ -320,7 +320,7 @@ const CardInformation = forwardRef((props, ref) => {
                             type="text" 
                             pattern="\d*"
                              maxLength={2}
-                            required readOnly
+                            required 
                             placeholder='yy'
                             {...register("expiry-year", { required: true })}
                         />
