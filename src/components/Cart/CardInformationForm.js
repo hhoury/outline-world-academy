@@ -159,7 +159,7 @@ const CardInformation = forwardRef((props, ref) => {
 
     const res = useSelector((state) => state.order);
     const { order } = res;
-    const orderId = order?.order?.id
+    const orderID = order?.order?.id
 
     useImperativeHandle(ref, () => ({
         cardInfoSubmitHandler(event) {
@@ -199,7 +199,7 @@ const CardInformation = forwardRef((props, ref) => {
                 }
                 var data = {
                     sessionId: response.session.id,
-                    orderId: 34 //orderId ? localStorage.getItem('orderId') : orderId
+                    orderId: orderID ? localStorage.getItem('orderId') : orderID
                 };
          
                 var xhr = new XMLHttpRequest();
