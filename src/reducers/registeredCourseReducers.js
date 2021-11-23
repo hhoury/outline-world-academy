@@ -12,11 +12,11 @@ IS_REGISTERED_COURSE_SUCCESS,
 export const registeredCourseListReducer = (state = { data: {enrollments: [], courses: []} }, action) => {
     switch (action.type) {
         case REGISTERED_COURSE_LIST_FAIL:
-            return { loading: true, data: {enrollments: [], courses: []} }
+            return { loading: false, data: {enrollments: [], courses: []} }
         case REGISTERED_COURSE_LIST_SUCCESS:
             return { loading: false, data: action.payload }
         case REGISTERED_COURSE_LIST_REQUEST:
-            return { loading: false, error: action.payload }
+            return { loading: true, error: action.payload }
         default:
             return state;
     }

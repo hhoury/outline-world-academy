@@ -8,14 +8,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from '../../constants/appConstants'
 import { clearCartItems } from '../../actions/cartActions'
-import useInput from '../../hooks/use-input';
 import { css } from "@emotion/react";
 import { GridLoader } from 'react-spinners'
 import Cookies from 'js-cookie';
 
-const isNotEmpty = (value) => {
-    return value.trim() !== ''
-}
+
 const override = css`
     position: absolute;
     z-index: 10;
@@ -202,18 +199,16 @@ const CardInformation = forwardRef((props, ref) => {
                 }
                 var data = {
                     sessionId: response.session.id,
-                    orderId: orderId ? localStorage.getItem('orderId') : orderId
+                    orderId: 34 //orderId ? localStorage.getItem('orderId') : orderId
                 };
-                console.log('pay data');
-                console.log(data);
+         
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', DotNetSample.endpoint(), true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Authorization', `Bearer ${token}`);
-                xhr.setRequestHeader('Accept', 'application/json');
-                xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
                 // xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-                xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+                // xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+                
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         var res = JSON.parse(this.response)

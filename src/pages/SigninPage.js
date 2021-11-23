@@ -3,10 +3,15 @@ import SigninForm from '../forms/SigninForm'
 import Logo from '../Layout/Logo'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
+import Cookies from 'js-cookie'
 const SigninPage = () => {
+  
     const history = useHistory()
     const userLogin = useSelector((state) => state.userLogin)
+    console.log(userLogin);
     const { userInfo } = userLogin
+    const token = Cookies.get('accessToken')
+    console.log(token);
     if(userInfo){
         history.push('/')
     }

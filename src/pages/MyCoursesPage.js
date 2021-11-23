@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import { Link } from 'react-router-dom'
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { GridLoader } from 'react-spinners'
 import { css } from "@emotion/react";
 import Message from '../components/UI/Message'
-import {useHistory} from 'react-router'
+import { useHistory } from 'react-router'
 import { Button } from 'react-bootstrap'
 import Cookies from 'js-cookie'
 const MyCoursesPage = () => {
@@ -19,48 +19,51 @@ const MyCoursesPage = () => {
   text-align: center;
   color: #F44E0C;
 `;
-const history = useHistory();
- const checkCoursesHandler = (e) => {
-     e.preventDefault();
-     history.push('/courses')
- }
- const token = Cookies.get('accessToken')
+    const history = useHistory();
+    const checkCoursesHandler = (e) => {
+        e.preventDefault();
+        history.push('/courses')
+    }
+    const token = Cookies.get('accessToken')
     const dispatch = useDispatch()
     useEffect(() => {
-        if(token)
+        if (token)
             dispatch(registeredListCourses(token))
     }, [])
     const enrollmentsList = useSelector((state) => state.enrollmentsList)
     let { loading, error, data } = enrollmentsList
     const courses = data?.courses
+
+    const noEnrolledCourses = (<div className='empty-cart'>
+        <h3>You are not Enrolled in any course</h3>
+        <div>
+            <p>Check Our Courses to Find a Course For You</p>
+            <Button className='check-courses' onClick={checkCoursesHandler}>
+                Check Our Courses
+            </Button>
+        </div>
+    </div>)
+
     return (
         <>
-            <Header fullMenu={false} withName={true}/>
+            <Header fullMenu={false} withName={true} />
             <div className='my-courses-page'>
                 {courses?.length > 0 && <h1>My courses</h1>}
                 {courses?.length > 0 && <Link to=''>View Certificates</Link>}
                 <main>
                     {
-                        courses?.length > 0 ? 
-                        (
-                        loading ? 
-                        <GridLoader color='#F44E0C' css={override} size='30px' /> 
-                        : error ? 
-                        <Message message={error} /> 
-                        :
-                            courses?.map((course) =>
-                                <MyCoursesItem key={course.course_id} id={course.course_id} title={course.title} chapters={course.chapters.length} progress={course.progress} thumbnail={course.thumbnail} />)
-                                )
+                        loading ?
+                            <GridLoader color='#F44E0C' css={override} size='30px' />
+                            : error ?
+                                <Message message={error} />
                                 :
-                                ( <div className='empty-cart'>
-                                <h3>You are not Enrolled in any course</h3>
-                                <div>
-                                    <p>Check Our Courses to Find a Course For You</p>
-                                    <Button className='check-courses' onClick={checkCoursesHandler}>
-                                        Check Our Courses
-                                    </Button>
-                                </div>
-                            </div>)
+                                courses?.length > 0 ?
+                                    (
+                                        courses?.map((course) =>
+                                            <MyCoursesItem key={course.course_id} id={course.course_id} title={course.title} chapters={course.chapters.length} progress={course.progress} thumbnail={course.thumbnail} />)
+                                    )
+                                    :
+                                    noEnrolledCourses
                     }
                 </main>
             </div>
