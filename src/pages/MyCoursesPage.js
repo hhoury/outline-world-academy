@@ -1,7 +1,6 @@
 import React, { useEffect} from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
-import mycourse from '../assets/mycourses.jpg'
 import { Link } from 'react-router-dom'
 import MyCoursesItem from '../components/Courses/MyCoursesItem'
 import { registeredListCourses } from '../actions/registeredCourseActions'
@@ -42,10 +41,16 @@ const history = useHistory();
                 {courses?.length > 0 && <Link to=''>View Certificates</Link>}
                 <main>
                     {
-                        courses?.length > 0 ? (
-                        loading ? <GridLoader color='#F44E0C' css={override} size='30px' /> : error ? <Message message={error} /> :
+                        courses?.length > 0 ? 
+                        (
+                        loading ? 
+                        <GridLoader color='#F44E0C' css={override} size='30px' /> 
+                        : error ? 
+                        <Message message={error} /> 
+                        :
                             courses?.map((course) =>
-                                <MyCoursesItem key={course.course_id} id={course.course_id} title={course.title} chapters={course.chapters.length} progress={course.progress} thumbnail={course.thumbnail} />))
+                                <MyCoursesItem key={course.course_id} id={course.course_id} title={course.title} chapters={course.chapters.length} progress={course.progress} thumbnail={course.thumbnail} />)
+                                )
                                 :
                                 ( <div className='empty-cart'>
                                 <h3>You are not Enrolled in any course</h3>

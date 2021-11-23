@@ -128,7 +128,7 @@ export const placeOrder = (orderId, transactionId,sessionId,ApiOperation,ApiMeth
         dispatch({
             type: PLACE_ORDER_REQUEST
         })
-        const { data } = await axios.post(API + 'courses/processHostedSession', { orderId, transactionId,sessionId,ApiOperation,ApiMethod,CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode },config)
+        const { data } = await axios.post(API + 'courses/processHostedSession/', { orderId, transactionId,sessionId,ApiOperation,ApiMethod,CardHolderName,CardNumber,ExpiryMonth,ExpiryYear,SecurityCode },config)
         
         dispatch({
             type: PLACE_ORDER_SUCCESS,

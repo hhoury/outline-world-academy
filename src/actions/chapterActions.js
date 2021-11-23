@@ -21,7 +21,7 @@ export const listCourseChapterDetails = (chapter_id) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post(`${API}courses/chapter_lessons`,{chapter_id},config)
+        const { data } = await axios.post(`${API}courses/chapter_lessons/`,{chapter_id},config)
         dispatch({
             type: CHAPTER_DETAILS_SUCCESS,
             payload: data

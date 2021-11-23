@@ -36,6 +36,7 @@ const App = () => {
    }
 
    const isLoggedIn = Cookies.get('accessToken')
+   
    if (!isLoggedIn) {
       localStorage.removeItem('cartItems')
       localStorage.removeItem('totalAmount')
@@ -47,6 +48,8 @@ const App = () => {
          {passwordModalIsShowing && <PasswordModal onClose={hidePasswordModalHandler} />}
          <main>
             <Switch>
+            <Route path='/sign-up'><SignupPage /></Route>
+               <Route path='/sign-in'><SigninPage /></Route>
                <Route path='/cart'><CartPage /></Route>
                <Route path='/order-details'><OrderDetailsPage /></Route>
                <Route path='/billing-details'>
@@ -112,8 +115,7 @@ const App = () => {
                      <Redirect to={{ pathname: '/sign-in' }} />
                   }
                </Route>
-               <Route path='/sign-up'><SignupPage /></Route>
-               <Route path='/sign-in'><SigninPage /></Route>
+             
                <Route path='/forgot-password'><ForgotPasswordPage /></Route>
                <Route path='/about-us'><AboutPage /></Route>
                <Route path='/blog'><BlogPage /></Route>

@@ -154,7 +154,7 @@ export const getUserDetails = () => async (dispatch, getState) => {
                 Authorization: `Bearer ${token}`
             }
         }
-        const { data } = await axios.post(API + 'user-details', config)
+        const { data } = await axios.post(API + 'user-details/', config)
         dispatch({
             type: USER_DETAILS_SUCCESS,
             payload: data

@@ -35,7 +35,7 @@ export const  listCourses = () => async (dispatch) => {
 export const listFeaturedCourses = () => async (dispatch) => {
     try {
         dispatch({ type: FEATURED_COURSE_LIST_REQUEST })
-        const { data } = await axios.get(API + 'courses/featured_courses')
+        const { data } = await axios.get(API + 'courses/featured_courses/')
         dispatch({
             type: FEATURED_COURSE_LIST_SUCCESS,
             payload: data

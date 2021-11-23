@@ -16,7 +16,7 @@ const MyCoursesItem = (props) => {
     return (
         <div className={`${classes['my-couses-item']} mr-auto`}>
             <figure>
-                <LazyLoadImage src={mycourses} alt={props.title} />
+                <LazyLoadImage src={props.thumbnail} alt={props.title} />
             </figure>
             <div className={classes.details}>
                 <h2>{props.title}</h2>

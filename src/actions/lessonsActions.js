@@ -13,7 +13,7 @@ import Cookies from 'js-cookie'
 export const listCourseChapterDetails = (courseId, chapterId) => async (dispatch) => {
     try {
         dispatch({ type: LESSON_DETAILS_REQUEST })
-        const { data } = await axios.get(`${API}courses/${courseId}/chapter/${chapterId}`)
+        const { data } = await axios.get(`${API}courses/${courseId}/chapter/${chapterId}/`)
         dispatch({
             type: LESSON_DETAILS_SUCCESS,
             payload: data
@@ -38,7 +38,7 @@ export const listCourseLessons = (courseId) => async (dispatch) => {
                 Authorization: `Bearer ${token}`
             }
         }
-        const { data } = await axios.post(`${API}chapters/course/${courseId}}`, null, config)
+        const { data } = await axios.post(`${API}chapters/course/${courseId}/}`, null, config)
         dispatch({
             type: LESSONS_LIST_SUCCESS,
             payload: data

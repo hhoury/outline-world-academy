@@ -13,11 +13,9 @@ const EnrolledCourseDetailsPage = (props) => {
     // const isEnrolled = registered.data;
     const courseDetails = useSelector((state) => state.courseDetails)
     const course = courseDetails.course.coures_details
-    console.log(course);
     useEffect(() => {
         // dispatch(isRegisteredCourse(id))
         dispatch(listCourseDetails(id))
-        console.log(course);
     }, [id])
 
     return (

@@ -25,6 +25,8 @@ export const registeredListCourses = (token) => async (dispatch) => {
             }
         }
         const { data } = await axios.post(API + 'courses/my_courses/',null,config)
+        console.log('data');
+        console.log(data);
         dispatch({
             type: REGISTERED_COURSE_LIST_SUCCESS,
             payload: data
@@ -49,7 +51,7 @@ export const registeredCourseDetails = () => async (dispatch) => {
             }
         }
         dispatch({ type: REGISTERED_COURSE_DETAILS_REQUEST })
-        const { data } = await axios.post(API + 'Enrollments/get-course',config)
+        const { data } = await axios.post(API + 'Enrollments/get-course/',config)
         dispatch({
             type: REGISTERED_COURSE_DETAILS_SUCCESS,
             payload: data

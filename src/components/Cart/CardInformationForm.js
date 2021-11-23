@@ -162,7 +162,7 @@ const CardInformation = forwardRef((props, ref) => {
 
     const res = useSelector((state) => state.order);
     const { order } = res;
-    const orderId = order?.id
+    const orderId = order?.order?.id
 
     useImperativeHandle(ref, () => ({
         cardInfoSubmitHandler(event) {
@@ -201,24 +201,24 @@ const CardInformation = forwardRef((props, ref) => {
                     console.log("The user entered a Mastercard credit card.")
                 }
                 var data = {
-                    apiOperation: DotNetSample.operation(),
                     sessionId: response.session.id,
-                    secureIdResponseUrl: DotNetSample.secureIdResponseUrl(),
                     orderId: orderId ? localStorage.getItem('orderId') : orderId
                 };
-
+                console.log('pay data');
+                console.log(data);
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', DotNetSample.endpoint(), true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Authorization', `Bearer ${token}`);
                 xhr.setRequestHeader('Accept', 'application/json');
-                xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-                xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://109.235.69.20');
-                xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://api.outlineworldacademy.com/');
+                xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+                // xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
                 xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         var res = JSON.parse(this.response)
+                        console.log('res');
+                        console.log(res);
                         if (res.paid) {
 
                             dispatch(clearCartItems())
