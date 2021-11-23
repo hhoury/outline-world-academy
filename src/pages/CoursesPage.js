@@ -67,7 +67,8 @@ const CoursesPage = (props) => {
                                         <CourseItem 
                                             key={course.id} 
                                             isEnrolled={registeredCoursesItemsIds.includes(course.id)}
-                                            id={course.id} 
+                                            id={course.id}
+                                            isPaid={course.is_paid}
                                             title={course.title} 
                                             price={course.price} 
                                             chapters={course.chapters} 

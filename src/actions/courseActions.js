@@ -16,9 +16,15 @@ import Cookies from 'js-cookie'
 
 export const  listCourses = () => async (dispatch) => {
     try {
-        
+        const token = Cookies.get('accessToken')
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        }
         dispatch({ type: COURSE_LIST_REQUEST })
-        const { data } = await axios.get(API + 'courses/courses/')
+        const { data } = await axios.get(API + 'courses/courses/',config)
         dispatch({
             type: COURSE_LIST_SUCCESS,
             payload: data

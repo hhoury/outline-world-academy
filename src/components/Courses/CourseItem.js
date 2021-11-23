@@ -22,7 +22,6 @@ const notify = () => toast.success("Course Added to Cart",
     });
 
 const CourseItem = (props) => {
-  
     const goToMyCoursesHandler = () => {
         history.push('/my-courses')
     }
@@ -32,16 +31,22 @@ const CourseItem = (props) => {
     const { cartItems } = cart
     const history = useHistory();
     const addToCartHandler = () => {
-        dispatch(addToCart(
-            {
-                id: props.id,
-                title: props.title,
-                price: props.price,
-                chapters: props.chapters,
-                lessons: props.chapters.lessons
-            }
-        ))
+        if(props.isPaid){
+            return
+        }
+        else{
+            dispatch(addToCart(
+                {
+                    id: props.id,
+                    title: props.title,
+                    price: props.price,
+                    chapters: props.chapters,
+                    lessons: props.chapters.lessons
+                }
+            ))
+        }
         notify();
+       
     }
     const goToCartHandler = () => {
         history.push('/cart')

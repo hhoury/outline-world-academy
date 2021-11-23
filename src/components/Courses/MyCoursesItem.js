@@ -7,6 +7,7 @@ import mycourses from '../../assets/mycourses.jpg'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const MyCoursesItem = (props) => {
+    console.log(props);
     const history = useHistory();
     const viewCourseHandler = () => {
         history.push('/my-courses/'+ props.id)

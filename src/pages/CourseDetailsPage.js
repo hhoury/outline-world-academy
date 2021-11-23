@@ -84,7 +84,8 @@ const CourseDetailsPage = () => {
 
     let courses = courseList.courses.courses
         const course = courses?.find(element => element.id === Number(id))
-        console.log(courses);
+        console.log(course);
+        const isEnrolled = course?.is_paid
         const chapters = course?.chapters
         let lessonsCount = 0;
         for (let index = 0; index < chapters?.length; index++) {
@@ -157,9 +158,9 @@ const CourseDetailsPage = () => {
                             + VAT 15%
                         </div>
                         {
-                            // isEnrolled?
-                            // <Button onClick={goToMyCoursesHandler}>Go To Your Courses</Button> 
-                            // :
+                            isEnrolled?
+                            <Button onClick={goToMyCoursesHandler}>Go To Your Courses</Button> 
+                            :
                         existingCartItem ?
                             <Button onClick={goToCartHandler}>Go To Cart</Button>
                             :
