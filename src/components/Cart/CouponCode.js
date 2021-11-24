@@ -6,8 +6,6 @@ import { applyCoupon } from '../../actions/orderActions'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
 const CouponCode = () => {
     const notifySuccess = () => toast.success(`Coupon ${watch('Coupon')}  Applied!`,
         {
@@ -44,18 +42,14 @@ const CouponCode = () => {
     const { coupon } = couponData
 
     useEffect(() => {
-        if(coupon)
-        {
-            if (coupon.order) {
-                setValue('Coupon', coupon.code)
+            if (coupon.discount) {
+                setValue('Coupon', watch('Coupon'))
                 notifySuccess()
                 setCouponApplied(true)
             }
             if (coupon.error) {
                 notifyFailed()
             }
-        }
-     
     }, [coupon])
     return (
         <>

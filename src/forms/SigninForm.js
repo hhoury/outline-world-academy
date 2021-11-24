@@ -33,7 +33,7 @@ const SigninForm = (props) => {
   return (
     <Form className={`${classes.signIn} ${props.className}`}>
       <h1>SIGN IN</h1>
-      {error && <Message variant='danger'>{error}</Message>}
+      {error && <Message variant='danger'>Invalid Email or Password</Message>}
       {loading && <Loader message='Signing you in...' />}
       <form onSubmit={handleSubmit(formSubmitHandler)}>
         <input required type='email' placeholder='Email Address' {...register("Email", { required: true})} />
