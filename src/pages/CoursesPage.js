@@ -39,10 +39,10 @@ const CoursesPage = (props) => {
     });
     useEffect(() => {
         dispatch(listCourses())
-        if (StudentId)
-        {
-             dispatch(registeredListCourses(StudentId))
-        }
+        // if (StudentId)
+        // {
+        //      dispatch(registeredListCourses(StudentId))
+        // }
     }, [dispatch, search])
     
     let { loading, error } = courseList
