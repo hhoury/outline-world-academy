@@ -50,7 +50,7 @@ const MyCoursesPage = () => {
             <div className='my-courses-page'>
                 {courses?.length > 0 && <h1>My courses</h1>}
                 {courses?.length > 0 && <Link to=''>View Certificates</Link>}
-                <main>
+                <main style={{minHeight: '400px'}}>
                     {
                         loading ?
                             <GridLoader color='#F44E0C' css={override} size='30px' />
