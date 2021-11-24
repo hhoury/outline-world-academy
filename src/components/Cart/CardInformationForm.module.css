@@ -45,9 +45,15 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: space-between;
 
 }
-
 .CardInformationForm>div span {
     width: 30%;
+}
+
+.Modal div{
+    background-color: #262626;
+}
+.Modal .title {
+    color: #F44E0C;
 }
 
 @media screen and (max-width:480px) {

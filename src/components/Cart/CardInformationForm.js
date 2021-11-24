@@ -11,6 +11,7 @@ import { clearCartItems } from '../../actions/cartActions'
 import { css } from "@emotion/react";
 import { GridLoader } from 'react-spinners'
 import Cookies from 'js-cookie';
+import { Button, Modal } from 'react-bootstrap';
 
 
 const override = css`
@@ -27,6 +28,13 @@ const MASTER_CARD_SESSION_JS_SRC = `https://test-bobsal.gateway.mastercard.com/f
 const MPGS_TIMEOUT = 5000;
 
 const CardInformation = forwardRef((props, ref) => {
+    const [showModal, setShowModal] = useState(false);
+
+    const handleClose = () => 
+    {
+        setShowModal(false);
+        setLoader(false)
+    }
 
     const token = Cookies.get('accessToken')
     const [loader, setLoader] = useState(false)
@@ -106,7 +114,7 @@ const CardInformation = forwardRef((props, ref) => {
         //     return
         // }
         // console.log(loader);
-        // setLoader(true)
+        setLoader(true)
         // console.log(loader);
         const { PaymentSession } = window;
 
@@ -197,33 +205,39 @@ const CardInformation = forwardRef((props, ref) => {
                 if (response.sourceOfFunds.provided.card.scheme === 'MASTERCARD') {
                     console.log("The user entered a Mastercard credit card.")
                 }
+                console.log(orderID);
+                const ORDER_ID = orderID === undefined ? localStorage.getItem('orderId') : orderID
                 var data = {
                     sessionId: response.session.id,
-                    orderId: orderID ? localStorage.getItem('orderId') : orderID
+                    orderId: ORDER_ID
                 };
-         
+                console.log(data);
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', DotNetSample.endpoint(), true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Authorization', `Bearer ${token}`);
                 // xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
                 // xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
-                
+
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         var res = JSON.parse(this.response)
                         console.log('res');
                         console.log(res);
-                        if (res.paid) {
-
-                            dispatch(clearCartItems())
-                            localStorage.removeItem('cartItems')
-                            localStorage.removeItem('totalAmount')
-                            // console.log(loader);
-                            // setLoader(false)
-                            notifySuccess()
-                            console.log(loader);
-                            history.push('/my-courses')
+                        if (res.fail) {
+                            setShowModal(true)
+                        }
+                        else {
+                            if (res.success) {
+                                dispatch(clearCartItems())
+                                localStorage.removeItem('cartItems')
+                                localStorage.removeItem('totalAmount')
+                                // console.log(loader);
+                                setLoader(false)
+                                notifySuccess()
+                                console.log(loader);
+                                history.push('/my-courses')
+                            }
                         }
                     }
                 };
@@ -286,14 +300,14 @@ const CardInformation = forwardRef((props, ref) => {
                     name='cardholder-name'
                     {...register("cardholder-name", { required: true, maxLength: 80 })}
                     type='text'
-                    required 
+                    required
                 />
                 <label>Card Number</label>
                 <input id='card-number'
                     required
                     type="number"
                     placeholder="0000 0000 0000 0000"
-                    readOnly 
+                    readOnly
                     pattern="/^\d+$/"
                 //  {...register("card-number", {required: true, maxLength: 16, minLength: 16})} 
                 />
@@ -303,7 +317,7 @@ const CardInformation = forwardRef((props, ref) => {
                         <input id='expiry-month'
                             name='expiry-month'
                             type="text" pattern="\d*" maxLength={2}
-                            required 
+                            required
                             placeholder='mm'
                             {...register("expiry-month", { required: true })}
                         />
@@ -312,10 +326,10 @@ const CardInformation = forwardRef((props, ref) => {
                         <label>Expiry year</label>
                         <input id='expiry-year'
                             name='expiry-year'
-                            type="text" 
+                            type="text"
                             pattern="\d*"
-                             maxLength={2}
-                            required 
+                            maxLength={2}
+                            required
                             placeholder='yy'
                             {...register("expiry-year", { required: true })}
                         />
@@ -333,6 +347,17 @@ const CardInformation = forwardRef((props, ref) => {
                     </span>
                 </div>
             </form>
+            <Modal className={classes.Modal} show={showModal} onHide={handleClose} animation={false}>
+                <Modal.Header>
+                    <Modal.Title className={classes.title}>Payment Unsuccessful</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Payment Not Successful.<br/> Please Check Your Card Information or Try Again Later!!</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 })
