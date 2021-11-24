@@ -27,8 +27,8 @@ const CourseContent = (props) => {
                             <div className={classes.lessons}>
                                 <ul>
                                     {
-                                        props.chapters[index].lessons.map(lesson =>
-                                            <li key={lesson.id}>
+                                        props.chapters[index].lessons.map((lesson, index) =>
+                                            <li key={index}>
                                                 <span><i className="fas fa-tv"></i></span>
                                                 <p>{lesson?.title}</p>
                                             </li>)
