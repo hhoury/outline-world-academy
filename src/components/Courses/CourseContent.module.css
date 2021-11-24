@@ -79,7 +79,7 @@
 }
 
 .CourseContent div div:nth-child(2) {
-    max-width: 500px;
+    /* max-width: 500px; */
 }
 .CourseContent div div:nth-child(2) div div img {
     max-width: 100%;
