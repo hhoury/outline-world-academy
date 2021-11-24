@@ -155,7 +155,7 @@ const CourseDetailsPage = () => {
                             <span>
                                 ${course?.price}
                             </span>
-                            + VAT 15%
+                            + VAT {course?.tax}%
                         </div>
                         {
                             isEnrolled?
