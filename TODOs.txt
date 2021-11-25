@@ -2,6 +2,29 @@ admin:
 houri
 hassan@123
 Coupon20
+token not valid response
+{
+    "detail": "Given token not valid for any token type",
+    "code": "token_not_valid",
+    "messages": [
+        {
+            "token_class": "AccessToken",
+            "token_type": "access",
+            "message": "Token is invalid or expired"
+        }
+    ]
+}
+token valid respons: 
+{
+    "pk": 21,
+    "email": "hhoury93@gmail.com",
+    "phone": "+96170040294",
+    "full_name": "hassan",
+    "job": "jobbb",
+    "avatar": "https://outlineworldacademy.s3.amazonaws.com/media/profiles/avatar1.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARWJPCZIOH6F6EXDE%2F20211125%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20211125T085420Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=422fee63f4050bb88ad7159e402432b14641104a7ffc30b78bee1e44da7664d7"
+}
+
+
 https://api.outlineworldacademy.com/api/auth/user/ user (GET, PUT, PATCH)
 1- https://api.outlineworldacademy.com/api/courses/courses/  GET
 2- https://api.outlineworldacademy.com/api/courses/my_courses/ POST (no parameters)

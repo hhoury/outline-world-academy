@@ -18,9 +18,8 @@ import { addToCart } from '../actions/cartActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router'
-import {listCourseDetails, listCourses} from '../actions/courseActions'
-import { listCourseChapters } from '../actions/chapterActions'
-import {isRegisteredCourse} from '../actions/registeredCourseActions'
+import {listCourses} from '../actions/courseActions'
+
 
 const notify = () => toast.success("Course Added to Cart",
     {

@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie'
 import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
@@ -29,6 +30,7 @@ import {
   PASSWORD_CHANGE_SUCCESS,
   PASSWORD_CHANGE_FAIL
 } from '../constants/userConstants'
+
 
 export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {

@@ -27,6 +27,7 @@ import NewPasswordPage from './pages/NewPasswordPage';
 import Cookies from 'js-cookie'
 
 const App = () => {
+   
    const [passwordModalIsShowing, setPasswordModalIsShowing] = useState(false)
    const showPasswordModalHandler = () => {
       setPasswordModalIsShowing(true)
@@ -48,7 +49,7 @@ const App = () => {
          {passwordModalIsShowing && <PasswordModal onClose={hidePasswordModalHandler} />}
          <main>
             <Switch>
-            <Route path='/sign-up'><SignupPage /></Route>
+               <Route path='/sign-up'><SignupPage /></Route>
                <Route path='/sign-in'><SigninPage /></Route>
                <Route path='/cart'><CartPage /></Route>
                <Route path='/order-details'><OrderDetailsPage /></Route>
@@ -74,7 +75,7 @@ const App = () => {
                      <Redirect to={{ pathname: '/sign-in' }} />
                   }
                </Route>
-               <Route path='/courses/:id/chapter/:id/:id'>
+               <Route path='/courses/:id/chapter/:chid/:lid'>
                   {isLoggedIn ?
                      <CourseChapterLessonPage />
                      :

@@ -28,7 +28,9 @@
     margin-top: 50px;
     background-color: #F44E0C;
 }
-
+.CourseChapter figure{
+    height: 560px;
+}
 .CourseChapter figure img {
     width: 100%;
     height: 100%;

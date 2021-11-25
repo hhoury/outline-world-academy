@@ -13,12 +13,13 @@ import {
   changePasswordReducer,
 } from './reducers/userReducers';
 import { courseListReducer, courseDetailsReducer, featuredCourseListReducer } from './reducers/courseReducers';
-import { chapterListReducer } from './reducers/chapterReducers';
+import { chapterDetailsReducer } from './reducers/chapterReducers';
 import { orderReducer, couponReducer } from './reducers/orderReducers'
 import {registeredCourseListReducer,registeredCourseDetailsReducer,isRegisterdCourseReducer} from './reducers/registeredCourseReducers'
+import Cookies from "js-cookie";
 
 const reducer = combineReducers({
-  courseChapters: chapterListReducer,
+  courseChapters: chapterDetailsReducer,
   courseDetails: courseDetailsReducer,
   courseList: courseListReducer,
   featuredCourseList: featuredCourseListReducer,
@@ -35,7 +36,7 @@ const reducer = combineReducers({
   order: orderReducer,
   cart: cartReducer,
   coupon: couponReducer,
-  isRegisteredCourse: isRegisterdCourseReducer
+  isRegisteredCourse: isRegisterdCourseReducer,
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
@@ -67,7 +68,7 @@ const initialState = {
     totalAmount: totalAmountFromStorage ? totalAmountFromStorage : 0,
     // paymentInfo: paymentInfoFromStorage
   },
-  userLogin: { userInfo: userInfoFromStorage }
+  userLogin: { userInfo: userInfoFromStorage },
 }
 
 const middleware = [thunk]

@@ -10,23 +10,23 @@ import {
 import { API } from '../constants/appConstants'
 import Cookies from 'js-cookie'
 
-export const listCourseChapterDetails = (courseId, chapterId) => async (dispatch) => {
-    try {
-        dispatch({ type: LESSON_DETAILS_REQUEST })
-        const { data } = await axios.get(`${API}courses/${courseId}/chapter/${chapterId}/`)
-        dispatch({
-            type: LESSON_DETAILS_SUCCESS,
-            payload: data
-        })
-    } catch (error) {
-        dispatch({
-            type: LESSON_DETAILS_FAIL,
-            payload: error.response && error.response.data.message
-                ? error.response.data.message
-                : error.message
-        })
-    }
-}
+// export const listCourseChapterDetails = (courseId, chapterId) => async (dispatch) => {
+//     try {
+//         dispatch({ type: LESSON_DETAILS_REQUEST })
+//         const { data } = await axios.get(`${API}courses/${courseId}/chapter/${chapterId}/`)
+//         dispatch({
+//             type: LESSON_DETAILS_SUCCESS,
+//             payload: data
+//         })
+//     } catch (error) {
+//         dispatch({
+//             type: LESSON_DETAILS_FAIL,
+//             payload: error.response && error.response.data.message
+//                 ? error.response.data.message
+//                 : error.message
+//         })
+//     }
+// }
 
 export const listCourseLessons = (courseId) => async (dispatch) => {
     try {

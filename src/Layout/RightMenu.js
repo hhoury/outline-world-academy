@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import classes from './RightMenu.module.css'
 import { Link, useHistory } from 'react-router-dom'
 import {  OverlayTrigger, Popover } from 'react-bootstrap'
-import { logout } from '../actions/userActions'
+import { logout, validateToken } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 import SearchModal from '../components/UI/SearchModal'
 import Cookies from 'js-cookie'
@@ -11,6 +11,7 @@ import Cookies from 'js-cookie'
 const RightMenu = (props) => {
     const dispatch = useDispatch()
     const isLoggedIn = Cookies.get('accessToken')
+    
     const cart = useSelector((state) => state.cart)
     const {cartItems} = cart
 

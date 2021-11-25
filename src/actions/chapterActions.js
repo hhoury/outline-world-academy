@@ -20,7 +20,6 @@ export const listCourseChapterDetails = (chapter_id) => async (dispatch) => {
                 Authorization: `Bearer ${token}`
             }
         }
-
         const { data } = await axios.post(`${API}courses/chapter_lessons/`,{chapter_id},config)
         dispatch({
             type: CHAPTER_DETAILS_SUCCESS,

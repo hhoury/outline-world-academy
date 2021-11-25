@@ -19,21 +19,52 @@ import {
     PASSWORD_RESET_FAIL,
     PASSWORD_CHANGE_REQUEST,
     PASSWORD_CHANGE_SUCCESS,
-    PASSWORD_CHANGE_FAIL
+    PASSWORD_CHANGE_FAIL,
+    VALIDATE_TOKEN_FAIL,
+    VALIDATE_TOKEN_REQUEST,
+    VALIDATE_TOKEN_SUCCESS
 } from "../constants/userConstants"
 import { API } from '../constants/appConstants'
 import Cookies from 'js-cookie'
 
 
-export const createAccount = (formData) => async (dispatch) => {
+export const validateToken = (token) => async (dispatch) => {
+    try {
+        dispatch({
+            type: VALIDATE_TOKEN_REQUEST
+        })
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        }
+        const { data } = await axios.post(API + 'auth/user/', null, config)
+        console.log(data);
+        dispatch({
+            type: VALIDATE_TOKEN_SUCCESS,
+            payload: data
+        })
+    }
+    catch (error) {
+        dispatch({
+            type: VALIDATE_TOKEN_FAIL,
+            payload: error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        })
+    }
+}
 
+
+export const createAccount = (formData) => async (dispatch) => {
     try {
         dispatch({
             type: USER_REGISTER_REQUEST
         })
-        
+
         const { data } = await axios.post(API + 'auth/registration/', formData)
-        
+
         dispatch({
             type: USER_REGISTER_SUCCESS,
             payload: data
@@ -55,7 +86,7 @@ export const login = (email, password) => async (dispatch) => {
         dispatch({
             type: USER_LOGIN_REQUEST
         })
-        
+
         await axios.post(API + 'auth/login/', { email, password })
             .then((response) => {
                 if (response.data.access_token) {
@@ -101,7 +132,7 @@ export const resetPassword = (email) => async (dispatch, getState) => {
         dispatch({
             type: PASSWORD_RESET_REQUEST
         })
-        
+
         const { data } = await axios.post(API + 'auth/password/reset/ ', { email })
         dispatch({
             type: PASSWORD_RESET_SUCCESS,
@@ -117,12 +148,12 @@ export const resetPassword = (email) => async (dispatch, getState) => {
     }
 }
 
-export const changePassword = (uid,token,password, confirmPassword) => async (dispatch) => {
+export const changePassword = (uid, token, password, confirmPassword) => async (dispatch) => {
     try {
         dispatch({
             type: PASSWORD_CHANGE_REQUEST
-        })  
-        const { data } = await axios.post(API + 'auth/password/change/ ', {uid,token, password, confirmPassword })
+        })
+        const { data } = await axios.post(API + 'auth/password/change/ ', { uid, token, password, confirmPassword })
 
         dispatch({
             type: PASSWORD_CHANGE_SUCCESS,
@@ -145,7 +176,6 @@ export const getUserDetails = () => async (dispatch, getState) => {
         dispatch({
             type: USER_DETAILS_REQUEST
         })
-        const { userLogin: { userInfo } } = getState()
 
         const token = Cookies.get('accessToken')
         const config = {

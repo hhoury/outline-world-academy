@@ -4,55 +4,50 @@ import Footer from '../Layout/Footer'
 import CourseChapterDetails from '../components/Courses/CourseChapterDetails'
 import { ProgressBar } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
-import {listCourseChapterDetails} from '../actions/lessonsActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { listCourseDetails } from '../actions/courseActions'
 
 const ChapterDetailsPage = (props) => {
-    const course = { id: 1, title: 'corona renderer' }
-    const chapter = {
-        id: 1, title: 'Lorem Ipsum Dolor', progress: 60, number: '01.',
-        lessons: [
-            { id: 1, number: '1.1', title: 'lorem ipsum dolor lesson', progress: 100 },
-            { id: 2, number: '1.2', title: 'lorem ipsum dolor lesson', progress: 100 },
-            { id: 3, number: '1.3', title: 'lorem ipsum dolor lesson', progress: 20 }
-        ]
-    }
     
     
+    const {id,chid} = useParams()
     const dispatch = useDispatch()
-    const {chid} = useParams();
+
+    const courseDetails = useSelector((state) => state.courseDetails)
+    const course = courseDetails.course.coures_details
+    const chapter = course?.chapters.find(x => x.id == chid)
+
+    useEffect(() => {
+        dispatch(listCourseDetails(id))
+    }, [])
 
     const history = useHistory();
     const goBackToChaptersHandler = () => {
         history.goBack();
     }
-    useEffect(() => {
-        dispatch(listCourseChapterDetails(chid))
-    }, [])
+
     return (
         <div className='enrolled-course-details' >
             <Header fullMenu={false} withName={true}    />
 
-            <h1>{course.title}</h1>
-
-
+            <h1>{course?.title}</h1>
             <div className='course-chapters'>
                 <div className='course-chapters-header'>
-                    <h1>Chapter {chapter.number} {chapter.title}</h1>
+                    <h1>Chapter {chapter?.id} {chapter?.title}</h1>
                     <div className='chapter-progress'>
-                        <p>%{chapter.progress} Complete</p>
-                        <ProgressBar now={chapter.progress} />
+                        <p>%{chapter?.progress} Complete</p>
+                        <ProgressBar now={chapter?.progress} />
                     </div>
                 </div>
                 <ul>
-                    {chapter.lessons.map((lesson) =>
+                    {chapter?.lessons?.map((lesson,index) =>
                         <CourseChapterDetails
-                            courseId={course.id}
+                            courseId={course?.course_id}
                             chapterId={chapter.id}
-                            key={lesson.number}
-                            id={lesson.number}
-                            number={lesson.number}
+                            key={index}
+                            id={index}
+                            number={lesson.display_order}
                             title={lesson.title}
                             thumbnail={lesson.thumbnail}
                             description={lesson.description}
