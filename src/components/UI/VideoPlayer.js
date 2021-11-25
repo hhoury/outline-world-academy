@@ -5,8 +5,8 @@ import qualityLevels from "videojs-contrib-quality-levels";
 import hlsQualitySelector from "videojs-hls-quality-selector";
 import "videojs-playlist";
 import "videojs-playlist-ui";
-import classes from './VideoPlayer.module.css'
-
+// import classes from './VideoPlayer.module.css'
+import './VideoPlayer.css';
 export const VideoPlayer = (props) => {
   const videoPlayerRef = useRef(null); // Instead of ID
   const playerRef = useRef(null);
@@ -41,7 +41,7 @@ export const VideoPlayer = (props) => {
     playbackRates: [0.5, 1, 1.5, 2]
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     // make sure Video.js player is only initialized once
     if (!playerRef.current) {
       const videoElement = videoPlayerRef.current;
@@ -66,7 +66,7 @@ export const VideoPlayer = (props) => {
     }
   }, [options, videoPlayerRef]);
   
-  React.useEffect(() => {
+  useEffect(() => {
     const player = playerRef.current;
 
     return () => {
@@ -81,7 +81,8 @@ export const VideoPlayer = (props) => {
       <div data-vjs-player="true">
         <video
           ref={videoPlayerRef}
-          className={`${classes['video-js']} ${classes['vjs-big-play-centered']} ${classes['vjs-16-9']}`}
+          className='video-js vjs-big-play-centered vjs-16-9'
+          // className={`${classes['video-js']} ${classes['vjs-big-play-centered']} ${classes['vjs-16-9']}`}
         />
       </div>
   );

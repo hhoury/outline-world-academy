@@ -31,6 +31,13 @@
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
+    "videojs": "^1.0.0",
+    "videojs-contrib-quality-levels": "^2.1.0",
+    "videojs-css": "^1.2.0",
+    "videojs-hls-quality-selector": "^1.1.4",
+    "videojs-playlist": "^4.3.1",
+    "videojs-playlist-ui": "^3.8.0",
+    "videojs-seek-buttons": "^2.2.0",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.11"
   },
@@ -57,6 +64,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {}
+  }
 }

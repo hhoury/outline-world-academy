@@ -12,8 +12,10 @@ import Loader from '../components/UI/Loader'
 import { login } from '../actions/userActions'
 import { SyncLoader } from "react-spinners"
 import { useForm } from "react-hook-form";
-
+import Cookies from 'js-cookie'
+import { useHistory } from 'react-router'
 const SigninForm = (props) => {
+  const history = useHistory();
   const [passwordShown, setPasswordShown] = useState(false);
   const showPasswordHandler = (event) => {
     event.preventDefault();
@@ -23,7 +25,12 @@ const SigninForm = (props) => {
   const dispatch = useDispatch()
 
   const userLogin = useSelector((state) => state.userLogin)
-  const { loading, error } = userLogin
+  const { loading, error, userInfo } = userLogin
+  const token = Cookies.get('accessToken')
+
+  if(userInfo){
+      history.push('/')
+  }
 
   const formSubmitHandler = (data) => {
     console.log('formSubmitHandler');
