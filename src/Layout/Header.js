@@ -7,7 +7,7 @@ import ResponsiveMenu from './ResponsiveMenu'
 import Cookies from 'js-cookie'
 
 const Header = (props) => {
-    const name = JSON.parse(localStorage.getItem('userInfo'))?.name
+    const name = JSON.parse(localStorage.getItem('userLogin'))?.userInfo?.name
     
     return (
 

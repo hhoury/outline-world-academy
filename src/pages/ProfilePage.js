@@ -9,8 +9,9 @@ const ProfilePage = (props) => {
     
     const token = Cookies.get('accessToken')
     const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
-
+    // const { userInfo } = userLogin
+    const {userInfo} = JSON.parse(localStorage.getItem('userLogin'))
+    console.log(JSON.parse(localStorage.getItem('userInfo')));
     const loggedIn = (
         <ProfileEditForm onClose={props.onClose} userInfo={userInfo} onShowModal={props.onShowPasswordModal} />
     )

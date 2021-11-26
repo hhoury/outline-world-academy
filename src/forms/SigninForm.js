@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from './Form'
 import classes from './SigninForm.module.css'
 import Button from '../components/UI/Button'
@@ -28,13 +28,14 @@ const SigninForm = (props) => {
   const { loading, error, userInfo } = userLogin
   const token = Cookies.get('accessToken')
 
-  if(userInfo){
-      history.push('/')
-  }
-
-  const formSubmitHandler = (data) => {
+  const formSubmitHandler = () => {
     console.log('formSubmitHandler');
     dispatch(login(watch('Email'), watch('Password')))
+    const userInfos = JSON.parse(localStorage.getItem('userLogin'));
+    console.log(userInfos);
+    if (userInfos) {
+      history.push('/')
+    }
   }
 
   return (
@@ -43,7 +44,7 @@ const SigninForm = (props) => {
       {error && <Message variant='danger'>Invalid Email or Password</Message>}
       {loading && <Loader message='Signing you in...' />}
       <form onSubmit={handleSubmit(formSubmitHandler)}>
-        <input required type='email' placeholder='Email Address' {...register("Email", { required: true})} />
+        <input required type='email' placeholder='Email Address' {...register("Email", { required: true })} />
         <div style={{ position: 'relative' }}>
           <input name='passwordTextbox' required
             type={!passwordShown ? 'password' : 'text'} placeholder='Password'

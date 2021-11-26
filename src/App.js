@@ -43,6 +43,7 @@ const App = () => {
       localStorage.removeItem('totalAmount')
       localStorage.removeItem('shippingAddress')
       localStorage.removeItem('userInfo')
+      localStorage.removeItem('userLogin')
    }
    return (
       <>

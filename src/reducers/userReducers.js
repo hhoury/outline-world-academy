@@ -38,11 +38,15 @@ export const userLoginReducer = (state = {}, action) => {
       return { loading: true }
     case USER_LOGIN_SUCCESS:
       return {
-        loading: false, userInfo: {
-          id: action.payload.id,
-          email: action.payload.email,
-          job: action.payload.job,
-          name: action.payload.name
+        loading: false, 
+        userLogin: {
+          userInfo: {
+            email: action.payload.email,
+            job: action.payload.job,
+            name: action.payload.name,
+            avatar: action.payload.name,
+            phone: action.payload.phone
+          }
         }
       }
     case USER_LOGIN_FAIL:

@@ -86,19 +86,29 @@ export const login = (email, password) => async (dispatch) => {
         dispatch({
             type: USER_LOGIN_REQUEST
         })
-
-        await axios.post(API + 'auth/login/', { email, password })
-            .then((response) => {
-                if (response.data.access_token) {
-                    Cookies.set('accessToken', response.data.access_token, { expires: 7 })
-                }
-                dispatch({
-                    type: USER_LOGIN_SUCCESS,
-                    payload: response.data
-                })
-                localStorage.setItem('userInfo', JSON.stringify({ name: response.data.user.full_name, email: response.data.user.email, job: response.data.user.job, avatar: response.data.user.avatar, phone: response.data.user.phone }))
-            })
-    } catch (error) {
+        const { data } = await axios.post(API + 'auth/login/', { email, password });
+        if (data.access_token) {
+            Cookies.set('accessToken', data.access_token, { expires: 7 })
+            localStorage.setItem('userLogin', JSON.stringify(
+                {
+                    userInfo: {
+                        name: data.user.full_name,
+                        email: data.user.email,
+                        job: data.user.job,
+                        avatar: data.user.avatar,
+                        phone: data.user.phone
+                    }
+                }))
+              
+        }
+        dispatch({
+            type: USER_LOGIN_SUCCESS,
+            payload: data
+        })
+        document.location.href = '/'
+        
+    }
+    catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,
             payload: error.response && error.response.data.message
@@ -116,6 +126,7 @@ export const logout = () => async (dispatch) => {
         localStorage.removeItem('totalAmount')
         // localStorage.removeItem('paymentInfo')
         localStorage.removeItem('userInfo')
+        localStorage.removeItem('userLogin')
         Cookies.remove('accessToken')
         dispatch({ type: USER_LOGOUT })
         document.location.href = '/'
