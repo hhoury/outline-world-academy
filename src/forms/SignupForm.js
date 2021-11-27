@@ -118,7 +118,7 @@ const SignupForm = (props) => {
             formData.append('password', data.password);
             formData.append('password1', data.confirmPassword);
             formData.append('job', data.job);
-            formData.append('avatar', photo.pictureAsFile);
+            formData.append('avatar', photo?.pictureAsFile);
             formData.append('phone', '+96170040294');
             dispatch(createAccount(formData))
             if(success)
