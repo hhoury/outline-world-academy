@@ -12,6 +12,10 @@ const MyCoursesItem = (props) => {
     const viewCourseHandler = () => {
         history.push('/my-courses/'+ props.id)
     }
+    let lessonsCount =0;
+    props?.course?.chapters?.forEach(element => {
+       lessonsCount = lessonsCount + element.lessons_count
+    });
     const isCourseCompleted = false;
 
     return (
@@ -22,11 +26,11 @@ const MyCoursesItem = (props) => {
             <div className={classes.details}>
                 <h2>{props.title}</h2>
                 <span>{props.chapters} chapters</span>
-                <span>{props.lessons} lessons</span>
+                <span>{lessonsCount} lessons</span>
                 <span><Link to='/'>Course Certificate</Link></span>
                 <div className={classes.progress}>
-                    <p>%{props.progress} Complete</p>
-                    <ProgressBar now={props.progress} />
+                    <p>% {props.progress? props.progress : 0} Complete</p>
+                    <ProgressBar now={props.progress? props.progress: 0} />
                 </div>
                 <Button onClick={viewCourseHandler}  className={classes.btn}>View Course</Button>
             </div>

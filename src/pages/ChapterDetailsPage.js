@@ -17,7 +17,7 @@ const ChapterDetailsPage = (props) => {
     const courseDetails = useSelector((state) => state.courseDetails)
     const course = courseDetails.course.coures_details
     const chapter = course?.chapters.find(x => x.id == chid)
-
+console.log(chapter);
     useEffect(() => {
         dispatch(listCourseDetails(id))
     }, [])
@@ -36,7 +36,7 @@ const ChapterDetailsPage = (props) => {
                 <div className='course-chapters-header'>
                     <h1>Chapter {chapter?.id} {chapter?.title}</h1>
                     <div className='chapter-progress'>
-                        <p>%{chapter?.progress} Complete</p>
+                        <p>% {chapter?.progress ? chapter?.progress : 0} Complete</p>
                         <ProgressBar now={chapter?.progress} />
                     </div>
                 </div>

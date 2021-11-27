@@ -12,18 +12,20 @@ import {
 } from '../constants/courseConstants'
 import { API } from '../constants/appConstants'
 import Cookies from 'js-cookie'
+import { validateToken } from './userActions'
+import {useSelector} from 'react-redux'
 //redux thunk add function within a function
 
-export const  listCourses = () => async (dispatch) => {
+export const  listCourses = (token) => async (dispatch) => {
     try {
-        const token = Cookies.get('accessToken')
+        
         let config
-        token ? config = {
+        token.error?  config = {}: config = {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`
             }
-        }: config = {}
+        }
         dispatch({ type: COURSE_LIST_REQUEST })
 
         const { data } = await axios.get(API + 'courses/courses/',config)

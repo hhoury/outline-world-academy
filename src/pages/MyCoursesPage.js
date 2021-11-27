@@ -33,7 +33,6 @@ const MyCoursesPage = () => {
     const enrollmentsList = useSelector((state) => state.enrollmentsList)
     let { loading, error, data } = enrollmentsList
     const courses = data?.courses
-
     const noEnrolledCourses = (<div className='empty-cart'>
         <h3>You are not Enrolled in any course</h3>
         <div>
@@ -49,7 +48,7 @@ const MyCoursesPage = () => {
             <Header fullMenu={false} withName={true} />
             <div className='my-courses-page'>
                 {courses?.length > 0 && <h1>My courses</h1>}
-                {courses?.length > 0 && <Link to=''>View Certificates</Link>}
+                {/* {courses?.length > 0 && <Link to=''>View Certificates</Link>} */}
                 <main style={{minHeight: '400px'}}>
                     {
                         loading ?
@@ -60,7 +59,7 @@ const MyCoursesPage = () => {
                                 courses?.length > 0 ?
                                     (
                                         courses?.map((course) =>
-                                            <MyCoursesItem key={course.course_id} id={course.course_id} title={course.title} chapters={course.chapters.length} progress={course.progress} thumbnail={course.thumbnail} />)
+                                            <MyCoursesItem course={course} key={course.course_id} id={course.course_id} title={course.title} chapters={course.chapters.length} progress={course.progress} thumbnail={course.thumbnail} />)
                                     )
                                     :
                                     noEnrolledCourses

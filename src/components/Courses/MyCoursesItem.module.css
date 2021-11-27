@@ -38,12 +38,12 @@
     color: #F44E0C;
 }
 
-.progress {
+/* .progress {
     position: absolute;
     top: 150px;
     font-weight: 100;
     width: 60%;
-}
+} */
 .progress > div {
     border-radius: 25px;
     background-color: #262626;
@@ -51,10 +51,13 @@
 .progress > div > div {
     background-color: #F44E0C;
 }
+.progress p {
+    text-align: left;
+}
 .btn {
     position: absolute;
     bottom: 0;
-    width: 80%;
+    letter-spacing: 5px;
 }
 
 @media screen and (max-width:480px) {

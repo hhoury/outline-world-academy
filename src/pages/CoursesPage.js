@@ -11,6 +11,8 @@ import { css } from "@emotion/react";
 import { useLocation } from 'react-router-dom'
 import { listCourseChapters } from '../actions/chapterActions'
 import { registeredListCourses } from '../actions/registeredCourseActions'
+import { validateToken } from '../actions/userActions'
+import Cookies from 'js-cookie'
 
 const override = css`
   display: block;
@@ -29,7 +31,6 @@ const CoursesPage = (props) => {
     const search = query.get('search');
     const dispatch = useDispatch()
     const courseList = useSelector((state) => state.courseList)
-    const StudentId = JSON.parse(localStorage.getItem('userInfo'))?.id
     const enrollmentsList = useSelector((state) => state.enrollmentsList)
     let { data } = enrollmentsList
     const registeredCourses = data?.courses
@@ -38,11 +39,8 @@ const CoursesPage = (props) => {
         registeredCoursesItemsIds.push(element.id)
     });
     useEffect(() => {
-        dispatch(listCourses())
-        // if (StudentId)
-        // {
-        //      dispatch(registeredListCourses(StudentId))
-        // }
+        dispatch(validateToken(Cookies.get('accessToken')))
+        dispatch(listCourses(Cookies.get('accessToken')))
     }, [dispatch, search])
     
     let { loading, error } = courseList

@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './CourseChapterDetails.module.css'
 import {Link} from 'react-router-dom'
+
 const CourseChapterDetails = (props) => {
 
     return (

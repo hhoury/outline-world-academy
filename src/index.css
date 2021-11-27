@@ -529,8 +529,7 @@ h2 {
 /* #region OLD COURSES DETAILS PAGE  */
 .enrolled-course-details {
   background-image: url('./assets/course-details.jpg');
-  background-size: 100% 620px;
-  min-height: 620px;
+  background-size: 100% 100vh;
   background-repeat: no-repeat;
 }
 
@@ -554,7 +553,7 @@ h2 {
   width: 20%;
 }
 .enrolled-course-details .course-chapters{
-  margin: 180px 0 50px 5%;
+  margin: 50vh 0 50px 5%;
   width: 90%;
 }
 .enrolled-course-details .course-chapters h2{

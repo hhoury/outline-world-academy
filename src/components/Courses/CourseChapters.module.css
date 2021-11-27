@@ -45,7 +45,12 @@
     z-index: 9;
     font-weight: bold;
 }
-
+.CourseChapter:nth-child(odd) .chapterNumber{
+    left: 55%;
+}
+.CourseChapter:nth-child(even) .chapterNumber{
+    left: 45%;
+}
 .courseDescription {
     margin: auto;
 }

@@ -28,10 +28,29 @@ import {
   PASSWORD_RESET_FAIL,
   PASSWORD_CHANGE_REQUEST,
   PASSWORD_CHANGE_SUCCESS,
-  PASSWORD_CHANGE_FAIL
+  PASSWORD_CHANGE_FAIL,
+  VALIDATE_TOKEN_REQUEST,
+  VALIDATE_TOKEN_SUCCESS,
+  VALIDATE_TOKEN_FAIL,
 } from '../constants/userConstants'
 
-
+export const validateTokenReducer = (state = {}, action) => {
+  switch (action.type) {
+    case VALIDATE_TOKEN_REQUEST:
+      return { loading: true }
+    case VALIDATE_TOKEN_SUCCESS:
+      return {
+        loading: false, 
+        token: action.payload
+      }
+    case VALIDATE_TOKEN_FAIL:
+      return { loading: false, error: action.payload }
+    case USER_LOGOUT:
+      return {}
+    default:
+      return state
+  }
+}
 export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:

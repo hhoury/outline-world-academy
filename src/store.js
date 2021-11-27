@@ -11,6 +11,7 @@ import {
   userUpdateReducer,
   resetPasswordReducer,
   changePasswordReducer,
+  validateTokenReducer
 } from './reducers/userReducers';
 import { courseListReducer, courseDetailsReducer, featuredCourseListReducer } from './reducers/courseReducers';
 import { chapterDetailsReducer } from './reducers/chapterReducers';
@@ -37,6 +38,7 @@ const reducer = combineReducers({
   cart: cartReducer,
   coupon: couponReducer,
   isRegisteredCourse: isRegisterdCourseReducer,
+  token: validateTokenReducer,
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')

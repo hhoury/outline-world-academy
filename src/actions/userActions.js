@@ -29,6 +29,7 @@ import Cookies from 'js-cookie'
 
 
 export const validateToken = (token) => async (dispatch) => {
+    
     try {
         dispatch({
             type: VALIDATE_TOKEN_REQUEST
