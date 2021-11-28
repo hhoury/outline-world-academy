@@ -46,10 +46,10 @@
     font-weight: bold;
 }
 .CourseChapter:nth-child(odd) .chapterNumber{
-    left: 55%;
+    left: 53%;
 }
 .CourseChapter:nth-child(even) .chapterNumber{
-    left: 45%;
+    left: 47%;
 }
 .courseDescription {
     margin: auto;
