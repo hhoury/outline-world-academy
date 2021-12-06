@@ -82,15 +82,15 @@ const CourseChapterLessonPage = () => {
       <h1>{course.title}</h1>
       <div className='chapter-lesson'>
         <h2>Chapter {chapter.number} <br /> {chapter.title}</h2>
-        <p>{lesson.number} {lesson.title} {lessonVideo}</p>
+        <p>{lesson.number} {lesson.title}</p>
         <div className='lesson-video'>
-          <div>{reload}</div>
+          {/* <div>{reload}</div> */}
           <VideoPlayer key={reload} src={lessonVideo} poster={lesson_poster} />
           <div className='chapter-lesson-footer'>
             <button onClick={goBackToLessonHandler} className='goBackButton'>Back to Lessons</button>
             <div className='arrows'>
-              <Link to=''><i className="far fa-arrow-left"></i></Link>
-              <Button onClick={(goBackToLessonHandler)}><i className="far fa-arrow-right"></i></Button>
+              <button className='btn'><i className="far fa-arrow-left"></i></button>
+              <button className='btn' onClick={(goBackToLessonHandler)}><i className="far fa-arrow-right"></i></button>
             </div>
           </div>
         </div>

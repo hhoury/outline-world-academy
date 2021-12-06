@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from '../Layout/Header'
 import Footer from '../Layout/Footer'
 import CourseChapterDetails from '../components/Courses/CourseChapterDetails'
@@ -13,18 +13,51 @@ const ChapterDetailsPage = (props) => {
     
     const {id,chid} = useParams()
     const dispatch = useDispatch()
-
+    const [currChapter, setCurrChapter] = useState()
     const courseDetails = useSelector((state) => state.courseDetails)
     const course = courseDetails.course.coures_details
     const chapter = course?.chapters.find(x => x.id == chid)
-console.log(chapter);
+   console.log(chapter);
+   console.log(course);
+
+
     useEffect(() => {
         dispatch(listCourseDetails(id))
-    }, [])
+        setCurrChapter(chapter)
+    }, [id,chid])
 
     const history = useHistory();
+
     const goBackToChaptersHandler = () => {
-        history.goBack();
+        history.push(`/my-courses/${course.course_id}`)
+    }
+
+    const prevChapterHandler = () => {
+        console.log(course);
+        const currIndex = course.chapters.findIndex(x => x.id == currChapter.id)
+        if(course.chapters[0]?.id == currChapter.id)
+        return;
+        else{
+            history.push(`/courses/${course?.course_id}/chapter/${course?.chapters[currIndex - 1]?.id}`)
+        }
+        
+        // if(course[0]?.id == currChapter.id)
+        // return;
+        // else{
+        //     setCurrChapter(course[currChapter + 1])
+        // }
+        // console.log(currChapter);
+        // console.log(course);
+    }
+
+    const nextChapterHandler = () => {
+        console.log(course);
+        const currIndex = course.chapters.findIndex(x => x.id == currChapter.id)
+        if(course.chapters[course.chapters.length - 1]?.id == currChapter.id)
+        return;
+        else{
+            history.push(`/courses/${course?.course_id}/chapter/${course?.chapters[currIndex + 1]?.id}`)
+        }
     }
 
     return (
@@ -34,17 +67,17 @@ console.log(chapter);
             <h1>{course?.title}</h1>
             <div className='course-chapters'>
                 <div className='course-chapters-header'>
-                    <h1>Chapter {chapter?.id} {chapter?.title}</h1>
+                    <h1>Chapter {currChapter?.id} {currChapter?.title}</h1>
                     <div className='chapter-progress'>
-                        <p>% {chapter?.progress ? chapter?.progress : 0} Complete</p>
-                        <ProgressBar now={chapter?.progress} />
+                        <p>% {currChapter?.progress ? currChapter?.progress : 0} Complete</p>
+                        <ProgressBar now={currChapter?.progress} />
                     </div>
                 </div>
                 <ul>
-                    {chapter?.lessons?.map((lesson,index) =>
+                    {currChapter?.lessons?.map((lesson,index) =>
                         <CourseChapterDetails
                             courseId={course?.course_id}
-                            chapterId={chapter.id}
+                            chapterId={currChapter.id}
                             key={index}
                             id={index}
                             number={lesson.display_order}
@@ -57,8 +90,8 @@ console.log(chapter);
                     <button onClick={goBackToChaptersHandler} className='goBackButton'>Back to Chapters</button>
 
                     <div className='arrows'>
-                        <Link to=''><i className="far fa-arrow-left"></i></Link>
-                        <Link to=''><i className="far fa-arrow-right"></i></Link>
+                        <button onClick={prevChapterHandler}><i className="far fa-arrow-left"></i></button>
+                        <button onClick={nextChapterHandler}><i className="far fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>

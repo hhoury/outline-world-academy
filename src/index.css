@@ -592,13 +592,22 @@ h2 {
   display: flex;
   gap: 15px;
 }
-.enrolled-course-details .course-chapters .arrows a{
+.enrolled-course-details .course-chapters .arrows button{
   height: 45px;
   width: 55px;
   background-color: #F44E0C;
   color: #fff;
   font-size: 32px;
     text-align: center;
+    outline: none;
+  border: none;
+}
+.enrolled-course-details .course-chapters .arrows button:focus, 
+.enrolled-course-details .course-chapters .arrows button:hover, 
+.enrolled-course-details .course-chapters .arrows button:active{
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 .enrolled-course-details .course-chapters .course-chapters-footer{
@@ -641,15 +650,23 @@ margin-top: 20px;
   display: flex;
   gap: 15px;
 }
-.chapter-lesson  .arrows a{
+.chapter-lesson  .arrows .btn{
+  line-height: 40px;
   height: 45px;
   width: 55px;
   background-color: #F44E0C;
   color: #fff;
   font-size: 35px;
   text-align: center;
+  outline: none;
+  border: none;
+  border-radius: 0;
 }
-
+.chapter-lesson  .arrows .btn:hover,.chapter-lesson  .arrows .btn:focus,.chapter-lesson  .arrows .btn:active{
+  outline: none !important;
+  border: none !important;
+box-shadow: none !important;
+}
 /* #endregion  COURSE CHAPTER LESSON PAGE */
 
 /* #region POPOVER */
